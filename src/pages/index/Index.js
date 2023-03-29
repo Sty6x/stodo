@@ -6,15 +6,13 @@ import indexStyles from "./index.module.scss";
 export const Index = () => {
 	return (
 		<>
-			<header className={`${indexStyles.header}`}>
-				<Navbar>
-					<Link to={"/"}>STODO</Link>
-					<div className={`links`}>
-						<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
-						<NavLink to={"/auth/sign-up"}>Create for Free</NavLink>
-					</div>
-				</Navbar>
-			</header>
+			<Navbar>
+				<Link to={"/"}>STODO</Link>
+				<div className={`${indexStyles.sign} links`}>
+					<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
+					<NavLink to={"/auth/sign-up"}>Start for Free</NavLink>
+				</div>
+			</Navbar>
 			<main className={`${indexStyles.main}`}></main>
 		</>
 	);

@@ -5,6 +5,20 @@
 
 @font-face{
 	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-ExtraLight.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 200;
+  }
+
+@font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-Light.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 300;
+  }
+
+@font-face{
+	font-family: 'inter';
 	src:url('../src/assets/fonts/woff/Inter-Regular.woff2') format('woff2');
 	font-style: normal;
 	font-weight: 400;
@@ -90,4 +104,6 @@ table {
 .App{
   min-height: 100vh;
   font-family: 'inter';
+  display: flex;
+  flex-direction: column;
 }

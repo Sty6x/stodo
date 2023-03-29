@@ -2,6 +2,18 @@
 
 }
 
+.sign{
+    font-size: 1rem;
+    font-weight: 300;
+    a:last-child{
+        margin-left: 2em;
+        background-color: #f3f3f3;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+}
 .main{
-    height: 100%;
+    flex: 1;
 }
