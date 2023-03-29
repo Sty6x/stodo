@@ -2,6 +2,43 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
+@font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+  }
+  
+  @font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-Medium.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 500;
+  }
+  
+  @font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-SemiBold.woff2') format('woff2');
+	font-style:nomal;
+	font-weight: 600;
+  }
+  
+  @font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-Bold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 700;
+  }
+
+
+  @font-face{
+	font-family: 'inter';
+	src:url('../src/assets/fonts/woff/Inter-ExtraBold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 800;
+  }
+
 a, a:hover, a:focus, a:active {
 	text-decoration: none;
 	color: inherit;
@@ -52,4 +89,5 @@ table {
 
 .App{
   min-height: 100vh;
+  font-family: 'inter';
 }
