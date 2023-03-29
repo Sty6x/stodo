@@ -1,11 +1,6 @@
 import React from "react";
-import { RouterSwitch } from "../routing/RouterSwitch";
+import { NavLink } from "react-router-dom";
 
 export const Index = () => {
-	return (
-		<div>
-			<h1>/</h1>
-			{/* <RouterSwitch importRoutes={}/> */}
-		</div>
-	);
+	return <div></div>;
 };

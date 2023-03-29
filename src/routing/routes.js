@@ -1,3 +1,4 @@
+import { App } from "../pages/App";
 import { Overdue } from "../pages/app/Overdue";
 import { Project } from "../pages/app/Project";
 import { Today } from "../pages/app/Today";
@@ -29,6 +30,7 @@ export const ROUTES = [
 	{
 		path: "/app",
 		name: "app",
+		element: <App />,
 		subRoutes: [
 			{ path: "today", name: "today", element: <Today /> },
 			{ path: "upcoming", name: "upcoming", element: <Upcoming /> },
