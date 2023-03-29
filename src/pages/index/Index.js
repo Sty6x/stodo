@@ -16,15 +16,17 @@ export const Index = () => {
 			<main className={`${indexStyles.main}`}>
 				<section className={`${indexStyles.hero}`}>
 					<div className={` ${indexStyles.text} left`}>
-						<h1>
-							A Simple <span>Minimalistic</span> Task app.
-						</h1>
-						<p>
-							Organize all of your tasks,increase your productivity,
-							manage your time effectively, stay on top of your
-							priorities and get things done.
-						</p>
-						<Link to={"/auth/sign-up"}>Start for Free</Link>
+						<div className={`${indexStyles.textContainer}`}>
+							<h1>
+								A Simple <span>Minimalistic</span> Task app.
+							</h1>
+							<p>
+								Organize all of your tasks,increase your productivity,
+								manage your time effectively, stay on top of your
+								priorities and get things done.
+							</p>
+							<Link to={"/auth/sign-up"}>Start for Free</Link>
+						</div>
 					</div>
 					<div className={`right ${indexStyles.image}`}></div>
 				</section>
