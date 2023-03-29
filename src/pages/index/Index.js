@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "../../components/navbar/Navbar";
 import indexStyles from "./index.module.scss";
-
+import heroImage from "../../assets/images/hero-images.png";
 export const Index = () => {
 	return (
 		<>
@@ -28,7 +28,9 @@ export const Index = () => {
 							<Link to={"/auth/sign-up"}>Start for Free</Link>
 						</div>
 					</div>
-					<div className={`right ${indexStyles.image}`}></div>
+					<div className={`right ${indexStyles.image}`}>
+						<img src={heroImage} />
+					</div>
 				</section>
 			</main>
 		</>
