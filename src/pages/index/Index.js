@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "../../components/navbar/Navbar";
 import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
+import wave from "../../assets/images/wave.svg";
 export const Index = () => {
 	return (
 		<>
