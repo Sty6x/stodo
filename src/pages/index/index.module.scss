@@ -12,7 +12,26 @@
     }
 }
 .main{
-    flex: 1;
     background-color: #272727;
-    min-height: 100%;
+}
+
+.main,.hero,.text,.image{
+    flex: 1;
+}
+.main,.hero{
+    display: flex;
+}
+
+.text{
+    color: white;
+    h1{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    h1 > span{
+        color: #008cff;
+    }
+}
+
+.image{
 }
