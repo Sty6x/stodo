@@ -18,7 +18,7 @@
     padding: 5em;
     background-image: url('../../assets/images/bg.svg');
     background-position: center;
-    background-size: cover;
+    // background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -69,8 +69,35 @@
     z-index: 8;
     justify-content: center;
     align-items: center;
+    position: relative;
     img{
         max-width: 100%;
-        // object-fit: cover;
+        object-fit: scale-down;
     }
+  
 }
+
+@mixin lines{
+    position: absolute;
+    content: '';
+    background-color: red;
+    height: 100%;
+    width: 1px;
+    top: 0%;
+    background-color: #f3f3f3;
+    z-index: 2;
+}
+
+.image::after{
+    @include lines;
+        left:95%;
+        height: 40%;
+    }
+
+
+.image::before{
+    @include lines;
+        left: 5%;
+        height: 40%;
+        transform: translateY(100%);
+    }
