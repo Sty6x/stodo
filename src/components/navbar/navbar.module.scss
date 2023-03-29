@@ -1,3 +1,12 @@
 .navBar{
-    display: flex
+    display: flex;
+    border: black 1px solid;
+    justify-content: space-between;
+    padding: 1em 4em;
+    color: white;
+    a:first-child{
+        font-size: 1.2rem;
+    }
+    background-color: #2f2f2f;
 }
+

@@ -6,10 +6,16 @@ export const RouterSwitch = ({ importRoutes }) => {
 		const sub =
 			route.subRoutes &&
 			route.subRoutes.map((subRoute) => {
-				return <Route path={subRoute.path} element={subRoute.element} />;
+				return (
+					<Route
+						key={subRoute.name}
+						path={subRoute.path}
+						element={subRoute.element}
+					/>
+				);
 			});
 		return (
-			<Route path={route.path} element={route.element}>
+			<Route key={route.name} path={route.path} element={route.element}>
 				{sub}
 			</Route>
 		);

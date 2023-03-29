@@ -8,9 +8,7 @@ export const Index = () => {
 		<>
 			<header className={`${indexStyles.header}`}>
 				<Navbar>
-					<h1>
-						<Link to={"/"}>STODO</Link>
-					</h1>
+					<Link to={"/"}>STODO</Link>
 					<div className={`links`}>
 						<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
 						<NavLink to={"/auth/sign-up"}>Create for Free</NavLink>
