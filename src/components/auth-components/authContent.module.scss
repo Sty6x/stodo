@@ -1,0 +1,15 @@
+.authContentContainer{
+    width: 45%; 
+    height: 60vh;
+    display: flex;
+    border-radius: 10px;
+    .leftContent{
+        background-color: #393b3f;
+   }
+    .rightContent{
+        background-color: #ffffff;
+   }
+    .rightContent,.leftContent{
+        flex: 1;
+   }
+}
