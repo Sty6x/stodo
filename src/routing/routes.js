@@ -5,8 +5,8 @@ import { Today } from "../pages/app/Today";
 import { Upcoming } from "../pages/app/Upcoming";
 import { Auth } from "../pages/Auth";
 import { Index } from "../pages/index/Index";
-import { SignIn } from "../pages/signInSignUp/SignIn";
-import { SignUp } from "../pages/signInSignUp/SignUp";
+import { SignIn } from "../pages/signInSignUp/signIn/SignIn";
+import { SignUp } from "../pages/signInSignUp/signup/SignUp";
 
 export const ROUTES = [
 	{
