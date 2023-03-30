@@ -92,7 +92,7 @@
     @include lines;
         left:95%;
         height: 40%;
-    }
+}
 
 
 .image::before{
@@ -100,4 +100,10 @@
         left: 5%;
         height: 40%;
         transform: translateY(100%);
-    }
+ }
+
+.logoImg{
+    object-fit: contain;
+    max-width: 40%;
+    // height: 100px;
+}

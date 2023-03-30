@@ -8,8 +8,8 @@ export const Index = () => {
 	return (
 		<>
 			<Navbar>
-				<Link to={"/"}>
-					<img src={logo} alt="logo" />
+				<Link className={indexStyles.logoContainer} to={"/"}>
+					<img className={indexStyles.logoImg} src={logo} alt="logo" />
 				</Link>
 				<div className={`${indexStyles.sign} links`}>
 					<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
