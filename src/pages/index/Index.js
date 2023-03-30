@@ -3,12 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "../../components/navbar/Navbar";
 import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
-import wave from "../../assets/images/wave.svg";
+import logo from "../../assets/images/logo.svg";
 export const Index = () => {
 	return (
 		<>
 			<Navbar>
-				<Link to={"/"}>STODO</Link>
+				<Link to={"/"}>
+					<img src={logo} alt="logo" />
+				</Link>
 				<div className={`${indexStyles.sign} links`}>
 					<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
 					<NavLink to={"/auth/sign-up"}>Start for Free</NavLink>
