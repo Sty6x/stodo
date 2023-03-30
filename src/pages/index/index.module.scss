@@ -27,10 +27,6 @@
     display: flex;
 }
 
-.hero{
-}
-
-
 .text{
     display: flex;
     width: 40%;
@@ -106,4 +102,9 @@
     object-fit: contain;
     max-width: 40%;
     // height: 100px;
+}
+
+.logoContainer{
+    display: flex;
+    align-items: center;
 }
