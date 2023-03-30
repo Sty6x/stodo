@@ -6,7 +6,7 @@ import signInStyles from "./signin.module.scss";
 
 const content = {
 	rightContent: (
-		<AuthForm>
+		<AuthForm buttonType={"Sign in"}>
 			<div className={signFormStyles.input}>
 				<label htmlFor="email">Email:</label>
 				<input type={"text"} id={"email"} />

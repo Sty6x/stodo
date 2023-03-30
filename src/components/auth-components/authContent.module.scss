@@ -3,6 +3,8 @@
     height: 60vh;
     display: flex;
     border-radius: 10px;
+    box-sizing: content-box;
+    overflow: hidden;
     .leftContent{
         background-color: #393b3f;
    }
