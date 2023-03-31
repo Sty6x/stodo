@@ -6,7 +6,6 @@ import signInStyles from "./signin.module.scss";
 
 const authContent = {
 	rightContent: {
-		welcomeText: "Welcome Back!",
 		isSigningIn: true,
 		formComponent: (
 			<AuthForm buttonType={"Sign in"}>

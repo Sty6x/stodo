@@ -1,6 +1,7 @@
 import React from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/images/logo-form.svg";
 
 export const AuthContent = ({ content }) => {
 	const {
@@ -19,12 +20,10 @@ export const AuthContent = ({ content }) => {
 			</div>
 			<div className={authContentStyles.rightContent}>
 				<div className={authContentStyles.formContentContainer}>
-					<img />
-					<h1>welcome</h1>
+					<img src={logo} />
+					<h1>{isSigningIn ? "Welcome Back!" : "Welcome!"}</h1>
 					<p>
-						{isSigningIn
-							? "Login to Your Account"
-							: "Create Your Account"}
+						{isSigningIn ? "Login to Your Acount" : "Create Your Account"}
 					</p>
 					{formComponent}
 				</div>
