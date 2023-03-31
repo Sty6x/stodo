@@ -16,10 +16,24 @@
     background-image: url('../../assets/images/waveform.svg');
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
 }
  .rightContent{
     background-color: #ffffff;
+}
+
+.textContentContainer{
+    text-align: center;
+    color: white;
+    max-width: 60%;
+    h1{
+        font-size:2rem;
+        font-weight: 600;
+    }
+    p{
+        font-size: 1.2rem;
+    }
 }
