@@ -5,13 +5,18 @@
     border-radius: 10px;
     box-sizing: content-box;
     overflow: hidden;
-    .leftContent{
-        background-color: #393b3f;
-   }
-    .rightContent{
-        background-color: #ffffff;
-   }
-    .rightContent,.leftContent{
-        flex: 1;
-   }
+}
+
+.rightContent,.leftContent{
+    flex: 1;
+}
+
+ .leftContent{
+    background-color: #393b3f;
+    background-image: url('../../assets/images/waveform.svg');
+    background-position: center;
+    background-size: cover;
+}
+ .rightContent{
+    background-color: #ffffff;
 }
