@@ -5,7 +5,11 @@ export const AuthContent = ({ content }) => {
 	return (
 		<div className={authContentStyles.authContentContainer}>
 			<div className={authContentStyles.leftContent}>
-				{content.leftContent}
+				<div className={authContentStyles.textContentContainer}>
+					<h1>{content.leftContent.header}</h1>
+					<p>{content.leftContent.text}</p>
+					<button>{content.leftContent.buttonType}</button>
+				</div>
 			</div>
 			<div className={authContentStyles.rightContent}>
 				{content.rightContent}

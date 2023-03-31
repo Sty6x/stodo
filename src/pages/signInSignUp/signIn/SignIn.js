@@ -17,7 +17,11 @@ const content = {
 			</div>
 		</AuthForm>
 	),
-	// leftContent:
+	leftContent: {
+		header: "New Here?",
+		text: "Sign up and start organizing your thoughts.",
+		buttonType: "Sign up",
+	},
 };
 
 export const SignIn = () => {
