@@ -20,7 +20,7 @@ const authContent = {
 	leftContent: {
 		header: "New Here?",
 		text: "Sign up and start organizing your thoughts.",
-		buttonType: "Sign up",
+		buttonType: { method: "Sign up", path: "/auth/sign-up" },
 	},
 };
 
