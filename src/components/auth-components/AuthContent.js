@@ -20,11 +20,15 @@ export const AuthContent = ({ content }) => {
 			</div>
 			<div className={authContentStyles.rightContent}>
 				<div className={authContentStyles.formContentContainer}>
-					<img src={logo} />
-					<h1>{isSigningIn ? "Welcome Back!" : "Welcome!"}</h1>
-					<p>
-						{isSigningIn ? "Login to Your Acount" : "Create Your Account"}
-					</p>
+					<div className={authContentStyles.greetContainer}>
+						<img src={logo} />
+						<h1>{isSigningIn ? "Welcome Back!" : "Welcome!"}</h1>
+						<p>
+							{isSigningIn
+								? "Login to Your Acount"
+								: "Create Your Account"}
+						</p>
+					</div>
 					{formComponent}
 				</div>
 			</div>
