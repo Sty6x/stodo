@@ -17,7 +17,14 @@ export const AuthContent = ({ content }) => {
 					<Link to={buttonType.path}>{buttonType.method}</Link>
 				</div>
 			</div>
-			<div className={authContentStyles.rightContent}>{rightContent}</div>
+			<div className={authContentStyles.rightContent}>
+				<div className={authContentStyles.formContentContainer}>
+					<img />
+					<h1>welcome</h1>
+					<p>sign</p>
+					{rightContent}
+				</div>
+			</div>
 		</div>
 	);
 };

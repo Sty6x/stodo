@@ -22,9 +22,6 @@
     justify-content: center;
     align-items: center;
 }
- .rightContent{
-    background-color: #ffffff;
-}
 
 .textContentContainer{
     text-align: center;
@@ -50,4 +47,23 @@
         display: inline-block;
         border-radius: 8px;
     }
+}
+
+.rightContent{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+    div > label{
+        display: block;
+
+    }
+}
+
+
+
+.formContentContainer{
+
 }
