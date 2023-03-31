@@ -4,7 +4,7 @@ import { AuthForm } from "../../../components/auth-components/AuthForm";
 import signFormStyles from "../signform.module.scss";
 import signInStyles from "./signin.module.scss";
 
-const content = {
+const authContent = {
 	rightContent: (
 		<AuthForm buttonType={"Sign in"}>
 			<div className={signFormStyles.input}>
@@ -27,7 +27,7 @@ const content = {
 export const SignIn = () => {
 	return (
 		<main className={signFormStyles.signForm}>
-			<AuthContent content={content} />
+			<AuthContent content={authContent} />
 		</main>
 	);
 };
