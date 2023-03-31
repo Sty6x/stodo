@@ -11,8 +11,15 @@
     }
     button[type='submit']{
         display: inline-block;
-        padding: 7px 25px;
-        font-size: .9rem;
-        font-weight: 500;
+        padding: 10px 25px;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: 'inter';
+        color: white;
+        background: rgb(178,38,53);
+        background: linear-gradient(30deg, rgba(178,38,53,1) -10%, rgba(0,140,255,1) 150%);
+        appearance: none;
+        border-radius: 6px;
+        border: none;
     }
 }
