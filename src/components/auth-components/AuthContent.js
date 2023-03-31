@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 export const AuthContent = ({ content }) => {
 	const {
 		leftContent: { textHeader, text, buttonType },
-		rightContent,
+		rightContent: { formComponent, isSigningIn, welcomeText },
 	} = content;
 
 	return (
@@ -21,8 +21,12 @@ export const AuthContent = ({ content }) => {
 				<div className={authContentStyles.formContentContainer}>
 					<img />
 					<h1>welcome</h1>
-					<p>sign</p>
-					{rightContent}
+					<p>
+						{isSigningIn
+							? "Login to Your Account"
+							: "Create Your Account"}
+					</p>
+					{formComponent}
 				</div>
 			</div>
 		</div>

@@ -5,18 +5,22 @@ import signFormStyles from "../signform.module.scss";
 import signInStyles from "./signin.module.scss";
 
 const authContent = {
-	rightContent: (
-		<AuthForm buttonType={"Sign in"}>
-			<div className={signFormStyles.input}>
-				<label htmlFor="email">Email:</label>
-				<input type={"text"} id={"email"} />
-			</div>
-			<div className={signFormStyles.input}>
-				<label htmlFor="pass">Password:</label>
-				<input type={"password"} id={"pass"} />
-			</div>
-		</AuthForm>
-	),
+	rightContent: {
+		welcomeText: "Welcome Back!",
+		isSigningIn: true,
+		formComponent: (
+			<AuthForm buttonType={"Sign in"}>
+				<div className={signFormStyles.input}>
+					<label htmlFor="email">Email:</label>
+					<input type={"text"} id={"email"} />
+				</div>
+				<div className={signFormStyles.input}>
+					<label htmlFor="pass">Password:</label>
+					<input type={"password"} id={"pass"} />
+				</div>
+			</AuthForm>
+		),
+	},
 	leftContent: {
 		textHeader: "New Here?",
 		text: "Sign up and start organizing your thoughts.",
