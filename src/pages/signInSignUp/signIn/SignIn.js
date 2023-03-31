@@ -18,7 +18,7 @@ const authContent = {
 		</AuthForm>
 	),
 	leftContent: {
-		header: "New Here?",
+		textHeader: "New Here?",
 		text: "Sign up and start organizing your thoughts.",
 		buttonType: { method: "Sign up", path: "/auth/sign-up" },
 	},
