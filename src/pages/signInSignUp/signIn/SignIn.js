@@ -10,11 +10,11 @@ const authContent = {
 		formComponent: (
 			<AuthForm buttonType={"Sign in"}>
 				<div className={signFormStyles.input}>
-					<label htmlFor="email">Email:</label>
+					<label htmlFor="email">Email</label>
 					<input type={"text"} id={"email"} />
 				</div>
 				<div className={signFormStyles.input}>
-					<label htmlFor="pass">Password:</label>
+					<label htmlFor="pass">Password</label>
 					<input type={"password"} id={"pass"} />
 				</div>
 			</AuthForm>

@@ -1,0 +1,18 @@
+.form{
+    div:not(:last-child){
+        margin-bottom: 15px;
+    }
+    div> label{
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    div > input{
+        min-width: 100%;
+    }
+    button[type='submit']{
+        display: inline-block;
+        padding: 7px 25px;
+        font-size: .9rem;
+        font-weight: 500;
+    }
+}

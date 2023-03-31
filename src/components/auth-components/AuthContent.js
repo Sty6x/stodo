@@ -25,7 +25,7 @@ export const AuthContent = ({ content }) => {
 						<h1>{isSigningIn ? "Welcome Back!" : "Welcome!"}</h1>
 						<p>
 							{isSigningIn
-								? "Login to Your Acount"
+								? "Login to Your Account"
 								: "Create Your Account"}
 						</p>
 					</div>
