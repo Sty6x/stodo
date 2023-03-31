@@ -1,9 +1,10 @@
 import React from "react";
 import authContentStyles from "./authContent.module.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
 
 export const AuthContent = ({ content }) => {
+	const navigate = useNavigate();
 	const {
 		leftContent: { textHeader, text, buttonType },
 		rightContent: { formComponent, isSigningIn, welcomeText },
@@ -12,6 +13,12 @@ export const AuthContent = ({ content }) => {
 	return (
 		<div className={authContentStyles.authContentContainer}>
 			<div className={authContentStyles.leftContent}>
+				<button
+					onClick={() => {
+						navigate(-1);
+					}}
+					className={authContentStyles.navigationArrow}
+				></button>
 				<div className={authContentStyles.textContentContainer}>
 					<h1>{textHeader}</h1>
 					<p>{text}</p>
