@@ -6,7 +6,14 @@ import { AuthContent } from "../../../components/auth-components/AuthContent";
 
 const authContent = {
 	isSigningIn: false,
-	formComponent: <AuthForm buttonType={"Sign Up"} />,
+	formComponent: (
+		<AuthForm buttonType={"Sign Up"}>
+			<div className={signFormStyles.input}>
+				<label htmlFor="conf-pass">Confirm Password</label>
+				<input type={"password"} id={"conf-pass"} />
+			</div>
+		</AuthForm>
+	),
 	leftContentButton: { method: "Sign in", path: "/auth/sign-in" },
 };
 
