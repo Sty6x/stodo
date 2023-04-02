@@ -7,18 +7,7 @@ import signInStyles from "./signin.module.scss";
 const authContent = {
 	rightContent: {
 		isSigningIn: true,
-		formComponent: (
-			<AuthForm buttonType={"Sign in"}>
-				<div className={signFormStyles.input}>
-					<label htmlFor="email">Email</label>
-					<input type={"text"} id={"email"} />
-				</div>
-				<div className={signFormStyles.input}>
-					<label htmlFor="pass">Password</label>
-					<input type={"password"} id={"pass"} />
-				</div>
-			</AuthForm>
-		),
+		formComponent: <AuthForm buttonType={"Sign in"}></AuthForm>,
 	},
 	leftContent: {
 		textHeader: "New Here?",
