@@ -5,15 +5,9 @@ import signFormStyles from "../signform.module.scss";
 import signInStyles from "./signin.module.scss";
 
 const authContent = {
-	rightContent: {
-		isSigningIn: true,
-		formComponent: <AuthForm buttonType={"Sign in"}></AuthForm>,
-	},
-	leftContent: {
-		textHeader: "New Here?",
-		text: "Sign up and start organizing your thoughts.",
-		buttonType: { method: "Sign up", path: "/auth/sign-up" },
-	},
+	isSigningIn: true,
+	formComponent: <AuthForm buttonType={"Sign in"} />,
+	leftContentButton: { method: "Sign up", path: "/auth/sign-up" },
 };
 
 export const SignIn = () => {

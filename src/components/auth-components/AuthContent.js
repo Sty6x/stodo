@@ -5,10 +5,7 @@ import logo from "../../assets/images/logo-form.svg";
 
 export const AuthContent = ({ content }) => {
 	const navigate = useNavigate();
-	const {
-		leftContent: { textHeader, text, buttonType },
-		rightContent: { formComponent, isSigningIn, welcomeText },
-	} = content;
+	const { isSigningIn, formComponent, leftContentButton } = content;
 
 	return (
 		<div className={authContentStyles.authContentContainer}>
@@ -20,9 +17,15 @@ export const AuthContent = ({ content }) => {
 					className={authContentStyles.navigationArrow}
 				></button>
 				<div className={authContentStyles.textContentContainer}>
-					<h1>{textHeader}</h1>
-					<p>{text}</p>
-					<Link to={buttonType.path}>{buttonType.method}</Link>
+					<h1>{isSigningIn ? "New Here?" : "Already Have an Account?"}</h1>
+					<p>
+						{isSigningIn
+							? "Sign up Here to Start Organizing Your Thoughts"
+							: "Login Here to Start Organizing Your Thoughts"}
+					</p>
+					<Link to={leftContentButton.path}>
+						{leftContentButton.method}
+					</Link>
 				</div>
 			</div>
 			<div className={authContentStyles.rightContent}>
