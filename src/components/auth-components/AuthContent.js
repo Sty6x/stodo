@@ -13,8 +13,8 @@ export const AuthContent = ({ content }) => {
 			<div className={authContentStyles.leftContent}>
 				<motion.button
 					whileHover={{
-						x: [null, -15],
-						transition: { duration: 0.2 },
+						x: [null, 10, -15, 0],
+						transition: { duration: 0.7 },
 					}}
 					onClick={() => {
 						navigate(-1);
