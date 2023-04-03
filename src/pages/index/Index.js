@@ -29,14 +29,27 @@ export const Index = () => {
 								manage your time effectively, stay on top of your
 								priorities and get things done.
 							</p>
-							<motion.div className={indexStyles.ctaBtnContainer}>
+							<motion.div
+								whileTap={{
+									scale: 0.9,
+								}}
+								className={indexStyles.ctaBtnContainer}
+							>
 								<Link to={"/auth/sign-up"}>Start for Free</Link>
 							</motion.div>
 						</div>
 					</div>
-					<div className={`right ${indexStyles.image}`}>
+					<motion.div
+						initial={{ opacity: 0.2, y: 700 }}
+						whileInView={{
+							opacity: 1,
+							y: [null, 0],
+							transition: { duration: 0.6, type: "spring" },
+						}}
+						className={`right ${indexStyles.image}`}
+					>
 						<img src={heroImage} alt="stodo-hero-section" />
-					</div>
+					</motion.div>
 				</section>
 			</main>
 		</>
