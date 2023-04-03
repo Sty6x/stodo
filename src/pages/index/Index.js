@@ -49,7 +49,8 @@ export const Index = () => {
 							</p>
 							<motion.div
 								whileTap={{
-									scale: 0.9,
+									scale: 0.9512,
+									transition: { duration: 0.1 },
 								}}
 								className={indexStyles.ctaBtnContainer}
 								initial={{ opacity: 0, y: 100 }}
