@@ -2,6 +2,7 @@ import React from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
+import { motion } from "framer-motion";
 
 export const AuthContent = ({ content }) => {
 	const navigate = useNavigate();
@@ -10,12 +11,12 @@ export const AuthContent = ({ content }) => {
 	return (
 		<div className={authContentStyles.authContentContainer}>
 			<div className={authContentStyles.leftContent}>
-				<button
+				<motion.button
 					onClick={() => {
 						navigate(-1);
 					}}
 					className={authContentStyles.navigationArrow}
-				></button>
+				></motion.button>
 				<div className={authContentStyles.textContentContainer}>
 					<h1>{isSigningIn ? "New Here?" : "Already Have an Account?"}</h1>
 					<p>
@@ -23,9 +24,11 @@ export const AuthContent = ({ content }) => {
 							? "Sign up Here to Start Organizing Your Thoughts"
 							: "Login Here to Start Organizing Your Thoughts"}
 					</p>
-					<Link to={leftContentButton.path}>
-						{leftContentButton.method}
-					</Link>
+					<motion.div>
+						<Link to={leftContentButton.path}>
+							{leftContentButton.method}
+						</Link>
+					</motion.div>
 				</div>
 			</div>
 			<div className={authContentStyles.rightContent}>
