@@ -11,7 +11,10 @@ const leftContainerVariants = {
 	visible: {
 		opacity: 1,
 		x: 0,
-		transition: { duration: 0.6, type: "spring" },
+		transition: {
+			duration: 0.6,
+			type: "spring",
+		},
 	},
 };
 
@@ -49,13 +52,16 @@ export const Index = () => {
 									scale: 0.9,
 								}}
 								className={indexStyles.ctaBtnContainer}
+								initial={{ opacity: 0, y: 100 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6, type: "spring" }}
 							>
 								<Link to={"/auth/sign-up"}>Start for Free</Link>
 							</motion.div>
 						</motion.div>
 					</div>
 					<motion.div
-						initial={{ opacity: 0.2, y: 700 }}
+						initial={{ opacity: 0, y: 700 }}
 						whileInView={{
 							opacity: 1,
 							y: [null, 0],
