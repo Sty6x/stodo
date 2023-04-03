@@ -27,17 +27,18 @@
 
 .navigationArrow{
     position: absolute;
-    content:'' ;
     background-image: url('../../assets//images/navigate-arrow.svg');
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 50px;
-    height: 30px;
+    background-size:25px 30px;
+    background-position: center;
+    width: 3em;
+    height: 3em;
     top: 5%;
     left: 5%;
     appearance: none;
-    background-color: rgba($color: #000000, $alpha: 0);
+    background-color: rgba($color: #ffffff, $alpha: 1);
     border: none;
+    border-radius: 50%;
     box-sizing: border-box;
 }
 
