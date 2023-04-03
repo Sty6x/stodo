@@ -14,7 +14,7 @@ export const AuthContent = ({ content }) => {
 				<motion.button
 					whileHover={{
 						x: [null, 10, -15, 0],
-						transition: { duration: 0.7 },
+						transition: { duration: 0.6 },
 					}}
 					onClick={() => {
 						navigate(-1);
