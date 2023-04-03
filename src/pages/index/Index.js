@@ -5,6 +5,12 @@ import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
 import logo from "../../assets/images/logo.svg";
 import { motion } from "framer-motion";
+
+const leftContainerVariants = {
+	hidden: { opacity: 0 },
+	visible: { opacity: 1 },
+};
+
 export const Index = () => {
 	return (
 		<>
@@ -20,7 +26,12 @@ export const Index = () => {
 			<main className={`${indexStyles.main}`}>
 				<section className={`${indexStyles.hero}`}>
 					<div className={` ${indexStyles.text} left`}>
-						<div className={`${indexStyles.textContainer}`}>
+						<motion.div
+							initial="hidden"
+							animate="visible"
+							variants={leftContainerVariants}
+							className={`${indexStyles.textContainer}`}
+						>
 							<h1>
 								A Simple <span>Minimalistic</span> Task app.
 							</h1>
@@ -37,7 +48,7 @@ export const Index = () => {
 							>
 								<Link to={"/auth/sign-up"}>Start for Free</Link>
 							</motion.div>
-						</div>
+						</motion.div>
 					</div>
 					<motion.div
 						initial={{ opacity: 0.2, y: 700 }}
