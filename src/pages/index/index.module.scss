@@ -2,6 +2,15 @@
 .sign{
     font-size: 1rem;
     font-weight: 300;
+    a:first-child{
+
+        padding: .7em 1em;
+    }
+    a:first-child:hover{
+        background-color: #55555523;
+        transition: background-color 200ms ease-in-out;
+        border-radius: 6px;
+    }
     a:last-child{
         margin-left: 2em;
         background-color: #f3f3f3;
@@ -101,7 +110,6 @@
 .logoImg{
     object-fit: contain;
     max-width: 40%;
-    // height: 100px;
 }
 
 .logoContainer{
