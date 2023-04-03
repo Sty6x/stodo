@@ -7,8 +7,12 @@ import logo from "../../assets/images/logo.svg";
 import { motion } from "framer-motion";
 
 const leftContainerVariants = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1 },
+	hidden: { opacity: 0, x: -100 },
+	visible: {
+		opacity: 1,
+		x: 0,
+		transition: { duration: 0.6, type: "spring" },
+	},
 };
 
 export const Index = () => {
