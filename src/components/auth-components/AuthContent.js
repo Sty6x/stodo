@@ -12,6 +12,10 @@ export const AuthContent = ({ content }) => {
 		<div className={authContentStyles.authContentContainer}>
 			<div className={authContentStyles.leftContent}>
 				<motion.button
+					whileHover={{
+						x: [null, 10, -15, 0],
+						transition: { duration: 0.6 },
+					}}
 					onClick={() => {
 						navigate(-1);
 					}}

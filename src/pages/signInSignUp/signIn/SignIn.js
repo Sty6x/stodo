@@ -6,7 +6,14 @@ import signInStyles from "./signin.module.scss";
 
 const authContent = {
 	isSigningIn: true,
-	formComponent: <AuthForm buttonType={"Sign in"} />,
+	formComponent: (
+		<AuthForm
+			buttonType={"Sign in"}
+			onSubmit={(e) => {
+				e.preventDefault();
+			}}
+		/>
+	),
 	leftContentButton: { method: "Sign up", path: "/auth/sign-up" },
 };
 
