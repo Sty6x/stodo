@@ -7,7 +7,12 @@ import { AuthContent } from "../../../components/auth-components/AuthContent";
 const authContent = {
 	isSigningIn: false,
 	formComponent: (
-		<AuthForm buttonType={"Sign Up"}>
+		<AuthForm
+			buttonType={"Sign Up"}
+			onSubmit={(e) => {
+				e.preventDefault();
+			}}
+		>
 			<div className={signFormStyles.input}>
 				<label htmlFor="conf-pass">Confirm Password</label>
 				<input type={"password"} id={"conf-pass"} />
