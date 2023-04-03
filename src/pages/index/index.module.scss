@@ -3,7 +3,6 @@
     font-size: 1rem;
     font-weight: 300;
     a:first-child{
-
         padding: .7em 1em;
     }
     a:first-child:hover{
@@ -52,13 +51,18 @@
         width: 80%;
     }
 
-    a{
+    .ctaBtnContainer{
+
+        padding: 20px 0px;
+        a{
+
         background-color: #f3f3f3;
         color: black;
         font-weight: 600;
         font-size: 1.2rem;
         padding: 20px 30px;
         border-radius: 6px;
+        }
     }
 }
 

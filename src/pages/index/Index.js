@@ -4,6 +4,7 @@ import { Navbar } from "../../components/navbar/Navbar";
 import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
 import logo from "../../assets/images/logo.svg";
+import { motion } from "framer-motion";
 export const Index = () => {
 	return (
 		<>
@@ -28,11 +29,13 @@ export const Index = () => {
 								manage your time effectively, stay on top of your
 								priorities and get things done.
 							</p>
-							<Link to={"/auth/sign-up"}>Start for Free</Link>
+							<motion.div className={indexStyles.ctaBtnContainer}>
+								<Link to={"/auth/sign-up"}>Start for Free</Link>
+							</motion.div>
 						</div>
 					</div>
 					<div className={`right ${indexStyles.image}`}>
-						<img src={heroImage} />
+						<img src={heroImage} alt="stodo-hero-section" />
 					</div>
 				</section>
 			</main>
