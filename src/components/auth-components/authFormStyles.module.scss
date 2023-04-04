@@ -13,7 +13,13 @@
         background-color: #DBDBDB;
         border: 1px solid #787878;
         outline: 1px solid rgba($color: #000000, $alpha: .5);
-        
+       
+        &.invalid{
+            outline: 1px solid #b22635;
+        }
+        &:valid{
+            outline: 1px solid #79fe5d;
+        }
     }
     button[type='submit']{
         display: inline-block;

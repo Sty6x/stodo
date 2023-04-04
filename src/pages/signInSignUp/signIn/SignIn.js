@@ -64,15 +64,10 @@ export const SignIn = () => {
 
 	function showError(input) {
 		const error = {};
-		if (input.validity.typeMismatch) {
-			error.email = "invalid Email please enter your Email address";
-		}
-		if (input.validity.tooShort) {
-			error.password =
-				"Minimum length of password must be atleast 8 characters";
-		}
-		if (input.validity.valueMissing) {
-			error.value = "Please enter your Email and Password";
+		if (!input.validity.valid) {
+			input.classList.add("invalid");
+		} else {
+			input.classList.remove("invalid");
 		}
 		console.log(error);
 		setInputErrors((prev) => [error]);
