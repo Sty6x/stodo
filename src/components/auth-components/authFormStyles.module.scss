@@ -12,13 +12,17 @@
         border-radius: 4px;
         background-color: #DBDBDB;
         border: 1px solid #787878;
-        &:focus{
+        outline: 1px solid rgba($color: #000000, $alpha: .5);
+        
+        &:invalid{
+            outline: 1px solid #B22635
+        }
+        &:focus:invalid{
             outline: 1px solid rgba($color: #000000, $alpha: .5);
         }
-
-    div > input:invalid{
-        outline: 1px solid #B22635
-    }
+        &:valid{
+            outline: 1px solid rgba($color: #21cb51, $alpha: .5);
+        }
     }
     button[type='submit']{
         display: inline-block;

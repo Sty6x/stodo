@@ -15,7 +15,7 @@ const authContent = {
 		>
 			<div>
 				<label htmlFor="email">Email</label>
-				<input type={"text"} required id={"email"} />
+				<input type={"email"} required id={"email"} />
 			</div>
 			<div>
 				<label htmlFor="pass">Password</label>

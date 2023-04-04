@@ -4,6 +4,11 @@ import { AuthForm } from "../../../components/auth-components/AuthForm";
 import signFormStyles from "../signInSignUp.module.scss";
 import signInStyles from "./signin.module.scss";
 
+function validateInputChange(e) {
+	const input = e.target;
+	console.log(input);
+}
+
 const authContent = {
 	isSigningIn: true,
 	formComponent: (
@@ -15,11 +20,21 @@ const authContent = {
 		>
 			<div>
 				<label htmlFor="email">Email</label>
-				<input type={"text"} required id={"email"} />
+				<input
+					onChange={validateInputChange}
+					type={"email"}
+					required
+					id={"email"}
+				/>
 			</div>
 			<div>
 				<label htmlFor="pass">Password</label>
-				<input type={"password"} required id={"pass"} />
+				<input
+					onChange={validateInputChange}
+					type={"password"}
+					required
+					id={"pass"}
+				/>
 			</div>
 		</AuthForm>
 	),
