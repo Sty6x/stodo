@@ -14,8 +14,28 @@ const authContent = {
 			}}
 		>
 			<div>
+				<label htmlFor="email">Email</label>
+				<input type={"text"} required id={"email"} />
+			</div>
+			<div>
+				<label htmlFor="pass">Password</label>
+				<input
+					type={"password"}
+					minLength={8}
+					maxLength={16}
+					required
+					id={"pass"}
+				/>
+			</div>
+			<div>
 				<label htmlFor="conf-pass">Confirm Password</label>
-				<input type={"password"} required id={"conf-pass"} />
+				<input
+					type={"password"}
+					minLength={8}
+					maxLength={16}
+					required
+					id={"conf-pass"}
+				/>
 			</div>
 		</AuthForm>
 	),
