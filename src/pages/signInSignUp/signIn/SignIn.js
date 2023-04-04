@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
 import signFormStyles from "../signInSignUp.module.scss";
 import signInStyles from "./signin.module.scss";
 
-function validateInputChange(e) {
-	const input = e.target;
-	console.log(input);
-}
 export const SignIn = () => {
 	const [userCredentials, setUserCredentials] = useState({
 		email: "",
 		password: "",
 	});
+	const [inputErrors, setInputErrors] = useState([]);
 	const authContent = {
 		isSigningIn: true,
 		formComponent: (
@@ -22,10 +19,17 @@ export const SignIn = () => {
 					e.preventDefault();
 				}}
 			>
+				{inputErrors.length !== 0 && (
+					<span>
+						{inputErrors.map((err) => {
+							return Object.values(err);
+						})}
+					</span>
+				)}
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
-						onChange={validateInputChange}
+						onChange={handleInputChange}
 						type={"email"}
 						required
 						id={"email"}
@@ -34,16 +38,49 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="pass">Password</label>
 					<input
-						onChange={validateInputChange}
+						onChange={handleInputChange}
 						type={"password"}
 						required
-						id={"pass"}
+						minLength={8}
+						id={"password"}
 					/>
 				</div>
 			</AuthForm>
 		),
 		leftContentButton: { method: "Sign up", path: "/auth/sign-up" },
 	};
+
+	function handleInputChange(e) {
+		const input = e.target;
+		setUserCredentials((prev) => ({ ...prev, [input.id]: input.value }));
+	}
+
+	function validateOnSubmit(e) {
+		// console.log(input);
+		// if(input.validity.valid){
+		// }
+		// showError(input);
+	}
+
+	function showError(input) {
+		const error = {};
+		if (input.validity.typeMismatch) {
+			error.email = "invalid Email please enter your Email address";
+		}
+		if (input.validity.tooShort) {
+			error.password =
+				"Minimum length of password must be atleast 8 characters";
+		}
+		if (input.validity.valueMissing) {
+			error.value = "Please enter your Email and Password";
+		}
+		console.log(error);
+		setInputErrors((prev) => [error]);
+	}
+
+	useEffect(() => {
+		console.log(userCredentials);
+	}, [userCredentials]);
 
 	return (
 		<main className={signFormStyles.signPage}>
