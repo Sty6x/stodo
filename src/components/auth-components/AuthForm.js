@@ -5,7 +5,7 @@ export const AuthForm = ({ errorInput, onSubmit, children, buttonType }) => {
 		<form className={authFormStyles.form} onSubmit={onSubmit}>
 			{errorInput.isError === true && (
 				<div className={authFormStyles.errorMessage}>
-					{errorInput.message}
+					*{errorInput.message}
 				</div>
 			)}
 			{children}
