@@ -9,7 +9,7 @@ export const SignIn = () => {
 		email: "",
 		password: "",
 	});
-	const [userCredentials, setUserCredentials] = useState(userForm);
+	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 	const [inputErrors, setInputErrors] = useState([]);
 	const authContent = {
 		isSigningIn: true,
@@ -66,14 +66,20 @@ export const SignIn = () => {
 
 	function validateInput(e) {
 		const input = e.target;
-		showError(input);
+		if (input.validity.valid) {
+			console.log(showError(input));
+		}
 	}
 
 	function showError(input) {
 		const error = {};
-		if (!input.validity.valid) {
-		} else {
+		if (input.validity.value) {
+			error.missingValue = "Please Enter Your Email and Password";
 		}
+		if (input.validity.typeMismatch) {
+			error.missingValue = "You Must Enter an Email";
+		}
+		return error;
 	}
 
 	useEffect(() => {
