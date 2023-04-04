@@ -10,7 +10,7 @@ export const SignIn = () => {
 		password: "",
 	});
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
-	const [inputErrors, setInputErrors] = useState([]);
+	const [inputError, setInputError] = useState({ isError: false, type: null });
 	const authContent = {
 		isSigningIn: true,
 		formComponent: (
@@ -20,13 +20,7 @@ export const SignIn = () => {
 					e.preventDefault();
 				}}
 			>
-				{inputErrors.length !== 0 && (
-					<span>
-						{inputErrors.map((err) => {
-							return Object.values(err);
-						})}
-					</span>
-				)}
+				{inputError.isError !== false && <div>{inputError.type}</div>}
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
@@ -34,7 +28,7 @@ export const SignIn = () => {
 							handleInputChange(e);
 							validateInput(e);
 						}}
-						value={userCredentials.email}
+						value={userForm.email}
 						type={"email"}
 						required
 						id={"email"}
@@ -48,9 +42,8 @@ export const SignIn = () => {
 							validateInput(e);
 						}}
 						type={"password"}
-						value={userCredentials.password}
+						value={userForm.password}
 						required
-						minLength={8}
 						id={"password"}
 					/>
 				</div>
@@ -61,30 +54,33 @@ export const SignIn = () => {
 
 	function handleInputChange(e) {
 		const input = e.target;
-		setUserCredentials((prev) => ({ ...prev, [input.id]: input.value }));
+		setUserForm((prev) => ({ ...prev, [input.id]: input.value }));
 	}
 
 	function validateInput(e) {
 		const input = e.target;
-		if (input.validity.valid) {
-			console.log(showError(input));
+		if (!input.validity.valid) {
+			setInputError((prev) => ({ isError: true, type: showError(input) }));
 		}
 	}
 
 	function showError(input) {
-		const error = {};
-		if (input.validity.value) {
-			error.missingValue = "Please Enter Your Email and Password";
+		const error = {
+			missingValue: "Please Enter Your Email and Password",
+			email: "You Must Enter an Email",
+		};
+		if (input.validity.valueMissing) {
+			return error.missingValue;
 		}
 		if (input.validity.typeMismatch) {
-			error.missingValue = "You Must Enter an Email";
+			return error.email;
 		}
-		return error;
 	}
 
 	useEffect(() => {
-		console.log(userCredentials);
-	}, [userCredentials]);
+		console.log(userForm);
+		console.log(inputError);
+	}, [userForm]);
 
 	return (
 		<main className={signFormStyles.signPage}>
