@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
 import signFormStyles from "../signInSignUp.module.scss";
 import signInStyles from "./signin.module.scss";
 
 export const SignIn = () => {
-	const [userCredentials, setUserCredentials] = useState({
+	const [userForm, setUserForm] = useState({
 		email: "",
 		password: "",
 	});
+	const [userCredentials, setUserCredentials] = useState(userForm);
 	const [inputErrors, setInputErrors] = useState([]);
 	const authContent = {
 		isSigningIn: true,
@@ -29,7 +30,11 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
-						onChange={handleInputChange}
+						onChange={(e) => {
+							handleInputChange(e);
+							validateInput(e);
+						}}
+						value={userCredentials.email}
 						type={"email"}
 						required
 						id={"email"}
@@ -38,8 +43,12 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="pass">Password</label>
 					<input
-						onChange={handleInputChange}
+						onChange={(e) => {
+							handleInputChange(e);
+							validateInput(e);
+						}}
 						type={"password"}
+						value={userCredentials.password}
 						required
 						minLength={8}
 						id={"password"}
@@ -55,22 +64,16 @@ export const SignIn = () => {
 		setUserCredentials((prev) => ({ ...prev, [input.id]: input.value }));
 	}
 
-	function validateOnSubmit(e) {
-		// console.log(input);
-		// if(input.validity.valid){
-		// }
-		// showError(input);
+	function validateInput(e) {
+		const input = e.target;
+		showError(input);
 	}
 
 	function showError(input) {
 		const error = {};
 		if (!input.validity.valid) {
-			input.classList.add("invalid");
 		} else {
-			input.classList.remove("invalid");
 		}
-		console.log(error);
-		setInputErrors((prev) => [error]);
 	}
 
 	useEffect(() => {
