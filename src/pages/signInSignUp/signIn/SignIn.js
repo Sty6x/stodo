@@ -10,17 +10,20 @@ export const SignIn = () => {
 		password: "",
 	});
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
-	const [inputError, setInputError] = useState({ isError: false, type: null });
+	const [inputError, setInputError] = useState({
+		isError: false,
+		message: null,
+	});
 	const authContent = {
 		isSigningIn: true,
 		formComponent: (
 			<AuthForm
+				errorInput={inputError}
 				buttonType={"Sign in"}
 				onSubmit={(e) => {
 					e.preventDefault();
 				}}
 			>
-				{inputError.isError !== false && <div>{inputError.type}</div>}
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
@@ -60,20 +63,25 @@ export const SignIn = () => {
 	function validateInput(e) {
 		const input = e.target;
 		if (!input.validity.valid) {
-			setInputError((prev) => ({ isError: true, type: showError(input) }));
+			setInputError((prev) => ({
+				isError: true,
+				message: showError(input),
+			}));
+		} else {
+			setInputError((prev) => ({ isError: false, ...prev }));
 		}
 	}
 
 	function showError(input) {
-		const error = {
+		const errors = {
 			missingValue: "Please Enter Your Email and Password",
 			email: "You Must Enter an Email",
 		};
 		if (input.validity.valueMissing) {
-			return error.missingValue;
+			return errors.missingValue;
 		}
 		if (input.validity.typeMismatch) {
-			return error.email;
+			return errors.email;
 		}
 	}
 
