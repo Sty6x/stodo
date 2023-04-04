@@ -15,7 +15,7 @@ const authContent = {
 		>
 			<div>
 				<label htmlFor="conf-pass">Confirm Password</label>
-				<input type={"password"} id={"conf-pass"} />
+				<input type={"password"} required id={"conf-pass"} />
 			</div>
 		</AuthForm>
 	),

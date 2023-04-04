@@ -12,7 +12,16 @@ const authContent = {
 			onSubmit={(e) => {
 				e.preventDefault();
 			}}
-		/>
+		>
+			<div>
+				<label htmlFor="email">Email</label>
+				<input type={"text"} id={"email"} />
+			</div>
+			<div>
+				<label htmlFor="pass">Password</label>
+				<input type={"password"} required id={"pass"} />
+			</div>
+		</AuthForm>
 	),
 	leftContentButton: { method: "Sign up", path: "/auth/sign-up" },
 };
