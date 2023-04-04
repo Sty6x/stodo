@@ -3,7 +3,11 @@
         margin-bottom: 15px;
     }
     div.errorMessage{
-        background-color: red;
+        border: #272727 solid 1px;
+        padding: 1em 2em;
+        font-size: .8rem;
+        border-radius: 8px;
+        max-width: 100%;
     }
     div> label{
         margin-bottom: 10px;
