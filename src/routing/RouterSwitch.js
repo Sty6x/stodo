@@ -20,7 +20,6 @@ export const RouterSwitch = ({ importRoutes }) => {
 			</Route>
 		);
 	});
-	console.log(renderRoute);
 
 	return <Routes>{renderRoute}</Routes>;
 };
