@@ -1,14 +1,13 @@
 import React from "react";
-import authoFormStyles from "./authFormStyles.module.scss";
-import signFormStyles from "../../pages/signInSignUp/signform.module.scss";
+import authFormStyles from "./authFormStyles.module.scss";
 export const AuthForm = ({ onSubmit, children, buttonType }) => {
 	return (
-		<form className={authoFormStyles.form} onSubmit={onSubmit}>
-			<div className={signFormStyles.input}>
+		<form className={authFormStyles.form} onSubmit={onSubmit}>
+			<div className={authFormStyles.input}>
 				<label htmlFor="email">Email</label>
 				<input type={"text"} id={"email"} />
 			</div>
-			<div className={signFormStyles.input}>
+			<div className={authFormStyles.input}>
 				<label htmlFor="pass">Password</label>
 				<input type={"password"} id={"pass"} />
 			</div>

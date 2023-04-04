@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
-import signFormStyles from "../signform.module.scss";
+import signFormStyles from "../signInSignUp.module.scss";
 import signInStyles from "./signin.module.scss";
 
 const authContent = {
@@ -19,7 +19,7 @@ const authContent = {
 
 export const SignIn = () => {
 	return (
-		<main className={signFormStyles.signForm}>
+		<main className={signFormStyles.signPage}>
 			<AuthContent content={authContent} />
 		</main>
 	);
