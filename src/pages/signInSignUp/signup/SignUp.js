@@ -10,6 +10,13 @@ export const SignUp = () => {
 		isError: false,
 		message: null,
 	});
+	const [userForm, setUserForm] = useState({
+		email: "",
+		password: "",
+		passwordConfirmation: "",
+	});
+
+	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 
 	const authContent = {
 		isSigningIn: false,
@@ -30,9 +37,8 @@ export const SignUp = () => {
 					<input
 						type={"password"}
 						minLength={8}
-						maxLength={16}
 						required
-						id={"pass"}
+						id={"password"}
 					/>
 				</div>
 				<div>
@@ -40,15 +46,16 @@ export const SignUp = () => {
 					<input
 						type={"password"}
 						minLength={8}
-						maxLength={16}
 						required
-						id={"conf-pass"}
+						id={"passwordConfirmation"}
 					/>
 				</div>
 			</AuthForm>
 		),
 		leftContentButton: { method: "Sign in", path: "/auth/sign-in" },
 	};
+
+	function handleInputChange(e) {}
 
 	return (
 		<main className={signFormStyles.signPage}>
