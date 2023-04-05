@@ -3,26 +3,8 @@
         margin-bottom: 15px;
     }
 
-    // @keyframes error-message {
-    //     0% {
-    //         transform:translateX(0)
-    //     }
-    //     50%{
-    //         transform: translateX(-15);
-    //     }
 
-    //     75%{
-    //         transform: translateX(15);
-    //     }
-    //     100%{
-    //         transform: translateS(0);
-    //     }
-    // }
     div.errorMessage{
-        // animation-name: error-message;
-        // animation-duration: 200ms;
-        // animation-timing-function: ease-in-out;
-        // animation-direction: alternate;
         padding: 1em 0em;
         display: block;
         font-size: .8rem;
