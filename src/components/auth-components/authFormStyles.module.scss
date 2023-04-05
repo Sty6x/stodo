@@ -2,10 +2,28 @@
     div:not(:last-child){
         margin-bottom: 15px;
     }
+
+    // @keyframes error-message {
+    //     0% {
+    //         transform:translateX(0)
+    //     }
+    //     50%{
+    //         transform: translateX(-15);
+    //     }
+
+    //     75%{
+    //         transform: translateX(15);
+    //     }
+    //     100%{
+    //         transform: translateS(0);
+    //     }
+    // }
     div.errorMessage{
-        // border: #272727 solid 1px;
+        // animation-name: error-message;
+        // animation-duration: 200ms;
+        // animation-timing-function: ease-in-out;
+        // animation-direction: alternate;
         padding: 1em 0em;
-        // border-radius: 8px;
         display: block;
         font-size: .8rem;
         max-width: 100%;
