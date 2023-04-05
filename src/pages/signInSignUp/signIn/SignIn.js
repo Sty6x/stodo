@@ -102,7 +102,7 @@ export const SignIn = () => {
 
 	return (
 		<main className={signFormStyles.signPage}>
-			<AuthContent content={authContent} />
+			<AuthContent key={"signInContent"} content={authContent} />
 		</main>
 	);
 };

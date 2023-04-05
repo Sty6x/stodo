@@ -22,7 +22,7 @@ export const AuthContent = ({ content }) => {
 						transition: { duration: 0.6 },
 					}}
 					onClick={() => {
-						navigate(-1);
+						navigate("/");
 					}}
 					className={authContentStyles.navigationArrow}
 				></motion.button>
