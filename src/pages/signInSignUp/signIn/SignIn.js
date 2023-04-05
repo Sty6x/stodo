@@ -44,6 +44,7 @@ export const SignIn = () => {
 						}}
 						type={"password"}
 						value={userForm.password}
+						minLength={8}
 						required
 						id={"password"}
 					/>
@@ -82,12 +83,16 @@ export const SignIn = () => {
 		const errors = {
 			missingValue: "Please Enter Your Email and Password",
 			email: "You Must Enter an Email",
+			password: "A User's Password should not be less than 8 characters",
 		};
 		if (input.validity.valueMissing) {
 			return errors.missingValue;
 		}
 		if (input.validity.typeMismatch) {
 			return errors.email;
+		}
+		if (input.validity.tooShort) {
+			return errors.password;
 		}
 	}
 
