@@ -35,6 +35,7 @@ export const SignUp = () => {
 					<label htmlFor="email">Email</label>
 					<input
 						onChange={(e) => {
+							validateInput(e);
 							handleInputChange(e);
 						}}
 						type={"email"}
@@ -46,6 +47,7 @@ export const SignUp = () => {
 					<label htmlFor="pass">Password</label>
 					<input
 						onChange={(e) => {
+							validateInput(e);
 							handleInputChange(e);
 						}}
 						type={"password"}
@@ -58,10 +60,10 @@ export const SignUp = () => {
 					<label htmlFor="conf-pass">Confirm Password</label>
 					<input
 						onChange={(e) => {
+							validateInput(e);
 							handleInputChange(e);
 						}}
 						type={"password"}
-						minLength={8}
 						required
 						id={"passwordConfirmation"}
 					/>
@@ -91,7 +93,7 @@ export const SignUp = () => {
 			return false;
 		}
 		for (let i = 0; i < passConfArr.length; i++) {
-			if (passArr[i] !== passConfArr[i]) {
+			if (passArr[i] === passConfArr[i]) {
 				console.log({ pass: passArr[i], conf: passConfArr[i] });
 			} else {
 				console.log("password does not match");
@@ -100,12 +102,43 @@ export const SignUp = () => {
 		}
 		// return true if password checking is complete === true
 		// would automatically return false if any of the elements doesnt match
-		const removePasswordConf = {
-			email: userForm.email,
-			password: userForm.password,
-		};
-		setUserForm(removePasswordConf);
 		return true;
+	}
+
+	function validateInput(e) {
+		const input = e.target;
+		console.log(input);
+		console.log(input.validity.valid);
+		if (!input.validity.valid) {
+			setInputError((prev) => ({
+				isError: true,
+				message: showError(input),
+			}));
+		} else {
+			setInputError({ isError: false, message: null });
+		}
+	}
+
+	function showError(input) {
+		const errors = {
+			missingValue: "Please Enter Your Email and Password",
+			email: "You Must Enter a Valid Email",
+			password: "A User's Password should not be less than 8 characters",
+			passConf: "Your Password does not match",
+		};
+		if (input.validity.valueMissing) {
+			return errors.missingValue;
+		}
+		if (input.validity.typeMismatch) {
+			return errors.email;
+		}
+		if (input.validity.tooShort) {
+			return errors.password;
+		}
+		console.log(passwordConfirmed);
+		if (!passwordConfirmed) {
+			return errors.passConf;
+		}
 	}
 
 	useEffect(() => {
