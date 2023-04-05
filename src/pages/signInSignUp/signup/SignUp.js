@@ -75,13 +75,23 @@ export const SignUp = () => {
 	}
 
 	function checkPasswordConfirmation() {
-		if (userCredentials.password === userCredentials.passwordConfirmation) {
-			console.log({
-				pass: userForm.password,
-				conf: userForm.passwordConfirmation,
-			});
-		} else {
-			console.log("error");
+		const passArr = userForm.password.split("");
+		const passConfArr = userForm.passwordConfirmation.split("");
+		if (
+			passArr.length > passConfArr.length ||
+			passConfArr.length > passArr.length
+		) {
+			console.log("password does not match");
+			return false;
+		}
+		for (let i = 0; i < passConfArr.length; i++) {
+			if (passArr[i] === passConfArr[i]) {
+				console.log({ pass: passArr[i], conf: passConfArr[i] });
+				return true;
+			} else {
+				console.log("password does not match");
+				return false;
+			}
 		}
 	}
 
