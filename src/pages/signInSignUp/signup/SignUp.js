@@ -15,7 +15,7 @@ export const SignUp = () => {
 		password: "",
 		passwordConfirmation: "",
 	});
-	const [passwordConfirmed, setPasswordConfirmed] = useState(null);
+	const [passwordConfirmed, setPasswordConfirmed] = useState(false);
 
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 
@@ -25,11 +25,7 @@ export const SignUp = () => {
 			<AuthForm
 				errorInput={inputError}
 				buttonType={"Sign Up"}
-				onSubmit={(e) => {
-					e.preventDefault();
-					setPasswordConfirmed(checkPasswordConfirmation());
-					onSubmit();
-				}}
+				onSubmit={onSubmit}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -79,6 +75,7 @@ export const SignUp = () => {
 	}
 
 	function onSubmit(e) {
+		e.preventDefault();
 		setUserCredentials(userForm);
 	}
 
@@ -108,8 +105,8 @@ export const SignUp = () => {
 	function validateInput(e) {
 		const input = e.target;
 		console.log(input);
-		console.log(input.validity.valid);
-		if (!input.validity.valid) {
+		console.log(passwordConfirmed);
+		if (!input.validity.valid || passwordConfirmed === false) {
 			setInputError((prev) => ({
 				isError: true,
 				message: showError(input),
@@ -135,16 +132,18 @@ export const SignUp = () => {
 		if (input.validity.tooShort) {
 			return errors.password;
 		}
-		console.log(passwordConfirmed);
-		if (!passwordConfirmed) {
+		if (passwordConfirmed === false) {
 			return errors.passConf;
 		}
 	}
 
 	useEffect(() => {
-		console.log(userForm);
-		console.log(userCredentials);
-	}, [userCredentials]);
+		if (checkPasswordConfirmation()) {
+			setPasswordConfirmed((prev) => true);
+		} else {
+			setPasswordConfirmed((prev) => false);
+		}
+	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
 		<main className={signFormStyles.signPage}>
