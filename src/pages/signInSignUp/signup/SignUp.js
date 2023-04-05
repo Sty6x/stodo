@@ -1,8 +1,10 @@
+
 import React, { useEffect, useState } from "react";
 import signFormStyles from "../signInSignUp.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
+
 
 export const SignUp = () => {
 	const [inputError, setInputError] = useState({
@@ -137,6 +139,7 @@ export const SignUp = () => {
 	}
 
 	useEffect(() => {
+
 		checkPasswordConfirmation();
 	}, [userForm.password, userForm.passwordConfirmation]);
 
