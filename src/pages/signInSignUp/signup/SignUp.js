@@ -137,11 +137,7 @@ export const SignUp = () => {
 	}
 
 	useEffect(() => {
-		if (checkPasswordConfirmation()) {
-			setPasswordConfirmed((prev) => true);
-		} else {
-			setPasswordConfirmed((prev) => false);
-		}
+		checkPasswordConfirmation();
 	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
