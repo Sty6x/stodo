@@ -15,7 +15,7 @@ export const SignUp = () => {
 		password: "",
 		passwordConfirmation: "",
 	});
-	const [passwordConfirmed, setPassworcConfirmed] = useState(null);
+	const [passwordConfirmed, setPasswordConfirmed] = useState(null);
 
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 
@@ -27,7 +27,8 @@ export const SignUp = () => {
 				buttonType={"Sign Up"}
 				onSubmit={(e) => {
 					e.preventDefault();
-					checkPasswordConfirmation();
+					setPasswordConfirmed(checkPasswordConfirmation());
+					onSubmit();
 				}}
 			>
 				<div>
@@ -75,6 +76,10 @@ export const SignUp = () => {
 		setUserForm((prev) => ({ ...prev, [input.id]: input.value }));
 	}
 
+	function onSubmit(e) {
+		setUserCredentials(userForm);
+	}
+
 	function checkPasswordConfirmation() {
 		const passArr = userForm.password.split("");
 		const passConfArr = userForm.passwordConfirmation.split("");
@@ -86,7 +91,7 @@ export const SignUp = () => {
 			return false;
 		}
 		for (let i = 0; i < passConfArr.length; i++) {
-			if (passArr[i] === passConfArr[i]) {
+			if (passArr[i] !== passConfArr[i]) {
 				console.log({ pass: passArr[i], conf: passConfArr[i] });
 			} else {
 				console.log("password does not match");
@@ -95,12 +100,18 @@ export const SignUp = () => {
 		}
 		// return true if password checking is complete === true
 		// would automatically return false if any of the elements doesnt match
+		const removePasswordConf = {
+			email: userForm.email,
+			password: userForm.password,
+		};
+		setUserForm(removePasswordConf);
 		return true;
 	}
 
 	useEffect(() => {
 		console.log(userForm);
-	}, [userForm]);
+		console.log(userCredentials);
+	}, [userCredentials]);
 
 	return (
 		<main className={signFormStyles.signPage}>
