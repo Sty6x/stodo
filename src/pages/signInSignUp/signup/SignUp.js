@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import signFormStyles from "../signInSignUp.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
@@ -26,15 +26,26 @@ export const SignUp = () => {
 				buttonType={"Sign Up"}
 				onSubmit={(e) => {
 					e.preventDefault();
+					checkPasswordConfirmation();
 				}}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
-					<input type={"email"} required id={"email"} />
+					<input
+						onChange={(e) => {
+							handleInputChange(e);
+						}}
+						type={"email"}
+						required
+						id={"email"}
+					/>
 				</div>
 				<div>
 					<label htmlFor="pass">Password</label>
 					<input
+						onChange={(e) => {
+							handleInputChange(e);
+						}}
 						type={"password"}
 						minLength={8}
 						required
@@ -44,6 +55,9 @@ export const SignUp = () => {
 				<div>
 					<label htmlFor="conf-pass">Confirm Password</label>
 					<input
+						onChange={(e) => {
+							handleInputChange(e);
+						}}
 						type={"password"}
 						minLength={8}
 						required
@@ -55,7 +69,25 @@ export const SignUp = () => {
 		leftContentButton: { method: "Sign in", path: "/auth/sign-in" },
 	};
 
-	function handleInputChange(e) {}
+	function handleInputChange(e) {
+		const input = e.target;
+		setUserForm((prev) => ({ ...prev, [input.id]: input.value }));
+	}
+
+	function checkPasswordConfirmation() {
+		if (userCredentials.password === userCredentials.passwordConfirmation) {
+			console.log({
+				pass: userForm.password,
+				conf: userForm.passwordConfirmation,
+			});
+		} else {
+			console.log("error");
+		}
+	}
+
+	useEffect(() => {
+		console.log(userForm);
+	}, [userForm]);
 
 	return (
 		<main className={signFormStyles.signPage}>

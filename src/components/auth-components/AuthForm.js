@@ -3,7 +3,7 @@ import authFormStyles from "./authFormStyles.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 export const AuthForm = ({ errorInput, onSubmit, children, buttonType }) => {
 	return (
-		<motion.div form className={authFormStyles.form} onSubmit={onSubmit}>
+		<motion.form className={authFormStyles.form} onSubmit={onSubmit}>
 			<AnimatePresence initial={false}>
 				{errorInput.isError === true && (
 					<motion.div
@@ -19,6 +19,6 @@ export const AuthForm = ({ errorInput, onSubmit, children, buttonType }) => {
 			</AnimatePresence>
 			{children}
 			<button type="submit">{buttonType}</button>
-		</motion.div>
+		</motion.form>
 	);
 };
