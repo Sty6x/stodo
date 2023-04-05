@@ -15,6 +15,7 @@ export const SignUp = () => {
 		password: "",
 		passwordConfirmation: "",
 	});
+	const [passwordConfirmed, setPassworcConfirmed] = useState(null);
 
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 
@@ -87,12 +88,14 @@ export const SignUp = () => {
 		for (let i = 0; i < passConfArr.length; i++) {
 			if (passArr[i] === passConfArr[i]) {
 				console.log({ pass: passArr[i], conf: passConfArr[i] });
-				return true;
 			} else {
 				console.log("password does not match");
 				return false;
 			}
 		}
+		// return true if password checking is complete === true
+		// would automatically return false if any of the elements doesnt match
+		return true;
 	}
 
 	useEffect(() => {
