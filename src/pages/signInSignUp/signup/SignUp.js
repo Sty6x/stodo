@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import signFormStyles from "../signInSignUp.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
-import { useState } from "react";
+
 
 export const SignUp = () => {
 	const [inputError, setInputError] = useState({
@@ -138,16 +139,13 @@ export const SignUp = () => {
 	}
 
 	useEffect(() => {
-		if (checkPasswordConfirmation()) {
-			setPasswordConfirmed((prev) => true);
-		} else {
-			setPasswordConfirmed((prev) => false);
-		}
+
+		checkPasswordConfirmation();
 	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
 		<main className={signFormStyles.signPage}>
-			<AuthContent content={authContent} />
+			<AuthContent key={"signUpContent"} content={authContent} />
 		</main>
 	);
 };
