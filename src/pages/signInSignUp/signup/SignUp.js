@@ -1,10 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import signFormStyles from "../signInSignUp.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../components/auth-components/AuthContent";
-
 
 export const SignUp = () => {
 	const [inputError, setInputError] = useState({
@@ -106,7 +104,6 @@ export const SignUp = () => {
 	function validateInput(e) {
 		const input = e.target;
 		console.log(input);
-		console.log(passwordConfirmed);
 		if (!input.validity.valid || passwordConfirmed === false) {
 			setInputError((prev) => ({
 				isError: true,
@@ -139,8 +136,8 @@ export const SignUp = () => {
 	}
 
 	useEffect(() => {
-
-		checkPasswordConfirmation();
+		//passwordconfirmed state observes checkpasswordconfirmation on every input
+		setPasswordConfirmed(checkPasswordConfirmation());
 	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
