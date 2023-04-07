@@ -68,7 +68,9 @@ export const SignUp = () => {
 
 	function handleInputChange(e) {
 		const input = e.target;
-		setUserForm((prev) => ({ ...prev, [input.id]: input.value }));
+		setUserForm((prev) => {
+			return { ...prev, [input.id]: input.value };
+		});
 		validateInput(e);
 	}
 
@@ -106,16 +108,19 @@ export const SignUp = () => {
 		}
 	}
 
+	// delaying state change of password confirmation
 	function validateInput(e) {
 		const input = e.target;
 		if (!input.validity.valid || passwordConfirmed === false) {
-			return setInputError((prev) => ({
-				isError: true,
-				message: showError(input),
-			}));
+			return setInputError((prev) => {
+				return { isError: true, message: showError(input) };
+			});
 		} else {
 			console.log(passwordConfirmed);
-			return setInputError((prev) => ({ isError: false, message: null }));
+			return setInputError((prev) => {
+				console.log("matched");
+				return { isError: false, message: null };
+			});
 		}
 	}
 
@@ -142,11 +147,13 @@ export const SignUp = () => {
 
 	useEffect(() => {
 		//passwordconfirmed state observes checkpasswordconfirmation on every input
-		// console.log({
-		// 	pass: userForm.password,
-		// 	passConf: userForm.passwordConfirmation,
-		// });
-		setPasswordConfirmed(checkPasswordConfirmation());
+		console.log({
+			pass: userForm.password,
+			passConf: userForm.passwordConfirmation,
+		});
+		setPasswordConfirmed((prev) => {
+			return checkPasswordConfirmation();
+		}); //source of delaying the state update to InputValidation()
 	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
