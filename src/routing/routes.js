@@ -3,10 +3,10 @@ import { Overdue } from "../pages/app/Overdue";
 import { Project } from "../pages/app/Project";
 import { Today } from "../pages/app/Today";
 import { Upcoming } from "../pages/app/Upcoming";
-import { Auth } from "../pages/Auth";
+import { Auth } from "../pages//auth-page/Auth";
 import { Index } from "../pages/index/Index";
-import { SignIn } from "../pages/signInSignUp/signIn/SignIn";
-import { SignUp } from "../pages/signInSignUp/signup/SignUp";
+import { SignIn } from "../pages/auth-page/signInSignUp/signIn/SignIn";
+import { SignUp } from "../pages/auth-page/signInSignUp/signup/SignUp";
 
 export const ROUTES = [
 	{
