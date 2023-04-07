@@ -80,24 +80,30 @@ export const SignUp = () => {
 	function checkPasswordConfirmation() {
 		const passArr = userForm.password.split("");
 		const passConfArr = userForm.passwordConfirmation.split("");
-		if (
-			passArr.length > passConfArr.length ||
-			passConfArr.length > passArr.length
-		) {
-			console.log("password does not match");
-			return false;
-		}
-		for (let i = 0; i < passConfArr.length; i++) {
-			if (passArr[i] === passConfArr[i]) {
-				console.log({ pass: passArr[i], conf: passConfArr[i] });
-			} else {
+		// check passwords only if both of them are not empty to avoid returning true even if the inputs are empty
+		if (userForm.password !== "" && userForm.passwordConfirmation !== "") {
+			if (
+				passArr.length > passConfArr.length ||
+				passConfArr.length > passArr.length
+			) {
 				console.log("password does not match");
 				return false;
 			}
+			for (let i = 0; i < passConfArr.length; i++) {
+				if (passArr[i] === passConfArr[i]) {
+					console.log({ pass: passArr[i], conf: passConfArr[i] });
+				} else {
+					console.log("password does not match");
+					return false;
+				}
+			}
+			// return true if password checking is complete === true
+			// would automatically return false if any of the elements doesnt match
+			console.log("password matches");
+			return true;
+		} else {
+			return null;
 		}
-		// return true if password checking is complete === true
-		// would automatically return false if any of the elements doesnt match
-		return true;
 	}
 
 	function validateInput(e) {
@@ -108,6 +114,7 @@ export const SignUp = () => {
 				message: showError(input),
 			}));
 		} else {
+			console.log(passwordConfirmed);
 			return setInputError((prev) => ({ isError: false, message: null }));
 		}
 	}
@@ -135,12 +142,12 @@ export const SignUp = () => {
 
 	useEffect(() => {
 		//passwordconfirmed state observes checkpasswordconfirmation on every input
-		console.log({
-			pass: userForm.password,
-			passConf: userForm.passwordConfirmation,
-		});
+		// console.log({
+		// 	pass: userForm.password,
+		// 	passConf: userForm.passwordConfirmation,
+		// });
 		setPasswordConfirmed(checkPasswordConfirmation());
-	}, [userForm.passwordConfirmation]);
+	}, [userForm.password, userForm.passwordConfirmation]);
 
 	return (
 		<main className={signFormStyles.signPage}>
