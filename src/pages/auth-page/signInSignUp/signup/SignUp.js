@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import signFormStyles from "../signInSignUp.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
+import { FirebaseContext } from "../../../../App";
 
 export const SignUp = () => {
+	const { auth } = useContext(FirebaseContext);
 	const [inputError, setInputError] = useState({
 		isError: false,
 		message: null,
@@ -23,7 +25,7 @@ export const SignUp = () => {
 			<AuthForm
 				errorInput={inputError}
 				buttonType={"Sign Up"}
-				onSubmit={onSubmit}
+				onSubmit={createNewUser}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -74,9 +76,8 @@ export const SignUp = () => {
 		validateInput(e);
 	}
 
-	function onSubmit(e) {
+	function createNewUser(e) {
 		e.preventDefault();
-		setUserCredentials(userForm);
 	}
 
 	function checkPasswordConfirmation() {
