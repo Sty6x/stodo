@@ -9,7 +9,12 @@ export const AuthContent = ({ content }) => {
 	const { isSigningIn, formComponent, leftContentButton } = content;
 
 	return (
-		<div className={authContentStyles.authContentContainer}>
+		<motion.div
+			initial={{ opacity: 0, y: -200 }}
+			animate={{ opacity: 1, y: [null, 0] }}
+			transition={{ duration: 0.6, type: "spring", damping: 10 }}
+			className={authContentStyles.authContentContainer}
+		>
 			<div className={authContentStyles.leftContent}>
 				<motion.button
 					whileHover={{
@@ -17,7 +22,7 @@ export const AuthContent = ({ content }) => {
 						transition: { duration: 0.6 },
 					}}
 					onClick={() => {
-						navigate(-1);
+						navigate("/");
 					}}
 					className={authContentStyles.navigationArrow}
 				></motion.button>
@@ -49,6 +54,6 @@ export const AuthContent = ({ content }) => {
 					{formComponent}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };

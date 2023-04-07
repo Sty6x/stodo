@@ -76,10 +76,10 @@
     align-items: start;
     flex-direction: column;
     padding: 0 3em;;
-
-    div > label{
-        display: block;
+    .formContentContainer{
+        width: 100%;
     }
+
 }
 
 .greetContainer{
