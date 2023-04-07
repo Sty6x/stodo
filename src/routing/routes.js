@@ -16,6 +16,11 @@ export const ROUTES = [
 		element: <Index />,
 	},
 	{
+		path: "create-profile",
+		name: "create-profile",
+		element: <CreateProfile />,
+	},
+	{
 		path: "/auth",
 		name: "auth",
 		element: <Auth />,
@@ -25,11 +30,10 @@ export const ROUTES = [
 				name: "sign-in",
 				element: <SignIn />,
 			},
-			{ path: "sign-up", name: "sign-up", element: <SignUp /> },
 			{
-				path: "create-profile",
-				name: "create-profile",
-				element: <CreateProfile />,
+				path: "sign-up",
+				name: "sign-up",
+				element: <SignUp />,
 			},
 		],
 	},

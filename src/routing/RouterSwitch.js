@@ -10,6 +10,7 @@ export const RouterSwitch = ({ importRoutes }) => {
 	useEffect(() => {
 		const redirectIfNotLoggedIn = onAuthStateChanged(auth, (user) => {
 			if (user) {
+				console.log(user.uid);
 				checkIfUserAlreadyExists(user);
 			} else {
 				console.log("user is not signed in");
@@ -20,12 +21,12 @@ export const RouterSwitch = ({ importRoutes }) => {
 
 	async function checkIfUserAlreadyExists(user) {
 		try {
-			const userDocref = doc(db, `/user/${user.uid}`);
-			const userDoc = await getDoc(user);
+			const userDocRef = doc(db, `/users/${user.uid}`);
+			const userDoc = await getDoc(userDocRef);
 			if (userDoc.exists()) {
 				return navigate("/app/today");
 			}
-			return navigate("/auth/sign-up/create-profile");
+			return navigate("/create-profile");
 		} catch (err) {
 			console.log("unable to fetch user path");
 			throw err;
@@ -51,5 +52,6 @@ export const RouterSwitch = ({ importRoutes }) => {
 		);
 	});
 
+	console.log(renderRoute);
 	return <Routes>{renderRoute}</Routes>;
 };

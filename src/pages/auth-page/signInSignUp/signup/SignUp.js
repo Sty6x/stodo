@@ -5,6 +5,8 @@ import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { FirebaseContext } from "../../../../App";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Auth } from "../../Auth";
+import { Outlet } from "react-router-dom";
 
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
@@ -157,9 +159,16 @@ export const SignUp = () => {
 		console.log(userCredentials);
 	}, [userCredentials]);
 
+	useEffect(() => {
+		console.log(auth.currentUser);
+	}, [auth.currentUser]);
 	return (
 		<main className={signFormStyles.signPage}>
-			<AuthContent key={"signUpContent"} content={authContent} />
+			{auth.currentUser ? (
+				<Outlet />
+			) : (
+				<AuthContent key={"signUpContent"} content={authContent} />
+			)}
 		</main>
 	);
 };
