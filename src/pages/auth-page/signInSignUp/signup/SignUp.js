@@ -4,6 +4,7 @@ import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { FirebaseContext } from "../../../../App";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
@@ -76,8 +77,20 @@ export const SignUp = () => {
 		validateInput(e);
 	}
 
-	function createNewUser(e) {
+	async function createNewUser(e) {
 		e.preventDefault();
+		try {
+			const newACcount = await createUserWithEmailAndPassword(
+				auth,
+				userCredentials.email,
+				userCredentials.password
+			);
+			const newUser = newACcount.user;
+			console.log(newUser);
+		} catch (err) {
+			console.log("Unable to create user");
+			throw err;
+		}
 	}
 
 	function checkPasswordConfirmation() {
