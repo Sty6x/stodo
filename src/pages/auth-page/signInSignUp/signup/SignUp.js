@@ -12,13 +12,12 @@ export const SignUp = () => {
 		isError: false,
 		message: null,
 	});
-	const [userForm, setUserForm] = useState({
+
+	const [passwordConfirmed, setPasswordConfirmed] = useState(null);
+	const [userCredentials, setUserCredentials] = useState({
 		email: "",
 		password: "",
-	});
-	const [passwordConfirmed, setPasswordConfirmed] = useState(null);
-
-	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
+	}); // use this state for submiting
 
 	const authContent = {
 		isSigningIn: false,
@@ -71,7 +70,7 @@ export const SignUp = () => {
 
 	function handleInputChange(e) {
 		const input = e.target;
-		setUserForm((prev) => {
+		setUserCredentials((prev) => {
 			return { ...prev, [input.id]: input.value };
 		});
 		validateInput(e);
@@ -88,39 +87,40 @@ export const SignUp = () => {
 			const newUser = newACcount.user;
 			console.log(newUser);
 		} catch (err) {
+			console.log(userCredentials);
 			console.log("Unable to create user");
 			throw err;
 		}
 	}
 
-	function checkPasswordConfirmation() {
-		const passArr = userForm.password.split("");
-		const passConfArr = userForm.passwordConfirmation.split("");
-		// check passwords only if both of them are not empty to avoid returning true even if the inputs are empty
-		if (userForm.password !== "" && userForm.passwordConfirmation !== "") {
-			if (
-				passArr.length > passConfArr.length ||
-				passConfArr.length > passArr.length
-			) {
-				console.log("password does not match");
-				return false;
-			}
-			for (let i = 0; i < passConfArr.length; i++) {
-				if (passArr[i] === passConfArr[i]) {
-					console.log({ pass: passArr[i], conf: passConfArr[i] });
-				} else {
-					console.log("password does not match");
-					return false;
-				}
-			}
-			// return true if password checking is complete === true
-			// would automatically return false if any of the elements doesnt match
-			console.log("password matches");
-			return true;
-		} else {
-			return null;
-		}
-	}
+	// function checkPasswordConfirmation() {
+	// 	const passArr = userForm.password.split("");
+	// 	const passConfArr = userForm.passwordConfirmation.split("");
+	// 	// check passwords only if both of them are not empty to avoid returning true even if the inputs are empty
+	// 	if (userForm.password !== "" && userForm.passwordConfirmation !== "") {
+	// 		if (
+	// 			passArr.length > passConfArr.length ||
+	// 			passConfArr.length > passArr.length
+	// 		) {
+	// 			console.log("password does not match");
+	// 			return false;
+	// 		}
+	// 		for (let i = 0; i < passConfArr.length; i++) {
+	// 			if (passArr[i] === passConfArr[i]) {
+	// 				console.log({ pass: passArr[i], conf: passConfArr[i] });
+	// 			} else {
+	// 				console.log("password does not match");
+	// 				return false;
+	// 			}
+	// 		}
+	// 		// return true if password checking is complete === true
+	// 		// would automatically return false if any of the elements doesnt match
+	// 		console.log("password matches");
+	// 		return true;
+	// 	} else {
+	// 		return null;
+	// 	}
+	// }
 
 	// delaying state change of password confirmation
 	function validateInput(e) {
