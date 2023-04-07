@@ -14,7 +14,7 @@ export const SignUp = () => {
 		password: "",
 		passwordConfirmation: "",
 	});
-	const [passwordConfirmed, setPasswordConfirmed] = useState(false);
+	const [passwordConfirmed, setPasswordConfirmed] = useState(null);
 
 	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 
@@ -42,7 +42,6 @@ export const SignUp = () => {
 					<label htmlFor="pass">Password</label>
 					<input
 						onChange={(e) => {
-							validateInput(e);
 							handleInputChange(e);
 						}}
 						type={"password"}
@@ -55,7 +54,6 @@ export const SignUp = () => {
 					<label htmlFor="conf-pass">Confirm Password</label>
 					<input
 						onChange={(e) => {
-							validateInput(e);
 							handleInputChange(e);
 						}}
 						type={"password"}
@@ -71,6 +69,7 @@ export const SignUp = () => {
 	function handleInputChange(e) {
 		const input = e.target;
 		setUserForm((prev) => ({ ...prev, [input.id]: input.value }));
+		validateInput(e);
 	}
 
 	function onSubmit(e) {
@@ -103,14 +102,13 @@ export const SignUp = () => {
 
 	function validateInput(e) {
 		const input = e.target;
-		console.log(input);
 		if (!input.validity.valid || passwordConfirmed === false) {
-			setInputError((prev) => ({
+			return setInputError((prev) => ({
 				isError: true,
 				message: showError(input),
 			}));
 		} else {
-			setInputError({ isError: false, message: null });
+			return setInputError((prev) => ({ isError: false, message: null }));
 		}
 	}
 
@@ -137,8 +135,12 @@ export const SignUp = () => {
 
 	useEffect(() => {
 		//passwordconfirmed state observes checkpasswordconfirmation on every input
+		console.log({
+			pass: userForm.password,
+			passConf: userForm.passwordConfirmation,
+		});
 		setPasswordConfirmed(checkPasswordConfirmation());
-	}, [userForm.password, userForm.passwordConfirmation]);
+	}, [userForm.passwordConfirmation]);
 
 	return (
 		<main className={signFormStyles.signPage}>
