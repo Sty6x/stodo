@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { FirebaseContext } from "../App";
 import { onAuthStateChanged } from "firebase/auth";
@@ -6,13 +6,16 @@ import { onAuthStateChanged } from "firebase/auth";
 export const RouterSwitch = ({ importRoutes }) => {
 	const { navigate, auth } = useContext(FirebaseContext);
 
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			navigate("/app/today");
-		} else {
-			console.log("user is not signed in");
-		}
-	});
+	useEffect(() => {
+		const checkUsersMethod = onAuthStateChanged(auth, (user) => {
+			if (user) {
+				navigate("/app/today");
+			} else {
+				console.log("user is not signed in");
+			}
+		});
+		return checkUsersMethod;
+	}, []);
 
 	const renderRoute = importRoutes.map((route) => {
 		const sub =
