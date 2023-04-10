@@ -30,7 +30,12 @@
         padding: 0 10px;
         font-weight: bold;
         font-family: 'inter';
+        outline: none;
     }    
+    input:focus{
+        outline: 2px solid rgb(116, 116, 116);
+    }
+
       button{
         margin-left: 1.2em;
         $btn-pw:1.4em;
@@ -42,7 +47,6 @@
         background-position: center;
         background-repeat: no-repeat;
         transform: scaleX(-1);
-        // background-size: $btn-w $btn-h;
         padding: $btn-pw $btn-ph;
         background-color: #f3f3f300;
         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
