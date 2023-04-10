@@ -39,8 +39,9 @@ export const CreateProfile = () => {
 		<main className={`${authpagesStyle.page} ${profileCreateStyles.page}`}>
 			<AnimatePresence>
 				<motion.section
-					initial={{ opacity: 0, y: -100 }}
+					initial={{ opacity: 0, y: -200 }}
 					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1.4, type: "spring" }}
 					exit={{ y: 100, opacity: 0 }}
 					className={profileCreateStyles.content}
 				>
