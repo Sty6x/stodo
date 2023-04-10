@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import signFormStyles from "../signInSignUp.module.scss";
+import signFormStyles from "../../authpages.module.scss";
 import signUpStyles from "./signup.module.scss";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
@@ -163,7 +163,7 @@ export const SignUp = () => {
 		console.log(auth.currentUser);
 	}, [auth.currentUser]);
 	return (
-		<main className={signFormStyles.signPage}>
+		<main className={signFormStyles.page}>
 			{auth.currentUser ? (
 				<Outlet />
 			) : (
