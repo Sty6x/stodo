@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
-import signFormStyles from "../signInSignUp.module.scss";
+import signFormStyles from "../../authpages.module.scss";
 import signInStyles from "./signin.module.scss";
 
 export const SignIn = () => {
@@ -101,7 +101,7 @@ export const SignIn = () => {
 	}, [inputError]);
 
 	return (
-		<main className={signFormStyles.signPage}>
+		<main className={signFormStyles.page}>
 			<AuthContent key={"signInContent"} content={authContent} />
 		</main>
 	);
