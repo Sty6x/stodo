@@ -1,6 +1,7 @@
 import React from "react";
 import authpagesStyle from "../authpages.module.scss";
 import profileCreateStyles from "./createProfile.module.scss";
+import { motion } from "framer-motion";
 
 export const CreateProfile = () => {
 	return (
@@ -12,7 +13,10 @@ export const CreateProfile = () => {
 					<div className={profileCreateStyles.innerInputContainer}>
 						<input name="name" id="name" />
 
-						<button></button>
+						<motion.button
+							whileHover={{ x: [null, 15, 10] }}
+							transition={{ duration: 0.3, type: "spring" }}
+						></motion.button>
 					</div>
 				</div>
 			</section>
