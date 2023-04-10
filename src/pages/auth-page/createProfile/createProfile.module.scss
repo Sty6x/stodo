@@ -10,12 +10,23 @@
 }
 
 .inputContainer{
-    min-width: 70%;
+    display: flex;
+    align-items: end;
     flex: 1;
-    align-items: start;
+    button{
+        appearance: none;
+        background-image: url('../../../assets/images/navigate-arrow.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scaleX(-1);
+        background-size: 50px 100px;
+    }
+
+}
+.innerInputContainer{
+    min-width: 100%;
     *{
         width: 100%;
         display: block;
-}
-
+    }    
 }
