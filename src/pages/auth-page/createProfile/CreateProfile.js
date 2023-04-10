@@ -10,11 +10,7 @@ export const CreateProfile = () => {
 				<div className={profileCreateStyles.inputContainer}>
 					<label htmlFor="name">Enter Your Name:</label>
 					<div className={profileCreateStyles.innerInputContainer}>
-						<input
-							name="name"
-							id="name"
-							placeholder="Type in your display name"
-						/>
+						<input name="name" id="name" />
 
 						<button></button>
 					</div>

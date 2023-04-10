@@ -2,18 +2,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
     color: #f3f3f3;
     h1{
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 3.5rem;
     }
 }
 
 .inputContainer{
     display: flex;
     flex-direction: column;
-    flex: 1;
-    button{
+    width: 80%;
+    label{
+        margin-bottom: .5em;
+    }
+
+}
+.innerInputContainer{
+    display: flex;
+    input{
+        width: 100%;
+        display: block;
+    }    
+      button{
+        margin-left: 1.2em;
         $btn-pw:1.4em;
         $btn-ph:1.4em;
         $btn-w:1.2em;
@@ -29,13 +42,4 @@
         filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
         border: none;
     }
-
-}
-.innerInputContainer{
-    min-width: 100%;
-    display: flex;
-    input{
-        width: 100%;
-        display: block;
-    }    
 }
