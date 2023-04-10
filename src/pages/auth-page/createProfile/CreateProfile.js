@@ -23,7 +23,9 @@ export const CreateProfile = () => {
 				email: auth.currentUser.email,
 			});
 			auth.currentUser.displayName = displayNameRef.current;
-			console.log(`user ${auth.currentUser.displayName}`);
+			console.log(
+				`successfully created new User ${auth.currentUser.displayName}`
+			);
 		} catch (err) {
 			console.log("failed to store user to database");
 			throw err;
@@ -50,6 +52,7 @@ export const CreateProfile = () => {
 								id="name"
 							/>
 							<motion.button
+								onClick={storeUserToDatabase}
 								whileHover={{ x: [null, 15, 10] }}
 								transition={{ duration: 0.3, type: "spring" }}
 							></motion.button>
