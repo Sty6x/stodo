@@ -11,21 +11,30 @@
 
 .inputContainer{
     display: flex;
-    align-items: end;
+    flex-direction: column;
     flex: 1;
     button{
+        $btn-pw:1.4em;
+        $btn-ph:1.4em;
+        $btn-w:1.2em;
+        $btn-h:1.2em;
         appearance: none;
         background-image: url('../../../assets/images/navigate-arrow.svg');
         background-position: center;
         background-repeat: no-repeat;
         transform: scaleX(-1);
-        background-size: 50px 100px;
+        // background-size: $btn-w $btn-h;
+        padding: $btn-pw $btn-ph;
+        background-color: #f3f3f300;
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        border: none;
     }
 
 }
 .innerInputContainer{
     min-width: 100%;
-    *{
+    display: flex;
+    input{
         width: 100%;
         display: block;
     }    
