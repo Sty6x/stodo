@@ -7,12 +7,18 @@ import { Auth } from "../pages//auth-page/Auth";
 import { Index } from "../pages/index/Index";
 import { SignIn } from "../pages/auth-page/signInSignUp/signIn/SignIn";
 import { SignUp } from "../pages/auth-page/signInSignUp/signup/SignUp";
+import { CreateProfile } from "../pages/auth-page/CreateProfile";
 
 export const ROUTES = [
 	{
 		path: "/",
 		name: "index",
 		element: <Index />,
+	},
+	{
+		path: "create-profile",
+		name: "create-profile",
+		element: <CreateProfile />,
 	},
 	{
 		path: "/auth",
@@ -24,7 +30,11 @@ export const ROUTES = [
 				name: "sign-in",
 				element: <SignIn />,
 			},
-			{ path: "sign-up", name: "sign-up", element: <SignUp /> },
+			{
+				path: "sign-up",
+				name: "sign-up",
+				element: <SignUp />,
+			},
 		],
 	},
 	{

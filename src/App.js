@@ -1,4 +1,4 @@
-import { Routes } from "react-router-dom";
+import { Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { RouterSwitch } from "./routing/RouterSwitch";
 import { ROUTES } from "./routing/routes";
@@ -31,9 +31,11 @@ export const FirebaseContext = createContext();
 const db = getFirestore(app);
 const auth = getAuth(app);
 function App() {
+	const navigate = useNavigate();
+
 	return (
 		<div className="App">
-			<FirebaseContext.Provider value={{ db, auth }}>
+			<FirebaseContext.Provider value={{ navigate, db, auth }}>
 				<RouterSwitch importRoutes={ROUTES} />
 			</FirebaseContext.Provider>
 		</div>
