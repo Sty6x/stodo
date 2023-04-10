@@ -4,10 +4,12 @@ import profileCreateStyles from "./createProfile.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { FirebaseContext } from "../../../App";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export const CreateProfile = () => {
 	const displayNameRef = useRef();
 	const { auth, db } = useContext(FirebaseContext);
+	const navigate = useNavigate();
 
 	function handleInputChange(e) {
 		const input = e.target;
@@ -26,6 +28,7 @@ export const CreateProfile = () => {
 			console.log(
 				`successfully created new User ${auth.currentUser.displayName}`
 			);
+			navigate("/app/today");
 		} catch (err) {
 			console.log("failed to store user to database");
 			throw err;
