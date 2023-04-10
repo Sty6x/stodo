@@ -1,8 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import authpagesStyle from "../authpages.module.scss";
 import profileCreateStyles from "./createProfile.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { FirebaseContext } from "../../../App";
+import { doc, setDoc } from "firebase/firestore";
 
 export const CreateProfile = () => {
 	const displayNameRef = useRef();
@@ -10,7 +11,23 @@ export const CreateProfile = () => {
 
 	function handleInputChange(e) {
 		const input = e.target;
-		displayNameRef.current = e.target.value;
+		displayNameRef.current = input.value;
+	}
+
+	async function storeUserToDatabase(e) {
+		e.preventDefault();
+		try {
+			const userCollection = doc(db, "users", auth.currentUser.uid);
+			const setUser = await setDoc(userCollection, {
+				name: displayNameRef.current,
+				email: auth.currentUser.email,
+			});
+			auth.currentUser.displayName = displayNameRef.current;
+			console.log(`user ${auth.currentUser.displayName}`);
+		} catch (err) {
+			console.log("failed to store user to database");
+			throw err;
+		}
 	}
 
 	return (
