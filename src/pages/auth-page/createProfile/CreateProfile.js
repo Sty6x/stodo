@@ -5,7 +5,7 @@ import profileCreateStyles from "./createProfile.module.scss";
 export const CreateProfile = () => {
 	return (
 		<main className={authpagesStyle.page}>
-			<section className={profileCreateStyles.section}>
+			<section className={profileCreateStyles.content}>
 				<h1>What Should We Call You?</h1>
 				<div className={profileCreateStyles.inputContainer}>
 					<label htmlFor="name">Enter Your Name:</label>
