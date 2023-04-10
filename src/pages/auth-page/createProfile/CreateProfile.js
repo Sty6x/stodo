@@ -40,8 +40,8 @@ export const CreateProfile = () => {
 			<AnimatePresence>
 				<motion.section
 					initial={{ opacity: 0, y: -200 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 1.4, type: "spring" }}
+					animate={{ opacity: 1, y: [null, 0] }}
+					transition={{ duration: 0.6, type: "spring", damping: 10 }}
 					exit={{ y: 100, opacity: 0 }}
 					className={profileCreateStyles.content}
 				>
