@@ -11,6 +11,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
+	const [onSuccess, setOnSuccess] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	const [inputError, setInputError] = useState({
 		isError: false,
 		message: null,
@@ -21,7 +23,6 @@ export const SignUp = () => {
 		email: "",
 		password: "",
 	}); // use this state for submiting
-	const [onSuccess, setOnSuccess] = useState(null);
 	const authContent = {
 		isSigningIn: false,
 		formComponent: (
@@ -69,14 +70,16 @@ export const SignUp = () => {
 
 	async function createNewUser(e) {
 		e.preventDefault();
+		setIsLoading(true);
 		try {
 			const newACcount = await createUserWithEmailAndPassword(
 				auth,
 				userCredentials.email,
 				userCredentials.password
 			);
-			const newUser = newACcount.user;
+			setIsLoading(false);
 		} catch (err) {
+			setIsLoading(false);
 			console.log("Unable to create user");
 			throw err;
 		}
@@ -121,7 +124,7 @@ export const SignUp = () => {
 			<AuthContent
 				key={"signUpContent"}
 				content={authContent}
-				onSuccess={onSuccess}
+				isLoading={isLoading}
 			/>
 		</main>
 	);
