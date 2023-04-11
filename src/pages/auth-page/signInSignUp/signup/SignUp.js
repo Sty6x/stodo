@@ -54,18 +54,6 @@ export const SignUp = () => {
 						id={"password"}
 					/>
 				</div>
-				{/* <div> */}
-				{/* 	<label htmlFor="conf-pass">Confirm Password</label> */}
-				{/* 	<input */}
-				{/*         disabled */}
-				{/* 		onChange={(e) => { */}
-				{/* 			handleInputChange(e); */}
-				{/* 		}} */}
-				{/* 		type={"password"} */}
-				{/* 		required */}
-				{/* 		id={"passwordConfirmation"} */}
-				{/* 	/> */}
-				{/* </div> */}
 			</AuthForm>
 		),
 		leftContentButton: { method: "Sign in", path: "/auth/sign-in" },
@@ -93,35 +81,6 @@ export const SignUp = () => {
 			throw err;
 		}
 	}
-
-	// function checkPasswordConfirmation() {
-	// 	const passArr = userForm.password.split("");
-	// 	const passConfArr = userForm.passwordConfirmation.split("");
-	// 	// check passwords only if both of them are not empty to avoid returning true even if the inputs are empty
-	// 	if (userForm.password !== "" && userForm.passwordConfirmation !== "") {
-	// 		if (
-	// 			passArr.length > passConfArr.length ||
-	// 			passConfArr.length > passArr.length
-	// 		) {
-	// 			console.log("password does not match");
-	// 			return false;
-	// 		}
-	// 		for (let i = 0; i < passConfArr.length; i++) {
-	// 			if (passArr[i] === passConfArr[i]) {
-	// 				console.log({ pass: passArr[i], conf: passConfArr[i] });
-	// 			} else {
-	// 				console.log("password does not match");
-	// 				return false;
-	// 			}
-	// 		}
-	// 		// return true if password checking is complete === true
-	// 		// would automatically return false if any of the elements doesnt match
-	// 		console.log("password matches");
-	// 		return true;
-	// 	} else {
-	// 		return null;
-	// 	}
-	// }
 
 	// delaying state change of password confirmation
 	function validateInput(e) {
