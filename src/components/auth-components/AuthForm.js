@@ -34,7 +34,11 @@ export const AuthForm = ({
 					}`}
 				>
 					{isLoading ? (
-						<span className={authFormStyles.loader}></span>
+						<motion.span
+							initial={{ opacity: 0, y: -100 }}
+							animate={{ opacity: 1, y: 0 }}
+							className={authFormStyles.loader}
+						></motion.span>
 					) : (
 						buttonType
 					)}

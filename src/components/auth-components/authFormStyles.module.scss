@@ -64,15 +64,11 @@
 .btnContainer{
     .loader{
         display: inline-block;
-        border: 4px solid #c5c5c5;
-        border-radius: 50%;
-        border-top: 4px solid #FFD10D;
         width: 1em;
         height: 1em;
         animation: spinner 4s linear infinite;
+        border: 4px solid #c5c5c5;
+        border-radius: 50%;
+        border-top: 4px solid #FFD10D;
     }
-    .signInLoading{
-        transition: height 100ms ease-in;
-    }
-
 }
