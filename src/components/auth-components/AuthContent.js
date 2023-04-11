@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
 import { motion } from "framer-motion";
 
-export const AuthContent = ({ content }) => {
+export const AuthContent = ({ content, onSuccess }) => {
 	const navigate = useNavigate();
 	const { isSigningIn, formComponent, leftContentButton } = content;
 

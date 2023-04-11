@@ -169,7 +169,11 @@ export const SignUp = () => {
 			{auth.currentUser ? (
 				<Outlet />
 			) : (
-				<AuthContent key={"signUpContent"} content={authContent} />
+				<AuthContent
+					key={"signUpContent"}
+					content={authContent}
+					onSuccess={onSuccess}
+				/>
 			)}
 		</main>
 	);
