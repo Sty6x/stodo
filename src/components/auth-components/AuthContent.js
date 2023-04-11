@@ -4,13 +4,10 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const AuthContent = ({ content, onSuccess }) => {
+export const AuthContent = ({ content }) => {
 	const navigate = useNavigate();
 	const { isSigningIn, formComponent, leftContentButton } = content;
 
-	useEffect(() => {
-		console.log({ success: onSuccess });
-	}, [onSuccess]);
 	return (
 		<motion.div
 			key={"authContent"}

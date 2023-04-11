@@ -37,6 +37,8 @@ function App() {
 		<div className="App">
 			<button
 				onClick={async (e) => {
+					const getUserDoc = doc(auth, "users", auth.currentUser.uid);
+					const deleteUser = await deleteDoc(getUserDoc);
 					await deleteUser(auth.currentUser);
 				}}
 				style={{ position: "absolute", left: "80%" }}

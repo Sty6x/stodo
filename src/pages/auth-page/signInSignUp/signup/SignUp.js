@@ -7,6 +7,7 @@ import { FirebaseContext } from "../../../../App";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../Auth";
 import { Outlet } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
@@ -158,15 +159,11 @@ export const SignUp = () => {
 	}, [auth.currentUser]);
 	return (
 		<main className={signFormStyles.page}>
-			{auth.currentUser ? (
-				<Outlet />
-			) : (
-				<AuthContent
-					key={"signUpContent"}
-					content={authContent}
-					onSuccess={onSuccess}
-				/>
-			)}
+			<AuthContent
+				key={"signUpContent"}
+				content={authContent}
+				onSuccess={onSuccess}
+			/>
 		</main>
 	);
 };
