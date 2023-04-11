@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
 	const [onSuccess, setOnSuccess] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(null);
 	const [inputError, setInputError] = useState({
 		isError: false,
 		message: null,

@@ -62,9 +62,8 @@
 }
 
 .btnContainer{
-    position: relative;
     .loader{
-        position: absolute;
+        display: inline-block;
         border: 5px solid #EAF0F6;
         border-radius: 50%;
         border-top: 5px solid #FF7A59;

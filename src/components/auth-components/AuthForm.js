@@ -25,8 +25,11 @@ export const AuthForm = ({
 			</AnimatePresence>
 			{children}
 			<div className={authFormStyles.btnContainer}>
-				<button type="submit">{buttonType}</button>
-				<span className={authFormStyles.loader}></span>
+				{isLoading == null ? (
+					<span className={authFormStyles.loader}></span>
+				) : (
+					<button type="submit">{buttonType}</button>
+				)}
 			</div>
 		</motion.form>
 	);
