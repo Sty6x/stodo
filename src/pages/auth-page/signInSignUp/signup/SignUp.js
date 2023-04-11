@@ -30,6 +30,7 @@ export const SignUp = () => {
 				errorInput={inputError}
 				buttonType={"Sign Up"}
 				onSubmit={createNewUser}
+				isLoading={isLoading}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -121,11 +122,7 @@ export const SignUp = () => {
 	}, [auth.currentUser]);
 	return (
 		<main className={signFormStyles.page}>
-			<AuthContent
-				key={"signUpContent"}
-				content={authContent}
-				isLoading={isLoading}
-			/>
+			<AuthContent key={"signUpContent"} content={authContent} />
 		</main>
 	);
 };
