@@ -20,7 +20,7 @@ export const SignUp = () => {
 		email: "",
 		password: "",
 	}); // use this state for submiting
-
+	const [onSuccess, setOnSuccess] = useState(null);
 	const authContent = {
 		isSigningIn: false,
 		formComponent: (
@@ -88,9 +88,11 @@ export const SignUp = () => {
 			);
 			const newUser = newACcount.user;
 			console.log(newUser);
+			setOnSuccess(true);
 		} catch (err) {
 			console.log(userCredentials);
 			console.log("Unable to create user");
+			setOnSuccess(false);
 			throw err;
 		}
 	}
