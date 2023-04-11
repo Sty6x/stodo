@@ -52,6 +52,5 @@ export const RouterSwitch = ({ importRoutes }) => {
 		);
 	});
 
-	console.log(renderRoute);
 	return <Routes>{renderRoute}</Routes>;
 };

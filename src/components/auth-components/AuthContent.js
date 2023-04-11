@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
@@ -8,6 +8,9 @@ export const AuthContent = ({ content, onSuccess }) => {
 	const navigate = useNavigate();
 	const { isSigningIn, formComponent, leftContentButton } = content;
 
+	useEffect(() => {
+		console.log(onSuccess);
+	}, [onSuccess]);
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: -200 }}

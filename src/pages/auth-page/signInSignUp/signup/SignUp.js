@@ -21,6 +21,7 @@ export const SignUp = () => {
 		password: "",
 	}); // use this state for submiting
 	const [onSuccess, setOnSuccess] = useState(null);
+	const [loading, setLoading] = useState(null);
 	const authContent = {
 		isSigningIn: false,
 		formComponent: (
@@ -80,6 +81,7 @@ export const SignUp = () => {
 
 	async function createNewUser(e) {
 		e.preventDefault();
+		setLoading(true);
 		try {
 			const newACcount = await createUserWithEmailAndPassword(
 				auth,
@@ -88,15 +90,19 @@ export const SignUp = () => {
 			);
 			const newUser = newACcount.user;
 			console.log(newUser);
-			setOnSuccess(true);
 		} catch (err) {
 			console.log(userCredentials);
 			console.log("Unable to create user");
-			setOnSuccess(false);
 			throw err;
 		}
 	}
 
+	useEffect(() => {
+		if (loading === true) {
+			setLoading(false);
+			setOnSuccess(true);
+		}
+	}, [loading]);
 	// function checkPasswordConfirmation() {
 	// 	const passArr = userForm.password.split("");
 	// 	const passConfArr = userForm.passwordConfirmation.split("");
@@ -156,10 +162,6 @@ export const SignUp = () => {
 			return errors.password;
 		}
 	}
-
-	useEffect(() => {
-		console.log(userCredentials);
-	}, [userCredentials]);
 
 	useEffect(() => {
 		console.log(auth.currentUser);
