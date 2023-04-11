@@ -24,12 +24,21 @@ export const AuthForm = ({
 				)}
 			</AnimatePresence>
 			{children}
-			<div className={authFormStyles.btnContainer}>
-				{isLoading == null ? (
-					<span className={authFormStyles.loader}></span>
-				) : (
-					<button type="submit">{buttonType}</button>
-				)}
+			<div className={`${authFormStyles.btnContainer}`}>
+				<button
+					type="submit"
+					className={`${
+						isLoading
+							? authFormStyles.signInLoading
+							: authFormStyles.signInNotLoading
+					}`}
+				>
+					{isLoading ? (
+						<span className={authFormStyles.loader}></span>
+					) : (
+						buttonType
+					)}
+				</button>
 			</div>
 		</motion.form>
 	);
