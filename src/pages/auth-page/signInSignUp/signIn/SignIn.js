@@ -64,7 +64,7 @@ export const SignIn = () => {
     const user = Object.fromEntries(form.entries())
     try{
       const signIn = await signInWithEmailAndPassword(auth,user.email,user.password);
-    
+      console.log('Signed in')
     }catch(err){
       console.log("Email Doesn't exist")
       throw err
