@@ -18,7 +18,7 @@ export const App = () => {
 				}}
 				style={{ position: "absolute", left: "80%" }}
 			>
-				sign out
+			Sign out	
 			</button>
         <div className={appStyles.navLeft}>
           <button className={appStyles.sideBarBtn}></button>
