@@ -6,7 +6,18 @@ import appStyles from "./app.module.scss";
 export const App = () => {
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar>
+          <div>
+          <button className={appStyles.sideBarBtn}></button>
+          <h1 className={appStyles.logo}></h1>
+        </div>
+          
+         <div>
+          {/* make user profile drop down on click  */}
+          <button className={appStyles.profile}></button> 
+        </div>
+        
+      </Navbar>
       <main className={appStyles.appPage}>
         <Outlet />
       </main>
