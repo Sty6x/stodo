@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FirebaseContext } from "../../App";
 
 export const Today = () => {
-	return <h1>Tasks for Today here</h1>;
+  const {auth} = useContext(FirebaseContext);
+	return <>
+       <h1>Hello,{auth.currentUser.displayName}</h1> 
+    </>;
 };

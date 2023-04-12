@@ -30,6 +30,7 @@ export const App = () => {
         </div>
       </Navbar>
       <main className={appStyles.appPage}>
+         {/*sidebar*/}
         <Outlet />
       </main>
     </>
