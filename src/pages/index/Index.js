@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "../../components/navbar/Navbar";
 import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
-import logo from "../../assets/images/logo.svg";
 import { motion } from "framer-motion";
 import { Logo } from "../../components/logo/Logo";
 

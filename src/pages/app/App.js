@@ -8,11 +8,11 @@ export const App = () => {
   return (
     <>
       <Navbar>
-        <div>
+        <div className={appStyles.navLeft}>
           <button className={appStyles.sideBarBtn}></button>
           <Logo to={'/app/today'} />
         </div>
-        <div>
+        <div className={appStyles.navRight}>
           {/* make user profile drop down on click  */}
           <button className={appStyles.profile}></button>
         </div>
