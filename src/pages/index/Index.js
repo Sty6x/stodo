@@ -5,6 +5,7 @@ import indexStyles from "./index.module.scss";
 import heroImage from "../../assets/images/hero-images.png";
 import logo from "../../assets/images/logo.svg";
 import { motion } from "framer-motion";
+import { Logo } from "../../components/logo/Logo";
 
 const leftContainerVariants = {
 	hidden: { opacity: 0, x: -100 },
@@ -22,9 +23,7 @@ export const Index = () => {
 	return (
 		<>
 			<Navbar>
-				<Link className={indexStyles.logoContainer} to={"/"}>
-					<img className={indexStyles.logoImg} src={logo} alt="logo" />
-				</Link>
+        <Logo to={'/'}/>
 				<div className={`${indexStyles.sign} links`}>
 					<NavLink to={"/auth/sign-in"}>Sign in</NavLink>
 					<NavLink to={"/auth/sign-up"}>Start for Free</NavLink>
