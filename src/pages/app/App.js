@@ -25,7 +25,7 @@ export const App = () => {
         </div>
         <div className={appStyles.navRight}>
           {/* make user profile drop down on click  */}
-          <div className={appStyles.profile}>
+          <div className={appStyles.profile}>A
           </div>
         </div>
       </Navbar>
