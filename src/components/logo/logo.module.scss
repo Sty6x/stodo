@@ -1,9 +1,14 @@
-.logoContainer{
-    display: flex;
-    align-items: center;
-    background-image:url('../../assets/images/logo.svg');
-    background-size:contain;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  height: 3em;
+  .link {
+    background-image: url("../../assets/images/logo.svg");
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 8em;
+    min-width:100%;
+    min-height: 100%;
+  }
 }
