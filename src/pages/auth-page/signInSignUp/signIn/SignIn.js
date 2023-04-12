@@ -1,15 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState ,useContext} from "react";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import signFormStyles from "../../authpages.module.scss";
 import signInStyles from "./signin.module.scss";
+import { FirebaseContext } from "../../../../App";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const SignIn = () => {
+  const {auth,db} = useContext(FirebaseContext)
 	const [userForm, setUserForm] = useState({
 		email: "",
 		password: "",
 	});
-	const [userCredentials, setUserCredentials] = useState(userForm); // use this state for submiting
 	const [inputError, setInputError] = useState({
 		isError: false,
 		message: null,
@@ -20,7 +22,7 @@ export const SignIn = () => {
 			<AuthForm
 				errorInput={inputError}
 				buttonType={"Sign in"}
-				onSubmit={onSubmit}
+				onSubmit={signInUser}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -56,11 +58,17 @@ export const SignIn = () => {
 		leftContentButton: { method: "Sign up", path: "/auth/sign-up" },
 	};
 
-	function onSubmit(e) {
-    console.log('submit')
+	async function signInUser(e) {
 		e.preventDefault();
     const form = new FormData(e.target)
     const user = Object.fromEntries(form.entries())
+    try{
+      const signIn = await signInWithEmailAndPassword(auth,user.email,user.password);
+    
+    }catch(err){
+      console.log("Email Doesn't exist")
+      throw err
+    }
 	}
 
 	function handleInputChange(e) {
