@@ -13,7 +13,7 @@ export const RouterSwitch = ({ importRoutes }) => {
 				console.log(user.uid);
 				checkIfUserAlreadyExists(user);
 			} else {
-				navigate("/auth/sign-in");
+				navigate("/");
 			}
 		});
 		return redirectIfNotLoggedIn;
