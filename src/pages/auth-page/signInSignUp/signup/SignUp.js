@@ -7,9 +7,12 @@ import { FirebaseContext } from "../../../../App";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Auth } from "../../Auth";
 import { Outlet } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const SignUp = () => {
 	const { auth } = useContext(FirebaseContext);
+	const [onSuccess, setOnSuccess] = useState(null);
+	const [isLoading, setIsLoading] = useState(null);
 	const [inputError, setInputError] = useState({
 		isError: false,
 		message: null,
@@ -20,7 +23,6 @@ export const SignUp = () => {
 		email: "",
 		password: "",
 	}); // use this state for submiting
-
 	const authContent = {
 		isSigningIn: false,
 		formComponent: (
@@ -28,6 +30,7 @@ export const SignUp = () => {
 				errorInput={inputError}
 				buttonType={"Sign Up"}
 				onSubmit={createNewUser}
+				isLoading={isLoading}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -53,18 +56,6 @@ export const SignUp = () => {
 						id={"password"}
 					/>
 				</div>
-				{/* <div> */}
-				{/* 	<label htmlFor="conf-pass">Confirm Password</label> */}
-				{/* 	<input */}
-				{/*         disabled */}
-				{/* 		onChange={(e) => { */}
-				{/* 			handleInputChange(e); */}
-				{/* 		}} */}
-				{/* 		type={"password"} */}
-				{/* 		required */}
-				{/* 		id={"passwordConfirmation"} */}
-				{/* 	/> */}
-				{/* </div> */}
 			</AuthForm>
 		),
 		leftContentButton: { method: "Sign in", path: "/auth/sign-in" },
@@ -80,49 +71,20 @@ export const SignUp = () => {
 
 	async function createNewUser(e) {
 		e.preventDefault();
+		setIsLoading(true);
 		try {
 			const newACcount = await createUserWithEmailAndPassword(
 				auth,
 				userCredentials.email,
 				userCredentials.password
 			);
-			const newUser = newACcount.user;
-			console.log(newUser);
+			setIsLoading(false);
 		} catch (err) {
-			console.log(userCredentials);
+			setIsLoading(false);
 			console.log("Unable to create user");
 			throw err;
 		}
 	}
-
-	// function checkPasswordConfirmation() {
-	// 	const passArr = userForm.password.split("");
-	// 	const passConfArr = userForm.passwordConfirmation.split("");
-	// 	// check passwords only if both of them are not empty to avoid returning true even if the inputs are empty
-	// 	if (userForm.password !== "" && userForm.passwordConfirmation !== "") {
-	// 		if (
-	// 			passArr.length > passConfArr.length ||
-	// 			passConfArr.length > passArr.length
-	// 		) {
-	// 			console.log("password does not match");
-	// 			return false;
-	// 		}
-	// 		for (let i = 0; i < passConfArr.length; i++) {
-	// 			if (passArr[i] === passConfArr[i]) {
-	// 				console.log({ pass: passArr[i], conf: passConfArr[i] });
-	// 			} else {
-	// 				console.log("password does not match");
-	// 				return false;
-	// 			}
-	// 		}
-	// 		// return true if password checking is complete === true
-	// 		// would automatically return false if any of the elements doesnt match
-	// 		console.log("password matches");
-	// 		return true;
-	// 	} else {
-	// 		return null;
-	// 	}
-	// }
 
 	// delaying state change of password confirmation
 	function validateInput(e) {
@@ -156,19 +118,11 @@ export const SignUp = () => {
 	}
 
 	useEffect(() => {
-		console.log(userCredentials);
-	}, [userCredentials]);
-
-	useEffect(() => {
 		console.log(auth.currentUser);
 	}, [auth.currentUser]);
 	return (
 		<main className={signFormStyles.page}>
-			{auth.currentUser ? (
-				<Outlet />
-			) : (
-				<AuthContent key={"signUpContent"} content={authContent} />
-			)}
+			<AuthContent key={"signUpContent"} content={authContent} />
 		</main>
 	);
 };

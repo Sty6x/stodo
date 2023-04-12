@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const AuthContent = ({ content }) => {
 	const navigate = useNavigate();
@@ -10,6 +10,7 @@ export const AuthContent = ({ content }) => {
 
 	return (
 		<motion.div
+			key={"authContent"}
 			initial={{ opacity: 0, y: -200 }}
 			animate={{ opacity: 1, y: [null, 0] }}
 			transition={{ duration: 0.6, type: "spring", damping: 10 }}

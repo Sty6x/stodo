@@ -13,7 +13,7 @@ export const RouterSwitch = ({ importRoutes }) => {
 				console.log(user.uid);
 				checkIfUserAlreadyExists(user);
 			} else {
-				navigate("/auth/sign-in");
+				navigate("/");
 			}
 		});
 		return redirectIfNotLoggedIn;
@@ -52,6 +52,5 @@ export const RouterSwitch = ({ importRoutes }) => {
 		);
 	});
 
-	console.log(renderRoute);
 	return <Routes>{renderRoute}</Routes>;
 };

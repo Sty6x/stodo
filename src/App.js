@@ -7,8 +7,8 @@ import { React, createContext } from "react";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, signOut } from "firebase/auth";
+import { deleteDoc, doc, getFirestore } from "firebase/firestore";
+import { getAuth, deleteUser, signOut } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,8 +36,8 @@ function App() {
 	return (
 		<div className="App">
 			<button
-				onClick={(e) => {
-					signOut(auth);
+				onClick={async (e) => {
+          signOut(auth)
 				}}
 				style={{ position: "absolute", left: "80%" }}
 			>
