@@ -1,10 +1,9 @@
-
-.logoImg{
-    object-fit: contain;
-    max-width: 40%;
-}
-
 .logoContainer{
     display: flex;
     align-items: center;
+    background-image:url('../../assets/images/logo.svg');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 8em;
 }
