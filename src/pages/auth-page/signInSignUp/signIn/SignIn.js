@@ -25,6 +25,7 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
+            name="email"
 						onChange={(e) => {
 							validateInput(e);
 							handleInputChange(e);
@@ -38,6 +39,7 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="pass">Password</label>
 					<input
+            name="password"
 						onChange={(e) => {
 							validateInput(e);
 							handleInputChange(e);
@@ -55,9 +57,10 @@ export const SignIn = () => {
 	};
 
 	function onSubmit(e) {
-		const form = e.target;
-		setUserCredentials({ ...userForm });
+    console.log('submit')
 		e.preventDefault();
+    const form = new FormData(e.target)
+    const user = Object.fromEntries(form.entries())
 	}
 
 	function handleInputChange(e) {
@@ -67,8 +70,6 @@ export const SignIn = () => {
 
 	function validateInput(e) {
 		const input = e.target;
-		console.log(input);
-		console.log(input.validity.valid);
 		if (!input.validity.valid) {
 			setInputError((prev) => ({
 				isError: true,
@@ -95,10 +96,6 @@ export const SignIn = () => {
 			return errors.password;
 		}
 	}
-
-	useEffect(() => {
-		console.log(inputError);
-	}, [inputError]);
 
 	return (
 		<main className={signFormStyles.page}>
