@@ -1,7 +1,7 @@
 import React from "react";
 import sidebarStyles from "./sidebar.module.scss";
 import { motion } from "framer-motion";
-import { Link ,NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
   return (
@@ -14,7 +14,7 @@ export const Sidebar = () => {
           <li className={sidebarStyles.upcoming}>
             <NavLink to={"/app/upcoming"}>Upcoming</NavLink>
           </li>
-          <li className={sidebarStyles.overdue }>
+          <li className={sidebarStyles.overdue}>
             <NavLink to={"/app/overdue"}>Overdue Tasks</NavLink>
           </li>
         </ul>
