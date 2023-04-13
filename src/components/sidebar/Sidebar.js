@@ -2,10 +2,11 @@ import React from "react";
 import sidebarStyles from "./sidebar.module.scss";
 import { motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
+import './sidebar.scss'
 
 export const Sidebar = ({sbRef}) => {
   return (
-    <motion.div ref={sbRef} className={`${sidebarStyles.sideBar} active`}>
+    <motion.div ref={sbRef} className={`${sidebarStyles.sideBar} sideBarActive`}>
       <div className={sidebarStyles.contentsContainer}>
         <ul className={sidebarStyles.navigation}>
           <li className={sidebarStyles.today}>

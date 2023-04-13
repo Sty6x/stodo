@@ -32,7 +32,7 @@
     width: 100%;
     height: 100%;
     padding: 0.8em 1em;
-    box-sizing:border-box;
+    box-sizing: border-box;
   }
 }
 
@@ -46,10 +46,4 @@
   background-image: url("../../assets/images/upcoming-icon.svg");
 }
 
-.active{
-  outline: green 1px solid;
-}
 
-.incactive{
-  outline: red 1px solid;
-}

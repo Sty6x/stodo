@@ -16,12 +16,11 @@ export const App = () => {
   function setSideBarStatus(){
     const btn = sideBarBtnRef.current
     const sb = sideBarRef.current
-    console.log(btn)
     console.log(sb)
-    if(sb.classList.contains('active')){
-      sb.classList.replace('active','inactive');
+    if(sb.classList.contains('sideBarActive')){
+      sb.classList.replace('sideBarActive','sideBarInactive');
     }else{
-      sb.classList.replace('inactive','active');
+      sb.classList.replace('sideBarInactive','sideBarActive');
     }
   }
   
