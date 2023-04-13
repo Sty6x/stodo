@@ -34,10 +34,6 @@
     padding: 0.8em 1em;
     box-sizing:border-box;
   }
-  li > .active {
-    background-color: rgba($color: #474747, $alpha: 0.5);
-    border:1px solid red;
-  }
 }
 
 .today > a::before {
@@ -48,4 +44,12 @@
 }
 .upcoming > a::before {
   background-image: url("../../assets/images/upcoming-icon.svg");
+}
+
+.active{
+  outline: green 1px solid;
+}
+
+.incactive{
+  outline: red 1px solid;
 }

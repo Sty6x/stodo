@@ -3,9 +3,9 @@ import sidebarStyles from "./sidebar.module.scss";
 import { motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 
-export const Sidebar = () => {
+export const Sidebar = ({sbRef}) => {
   return (
-    <motion.div className={sidebarStyles.sideBar}>
+    <motion.div ref={sbRef} className={`${sidebarStyles.sideBar} active`}>
       <div className={sidebarStyles.contentsContainer}>
         <ul className={sidebarStyles.navigation}>
           <li className={sidebarStyles.today}>

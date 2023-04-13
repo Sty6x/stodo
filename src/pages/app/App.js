@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Logo } from "../../components/logo/Logo";
 import { Navbar } from "../../components/navbar/Navbar";
@@ -9,6 +9,22 @@ import { Sidebar } from "../../components/sidebar/Sidebar";
 
 export const App = () => {
   const { auth } = useContext(FirebaseContext);
+  const sideBarBtnRef = useRef();
+  const sideBarRef = useRef()
+
+
+  function setSideBarStatus(){
+    const btn = sideBarBtnRef.current
+    const sb = sideBarRef.current
+    console.log(btn)
+    console.log(sb)
+    if(sb.classList.contains('active')){
+      sb.classList.replace('active','inactive');
+    }else{
+      sb.classList.replace('inactive','active');
+    }
+  }
+  
   return (
     <>
       <Navbar>
@@ -21,7 +37,7 @@ export const App = () => {
           Sign out
         </button>
         <div className={appStyles.navLeft}>
-          <button className={appStyles.sideBarBtn}></button>
+          <button onClick={e=>setSideBarStatus()} ref={sideBarBtnRef} className={appStyles.sideBarBtn}></button>
           <Logo to={"/app/today"} />
         </div>
         <div className={appStyles.navRight}>
@@ -32,7 +48,7 @@ export const App = () => {
       </Navbar>
       <main className={appStyles.appPage}>
          {/*sidebar*/}
-        <Sidebar/>
+        <Sidebar sbRef={sideBarRef}/>
         <Outlet />
       </main>
     </>
