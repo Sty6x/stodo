@@ -16,7 +16,6 @@
     transition: background-color 150ms ease-in-out;
     background-color: rgba($color: #474747, $alpha: 0.5);
   }
-
   li > a::before {
     content: "";
     display: inline-block;
@@ -35,6 +34,7 @@
     padding: 0.8em 1em;
     box-sizing: border-box;
   }
+
 }
 
 .today > a::before {
