@@ -1,7 +1,40 @@
-.sideBarActive{outline:green 1px solid;}
-.sideBarInactive{outline:red 1px solid;}
+.sideBarActive {
+  transition: width 200ms ease-in-out;
+  * {
+    animation-name: tabTransition;
+    animation-duration: 100ms;
+    animation-delay: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+  }
+}
 
+@keyframes tabTransition {
+  0% {
+    opacity: 1;
+  }
 
-a.active{
-    background-color: rgba($color: #474747, $alpha: 0.5);
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+.sideBarInactive {
+  width: 0%;
+  transition: width 200ms ease-in-out;
+  * {
+    animation-name: tabTransition;
+    animation-duration: 150ms;
+    animation-timing-function: ease-in-out;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+  }
+}
+
+a.active {
+  background-color: rgba($color: #474747, $alpha: 0.5);
 }
