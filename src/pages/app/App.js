@@ -5,6 +5,7 @@ import { Navbar } from "../../components/navbar/Navbar";
 import appStyles from "./app.module.scss";
 import { signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
+import { Sidebar } from "../../components/sidebar/Sidebar";
 
 export const App = () => {
   const { auth } = useContext(FirebaseContext);
@@ -31,6 +32,7 @@ export const App = () => {
       </Navbar>
       <main className={appStyles.appPage}>
          {/*sidebar*/}
+        <Sidebar/>
         <Outlet />
       </main>
     </>
