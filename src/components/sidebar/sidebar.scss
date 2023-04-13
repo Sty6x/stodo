@@ -1,12 +1,25 @@
 .sideBarActive {
   transition: width 200ms ease-in-out;
   * {
-    animation-name: tabTransition;
-    animation-duration: 100ms;
-    animation-delay: 100ms;
+    animation-name: tabTransitionRev;
+    animation-duration: 200ms;
     animation-timing-function: ease-in-out;
-    animation-direction: reverse;
+    animation-direction: forwards;
     animation-fill-mode: forwards;
+  }
+}
+
+@keyframes tabTransitionRev {
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  0% {
+    opacity: 0;
   }
 }
 
