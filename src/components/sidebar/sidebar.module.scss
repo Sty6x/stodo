@@ -8,19 +8,25 @@
   padding-top: 3em;
   font-size: 1.2rem;
   li {
-    outline: white 1px solid;
-    padding: 1.2em 2em;
-    display:flex;
-    align-items:center;
-    gap:1.1em;
+    padding: .8em 1em;
+    display: flex;
+    align-items: center;
+    gap: 1.1em;
+    border-bottom: #C0B3B3 1px solid
   }
+
+  &> li:hover{
+      transition: background-color 150ms ease-in-out;
+      background-color: rgba($color: #474747, $alpha: .5);
+  }
+
   & > li::before {
     content: "";
     display: inline-block;
     background-image: url("../../assets/images/today-icon.svg");
     background-position: center;
     background-size: contain;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     width: 30px;
     height: 30px;
   }

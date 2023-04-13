@@ -1,7 +1,7 @@
 import React from "react";
 import sidebarStyles from "./sidebar.module.scss";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link ,NavLink} from "react-router-dom";
 
 export const Sidebar = () => {
   return (
@@ -9,13 +9,13 @@ export const Sidebar = () => {
       <div className={sidebarStyles.contentsContainer}>
         <ul className={sidebarStyles.navigation}>
           <li className={sidebarStyles.today}>
-            <Link to={"/app/today"}>Today</Link>
+            <NavLink to={"/app/today"}>Today</NavLink>
           </li>
           <li className={sidebarStyles.upcoming}>
-            <Link to={"/app/upcoming"}>Upcoming</Link>
+            <NavLink to={"/app/upcoming"}>Upcoming</NavLink>
           </li>
           <li className={sidebarStyles.overdue }>
-            <Link to={"/app/overdue"}>Overdue Tasks</Link>
+            <NavLink to={"/app/overdue"}>Overdue Tasks</NavLink>
           </li>
         </ul>
         <div className={sidebarStyles.projectContainer}>
