@@ -1,5 +1,27 @@
 .sideBar {
   background-color: #2f2f2f;
   color: white;
-  width:18%;
+  width: 18%;
+}
+
+.navigation {
+  padding-top: 3em;
+  font-size: 1.2rem;
+  li {
+    outline: white 1px solid;
+    padding: 1.2em 2em;
+    display:flex;
+    align-items:center;
+    gap:1.1em;
+  }
+  & > li::before {
+    content: "";
+    display: inline-block;
+    background-image: url("../../assets/images/today-icon.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat:no-repeat;
+    width: 30px;
+    height: 30px;
+  }
 }

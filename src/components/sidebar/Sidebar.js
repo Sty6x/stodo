@@ -14,7 +14,7 @@ export const Sidebar = () => {
           <li className={sidebarStyles.upcoming}>
             <Link to={"/app/upcoming"}>Upcoming</Link>
           </li>
-          <li className={sidebarStyles.overdue}>
+          <li className={sidebarStyles.overdue }>
             <Link to={"/app/overdue"}>Overdue Tasks</Link>
           </li>
         </ul>
