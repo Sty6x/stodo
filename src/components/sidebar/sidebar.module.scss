@@ -7,7 +7,8 @@
 
 .navigation {
   padding-top: 3em;
-  font-size: 1rem;
+  // font-size: 1rem;
+    font-size: 1.1rem;
   li {
     border-bottom: #c0b3b3 1px solid;
   }
@@ -26,6 +27,7 @@
     height: 20px;
   }
   li > a {
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 1.1em;
@@ -61,7 +63,11 @@
   display: flex;
   flex: 1;
   gap: 1.2em;
+  z-index: 999;
+  background-color: #2f2f2f;
   p {
+    font-weight: 500;
+    font-size: 1.2rem;
     margin-right: auto;
   }
   button {
@@ -83,11 +89,7 @@
 }
 
 .projectLinks {
-  // display: block;
-  & > li:not(:last-child){
+  & > li:not(:last-child) {
     margin-bottom: 5px;
   }
-  
 }
-
-
