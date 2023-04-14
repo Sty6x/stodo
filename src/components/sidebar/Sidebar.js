@@ -48,15 +48,14 @@ export const Sidebar = ({ sbRef }) => {
           <AnimatePresence mode="wait" >
             {isDropDownActive && (
               <motion.ul
-                animate={{ y: [-200, 0],opacity:1 }}
-                 // opacity is set to 0 only AFTER exit  
+                initial={{opacity:0}}
+                animate={{ y: [-50, 0],opacity:1 }}
                 exit={{
                   opacity:0,
-                  y: [10, -100],
-                  transition: { duration:.2,type:'spring'},
+                  y: [10, -50],
                 }}
                 // transition={{duration:.5}}
-                className={`${sidebarStyles.projectList} ${
+                className={`${sidebarStyles.projectLinks} ${
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
               >
