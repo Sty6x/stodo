@@ -48,7 +48,7 @@
 
 .projectContainer {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   gap: 1.1em;
   width: 100%;
@@ -56,27 +56,35 @@
   padding: 0.8em 1em;
   box-sizing: border-box;
 }
-.projectOptions{
-    display: flex;
-    flex: 1;
-    gap: 1.2em;
-    p{
-      margin-right: auto;
-    }
-    button{
-      background-size:contain;
-      background-position: center;
-      background-color:rgba($color: #000000, $alpha: 0);
-      background-repeat: no-repeat;
-      width: 15px;
-      height:15px;
-      appearance:none;
-      border:none;
-    }
-     button:first-of-type{
-      background-image: url('../../assets/images/proj-add-btn.svg');
-    }
-     button:last-of-type{
-      background-image: url('../../assets/images/dropdown-icon.svg');
-    }
+.projectOptions {
+  display: flex;
+  flex: 1;
+  gap: 1.2em;
+  p {
+    margin-right: auto;
+  }
+  button {
+    background-size: contain;
+    background-position: center;
+    background-color: rgba($color: #000000, $alpha: 0);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    border: none;
+  }
+  button:first-of-type {
+    background-image: url("../../assets/images/proj-add-btn.svg");
+  }
+  button:last-of-type {
+    background-image: url("../../assets/images/dropdown-icon.svg");
+  }
+}
+
+.projectList {
+  display: block;
+  outline: red solid 1px;
+  li > a {
+    display:none;
+  }
 }

@@ -12,6 +12,8 @@ export const Sidebar = ({ sbRef }) => {
     console.log(isDropDownActive);
   }, [isDropDownActive]);
 
+  function showProjectDropDown(e) {}
+
   return (
     <motion.div
       ref={sbRef}
@@ -47,8 +49,16 @@ export const Sidebar = ({ sbRef }) => {
           </div>
           <ul className={sidebarStyles.projectList}>
             <ProjectLink
-              to={"/app/projectId12345"}
+              to={"/app/projectId1"}
               projectName={"First Project"}
+            />
+            <ProjectLink
+              to={"/app/projectId2"}
+              projectName={"Second Project"}
+            />
+            <ProjectLink
+              to={"/app/projectId3"}
+              projectName={"Third Project"}
             />
           </ul>
         </div>
