@@ -52,9 +52,8 @@ export const Sidebar = ({ sbRef }) => {
                 animate={{ y: [-50, 0],opacity:1 }}
                 exit={{
                   opacity:0,
-                  y: [10, -40],
+                  y: [10, -35],
                 }}
-                // transition={{duration:.5}}
                 className={`${sidebarStyles.projectLinks} ${
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
