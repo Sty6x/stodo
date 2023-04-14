@@ -21,7 +21,11 @@ export const Sidebar = ({sbRef}) => {
           </li>
         </ul>
         <div className={sidebarStyles.projectContainer}>
-          <p>Projects</p>
+          <div className={sidebarStyles.projectOptions}>
+            <p>Projects</p>
+            <button/>
+            <button/>
+          </div>
           <ul className={sidebarStyles.projectList}></ul>
         </div>
       </div>
