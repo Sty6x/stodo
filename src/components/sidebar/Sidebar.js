@@ -47,7 +47,7 @@ export const Sidebar = ({ sbRef }) => {
               className={`projDropDownActive`}
             />
           </div>
-          <ul className={sidebarStyles.projectList}>
+          <ul className={`${sidebarStyles.projectList} ${isDropDownActive ? "dropDownActive" : "dropDownInactive"}`}>
             <ProjectLink
               to={"/app/projectId1"}
               projectName={"First Project"}

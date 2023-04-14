@@ -83,8 +83,18 @@
 
 .projectList {
   display: block;
-  outline: red solid 1px;
-  li > a {
+  & > li:not(:last-child){
+    margin-bottom: 5px;
+  }
+}
+
+@keyframes dropDown{
+  from{
+    opacity:1;
+    display:block
+  }
+  to{
+    opacity: 0;
     display:none;
   }
 }
