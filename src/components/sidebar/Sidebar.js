@@ -3,9 +3,9 @@ import sidebarStyles from "./sidebar.module.scss";
 import { animate, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
+import { ProjectLink } from "./projects/ProjectLink";
 
 export const Sidebar = ({ sbRef }) => {
-  const dropDownBtnRef = useRef();
   const [isDropDownActive, setIsDropDownActive] = useState(true);
 
   useEffect(() => {
@@ -45,7 +45,12 @@ export const Sidebar = ({ sbRef }) => {
               className={`projDropDownActive`}
             />
           </div>
-          <ul className={sidebarStyles.projectList}></ul>
+          <ul className={sidebarStyles.projectList}>
+            <ProjectLink
+              to={"/app/projectId12345"}
+              projectName={"First Project"}
+            />
+          </ul>
         </div>
       </div>
     </motion.div>
