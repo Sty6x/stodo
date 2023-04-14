@@ -24,7 +24,7 @@ export const Sidebar = ({sbRef}) => {
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
             <button/>
-            <button/>
+            <button className={`projDropDownActive`}/>
           </div>
           <ul className={sidebarStyles.projectList}></ul>
         </div>
