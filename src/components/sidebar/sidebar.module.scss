@@ -48,6 +48,7 @@
 
 .projectContainer {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   gap: 1.1em;
@@ -82,19 +83,11 @@
 }
 
 .projectList {
-  display: block;
+  // display: block;
   & > li:not(:last-child){
     margin-bottom: 5px;
   }
+  
 }
 
-@keyframes dropDown{
-  from{
-    opacity:1;
-    display:block
-  }
-  to{
-    opacity: 0;
-    display:none;
-  }
-}
+

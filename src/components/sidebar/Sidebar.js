@@ -12,8 +12,6 @@ export const Sidebar = ({ sbRef }) => {
     console.log(isDropDownActive);
   }, [isDropDownActive]);
 
-  function showProjectDropDown(e) {}
-
   return (
     <motion.div
       ref={sbRef}
