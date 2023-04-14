@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FirebaseContext } from "../../../App";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
 
 export const CreateProfile = () => {
 	const displayNameRef = useRef();
@@ -24,7 +25,7 @@ export const CreateProfile = () => {
 				name: displayNameRef.current,
 				email: auth.currentUser.email,
 			});
-			auth.currentUser.displayName = displayNameRef.current;
+      await updateProfile(auth.currentUser,{displayName:displayNameRef.current})
 			console.log(
 				`successfully created new User ${auth.currentUser.displayName}`
 			);
