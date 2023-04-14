@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import sidebarStyles from "./sidebar.module.scss";
-import { animate, motion } from "framer-motion";
+import { animate, AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
 import { ProjectLink } from "./projects/ProjectLink";
@@ -45,20 +45,36 @@ export const Sidebar = ({ sbRef }) => {
               className={`projDropDownActive`}
             />
           </div>
-          <ul className={`${sidebarStyles.projectList} ${isDropDownActive ? "dropDownActive" : "dropDownInactive"}`}>
-            <ProjectLink
-              to={"/app/projectId1"}
-              projectName={"First Project"}
-            />
-            <ProjectLink
-              to={"/app/projectId2"}
-              projectName={"Second Project"}
-            />
-            <ProjectLink
-              to={"/app/projectId3"}
-              projectName={"Third Project"}
-            />
-          </ul>
+          <AnimatePresence mode="wait" >
+            {isDropDownActive && (
+              <motion.ul
+                animate={{ y: [-200, 0],opacity:1 }}
+                 // opacity is set to 0 only AFTER exit  
+                exit={{
+                  opacity:0,
+                  y: [10, -100],
+                  transition: { duration:.2,type:'spring'},
+                }}
+                // transition={{duration:.5}}
+                className={`${sidebarStyles.projectList} ${
+                  isDropDownActive ? "dropDownActive" : "dropDownInactive"
+                }`}
+              >
+                <ProjectLink
+                  to={"/app/projectId1"}
+                  projectName={"First Project"}
+                />
+                <ProjectLink
+                  to={"/app/projectId2"}
+                  projectName={"Second Project"}
+                />
+                <ProjectLink
+                  to={"/app/projectId3"}
+                  projectName={"Third Project"}
+                />
+              </motion.ul>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.div>

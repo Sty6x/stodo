@@ -1,6 +1,6 @@
 .sideBarActive {
   transition: width 200ms ease-in-out;
-  * {
+  div {
     animation-name: tabTransitionRev;
     animation-duration: 200ms;
     animation-timing-function: ease-in-out;
@@ -39,7 +39,8 @@
 .sideBarInactive {
   width: 0%;
   transition: width 200ms ease-in-out;
-  * {
+  div{
+    display:none;
     animation-name: tabTransition;
     animation-duration: 150ms;
     animation-timing-function: ease-in-out;
@@ -52,40 +53,40 @@ a.active {
   background-color: rgba($color: #474747, $alpha: 0.5);
 }
 
-@keyframes dropDownInactive {
-  from {
-    opacity: 1;
-    display: block;
-  }
-  to {
-    opacity: 0;
-    display: none;
-    transform:translateY(-100px);
-  }
-}
+// @keyframes dropDownInactive {
+//   from {
+//     opacity: 1;
+//     display: block;
+//   }
+//   to {
+//     opacity: 0;
+//     display: none;
+//     transform:translateY(-100px);
+//   }
+// }
 
 
-@keyframes dropDownActive {
-  from {
-    opacity: 0;
-    display: none;
-    transform:translateY(-100px);
-  }
-  to {
-    opacity: 1;
-    display: block;
-  }
-}
-.dropDownActive {
-  outline: green 1px solid;
-  animation-name: dropDownActive;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
+// @keyframes dropDownActive {
+//   from {
+//     opacity: 0;
+//     display: none;
+//     transform:translateY(-100px);
+//   }
+//   to {
+//     opacity: 1;
+//     display: block;
+//   }
+// }
+// .dropDownActive {
+//   outline: green 1px solid;
+//   animation-name: dropDownActive;
+//   animation-fill-mode: forwards;
+//   animation-timing-function: ease-in-out;
+// }
 
-.dropDownInactive {
-  outline: red 1px solid;
-  animation-name: dropDownInactive;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
+// .dropDownInactive {
+//   outline: red 1px solid;
+//   animation-name: dropDownInactive;
+//   animation-fill-mode: forwards;
+//   animation-timing-function: ease-in-out;
+// }
