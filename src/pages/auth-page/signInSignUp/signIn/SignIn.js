@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState ,useContext} from "react";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
-import signFormStyles from "../../authpages.module.scss";
 import signInStyles from "./signin.module.scss";
 import { FirebaseContext } from "../../../../App";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -106,8 +105,6 @@ export const SignIn = () => {
 	}
 
 	return (
-		<main className={signFormStyles.page}>
 			<AuthContent key={"signInContent"} content={authContent} />
-		</main>
 	);
 };
