@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import authPageStyles from './authpages.module.scss'
 export const Auth = () => {
   // handle the logic here for sign in and sign up 
   // instead of changing a whole page for sign in and sign up 
@@ -7,8 +8,8 @@ export const Auth = () => {
   // display the auth while form components sit on top of auth page
 
 	return (
-		<>
+		<main className={authPageStyles.page}>
 			<Outlet />
-		</>
+		</main>
 	);
 };

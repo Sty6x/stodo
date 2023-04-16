@@ -121,8 +121,6 @@ export const SignUp = () => {
 		console.log(auth.currentUser);
 	}, [auth.currentUser]);
 	return (
-		<main className={signFormStyles.page}>
 			<AuthContent key={"signUpContent"} content={authContent} />
-		</main>
 	);
 };
