@@ -52,7 +52,7 @@ export const App = () => {
       </Navbar>
       <main className={appStyles.appPage}>
         {/*sidebar*/}
-        <Sidebar sbRef={sideBarRef} isActive={isSidebarActive} />
+        <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive}/>
         <Outlet />
       </main>
     </>
