@@ -1,0 +1,10 @@
+.titleDateContainer{
+  display:flex;
+  align-items: flex-end;
+  gap: 1em;
+  border-bottom: 1px solid rgba($color: #c0b3b3, $alpha: .5);
+  h1{
+    font-weight: 600;
+    font-size:2rem;
+  }
+}

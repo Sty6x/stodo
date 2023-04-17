@@ -10,7 +10,7 @@
   // font-size: 1rem;
     font-size: 1.1rem;
   li {
-    border-bottom: #c0b3b3 1px solid;
+    border-bottom: rgba($color: #c0b3b3, $alpha: .5) 1px solid;
   }
 
   & > li:hover {

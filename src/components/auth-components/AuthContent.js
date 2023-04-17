@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const AuthContent = ({ content }) => {
 	const navigate = useNavigate();
