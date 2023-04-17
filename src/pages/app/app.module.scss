@@ -10,6 +10,10 @@
   color: white;
   padding: 2em 4em;
   flex-direction: column;
+  gap: 2em;
+  div{
+    flex: 1; 
+  }
 }
 
 
