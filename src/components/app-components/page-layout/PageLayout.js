@@ -1,5 +1,9 @@
 import React from "react";
 import pageLayoutStyles from './pageLayout.module.scss'
-export const PageLayout = ()=>{
-  return <div>Contents here</div>
+export const PageLayout = ({tasks})=>{
+  return <div>Contents here
+  <ul>
+      {tasks}
+    </ul>
+  </div>
 }
