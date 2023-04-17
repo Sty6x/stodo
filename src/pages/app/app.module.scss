@@ -1,10 +1,17 @@
 .appPage {
   display: flex;
   outline: red solid 1px;
-  flex: 1;
   background-color: #272727;
+  flex: 1;
 }
 
+.pages{
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  flex:1;
+  color: white;
+}
 .navLeft {
   display: flex;
   min-width: 10%;
