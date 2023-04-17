@@ -11,7 +11,7 @@ export const Today = () => {
   const { auth } = useContext(FirebaseContext);
   const arr = [1, 2, 3, 4, 5, 6];
   const appendTasks = arr.map((task) => {
-    return <TaskItem task={task} />;
+    return <TaskItem key={task} task={task} />;
   });
 
   return (
@@ -21,7 +21,9 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout tasks={appendTasks} />
+      <PageLayout >
+        {appendTasks} 
+      </PageLayout >
     </div>
   );
 };
