@@ -1,4 +1,5 @@
 import React from "react";
+import { PageLayout } from "../content/PageLayout";
 import headerStyles from './headerComponent.module.scss'
 
 export const HeaderComponent =({pageName}) =>{
@@ -9,6 +10,7 @@ export const HeaderComponent =({pageName}) =>{
           <h1>{pageName}</h1>
           <p>Thu 23 Mar</p>
         </div>
+        <PageLayout/>
       </header>
   )
 }

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FirebaseContext } from "../../../App";
 import todayStyles from "./today.module.scss";
 import appPages from "../app.module.scss";
-import { HeaderComponent } from "../../../components/app-components/HeaderComponent";
+import { HeaderComponent } from "../../../components/app-components/header/HeaderComponent";
 export const Today = () => {
   const { auth } = useContext(FirebaseContext);
   return (
