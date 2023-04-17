@@ -11,7 +11,11 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <div className={`${todayStyles.contentContainer}`}>
-        <h1>Hello,{auth.currentUser.displayName}</h1>
+        {/* this should be a component */}
+        <div className={`${appPages.headerContainer}`}>
+             <h1>Today</h1> 
+              <p>Thu 23 Mar</p>
+        </div>
       </div>
     </div>
   );

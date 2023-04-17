@@ -11,6 +11,16 @@
   padding: 2em;
 
 }
+
+.headerContainer{
+  display:flex;
+  align-items: flex-end;
+  gap: 1em;
+  h1{
+    font-weight: 600;
+    font-size:2rem;
+  }
+}
 .navLeft {
   display: flex;
   min-width: 10%;
