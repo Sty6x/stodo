@@ -2,20 +2,24 @@
   display: flex;
   background-color: #272727;
   flex: 1;
+  min-width: 100%;
 }
-
-.pages{
-  display:flex;
-  flex:1;
+  @media (max-width: 1920px) {
+    .pages{
+      padding:2em 20em;
+    }
+  }
+.pages {
+  display: flex;
   color: white;
+  flex: 1;
   padding: 2em 4em;
   flex-direction: column;
   gap: 2em;
-  div{
-    flex: 1; 
+  div {
+    flex: 1;
   }
 }
-
 
 .navLeft {
   display: flex;
@@ -44,11 +48,10 @@
     height: 2.5em;
     border-radius: 50%;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     background-color: white;
-    color:#B22635;
+    color: #b22635;
     font-weight: bold;
-
   }
 }
