@@ -4,11 +4,12 @@
   flex: 1;
   min-width: 100%;
 }
-  @media (max-width: 1920px) {
-    .pages{
-      padding:2em 20em;
-    }
+ 
+.taskItemsContainer{
+  & > *:not(:last-child) {
+    margin-bottom:2em;
   }
+}
 .pages {
   display: flex;
   color: white;

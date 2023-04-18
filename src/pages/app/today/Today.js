@@ -10,12 +10,36 @@ import { TaskItem } from "../../../components/app-components/task-item/TaskItem"
 export const Today = () => {
   const { auth } = useContext(FirebaseContext);
   const arr = [
-    { title: "task 1", description: "description for task 1" },
-    { title: "task 2", description: "description for task 2" },
-    { title: "task 3", description: "description for task 3" },
-    { title: "task 4", description: "description for task 4" },
-    { title: "task 5", description: "description for task 5" },
-    { title: "task 6", description: "description for task 6" },
+    {
+      title: "task 1",
+      description: "description for task 1",
+      time: "Thur 2:32pm",
+    },
+    {
+      title: "task 2",
+      description: "description for task 2",
+      time: "Thur 3:52pm",
+    },
+    {
+      title: "task 3",
+      description: "description for task 3",
+      time: "Thur 6:00am",
+    },
+    {
+      title: "task 4",
+      description: "description for task 4",
+      time: "Thur 5:32pm",
+    },
+    {
+      title: "task 5",
+      description: "description for task 5",
+      time: "Thur 5:61pm",
+    },
+    {
+      title: "task 6",
+      description: "description for task 6",
+      time: "Thur 10:42am",
+    },
   ];
 
   const appendTasks = arr.map((task) => {
@@ -29,7 +53,9 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout>{appendTasks}</PageLayout>
+      <PageLayout>
+        <ul className={`${appPages.taskItemsContainer}`}>{appendTasks}</ul>
+      </PageLayout>
     </div>
   );
 };
