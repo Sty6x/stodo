@@ -4,10 +4,10 @@
   flex: 1;
   min-width: 100%;
 }
- 
-.taskItemsContainer{
+
+.taskItemsContainer {
   & > *:not(:last-child) {
-    margin-bottom:2em;
+    margin-bottom: 1em;
   }
 }
 .pages {

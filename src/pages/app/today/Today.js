@@ -13,32 +13,32 @@ export const Today = () => {
     {
       title: "task 1",
       description: "description for task 1",
-      time: "Thur 2:32pm",
+      time: "2:32pm",
     },
     {
       title: "task 2",
       description: "description for task 2",
-      time: "Thur 3:52pm",
+      time: "3:52pm",
     },
     {
       title: "task 3",
       description: "description for task 3",
-      time: "Thur 6:00am",
+      time: "6:00am",
     },
     {
       title: "task 4",
       description: "description for task 4",
-      time: "Thur 5:32pm",
+      time: "5:32pm",
     },
     {
       title: "task 5",
       description: "description for task 5",
-      time: "Thur 5:61pm",
+      time: "5:61pm",
     },
     {
       title: "task 6",
       description: "description for task 6",
-      time: "Thur 10:42am",
+      time: "10:42am",
     },
   ];
 
