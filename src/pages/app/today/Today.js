@@ -9,7 +9,15 @@ import { map } from "@firebase/util";
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 export const Today = () => {
   const { auth } = useContext(FirebaseContext);
-  const arr = [1, 2, 3, 4, 5, 6];
+  const arr = [
+    { title: "task 1", description: "description for task 1" },
+    { title: "task 2", description: "description for task 2" },
+    { title: "task 3", description: "description for task 3" },
+    { title: "task 4", description: "description for task 4" },
+    { title: "task 5", description: "description for task 5" },
+    { title: "task 6", description: "description for task 6" },
+  ];
+
   const appendTasks = arr.map((task) => {
     return <TaskItem key={task} task={task} />;
   });
@@ -21,9 +29,7 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout >
-        {appendTasks} 
-      </PageLayout >
+      <PageLayout>{appendTasks}</PageLayout>
     </div>
   );
 };
