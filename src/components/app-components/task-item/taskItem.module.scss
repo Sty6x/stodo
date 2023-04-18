@@ -1,9 +1,22 @@
-.task{
+.task {
   display: flex;
   background-color: #323232;
+  padding: 1.5em 1em;
+  border-radius:10px;
+  button {
+    appearance: none;
+  }
 }
-.taskContentContainer{
-  h3{
+.taskContentContainer {
+  h3 {
     text-transform: uppercase;
-  } 
+  }
+}
+
+.doneBtn {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  border: 1px solid #4a4a4a;
+  background-color: #646464;
 }
