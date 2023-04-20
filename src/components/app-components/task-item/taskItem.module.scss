@@ -2,44 +2,59 @@
   display: flex;
   background-color: #323232;
   padding: 1.5em 2.5em;
-  border-radius:10px;
-  align-items:center;
+  border-radius: 10px;
+  align-items: center;
   button {
     appearance: none;
+  }
+}
+
+.currentPriority{
+  display: flex;
+  align-items:center;
+  gap: .7em;
+  margin-bottom: .4em;
+  & > *{
+    box-sizing:border-box;
+    width: 20px;
+    height: 6px;
+    display: inline-block;
+    outline: white 1px solid;
+    border-radius:20px;
   }
 }
 .taskContentContainer {
   h3 {
     text-transform: uppercase;
-    margin-bottom:.5em;
-    span{
-      margin-left:6px;
-        color: #9D9D9D;
-        font-size: .8em;
-      }
+    margin-bottom: 0.5em;
+    font-weight: 500;
+    span {
+      margin-left: 6px;
+      color: #9d9d9d;
+      font-size: 0.8em;
+    }
   }
-  p{
-  font-size: .8em;
+  p {
+    font-size: 0.8em;
   }
 }
 
 .doneBtn {
   border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.3em;
+  height: 2.3em;
   border: 2px solid #4a4a4a;
   background-color: #646464;
-  margin-right:2em;
+  margin-right: 2em;
 }
 
-
-.taskOptions{
-  background-color:transparent;
+.taskOptions {
+  background-color: transparent;
   border: none;
-  background-image: url('../../../assets/images/options.svg');
+  background-image: url("../../../assets/images/options.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  width:25px;
+  width: 25px;
   height: 25px;
 }
