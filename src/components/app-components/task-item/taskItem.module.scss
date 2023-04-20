@@ -9,33 +9,37 @@
   }
 }
 
-.currentPriority{
+.currentPriority {
   display: flex;
-  align-items:center;
-  gap: .7em;
-  margin-bottom: .4em;
-  & > *{
-    box-sizing:border-box;
+  align-items: center;
+  gap: 0.7em;
+  & > * {
+    box-sizing: border-box;
     width: 20px;
     height: 6px;
     display: inline-block;
-    outline: white 1px solid;
-    border-radius:20px;
+    border-radius: 20px;
+    background-color: #565656;
   }
 }
 .taskContentContainer {
+  & > *:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+
   h3 {
     text-transform: uppercase;
-    margin-bottom: 0.5em;
     font-weight: 500;
     span {
       margin-left: 6px;
       color: #9d9d9d;
       font-size: 0.8em;
+      font-weight: 200;
     }
   }
   p {
-    font-size: 0.8em;
+    font-size: .9em;
+      font-weight: 400;
   }
 }
 
@@ -43,7 +47,7 @@
   border-radius: 50%;
   width: 2.3em;
   height: 2.3em;
-  border: 2px solid #4a4a4a;
+  border: 3px solid #4a4a4a;
   background-color: #646464;
   margin-right: 2em;
 }
