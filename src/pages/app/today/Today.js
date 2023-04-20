@@ -7,6 +7,7 @@ import { useOutletContext } from "react-router-dom";
 import { PageLayout } from "../../../components/app-components/page-layout/PageLayout";
 import { map } from "@firebase/util";
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
+import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 export const Today = () => {
   const { auth } = useContext(FirebaseContext);
   const arr = [
@@ -54,7 +55,7 @@ export const Today = () => {
     >
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
-        <ul className={`${appPages.taskItemsContainer}`}>{appendTasks}</ul>
+        <TaskContainer>{appendTasks}</TaskContainer>
       </PageLayout>
     </div>
   );
