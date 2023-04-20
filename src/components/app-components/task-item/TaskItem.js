@@ -1,10 +1,8 @@
 import React from "react";
 import taskItemStyles from "./taskItem.module.scss";
-import {taskModel} from '../../../model/taskModel.js'
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-export const TaskItem = ({ task }) => {
-  
+export const TaskItem = ({ task: { title, desc, time } }) => {
   return (
     <li className={`${taskItemStyles.task}`}>
       <button className={`${taskItemStyles.doneBtn}`} />
@@ -15,10 +13,10 @@ export const TaskItem = ({ task }) => {
           <span className={`${taskItemStyles.high}`}></span>
         </div>
         <h3>
-          {task.title}
-          <span>{task.time}</span>
+          {title}
+          <span>{time}</span>
         </h3>
-        <p>{task.description}</p>
+        <p>{desc}</p>
       </div>
       <button className={`${taskItemStyles.taskOptions}`} />
     </li>
