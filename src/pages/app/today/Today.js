@@ -9,20 +9,20 @@ import { map } from "@firebase/util";
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { onAuthStateChanged } from "firebase/auth";
+import { TaskDatabaseContext } from "../App";
 export const Today = () => {
-  const {db, auth } = useContext(FirebaseContext);
-  const [tasks, setTasks] = useState([]);
+  const { db, auth } = useContext(FirebaseContext);
+  const { tasks } = useContext(TaskDatabaseContext);
 
-  useEffect(()=>{
-    console.log('today page component mounted')   
-  },[])
-  
+  useEffect(() => {
+    console.log(tasks)
+    console.log("today page component mounted");
+  }, []);
 
+  // const appendTasks =  tasks.map((task) => {
+  //   return <TaskItem task={task} />;
+  // });
 
-
-
-
-  
   return (
     <div
       id="today-page"
@@ -30,7 +30,7 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout buttonType={'Add Task'}>
+      <PageLayout buttonType={"Add Task"}>
         {/* <TaskContainer>{appendTasks}</TaskContainer> */}
       </PageLayout>
     </div>

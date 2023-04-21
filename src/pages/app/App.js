@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Logo } from "../../components/logo/Logo";
 import { Navbar } from "../../components/navbar/Navbar";
@@ -7,19 +13,18 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { collection, getDocs } from "firebase/firestore";
+export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
   const { auth, db } = useContext(FirebaseContext);
   const sideBarBtnRef = useRef();
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
-  const [tasks,setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     console.log("app component mounted");
-    if (auth.currentUser) {
       getUserTasks();
-    }
   }, []);
 
   async function getUserTasks() {
@@ -31,8 +36,9 @@ export const App = () => {
         "tasks"
       );
       const getCollection = await getDocs(tasksCollection);
-      const newTasks = getCollection.docs.flatMap(doc=>doc.data())
-      console.log(newTasks)
+      const newTasks = getCollection.docs.flatMap((doc) => doc.data());
+      console.log(newTasks);
+      setTasks(newTasks);
     } catch (err) {
       console.log("unable to fetch collection at this time ");
       throw err;
@@ -51,6 +57,9 @@ export const App = () => {
       setIsSidebarActive(true);
     }
   }
+  useEffect(()=>{
+    console.log(tasks)
+  },[tasks])
 
   return (
     <>
@@ -79,7 +88,9 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <Outlet />
+        <TaskDatabaseContext.Provider value={tasks}>
+          <Outlet />
+        </TaskDatabaseContext.Provider>
       </main>
     </>
   );

@@ -4,7 +4,7 @@ import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import signFormStyles from "../../authpages.module.scss";
 import signInStyles from "./signin.module.scss";
 import { FirebaseContext } from "../../../../App";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { browserLocalPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 
 export const SignIn = () => {
   const {auth,db} = useContext(FirebaseContext)
@@ -63,6 +63,7 @@ export const SignIn = () => {
     const form = new FormData(e.target)
     const user = Object.fromEntries(form.entries())
     try{
+      const persistence = await setPersistence(auth,browserLocalPersistence)
       const signIn = await signInWithEmailAndPassword(auth,user.email,user.password);
       console.log('Signed in')
     }catch(err){
