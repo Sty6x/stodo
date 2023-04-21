@@ -21,15 +21,17 @@ export const App = () => {
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log("app component mounted");
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUserTasks(user.uid);
-      }else{
-        console.log('User not Signed in')
-
+        getUserTasks(user.uid).then(() => {
+          setIsLoading((prev) => false);
+        });
+      } else {
+        console.log("User not Signed in");
       }
     });
   }, []);
@@ -39,7 +41,6 @@ export const App = () => {
       const tasksCollection = collection(db, "users", userId, "tasks");
       const getCollection = await getDocs(tasksCollection);
       const newTasks = getCollection.docs.flatMap((doc) => doc.data());
-      console.log(newTasks);
       setTasks(newTasks);
     } catch (err) {
       console.log("unable to fetch collection at this time ");
@@ -59,10 +60,10 @@ export const App = () => {
       setIsSidebarActive(true);
     }
   }
+
   useEffect(() => {
     console.log(tasks);
   }, [tasks]);
-
   return (
     <>
       <Navbar>
@@ -90,8 +91,8 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={tasks}>
-          <Outlet />
+        <TaskDatabaseContext.Provider value={{tasks}}>
+          {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>
     </>
