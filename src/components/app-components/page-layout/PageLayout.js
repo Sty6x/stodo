@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AddButton } from "../button/AddButton";
+import { TaskForm } from "../task-form/TaskForm";
 import pageLayoutStyles from "./pageLayout.module.scss";
-export const PageLayout = ({ children, buttonText, handleBtnClick }) => {
+export const PageLayout = ({ children, buttonText }) => {
+  const [formActive, setFormActive] = useState(false);
+  function formControl() {
+    if (formActive) {
+      setFormActive(false);
+    } else {
+      setFormActive(true);
+    }
+  }
+
   return (
     <div
       id="page-content-container"
       className={`${pageLayoutStyles.contentContainer}`}
     >
-      {children}
-    <button className={pageLayoutStyles.button} onClick={handleBtnClick}>
-      {buttonText}
-    </button>
+      {formActive ? <TaskForm /> : <>{children}</>}{" "}
+      <button className={`${pageLayoutStyles.button}`} onClick={formControl}>
+        {formActive ? 'Cancel' : buttonText}
+      </button>
     </div>
   );
 };
