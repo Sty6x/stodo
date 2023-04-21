@@ -24,17 +24,19 @@ export const App = () => {
 
   useEffect(() => {
     console.log("app component mounted");
-      getUserTasks();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        getUserTasks(user.uid);
+      }else{
+        console.log('User not Signed in')
+
+      }
+    });
   }, []);
 
-  async function getUserTasks() {
+  async function getUserTasks(userId) {
     try {
-      const tasksCollection = collection(
-        db,
-        "users",
-        auth.currentUser.uid,
-        "tasks"
-      );
+      const tasksCollection = collection(db, "users", userId, "tasks");
       const getCollection = await getDocs(tasksCollection);
       const newTasks = getCollection.docs.flatMap((doc) => doc.data());
       console.log(newTasks);
@@ -57,9 +59,9 @@ export const App = () => {
       setIsSidebarActive(true);
     }
   }
-  useEffect(()=>{
-    console.log(tasks)
-  },[tasks])
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
   return (
     <>
