@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../../../App";
 import todayStyles from "./today.module.scss";
 import appPages from "../app.module.scss";
@@ -8,45 +8,21 @@ import { PageLayout } from "../../../components/app-components/page-layout/PageL
 import { map } from "@firebase/util";
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
+import { onAuthStateChanged } from "firebase/auth";
 export const Today = () => {
-  const { auth } = useContext(FirebaseContext);
-  const arr = [
-    {
-      title: "task 1",
-      desc: "description for task 1",
-      time: "2:32pm",
-    },
-    {
-      title: "task 2",
-      desc: "description for task 2",
-      time: "3:52pm",
-    },
-    {
-      title: "task 3",
-      desc: "description for task 3",
-      time: "6:00am",
-    },
-    {
-      title: "task 4",
-      desc: "description for task 4",
-      time: "5:32pm",
-    },
-    {
-      title: "task 5",
-      desc: "description for task 5",
-      time: "5:61pm",
-    },
-    {
-      title: "task 6",
-      desc: "description for task 6",
-      time: "10:42am",
-    },
-  ];
+  const {db, auth } = useContext(FirebaseContext);
+  const [tasks, setTasks] = useState([]);
 
-  const appendTasks = arr.map((task) => {
-    return <TaskItem key={task} task={task} />;
-  });
+  useEffect(()=>{
+    console.log('today page component mounted')   
+  },[])
+  
 
+
+
+
+
+  
   return (
     <div
       id="today-page"
@@ -55,7 +31,7 @@ export const Today = () => {
     >
       <HeaderComponent pageName={"Today"} />
       <PageLayout buttonType={'Add Task'}>
-        <TaskContainer>{appendTasks}</TaskContainer>
+        {/* <TaskContainer>{appendTasks}</TaskContainer> */}
       </PageLayout>
     </div>
   );

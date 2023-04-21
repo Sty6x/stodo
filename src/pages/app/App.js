@@ -8,10 +8,10 @@ import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 
 export const App = () => {
-  const { auth } = useContext(FirebaseContext);
+  const { auth,db } = useContext(FirebaseContext);
   const sideBarBtnRef = useRef();
   const sideBarRef = useRef();
-  const [isSidebarActive,setIsSidebarActive] = useState(true);
+  const [isSidebarActive, setIsSidebarActive] = useState(true);
 
   function setSideBarStatus() {
     const btn = sideBarBtnRef.current;
@@ -19,12 +19,20 @@ export const App = () => {
     console.log(sb);
     if (sb.classList.contains("sideBarActive")) {
       sb.classList.replace("sideBarActive", "sideBarInactive");
-      setIsSidebarActive(false)
+      setIsSidebarActive(false);
     } else {
       sb.classList.replace("sideBarInactive", "sideBarActive");
-      setIsSidebarActive(true)
+      setIsSidebarActive(true);
     }
   }
+
+  async function checkExistingTask() {
+
+  }
+
+  useEffect(() => {
+    console.log("app component mounted");
+  }, []);
 
   return (
     <>
@@ -52,7 +60,7 @@ export const App = () => {
       </Navbar>
       <main className={appStyles.appPage}>
         {/*sidebar*/}
-        <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive}/>
+        <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
         <Outlet />
       </main>
     </>
