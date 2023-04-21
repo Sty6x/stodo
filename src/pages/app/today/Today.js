@@ -10,14 +10,27 @@ import { TaskItem } from "../../../components/app-components/task-item/TaskItem"
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { onAuthStateChanged } from "firebase/auth";
 import { TaskDatabaseContext } from "../App";
+import { addDoc, collection, setDoc } from "firebase/firestore";
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
-  const {tasks} = useContext(TaskDatabaseContext);
+  const {tasks,setTasks} = useContext(TaskDatabaseContext);
 
   useEffect(() => {
     console.log(tasks)
     console.log("today page component mounted");
   }, []);
+
+
+  async function addTask(){
+    try{
+      const tasksCollection  = collection(db,'users',auth.currentUser.uid,'tasks')
+      // const newTask = addDoc(tasksCollection,{title:})
+    }catch(err){
+      console.log('unable to add task')
+      throw err
+    }
+
+  }
 
   const appendTasks =  tasks.map((task) => {
     return <TaskItem task={task} />;
