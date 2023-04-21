@@ -10,25 +10,28 @@ import { TaskDatabaseContext } from "../App";
 import { addDoc, collection, setDoc } from "firebase/firestore";
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
-  const {tasks,setTasks} = useContext(TaskDatabaseContext);
+  const { tasks, setTasks } = useContext(TaskDatabaseContext);
 
   useEffect(() => {
-    console.log(tasks)
+    console.log(tasks);
     console.log("today page component mounted");
   }, []);
 
-
-  async function addTask(){
-    try{
-      const tasksCollection  = collection(db,'users',auth.currentUser.uid,'tasks')
-    }catch(err){
-      console.log('unable to add task')
-      throw err
+  async function addTask() {
+    try {
+      const tasksCollection = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "tasks"
+      );
+    } catch (err) {
+      console.log("unable to add task");
+      throw err;
     }
-
   }
 
-  const appendTasks =  tasks.map((task) => {
+  const appendTasks = tasks.map((task) => {
     return <TaskItem task={task} />;
   });
 
@@ -39,7 +42,7 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout buttonType={"Add Task"}>
+      <PageLayout buttonText={"Add Task"}>
         <TaskContainer>{appendTasks}</TaskContainer>
       </PageLayout>
     </div>
