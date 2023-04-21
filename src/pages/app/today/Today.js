@@ -54,7 +54,7 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout>
+      <PageLayout buttonType={'Add Task'}>
         <TaskContainer>{appendTasks}</TaskContainer>
       </PageLayout>
     </div>
