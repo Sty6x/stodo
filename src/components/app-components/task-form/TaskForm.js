@@ -21,6 +21,10 @@ export const TaskForm = () => {
             <option value={"high"}>High</option>
           </select>
         </div>
+          <div className={taskFormStyles.addAndCancelBtn}>
+            <button>Add Task</button>
+            <button>Cancel</button>
+        </div>
       </form>
     </div>
   );

@@ -1,31 +1,28 @@
-.contentContainer{
-  & > *:not(:last-child){
+.contentContainer {
+  position: relative;
+  & > *:not(:last-child) {
     margin-bottom: 1.5em;
   }
 }
-
 
 .button {
   background-color: transparent;
   appearance: none;
   border: none;
   color: white;
-  position:relative;
+  position: relative;
   display: flex;
   align-items: center;
   font-size: 1.2rem;
 }
 
-
-.button::before{
+.button::before {
   content: "";
-  background-image: url('../../../assets/images/add-btn.svg');
+  background-image: url("../../../assets/images/add-btn.svg");
   background-position: center;
   background-size: contain;
   width: 1em;
   height: 1em;
   background-repeat: no-repeat;
-  margin-right:.5em;
+  margin-right: 0.5em;
 }
-
-
