@@ -41,8 +41,21 @@
   }
 }
 
-.addAndCancelBtn{
+.addAndCancelBtn {
   border-top: #c0b3b380 1px solid;
-  // padding-top: 1.2em;
   padding: 1em 0 1em 0;
+  display: flex;
+  :first-child{
+    background-color:#FF2855 ;
+  }
+  button {
+    background-color: transparent;
+    appearance: none;
+    border: none;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
 }

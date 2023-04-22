@@ -24,7 +24,7 @@ export const TaskForm = ({ cancelBtn }) => {
           </select>
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button>Add Task</button>
+          <button>Add</button>
           <button onClick={cancelBtn}>Cancel</button>
         </div>
       </form>
