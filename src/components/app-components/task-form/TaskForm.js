@@ -6,12 +6,12 @@ export const TaskForm = ({cancelBtn}) => {
     <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
         <div className={taskFormStyles.inputContainer}>
-          <label htmlFor="title">Title:</label>
-          <input id="title"></input>
+          {/* <label htmlFor="title">Title:</label> */}
+          <input placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <label htmlFor="desc">Description:</label>
-          <input id="desc"></input>
+          {/* <label htmlFor="desc">Description:</label> */}
+          <input placeholder="Description" id="desc"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
           <label htmlFor="priority">Select Task Priority:</label>

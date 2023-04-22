@@ -1,6 +1,6 @@
 .taskFormContainer {
   position: absolute;
-  background-color: rgba($color: #000000, $alpha: 0.4);
+  background-color: rgba($color: #323232, $alpha: 0.6);
   padding: 3em;
   border-radius: 10px;
   width: 100%;
@@ -8,19 +8,21 @@
 }
 
 .taskFormBody{
-  div >label{
-    display:block;
-    margin-bottom: .4em;
-    font-size:.9rem;
-  }
   div:not(last-child){
       margin-bottom: 2em;
   }
+  div> input[id="title"]{
+    font-weight: 600;
+    font-size:1.2rem;
+  }
   div > input,div > select{
     width: 100%;
+    color: white;
     height: 20px;
-    background-color: #DBDBDB;
+    // background-color: #DBDBDB;
+    background-color: transparent;
     border:none;
     border-radius: 5px;
+    outline: none;
   }
 }
