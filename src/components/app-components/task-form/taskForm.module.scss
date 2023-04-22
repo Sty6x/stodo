@@ -1,14 +1,14 @@
 .taskFormContainer {
   position: absolute;
   background-color: rgba($color: #323232, $alpha: 0.6);
-  padding: 3em;
+  padding: 1.4em 2em 1.4em 2em;
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .taskFormBody {
-  div:not(last-child) {
+  & > *:not(:last-child) {
     margin-bottom: 0.5em;
   }
   div > input[id="title"] {
@@ -39,4 +39,10 @@
     border-radius: 5px;
     outline: none;
   }
+}
+
+.addAndCancelBtn{
+  border-top: #c0b3b380 1px solid;
+  // padding-top: 1.2em;
+  padding: 1em 0 1em 0;
 }

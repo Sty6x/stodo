@@ -1,7 +1,7 @@
 import React from "react";
 import taskFormStyles from "./taskForm.module.scss";
 
-export const TaskForm = ({cancelBtn}) => {
+export const TaskForm = ({ cancelBtn }) => {
   return (
     <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
@@ -13,7 +13,9 @@ export const TaskForm = ({cancelBtn}) => {
           {/* <label htmlFor="desc">Description:</label> */}
           <input placeholder="Description" id="desc"></input>
         </div>
-        <div className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}>
+        <div
+          className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
+        >
           <label htmlFor="priority">Select Task Priority:</label>
           <select name="taskPriority">
             <option value={"low"}>Low</option>
@@ -21,9 +23,9 @@ export const TaskForm = ({cancelBtn}) => {
             <option value={"high"}>High</option>
           </select>
         </div>
-          <div className={taskFormStyles.addAndCancelBtn}>
-            <button>Add Task</button>
-            <button onClick={cancelBtn}>Cancel</button>
+        <div className={taskFormStyles.addAndCancelBtn}>
+          <button>Add Task</button>
+          <button onClick={cancelBtn}>Cancel</button>
         </div>
       </form>
     </div>
