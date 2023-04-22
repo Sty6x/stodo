@@ -3,7 +3,7 @@ import taskFormStyles from "./taskForm.module.scss";
 
 export const TaskForm = () => {
   return (
-    <div className={taskFormStyles.taskformContainer}>
+    <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
         <div className={taskFormStyles.inputContainer}>
           <label htmlFor="title">Title:</label>
@@ -14,11 +14,11 @@ export const TaskForm = () => {
           <input id="desc"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <label htmlFor='priority'>Select Task Priority:</label>
+          <label htmlFor="priority">Select Task Priority:</label>
           <select name="taskPriority">
-            <option value={'low'}>Low</option>
-            <option value={'medium'}>Medium</option>
-            <option value={'high'}>High</option>
+            <option value={"low"}>Low</option>
+            <option value={"medium"}>Medium</option>
+            <option value={"high"}>High</option>
           </select>
         </div>
       </form>

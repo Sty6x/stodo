@@ -17,9 +17,10 @@ export const PageLayout = ({ children, buttonText }) => {
       id="page-content-container"
       className={`${pageLayoutStyles.contentContainer}`}
     >
-      {formActive ? <TaskForm /> : <>{children}</>}{" "}
+      {formActive && <TaskForm />}
+      {children}
       <button className={`${pageLayoutStyles.button}`} onClick={formControl}>
-        {formActive ? 'Cancel' : buttonText}
+        {formActive ? "Cancel" : buttonText}
       </button>
     </div>
   );
