@@ -17,11 +17,11 @@ export const PageLayout = ({ children, buttonText }) => {
       id="page-content-container"
       className={`${pageLayoutStyles.contentContainer}`}
     >
+          {children}
       {formActive ? (
-        <TaskForm />
+        <TaskForm  cancelBtn={formControl}/>
       ) : (
         <>
-          {children}
           <button
             className={`${pageLayoutStyles.button}`}
             onClick={formControl}

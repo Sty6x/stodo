@@ -1,7 +1,7 @@
 import React from "react";
 import taskFormStyles from "./taskForm.module.scss";
 
-export const TaskForm = () => {
+export const TaskForm = ({cancelBtn}) => {
   return (
     <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
@@ -23,7 +23,7 @@ export const TaskForm = () => {
         </div>
           <div className={taskFormStyles.addAndCancelBtn}>
             <button>Add Task</button>
-            <button>Cancel</button>
+            <button onClick={cancelBtn}>Cancel</button>
         </div>
       </form>
     </div>
