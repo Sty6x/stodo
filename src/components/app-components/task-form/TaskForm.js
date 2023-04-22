@@ -13,7 +13,7 @@ export const TaskForm = ({cancelBtn}) => {
           {/* <label htmlFor="desc">Description:</label> */}
           <input placeholder="Description" id="desc"></input>
         </div>
-        <div className={taskFormStyles.inputContainer}>
+        <div className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}>
           <label htmlFor="priority">Select Task Priority:</label>
           <select name="taskPriority">
             <option value={"low"}>Low</option>

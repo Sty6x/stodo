@@ -7,21 +7,35 @@
   box-sizing: border-box;
 }
 
-.taskFormBody{
-  div:not(last-child){
-      margin-bottom: 2em;
+.taskFormBody {
+  div:not(last-child) {
+    margin-bottom: 0.5em;
   }
-  div> input[id="title"]{
+  div > input[id="title"] {
     font-weight: 600;
-    font-size:1.2rem;
+    font-size: 1.2rem;
   }
-  div > input,div > select{
+  div > input[id="desc"] {
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
+  .selectPriority {
+    width: max-content;
+    select > option {
+      color: black;
+    }
+    label {
+      font-size: 0.8rem;
+    }
+  }
+  div > input,
+  div > select {
     width: 100%;
     color: white;
     height: 20px;
     // background-color: #DBDBDB;
     background-color: transparent;
-    border:none;
+    border: none;
     border-radius: 5px;
     outline: none;
   }
