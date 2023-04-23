@@ -15,6 +15,7 @@ import { TaskContainer } from "../../../components/app-components/task-container
 import { TaskDatabaseContext } from "../App";
 import { addDoc, collection, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
+import { AnimatePresence } from "framer-motion";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
@@ -52,7 +53,7 @@ export const Today = () => {
         ...formEntries,
         authorID: auth.currentUser.uid,
       });
-      setTasks((prev) => [...prev,formEntries]);
+      setTasks((prev) => [...prev, formEntries]);
       console.log("task added");
     } catch (err) {
       console.log("unable to add task");
@@ -61,7 +62,7 @@ export const Today = () => {
   }
 
   useEffect(() => {
-    setFormActive(false)
+    setFormActive(false);
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
@@ -77,19 +78,22 @@ export const Today = () => {
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
         <TaskContainer>{appendTasks}</TaskContainer>
-        {formActive ? (
-          <TaskForm
-            cancelBtn={formControl}
-            formRef={formRef}
-            onSubmitHandler={addTask}
-          />
-        ) : (
-          <>
-            <button className={`${todayStyles.button}`} onClick={formControl}>
-              Add Task
-            </button>
-          </>
-        )}
+        <AnimatePresence>
+          {formActive ? (
+            <TaskForm
+              key={'taskForm'}
+              cancelBtn={formControl}
+              formRef={formRef}
+              onSubmitHandler={addTask}
+            />
+          ) : (
+            <>
+              <button className={`${todayStyles.button}`} onClick={formControl}>
+                Add Task
+              </button>
+            </>
+          )}
+        </AnimatePresence>
       </PageLayout>
     </div>
   );
