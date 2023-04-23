@@ -38,6 +38,8 @@ export const Today = () => {
   async function addTask(e) {
     e.preventDefault();
     const target = e.target;
+    const formObj = new FormData(target)
+    console.log(Object.fromEntries(formObj.entries()))
     try {
       console.log("task added");
       // const tasksCollection = collection(
@@ -66,7 +68,7 @@ export const Today = () => {
       <PageLayout>
         <TaskContainer>{appendTasks}</TaskContainer>
         {formActive ? (
-          <TaskForm cancelBtn={formControl} />
+          <TaskForm cancelBtn={formControl} formRef={formRef}   onSubmitHandler={addTask}/>
         ) : (
           <>
             <button

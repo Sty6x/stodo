@@ -4,12 +4,16 @@ import taskFormStyles from "./taskForm.module.scss";
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   return (
     <div className={taskFormStyles.taskFormContainer}>
-      <form className={taskFormStyles.taskFormBody}>
+      <form
+        onSubmit={onSubmitHandler}
+        ref={formRef}
+        className={taskFormStyles.taskFormBody}
+      >
         <div className={taskFormStyles.inputContainer}>
-          <input placeholder="Title" id="title"></input>
+          <input name="title" placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <input placeholder="Description" id="desc"></input>
+          <input name="desc" placeholder="Description" id="desc"></input>
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
@@ -25,10 +29,10 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}
         >
           <label htmlFor="date">Date</label>
-          <input type="datetime-local" />
+          <input name="date" type="datetime-local" />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button type="button" onClick={onSubmitHandler}>Add task</button>
+          <button type="submit">Add task</button>
           <button type="button" onClick={cancelBtn}>
             Cancel
           </button>
