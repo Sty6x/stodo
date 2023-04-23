@@ -61,7 +61,7 @@ export const Today = () => {
   }
 
   useEffect(() => {
-    console.log(tasks);
+    setFormActive(false)
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
