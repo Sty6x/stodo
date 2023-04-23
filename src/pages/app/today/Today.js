@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { FirebaseContext } from "../../../App";
 import todayStyles from "./today.module.scss";
 import appPages from "../app.module.scss";
@@ -8,18 +14,27 @@ import { TaskItem } from "../../../components/app-components/task-item/TaskItem"
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { TaskDatabaseContext } from "../App";
 import { addDoc, collection, setDoc } from "firebase/firestore";
+import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
   const { tasks, setTasks } = useContext(TaskDatabaseContext);
-  const formRef = useRef()
+  const formRef = useRef();
 
   useEffect(() => {
     console.log(tasks);
     console.log("today page component mounted");
   }, []);
 
+  const [formActive, setFormActive] = useState(false);
+  function formControl() {
+    if (formActive) {
+      setFormActive(false);
+    } else {
+      setFormActive(true);
+    }
+  }
   async function addTask(e) {
     e.preventDefault();
     const target = e.target;
@@ -48,11 +63,21 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <TodayHandlerContext.Provider value={{addTask,formRef}}>
-        <PageLayout buttonText={"Add Task"}>
-          <TaskContainer>{appendTasks}</TaskContainer>
-        </PageLayout>
-      </TodayHandlerContext.Provider>
+      <PageLayout>
+        <TaskContainer>{appendTasks}</TaskContainer>
+        {formActive ? (
+          <TaskForm cancelBtn={formControl} />
+        ) : (
+          <>
+            <button
+              className={`${todayStyles.button}`}
+              onClick={formControl}
+            >
+              Add Task
+            </button>
+          </>
+        )}
+      </PageLayout>
     </div>
   );
 };

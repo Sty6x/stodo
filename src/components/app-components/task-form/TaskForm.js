@@ -6,11 +6,9 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
     <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
         <div className={taskFormStyles.inputContainer}>
-          {/* <label htmlFor="title">Title:</label> */}
           <input placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          {/* <label htmlFor="desc">Description:</label> */}
           <input placeholder="Description" id="desc"></input>
         </div>
         <div

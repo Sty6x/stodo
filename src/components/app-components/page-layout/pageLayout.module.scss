@@ -5,24 +5,4 @@
   }
 }
 
-.button {
-  background-color: transparent;
-  appearance: none;
-  border: none;
-  color: white;
-  position: relative;
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-}
 
-.button::before {
-  content: "";
-  background-image: url("../../../assets/images/add-btn.svg");
-  background-position: center;
-  background-size: contain;
-  width: 1em;
-  height: 1em;
-  background-repeat: no-repeat;
-  margin-right: 0.5em;
-}
