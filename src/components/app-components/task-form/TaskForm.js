@@ -1,7 +1,7 @@
 import React from "react";
 import taskFormStyles from "./taskForm.module.scss";
 
-export const TaskForm = ({ cancelBtn }) => {
+export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   return (
     <div className={taskFormStyles.taskFormContainer}>
       <form className={taskFormStyles.taskFormBody}>
@@ -30,7 +30,7 @@ export const TaskForm = ({ cancelBtn }) => {
           <input type="datetime-local" />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button type="button">Add task</button>
+          <button type="button" onClick={onSubmitHandler}>Add task</button>
           <button type="button" onClick={cancelBtn}>
             Cancel
           </button>
