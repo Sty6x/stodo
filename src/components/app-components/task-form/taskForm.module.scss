@@ -44,11 +44,20 @@
   border-top: #c0b3b380 1px solid;
   padding: 1em 0 1em 0;
   display: flex;
-  :first-child{
-    background-color:#FF2855 ;
+  gap: 1em;
+  :first-child {
+    background-color: #ff2855;
     border-radius: 3px;
+    font-weight: 600;
+  }
+  :last-child:hover {
+    background-color: rgba($color: #c0b3b3, $alpha: .1);
+    transition: background-color 150ms ease-in-out;
   }
   button {
+    transition: background-color 150ms ease-in-out;
+    font-weight: 500;
+    font-size: 0.8rem;
     padding: 5px 15px;
     background-color: transparent;
     appearance: none;
@@ -57,6 +66,5 @@
     position: relative;
     display: flex;
     align-items: center;
-    font-size: 1rem;
   }
 }
