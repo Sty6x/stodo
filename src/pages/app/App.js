@@ -91,7 +91,7 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{tasks}}>
+        <TaskDatabaseContext.Provider value={{tasks,setTasks}}>
           {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>

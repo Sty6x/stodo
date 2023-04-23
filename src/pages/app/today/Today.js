@@ -38,21 +38,31 @@ export const Today = () => {
   async function addTask(e) {
     e.preventDefault();
     const target = e.target;
-    const formObj = new FormData(target)
-    console.log(Object.fromEntries(formObj.entries()))
+    const form = new FormData(target);
+    const formEntries = Object.fromEntries(form.entries());
+
     try {
+      const tasksCollection = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "tasks"
+      );
+      const addTask = await addDoc(tasksCollection, {
+        ...formEntries,
+        authorID: auth.currentUser.uid,
+      });
+      setTasks((prev) => [...prev,formEntries]);
       console.log("task added");
-      // const tasksCollection = collection(
-      //   db,
-      //   "users",
-      //   auth.currentUser.uid,
-      //   "tasks"
-      // );
     } catch (err) {
       console.log("unable to add task");
       throw err;
     }
   }
+
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
     return <TaskItem task={task} />;
@@ -68,13 +78,14 @@ export const Today = () => {
       <PageLayout>
         <TaskContainer>{appendTasks}</TaskContainer>
         {formActive ? (
-          <TaskForm cancelBtn={formControl} formRef={formRef}   onSubmitHandler={addTask}/>
+          <TaskForm
+            cancelBtn={formControl}
+            formRef={formRef}
+            onSubmitHandler={addTask}
+          />
         ) : (
           <>
-            <button
-              className={`${todayStyles.button}`}
-              onClick={formControl}
-            >
+            <button className={`${todayStyles.button}`} onClick={formControl}>
               Add Task
             </button>
           </>
