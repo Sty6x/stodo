@@ -30,7 +30,7 @@ export const TaskForm = ({ cancelBtn }) => {
           <input type="datetime-local" />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button type="button">Add</button>
+          <button type="button">Add task</button>
           <button type="button" onClick={cancelBtn}>
             Cancel
           </button>
