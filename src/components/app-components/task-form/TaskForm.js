@@ -18,14 +18,14 @@ export const TaskForm = ({ cancelBtn }) => {
         >
           <label htmlFor="priority">Select Task Priority:</label>
           <select name="taskPriority">
-            <option value={"low"}>Low</option>
-            <option value={"medium"}>Medium</option>
-            <option value={"high"}>High</option>
+            <option value={"#008CFF"}>Low</option>
+            <option value={"#F4C70A"}>Medium</option>
+            <option value={"#FF2855"}>High</option>
           </select>
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button>Add</button>
-          <button onClick={cancelBtn}>Cancel</button>
+          <button type="button">Add</button>
+          <button type="button" onClick={cancelBtn}>Cancel</button>
         </div>
       </form>
     </div>
