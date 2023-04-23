@@ -32,9 +32,8 @@
 }
 
 .selectPriority {
-  width: 10%;
   select {
-    margin-top: .5em;
+    margin-top: 0.5em;
     width: 100%;
     background-color: transparent;
     border: none;
@@ -45,11 +44,22 @@
   select > option {
     color: black;
   }
+}
+
+.selectPriority,
+.dateInput {
+  width: 10%;
   label {
     font-size: 0.8rem;
   }
 }
 
+.dateInput{
+  input{
+    font-family: inter;
+
+  }
+}
 .addAndCancelBtn {
   border-top: #c0b3b380 1px solid;
   padding: 1em 0 1em 0;

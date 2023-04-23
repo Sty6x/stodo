@@ -23,14 +23,17 @@ export const TaskForm = ({ cancelBtn }) => {
             <option value={"#FF2855"}>High</option>
           </select>
         </div>
-          <div className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}>
+        <div
+          className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}
+        >
           <label htmlFor="date">Date</label>
-          <input type='datetime-local'/>
-
+          <input type="datetime-local" />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button type="button">Add</button>
-          <button type="button" onClick={cancelBtn}>Cancel</button>
+          <button type="button" onClick={cancelBtn}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>
