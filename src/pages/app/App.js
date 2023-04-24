@@ -41,11 +41,11 @@ export const App = () => {
       const tasksCollection = collection(db, "users", userId, "tasks");
       const getCollection = await getDocs(tasksCollection);
       const newTasks = getCollection.docs.map((doc) => {
-        const newDoc = { ...doc.data(), taskID: doc.id };
+        const newDoc = { ...doc.data(), id: doc.id };
         return newDoc;
       });
       console.log(newTasks);
-      // setTasks((prev) => [...prev, newTasks]);
+      setTasks(newTasks);
     } catch (err) {
       console.log("unable to fetch collection at this time ");
       throw err;

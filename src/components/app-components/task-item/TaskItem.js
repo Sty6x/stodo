@@ -2,9 +2,9 @@ import React from "react";
 import taskItemStyles from "./taskItem.module.scss";
 import PropTypes from "prop-types";
 
-export const TaskItem = ({ task: { title, desc, time } }) => {
+export const TaskItem = ({ task: { title, desc, time,id } }) => {
   return (
-    <li className={`${taskItemStyles.task}`}>
+    <li id={id} className={`${taskItemStyles.task}`}>
       <button className={`${taskItemStyles.doneBtn}`} />
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>

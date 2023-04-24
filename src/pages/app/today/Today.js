@@ -75,7 +75,7 @@ export const Today = () => {
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
-    return <TaskItem key={task.title} task={task} />;
+    return <TaskItem key={task.id} task={task} />;
   });
 
   return (
