@@ -42,7 +42,7 @@ export const Today = () => {
     try {
       const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
       const deleteTaskDoc = await deleteDoc(docRef);
-      const newFilteredTask = tasks.filter((task) => task.id !== id);
+      const newFilteredTask = tasks.filter((task) => task.ID !== id);
       setTasks(newFilteredTask);
     } catch (err) {
       console.log("Unable to delete task");
