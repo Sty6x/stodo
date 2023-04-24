@@ -40,10 +40,7 @@ export const App = () => {
     try {
       const tasksCollection = collection(db, "users", userId, "tasks");
       const getCollection = await getDocs(tasksCollection);
-      const newTasks = getCollection.docs.map((doc) => {
-        const newDoc = { ...doc.data(), id: doc.id };
-        return newDoc;
-      });
+      const newTasks = getCollection.docs.map((doc) => doc.data());
       console.log(newTasks);
       setTasks(newTasks);
     } catch (err) {

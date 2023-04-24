@@ -16,6 +16,7 @@ import { TaskDatabaseContext } from "../App";
 import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 import { AnimatePresence, motion } from "framer-motion";
+import { uid } from "uid";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
@@ -54,19 +55,17 @@ export const Today = () => {
     const target = e.target;
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
-
+    const taskID = uid(16) 
+    const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID}
     try {
-      const tasksCollection = collection(
+      const tasksCollection = doc(
         db,
         "users",
         auth.currentUser.uid,
-        "tasks"
+        'tasks',taskID,
       );
-      const addTask = await addDoc(tasksCollection, {
-        ...formEntries,
-        authorID: auth.currentUser.uid,
-      });
-      setTasks((prev) => [...prev, formEntries]);
+      const addTask = await setDoc(tasksCollection,newTask);
+      setTasks((prev) => [...prev, newTask]);
       console.log("task added");
     } catch (err) {
       console.log("unable to add task");
@@ -76,10 +75,11 @@ export const Today = () => {
 
   useEffect(() => {
     setFormActive(false);
+    console.log(tasks)
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
-    return <TaskItem deleteTask={deleteTask} key={task.id} task={task} />;
+    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
 
   return (
@@ -92,7 +92,7 @@ export const Today = () => {
       <PageLayout>
         <TaskContainer>
           {appendTasks}
-          <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait"> */}
             {formActive ? (
               <TaskForm
                 key={"taskForm"}
@@ -111,7 +111,7 @@ export const Today = () => {
                   Add Task
                 </motion.button>
             )}
-          </AnimatePresence>
+          {/* </AnimatePresence> */}
         </TaskContainer>
       </PageLayout>
     </div>
