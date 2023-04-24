@@ -48,8 +48,9 @@
 
 .selectPriority,
 .dateInput {
-  width: 10%;
+  width: max-content;
   label {
+    display: block;
     font-size: 0.8rem;
   }
 }

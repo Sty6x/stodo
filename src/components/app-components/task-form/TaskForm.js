@@ -1,6 +1,14 @@
 import React from "react";
 import taskFormStyles from "./taskForm.module.scss";
 import { motion } from "framer-motion";
+import { Calendar } from 'primereact/calendar';
+        
+//theme
+import "primereact/resources/themes/soho-dark/theme.css";     
+    
+//core
+import "primereact/resources/primereact.min.css";                                       
+
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   return (
     <motion.div
@@ -32,8 +40,9 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}
         >
-          <label htmlFor="date">Date</label>
-          <input name="date" type="datetime-local" />
+          {/* <label htmlFor="date">Date</label> */}
+          {/* <input name="date" type="datetime-local" /> */}
+          <Calendar value={new Date()} showIcon/>
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button type="submit">Add task</button>

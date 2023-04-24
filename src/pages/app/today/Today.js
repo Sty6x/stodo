@@ -91,8 +91,8 @@ export const Today = () => {
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
         <TaskContainer>
-          {appendTasks}
-          {/* <AnimatePresence mode="wait"> */}
+          {appendTasks }
+          <AnimatePresence mode="wait">
             {formActive ? (
               <TaskForm
                 key={"taskForm"}
@@ -111,7 +111,7 @@ export const Today = () => {
                   Add Task
                 </motion.button>
             )}
-          {/* </AnimatePresence> */}
+          </AnimatePresence>
         </TaskContainer>
       </PageLayout>
     </div>
