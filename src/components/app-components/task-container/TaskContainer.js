@@ -4,8 +4,10 @@ import taskContainerStyles from "./taskContainer.module.scss";
 
 export const TaskContainer = ({ children }) => {
   return (
-    <motion.ul className={taskContainerStyles.container}>
-      <AnimatePresence mode="popLayout" >{children}</AnimatePresence>
-    </motion.ul>
+    <AnimatePresence mode="popLayout">
+      <motion.ul className={taskContainerStyles.container}>
+        {children}
+      </motion.ul>
+    </AnimatePresence>
   );
 };

@@ -85,7 +85,7 @@ export const Today = () => {
       <PageLayout>
         <TaskContainer>
           {appendTasks}
-          <AnimatePresence>
+          <AnimatePresence mode="wait" >
             {formActive ? (
               <TaskForm
                 key={"taskForm"}
