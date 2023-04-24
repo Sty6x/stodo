@@ -32,18 +32,19 @@
 }
 
 .selectPriority {
-  select {
-    margin-top: 0.5em;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    display: block;
-  }
-  select > option {
-    color: black;
-  }
+  color: black;
+  // select {
+  //   margin-top: 0.5em;
+  //   width: 100%;
+  //   background-color: transparent;
+  //   border: none;
+  //   outline: none;
+  //   color: white;
+  //   display: block;
+  // }
+  // select > option {
+  //   color: black;
+  // }
 }
 
 .selectPriority,

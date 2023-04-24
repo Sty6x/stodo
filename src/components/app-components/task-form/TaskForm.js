@@ -1,9 +1,8 @@
-import React from "react";
+import {React, useState } from "react";
 import taskFormStyles from "./taskForm.module.scss";
 import { motion } from "framer-motion";
 import { Calendar } from "primereact/calendar";
-
-import { SelectButton } from "primereact/selectbutton";
+import { Dropdown } from "primereact/dropdown";
 
 //theme
 import "../../../assets/themes/mytheme/theme.scss";
@@ -11,7 +10,8 @@ import "../../../assets/themes/mytheme/theme.scss";
 import "primereact/resources/primereact.min.css";
 
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
-  const options = ["Low", "Medium", "High"];
+  const [selectedOption, setSelectedOption] = useState(null);
+  const options = ["low", "medium", "high"];
 
   return (
     <motion.div
@@ -35,11 +35,21 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
         >
           <label htmlFor="priority">Select Task Priority:</label>
-          <select name="taskPriority">
-            <option value={"#008CFF"}>Low</option>
-            <option value={"#F4C70A"}>Medium</option>
-            <option value={"#FF2855"}>High</option>
-          </select>
+
+          <Dropdown
+            value={selectedOption}
+            name='taskPriority'
+            onChange={(e) => setSelectedOption(e.value)}
+            options={options}
+            // optionLabel="name"
+            placeholder="Select Task Priority"
+          />
+
+          {/* <select name="taskPriority"> */}
+          {/*   <option value={"#008CFF"}>Low</option> */}
+          {/*   <option value={"#F4C70A"}>Medium</option> */}
+          {/*   <option value={"#FF2855"}>High</option> */}
+          {/* </select> */}
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}
