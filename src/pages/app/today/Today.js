@@ -13,7 +13,7 @@ import { PageLayout } from "../../../components/app-components/page-layout/PageL
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { TaskDatabaseContext } from "../App";
-import { addDoc, collection, setDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 import { AnimatePresence, motion } from "framer-motion";
 export const TodayHandlerContext = createContext(null);
@@ -38,8 +38,15 @@ export const Today = () => {
   }
 
   async function deleteTask(id) {
-    const newFilteredTask = tasks.filter((task) => task.id !== id);
-    setTasks(newFilteredTask);
+    try {
+      const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
+      const deleteTaskDoc = await deleteDoc(docRef);
+      const newFilteredTask = tasks.filter((task) => task.id !== id);
+      setTasks(newFilteredTask);
+    } catch (err) {
+      console.log("Unable to delete task");
+      throw err;
+    }
   }
 
   async function addTask(e) {
@@ -85,7 +92,7 @@ export const Today = () => {
       <PageLayout>
         <TaskContainer>
           {appendTasks}
-          <AnimatePresence mode="wait" >
+          <AnimatePresence mode="wait">
             {formActive ? (
               <TaskForm
                 key={"taskForm"}
