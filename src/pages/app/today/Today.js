@@ -36,6 +36,15 @@ export const Today = () => {
       setFormActive(true);
     }
   }
+
+  async function deleteTask(){
+    const filterTask = tasks.filter((task,i) => {
+         
+      
+    })
+  }
+
+
   async function addTask(e) {
     e.preventDefault();
     const target = e.target;
@@ -66,7 +75,7 @@ export const Today = () => {
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
-    return <TaskItem task={task} />;
+    return <TaskItem key={task.title} task={task} />;
   });
 
   return (
@@ -89,8 +98,8 @@ export const Today = () => {
           ) : (
             <>
               <motion.button
-                exit={{ y: -50, opacity: 0 ,transition:{duration:.1}}}
-                animate={{ y: [-50,0],opacity:[0,1] }}
+                exit={{ y: -30, opacity: 0 ,transition:{duration:.1}}}
+                animate={{ y: [-30,0],opacity:[0,1] }}
                 className={`${todayStyles.button}`}
                 onClick={formControl}
               >

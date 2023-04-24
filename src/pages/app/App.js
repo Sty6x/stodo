@@ -40,8 +40,12 @@ export const App = () => {
     try {
       const tasksCollection = collection(db, "users", userId, "tasks");
       const getCollection = await getDocs(tasksCollection);
-      const newTasks = getCollection.docs.flatMap((doc) => doc.data());
-      setTasks(newTasks);
+      const newTasks = getCollection.docs.map((doc) => {
+        const newDoc = { ...doc.data(), taskID: doc.id };
+        return newDoc;
+      });
+      console.log(newTasks);
+      // setTasks((prev) => [...prev, newTasks]);
     } catch (err) {
       console.log("unable to fetch collection at this time ");
       throw err;
@@ -91,7 +95,7 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{tasks,setTasks}}>
+        <TaskDatabaseContext.Provider value={{ tasks, setTasks }}>
           {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>
