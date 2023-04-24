@@ -6,8 +6,8 @@ export const TaskItem = ({ task: { title, desc, time, id }, deleteTask }) => {
   return (
     <motion.li
       layout
-      exit={{ x: 60, opacity: 0, transition: { duration: 0.5,type:'spring'} }}
-      animate={{ x: [-30, 0], opacity: [0, 1] }}
+      exit={{ x: 60, opacity: 0, transition: { duration: 0.3,type:'spring'} }}
+      animate={{ x: [-100, 0], opacity: [0, 1] }}
       id={id}
       className={`${taskItemStyles.task}`}
     >

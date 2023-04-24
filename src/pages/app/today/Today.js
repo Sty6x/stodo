@@ -101,7 +101,6 @@ export const Today = () => {
                 onSubmitHandler={addTask}
               />
             ) : (
-              <>
                 <motion.button
                   layout
                   exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
@@ -111,7 +110,6 @@ export const Today = () => {
                 >
                   Add Task
                 </motion.button>
-              </>
             )}
           </AnimatePresence>
         </TaskContainer>
