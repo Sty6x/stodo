@@ -40,7 +40,6 @@
     ]
   },
   "devDependencies": {
-    "prop-types": "^15.8.1",
     "uid": "^2.0.2"
   }
 }

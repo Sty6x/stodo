@@ -1,11 +1,20 @@
 import React from "react";
 import taskItemStyles from "./taskItem.module.scss";
-import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
-export const TaskItem = ({ task: { title, desc, time, id } ,deleteTask}) => {
+export const TaskItem = ({ task: { title, desc, time, id }, deleteTask }) => {
   return (
-    <li id={id} className={`${taskItemStyles.task}`}>
-      <button onClick={(e)=>deleteTask(id)} className={`${taskItemStyles.doneBtn}`} />
+    <motion.li
+      layout
+      exit={{ x: 60, opacity: 0, transition: { duration: 0.5,type:'spring'} }}
+      animate={{ x: [-30, 0], opacity: [0, 1] }}
+      id={id}
+      className={`${taskItemStyles.task}`}
+    >
+      <button
+        onClick={(e) => deleteTask(id)}
+        className={`${taskItemStyles.doneBtn}`}
+      />
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>
           <span className={`${taskItemStyles.low}`}></span>
@@ -19,6 +28,6 @@ export const TaskItem = ({ task: { title, desc, time, id } ,deleteTask}) => {
         <p>{desc}</p>
       </div>
       <button className={`${taskItemStyles.taskOptions}`} />
-    </li>
+    </motion.li>
   );
 };

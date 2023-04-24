@@ -37,11 +37,10 @@ export const Today = () => {
     }
   }
 
-  async function deleteTask(id){
-    const newFilteredTask = tasks.filter((task) => task.id !== id)
-    setTasks(newFilteredTask)
+  async function deleteTask(id) {
+    const newFilteredTask = tasks.filter((task) => task.id !== id);
+    setTasks(newFilteredTask);
   }
-
 
   async function addTask(e) {
     e.preventDefault();
@@ -84,28 +83,31 @@ export const Today = () => {
     >
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
-        <TaskContainer>{appendTasks}</TaskContainer>
-        <AnimatePresence mode="wait">
-          {formActive ? (
-            <TaskForm
-              key={"taskForm"}
-              cancelBtn={formControl}
-              formRef={formRef}
-              onSubmitHandler={addTask}
-            />
-          ) : (
-            <>
-              <motion.button
-                exit={{ y: -30, opacity: 0 ,transition:{duration:.1}}}
-                animate={{ y: [-30,0],opacity:[0,1] }}
-                className={`${todayStyles.button}`}
-                onClick={formControl}
-              >
-                Add Task
-              </motion.button>
-            </>
-          )}
-        </AnimatePresence>
+        <TaskContainer>
+          {appendTasks}
+          <AnimatePresence>
+            {formActive ? (
+              <TaskForm
+                key={"taskForm"}
+                cancelBtn={formControl}
+                formRef={formRef}
+                onSubmitHandler={addTask}
+              />
+            ) : (
+              <>
+                <motion.button
+                  layout
+                  exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
+                  animate={{ y: [-30, 0], opacity: [0, 1] }}
+                  className={`${todayStyles.button}`}
+                  onClick={formControl}
+                >
+                  Add Task
+                </motion.button>
+              </>
+            )}
+          </AnimatePresence>
+        </TaskContainer>
       </PageLayout>
     </div>
   );
