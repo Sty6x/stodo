@@ -37,11 +37,9 @@ export const Today = () => {
     }
   }
 
-  async function deleteTask(){
-    const filterTask = tasks.filter((task,i) => {
-         
-      
-    })
+  async function deleteTask(id){
+    const newFilteredTask = tasks.filter((task) => task.id !== id)
+    setTasks(newFilteredTask)
   }
 
 
@@ -75,7 +73,7 @@ export const Today = () => {
   }, [tasks]);
 
   const appendTasks = tasks.map((task) => {
-    return <TaskItem key={task.id} task={task} />;
+    return <TaskItem deleteTask={deleteTask} key={task.id} task={task} />;
   });
 
   return (

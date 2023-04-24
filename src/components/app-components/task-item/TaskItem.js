@@ -2,10 +2,10 @@ import React from "react";
 import taskItemStyles from "./taskItem.module.scss";
 import PropTypes from "prop-types";
 
-export const TaskItem = ({ task: { title, desc, time,id } }) => {
+export const TaskItem = ({ task: { title, desc, time, id } ,deleteTask}) => {
   return (
     <li id={id} className={`${taskItemStyles.task}`}>
-      <button className={`${taskItemStyles.doneBtn}`} />
+      <button onClick={(e)=>deleteTask(id)} className={`${taskItemStyles.doneBtn}`} />
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>
           <span className={`${taskItemStyles.low}`}></span>
@@ -22,5 +22,3 @@ export const TaskItem = ({ task: { title, desc, time,id } }) => {
     </li>
   );
 };
-
-
