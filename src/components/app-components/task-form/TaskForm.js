@@ -6,7 +6,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
     <motion.div
       initial={{opacity:0,y:100}}
       animate={{opacity:1,y:0}}
-      exit={{opacity:0,y:50,transition:{duration:.2}}}
+      exit={{opacity:0,y:50,transition:{duration:.1}}}
       className={taskFormStyles.taskFormContainer}>
       <form
         onSubmit={onSubmitHandler}

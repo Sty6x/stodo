@@ -15,7 +15,7 @@ import { TaskContainer } from "../../../components/app-components/task-container
 import { TaskDatabaseContext } from "../App";
 import { addDoc, collection, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
@@ -78,19 +78,24 @@ export const Today = () => {
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
         <TaskContainer>{appendTasks}</TaskContainer>
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {formActive ? (
             <TaskForm
-              key={'taskForm'}
+              key={"taskForm"}
               cancelBtn={formControl}
               formRef={formRef}
               onSubmitHandler={addTask}
             />
           ) : (
             <>
-              <button className={`${todayStyles.button}`} onClick={formControl}>
+              <motion.button
+                exit={{ y: -50, opacity: 0 ,transition:{duration:.1}}}
+                animate={{ y: [-50,0],opacity:[0,1] }}
+                className={`${todayStyles.button}`}
+                onClick={formControl}
+              >
                 Add Task
-              </button>
+              </motion.button>
             </>
           )}
         </AnimatePresence>
