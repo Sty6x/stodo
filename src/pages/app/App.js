@@ -55,7 +55,7 @@ export const App = () => {
 
   useEffect(() => {
     if (tasks.length !== 0) {
-      checkTasksDate();
+      filterTaskbyDates();
     }
   }, [tasks]);
 
@@ -120,7 +120,7 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{ tasks, setTasks }}>
+        <TaskDatabaseContext.Provider value={{ tasks, setTasks ,setTodayTasks,todayTasks}}>
           {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>

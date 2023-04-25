@@ -23,7 +23,7 @@ export const TodayHandlerContext = createContext(null);
 export const Today = () => {
 
   const { db, auth } = useContext(FirebaseContext);
-  const { tasks, setTasks } = useContext(TaskDatabaseContext);
+  const { todayTasks,setTodayTasks,tasks, setTasks } = useContext(TaskDatabaseContext);
   const formRef = useRef();
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export const Today = () => {
         'tasks',taskID,
       );
       const addTask = await setDoc(tasksCollection,newTask);
-      setTasks((prev) => [...prev, newTask]);
+      setTodayTasks((prev) => [...prev, newTask]);
       console.log("task added");
     } catch (err) {
       console.log("unable to add task");
@@ -78,10 +78,10 @@ export const Today = () => {
 
   useEffect(() => {
     setFormActive(false);
-    console.log(tasks)
-  }, [tasks]);
+    console.log(todayTasks)
+  }, [todayTasks]);
 
-  const appendTasks = tasks.map((task) => {
+  const appendTasks = todayTasks.map((task) => {
     return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
 
