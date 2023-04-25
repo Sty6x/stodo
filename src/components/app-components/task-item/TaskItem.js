@@ -11,12 +11,12 @@ export const TaskItem = ({
   return (
     <motion.li
       layout
-      exit={{
-        x: 60,
-        opacity: 0,
-        transition: { duration: 0.3, type: "spring" },
-      }}
-      animate={{ x: [-50, 0], opacity: [0, 1] }}
+      // exit={{
+      //   x: 60,
+      //   opacity: 0,
+      //   transition: { duration: 0.3, type: "spring" },
+      // }}
+      // animate={{ x: [-50, 0], opacity: [0, 1] }}
       id={ID}
       className={`${taskItemStyles.task}`}
     >
