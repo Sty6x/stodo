@@ -13,6 +13,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { collection, getDocs } from "firebase/firestore";
+import { isFuture, isPast } from "date-fns";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -21,6 +22,8 @@ export const App = () => {
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [overdueTasks, setOverdueTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -49,6 +52,28 @@ export const App = () => {
     }
   }
 
+  useEffect(() => {
+    if (tasks.length !== 0) {
+      checkTasksDate();
+    }
+  }, [tasks]);
+
+  async function checkTasksDate() {
+    console.log(tasks);
+    for (let task of tasks) {
+      if (isFuture(new Date(task.dueDate))) {
+        console.log(`is future:`);
+        console.log(task);
+      } else if (isPast(new Date(task.dueDate))) {
+        console.log(`is past:`);
+        console.log(task);
+      } else {
+        console.log(`is today: `);
+        console.log(task);
+      }
+    }
+  }
+
   function setSideBarStatus() {
     const btn = sideBarBtnRef.current;
     const sb = sideBarRef.current;
@@ -62,9 +87,9 @@ export const App = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
+  // useEffect(() => {
+  //   console.log(tasks);
+  // }, [tasks]);
   return (
     <>
       <Navbar>

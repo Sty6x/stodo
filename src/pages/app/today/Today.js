@@ -27,7 +27,6 @@ export const Today = () => {
   const formRef = useRef();
 
   useEffect(() => {
-    console.log(tasks);
     console.log("today page component mounted");
   }, []);
 
