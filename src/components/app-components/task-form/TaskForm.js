@@ -34,7 +34,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
         >
-          <label htmlFor="priority">Select Task Priority:</label>
+          {/* <label htmlFor="priority">Select Task Priority:</label> */}
 
           <Dropdown
             value={selectedOption}
@@ -49,7 +49,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         >
           {/* <label htmlFor="date">Date</label> */}
           {/* <input name="date" type="datetime-local" /> */}
-          <Calendar name="date" value={new Date()} showIcon />
+          <Calendar name="date" placeholder="Add date" showIcon />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button type="submit">Add task</button>
