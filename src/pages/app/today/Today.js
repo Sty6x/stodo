@@ -56,7 +56,7 @@ export const Today = () => {
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
     const taskID = uid(16) 
-    const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID}
+    const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID,dateAdded:new Date()}
     try {
       const tasksCollection = doc(
         db,
