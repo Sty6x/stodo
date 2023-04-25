@@ -17,20 +17,31 @@ import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 import { AnimatePresence, motion } from "framer-motion";
 import { uid } from "uid";
-import {format} from 'date-fns'
+import { format } from "date-fns";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
-
   const { db, auth } = useContext(FirebaseContext);
-  const { todayTasks,setTodayTasks,tasks, setTasks } = useContext(TaskDatabaseContext);
+  const { tasks, setTasks } = useContext(TaskDatabaseContext);
+  const [todayTasks, setTodayTasks] = useState([]);
   const formRef = useRef();
+  const [formActive, setFormActive] = useState(false);
 
   useEffect(() => {
-    console.log("today page component mounted");
-  }, []);
+    filterTasks(tasks);
+  }, [tasks]);
 
-  const [formActive, setFormActive] = useState(false);
+  async function filterTasks(tasks) {
+    const filteredTasks = tasks.filter((task) => {
+      if (new Date(task.dueDate).getDay() === new Date().getDay()) {
+        console.log(`is today: `);
+        return task;
+      }
+    });
+    console.log(filteredTasks);
+    setTodayTasks(filteredTasks);
+  }
+
   function formControl() {
     if (formActive) {
       setFormActive(false);
@@ -56,19 +67,25 @@ export const Today = () => {
     const target = e.target;
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
-    const taskID = uid(16)  
-    const date = new Date() 
-    console.log(format(date,'Pp'))
-    const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID,dateAdded:format(date,'Pp')}
+    const taskID = uid(16);
+    const date = new Date();
+    console.log(format(date, "Pp"));
+    const newTask = {
+      ...formEntries,
+      authorID: auth.currentUser.uid,
+      ID: taskID,
+      dateAdded: format(date, "Pp"),
+    };
     try {
       const tasksCollection = doc(
         db,
         "users",
         auth.currentUser.uid,
-        'tasks',taskID,
+        "tasks",
+        taskID
       );
-      const addTask = await setDoc(tasksCollection,newTask);
-      setTodayTasks((prev) => [...prev, newTask]);
+      const addTask = await setDoc(tasksCollection, newTask);
+      setTasks((prev) => [...prev, newTask]);
       console.log("task added");
     } catch (err) {
       console.log("unable to add task");
@@ -78,8 +95,8 @@ export const Today = () => {
 
   useEffect(() => {
     setFormActive(false);
-    console.log(todayTasks)
-  }, [todayTasks]);
+    console.log(tasks);
+  }, [tasks]);
 
   const appendTasks = todayTasks.map((task) => {
     return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
@@ -94,7 +111,7 @@ export const Today = () => {
       <HeaderComponent pageName={"Today"} />
       <PageLayout>
         <TaskContainer>
-          {appendTasks }
+          {appendTasks}
           <AnimatePresence mode="wait">
             {formActive ? (
               <TaskForm
@@ -104,15 +121,15 @@ export const Today = () => {
                 onSubmitHandler={addTask}
               />
             ) : (
-                <motion.button
-                  layout
-                  exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
-                  animate={{ y: [-30, 0], opacity: [0, 1] }}
-                  className={`${todayStyles.button}`}
-                  onClick={formControl}
-                >
-                  Add Task
-                </motion.button>
+              <motion.button
+                layout
+                exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
+                animate={{ y: [-30, 0], opacity: [0, 1] }}
+                className={`${todayStyles.button}`}
+                onClick={formControl}
+              >
+                Add Task
+              </motion.button>
             )}
           </AnimatePresence>
         </TaskContainer>
