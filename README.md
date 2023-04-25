@@ -1,14 +1,16 @@
 # stodo
 A simple minimalistic task app to try out firebase's firestore and firebase authentication sdk and some other libraries and api that are listed below.
+# VISIT
+Page: https://github.com/Sty6x/stodo
 
 
 <i>this will be my last project using CRA, I will be migrating to vite + react</i>
 
-<b>Libraries used</b>
-<h3>Prime React <span>component library for custom form controls</span> </h3>
-<a href="https://primereact.org/"/>
-
-
-<b>Framer Motion</b>
-<h3>A great Animation library for easy customizable animations</h3>
-<a href="https://www.framer.com/motion/"/>
+## Libraries used
+<h3>Prime React</h3>
+<span>A component UI library for custom form controls</span> 
+<br/> Prime React Docs: https://primereact.org/
+<br/>
+<h3>Framer Motion</h3>
+<span>A great Component based Animation library for easy customizable animations</span>
+<br/> Framer Motion Docs: https://www.framer.com/motion/
