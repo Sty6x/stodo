@@ -17,9 +17,11 @@ import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 import { AnimatePresence, motion } from "framer-motion";
 import { uid } from "uid";
+import {format} from 'date-fns'
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
+
   const { db, auth } = useContext(FirebaseContext);
   const { tasks, setTasks } = useContext(TaskDatabaseContext);
   const formRef = useRef();
@@ -55,7 +57,9 @@ export const Today = () => {
     const target = e.target;
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
-    const taskID = uid(16) 
+    const taskID = uid(16)  
+    const date = new Date()
+    console.log(format(date,'p'))
     const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID,dateAdded:new Date()}
     try {
       const tasksCollection = doc(

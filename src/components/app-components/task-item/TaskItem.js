@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import taskItemStyles from "./taskItem.module.scss";
 import { motion } from "framer-motion";
+import { format } from "date-fns";
+import { Timestamp } from "firebase/firestore";
 
 export const TaskItem = ({
-  task: { title, desc, time, ID, taskPriority },
+  task: { title, desc, dateAdded, ID, taskPriority },
   deleteTask,
 }) => {
+  useEffect(() => {convertDate(dateAdded)}, [dateAdded]);
+
+  async function convertDate(timeStamp) {
+    await timeStamp 
+    const timestamp =  new Timestamp(timeStamp.seconds, timeStamp.nanoseconds);
+    console.log(timestamp.toDate());
+    console.log(timeStamp.seconds)
+  }
+
   return (
     <motion.li
       layout
@@ -30,7 +41,7 @@ export const TaskItem = ({
         </div>
         <h3>
           {title}
-          <span>{time}</span>
+          {/* <span>{format(dateAdded,'p')}</span> */}
         </h3>
         <p>{desc}</p>
       </div>
