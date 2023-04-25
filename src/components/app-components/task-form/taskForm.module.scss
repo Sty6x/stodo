@@ -15,12 +15,13 @@
     font-weight: 600;
     font-size: 1.2rem;
   }
-  div > input[id="desc"] {
-    font-weight: 200;
+  div > textarea {
+    font-weight: 300;
     font-size: 0.8rem;
+    font-family: inter;
   }
 
-  div > input {
+  div > input,div> textarea {
     width: 100%;
     appearance: none;
     -webkit-appearance: none;
@@ -33,9 +34,9 @@
     box-sizing: content-box;
     outline: 1px solid transparent;
   }
-  input:focus,
-  input:focus-within,
-  input:focus-visible{
+  input:focus,textarea:focus
+  input:focus-within,textarea:focus-within
+  input:focus-visible,textarea:focus-visible{
     outline: 1px solid #ff2855;
     transition: outline 150ms ease-in-out;
   }

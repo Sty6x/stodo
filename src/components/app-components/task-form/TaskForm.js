@@ -29,7 +29,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           <input name="title" placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <input name="desc" placeholder="Description" id="desc"></input>
+          <textarea name="desc" placeholder="Description" id="desc"/>
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
