@@ -2,16 +2,12 @@
   background-color: #2f2f2f;
   color: white;
   width: 18%;
-  box-shadow: 2px 0px 2px 1px rgba($color: #000000, $alpha: 0.3);
+  box-shadow: 2px 0px 1px 1px rgba($color: #000000, $alpha: 0.2);
 }
 
 .navigation {
-  padding-top: 3em;
-  // font-size: 1rem;
-    font-size: 1.1rem;
-  li {
-    border-bottom: rgba($color: #c0b3b3, $alpha: .5) 1px solid;
-  }
+  padding: 3em 1em;
+  font-size: 1rem;
 
   & > li:hover {
     transition: background-color 150ms ease-in-out;
@@ -26,7 +22,12 @@
     width: 20px;
     height: 20px;
   }
+  li, li > a{
+
+    border-radius: 10px;
+  }
   li > a {
+    box-sizing: border-box;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -34,7 +35,6 @@
     width: 100%;
     height: 100%;
     padding: 0.8em 1em;
-    box-sizing: border-box;
   }
 }
 
