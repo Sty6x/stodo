@@ -10,11 +10,9 @@ export const TaskItem = ({
 }) => {
   useEffect(() => {convertDate(dateAdded)}, [dateAdded]);
 
-  async function convertDate(timeStamp) {
-    await timeStamp 
-    const timestamp =  new Timestamp(timeStamp.seconds, timeStamp.nanoseconds);
-    console.log(timestamp.toDate());
-    console.log(timeStamp.seconds)
+  async function convertDate(dateAdded) {
+    
+    // console.log()
   }
 
   return (
@@ -41,7 +39,7 @@ export const TaskItem = ({
         </div>
         <h3>
           {title}
-          {/* <span>{format(dateAdded,'p')}</span> */}
+          <span>{dateAdded}</span>
         </h3>
         <p>{desc}</p>
       </div>
