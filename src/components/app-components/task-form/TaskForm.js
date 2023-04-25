@@ -11,7 +11,7 @@ import "primereact/resources/primereact.min.css";
 
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const taskPriorityOptions = ['low','medium','high']
+  const taskPriorityOptions = ['Low','Medium','High']
 
   return (
     <motion.div
@@ -43,12 +43,6 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
             options={taskPriorityOptions}
             placeholder="Select Task Priority"
           />
-
-          {/* <select name="taskPriority"> */}
-          {/*   <option value={"#008CFF"}>Low</option> */}
-          {/*   <option value={"#F4C70A"}>Medium</option> */}
-          {/*   <option value={"#FF2855"}>High</option> */}
-          {/* </select> */}
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}

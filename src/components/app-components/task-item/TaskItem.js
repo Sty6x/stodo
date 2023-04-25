@@ -26,9 +26,9 @@ export const TaskItem = ({
       />
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>
-          <span className={`${taskItemStyles.low}`}></span>
-          <span className={`${taskItemStyles.medium}`}></span>
-          <span className={`${taskItemStyles.high}`}></span>
+          <span style={{backgroundColor: taskPriority === 'Low' &&  '#008CFF'}} className={`${taskItemStyles.low}`}></span>
+          <span style={{backgroundColor: taskPriority === 'Medium' &&  '#F4C70A'}} className={`${taskItemStyles.medium}`}></span>
+          <span style={{backgroundColor: taskPriority === 'High' &&  '#FF2855'}} className={`${taskItemStyles.high}`}></span>
         </div>
         <h3>
           {title}
