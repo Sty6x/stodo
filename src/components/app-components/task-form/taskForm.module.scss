@@ -1,0 +1,98 @@
+.taskFormContainer {
+  position: absolute;
+  background-color: rgba($color: #323232, $alpha: 0.6);
+  padding: 1.4em 2em 1.4em 2em;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.taskFormBody {
+  & > *:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+  div > input[id="title"] {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  div > textarea {
+    font-weight: 300;
+    font-size: 0.8rem;
+    font-family: inter;
+    resize:none;
+
+  }
+
+  div > input,div> textarea {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.3rem 0.3rem;
+    color: white;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    box-sizing: content-box;
+    outline: 1px solid transparent;
+  }
+  input:focus,textarea:focus
+  input:focus-within,textarea:focus-within
+  input:focus-visible,textarea:focus-visible{
+    outline: 1px solid #ff2855;
+    transition: outline 150ms ease-in-out;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 10000s;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+}
+
+.dateInput {
+  width: max-content;
+  label {
+    display: block;
+    font-size: 0.8rem;
+  }
+}
+
+.dateInput {
+  input {
+    font-family: inter;
+  }
+}
+.addAndCancelBtn {
+  border-top: #c0b3b380 1px solid;
+  padding: 1em 0 1em 0;
+  display: flex;
+  gap: 1em;
+  :first-child {
+    background-color: #cc2146;
+    font-weight: 500;
+  }
+  :first-child:hover {
+    background-color: #ff2855;
+  }
+  :last-child:hover {
+    background-color: rgba($color: #c0b3b3, $alpha: 0.1);
+  }
+  :last-child {
+    background-color: transparent;
+  }
+  button {
+    border-radius: 3px;
+    transition: background-color 150ms ease-in-out;
+    font-weight: 500;
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    appearance: none;
+    border: none;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+}

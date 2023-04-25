@@ -1,5 +1,8 @@
-.contentContainer{
-  & > *:not(:last-child){
+.contentContainer {
+  position: relative;
+  & > *:not(:last-child) {
     margin-bottom: 1.5em;
   }
 }
+
+

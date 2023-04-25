@@ -9,10 +9,10 @@
   display: flex;
   color: white;
   flex: 1;
-  padding: 2em 4em;
+  margin: 2em 18em;
   flex-direction: column;
   gap: 2em;
-  div {
+  div:not(:last-child) {
     flex: 1;
   }
 }

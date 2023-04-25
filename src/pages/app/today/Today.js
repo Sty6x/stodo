@@ -1,50 +1,89 @@
-import React, { useContext } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { FirebaseContext } from "../../../App";
 import todayStyles from "./today.module.scss";
 import appPages from "../app.module.scss";
 import { HeaderComponent } from "../../../components/app-components/header/HeaderComponent";
-import { useOutletContext } from "react-router-dom";
 import { PageLayout } from "../../../components/app-components/page-layout/PageLayout";
-import { map } from "@firebase/util";
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
-export const Today = () => {
-  const { auth } = useContext(FirebaseContext);
-  const arr = [
-    {
-      title: "task 1",
-      desc: "description for task 1",
-      time: "2:32pm",
-    },
-    {
-      title: "task 2",
-      desc: "description for task 2",
-      time: "3:52pm",
-    },
-    {
-      title: "task 3",
-      desc: "description for task 3",
-      time: "6:00am",
-    },
-    {
-      title: "task 4",
-      desc: "description for task 4",
-      time: "5:32pm",
-    },
-    {
-      title: "task 5",
-      desc: "description for task 5",
-      time: "5:61pm",
-    },
-    {
-      title: "task 6",
-      desc: "description for task 6",
-      time: "10:42am",
-    },
-  ];
+import { TaskDatabaseContext } from "../App";
+import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
+import { AnimatePresence, motion } from "framer-motion";
+import { uid } from "uid";
+import {format} from 'date-fns'
+export const TodayHandlerContext = createContext(null);
 
-  const appendTasks = arr.map((task) => {
-    return <TaskItem key={task} task={task} />;
+export const Today = () => {
+
+  const { db, auth } = useContext(FirebaseContext);
+  const { tasks, setTasks } = useContext(TaskDatabaseContext);
+  const formRef = useRef();
+
+  useEffect(() => {
+    console.log(tasks);
+    console.log("today page component mounted");
+  }, []);
+
+  const [formActive, setFormActive] = useState(false);
+  function formControl() {
+    if (formActive) {
+      setFormActive(false);
+    } else {
+      setFormActive(true);
+    }
+  }
+
+  async function deleteTask(id) {
+    try {
+      const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
+      const deleteTaskDoc = await deleteDoc(docRef);
+      const newFilteredTask = tasks.filter((task) => task.ID !== id);
+      setTasks(newFilteredTask);
+    } catch (err) {
+      console.log("Unable to delete task");
+      throw err;
+    }
+  }
+
+  async function addTask(e) {
+    e.preventDefault();
+    const target = e.target;
+    const form = new FormData(target);
+    const formEntries = Object.fromEntries(form.entries());
+    const taskID = uid(16)  
+    const date = new Date() 
+    console.log(format(date,'Pp'))
+    const newTask = {...formEntries,authorID:auth.currentUser.uid,ID:taskID,dateAdded:format(date,'Pp')}
+    try {
+      const tasksCollection = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        'tasks',taskID,
+      );
+      const addTask = await setDoc(tasksCollection,newTask);
+      setTasks((prev) => [...prev, newTask]);
+      console.log("task added");
+    } catch (err) {
+      console.log("unable to add task");
+      throw err;
+    }
+  }
+
+  useEffect(() => {
+    setFormActive(false);
+    console.log(tasks)
+  }, [tasks]);
+
+  const appendTasks = tasks.map((task) => {
+    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
 
   return (
@@ -54,8 +93,30 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Today"} />
-      <PageLayout buttonType={'Add Task'}>
-        <TaskContainer>{appendTasks}</TaskContainer>
+      <PageLayout>
+        <TaskContainer>
+          {appendTasks }
+          <AnimatePresence mode="wait">
+            {formActive ? (
+              <TaskForm
+                key={"taskForm"}
+                cancelBtn={formControl}
+                formRef={formRef}
+                onSubmitHandler={addTask}
+              />
+            ) : (
+                <motion.button
+                  layout
+                  exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
+                  animate={{ y: [-30, 0], opacity: [0, 1] }}
+                  className={`${todayStyles.button}`}
+                  onClick={formControl}
+                >
+                  Add Task
+                </motion.button>
+            )}
+          </AnimatePresence>
+        </TaskContainer>
       </PageLayout>
     </div>
   );

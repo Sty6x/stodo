@@ -1,26 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import taskItemStyles from "./taskItem.module.scss";
-import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+import { format, toDate } from "date-fns";
+import { Timestamp } from "firebase/firestore";
 
-export const TaskItem = ({ task: { title, desc, time } }) => {
+export const TaskItem = ({
+  task: { title, desc, dateAdded, ID, taskPriority },
+  deleteTask,
+}) => {
   return (
-    <li className={`${taskItemStyles.task}`}>
-      <button className={`${taskItemStyles.doneBtn}`} />
+    <motion.li
+      layout
+      exit={{
+        x: 60,
+        opacity: 0,
+        transition: { duration: 0.3, type: "spring" },
+      }}
+      animate={{ x: [-50, 0], opacity: [0, 1] }}
+      id={ID}
+      className={`${taskItemStyles.task}`}
+    >
+      <button
+        onClick={(e) => deleteTask(ID)}
+        className={`${taskItemStyles.doneBtn}`}
+      />
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>
-          <span className={`${taskItemStyles.low}`}></span>
-          <span className={`${taskItemStyles.medium}`}></span>
-          <span className={`${taskItemStyles.high}`}></span>
+          <span style={{backgroundColor: taskPriority === 'Low' &&  '#008CFF'}} className={`${taskItemStyles.low}`}></span>
+          <span style={{backgroundColor: taskPriority === 'Medium' &&  '#F4C70A'}} className={`${taskItemStyles.medium}`}></span>
+          <span style={{backgroundColor: taskPriority === 'High' &&  '#FF2855'}} className={`${taskItemStyles.high}`}></span>
         </div>
         <h3>
           {title}
-          <span>{time}</span>
+          <span>{format(new Date(dateAdded),'p')}</span>
         </h3>
         <p>{desc}</p>
       </div>
       <button className={`${taskItemStyles.taskOptions}`} />
-    </li>
+    </motion.li>
   );
 };
-
-
