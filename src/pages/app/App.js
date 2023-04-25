@@ -24,6 +24,7 @@ export const App = () => {
   const [tasks, setTasks] = useState([]);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
   const [overdueTasks, setOverdueTasks] = useState([]);
+  const [todayTasks, setTodayTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -58,18 +59,20 @@ export const App = () => {
     }
   }, [tasks]);
 
-  async function checkTasksDate() {
+  async function filterTaskbyDates() {
     console.log(tasks);
     for (let task of tasks) {
       if (isFuture(new Date(task.dueDate))) {
         console.log(`is future:`);
-        console.log(task);
-      } else if (isPast(new Date(task.dueDate))) {
+        setUpcomingTasks((prev) => [...prev, task]);
+      }
+      if (isPast(new Date(task.dueDate))) {
         console.log(`is past:`);
-        console.log(task);
-      } else {
+        setOverdueTasks((prev) => [...prev, task]);
+      }
+      if (new Date(task.dueDate).getDay() === new Date().getDay()) {
         console.log(`is today: `);
-        console.log(task);
+        setTodayTasks((prev) => [...prev, task]);
       }
     }
   }
