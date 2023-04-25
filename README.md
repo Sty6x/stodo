@@ -1,5 +1,5 @@
 # stodo
-A simple minimalistic task app to try out firebase's firestore and firebase authentication sdk and some other libraries and api that are listed below.
+A simple minimalistic task app to try out firebase's firestore, firebase authentication sdk and some other libraries.
 # VISIT
 Page: https://github.com/Sty6x/stodo
 
