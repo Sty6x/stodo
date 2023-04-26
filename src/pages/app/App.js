@@ -13,6 +13,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { collection, getDocs } from "firebase/firestore";
+import { isFuture, isPast } from "date-fns";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -21,6 +22,9 @@ export const App = () => {
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [overdueTasks, setOverdueTasks] = useState([]);
+  const [todayTasks, setTodayTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -49,6 +53,30 @@ export const App = () => {
     }
   }
 
+  // useEffect(() => {
+  //   if (tasks.length !== 0) {
+  //     filterTaskbyDates();
+  //   }
+  // }, [tasks]);
+
+  // async function filterTaskbyDates() {
+  //   console.log(tasks);
+  //   for (let task of tasks) {
+  //     if (isFuture(new Date(task.dueDate))) {
+  //       console.log(`is future:`);
+  //       setUpcomingTasks((prev) => [...prev, task]);
+  //     }
+  //     if (isPast(new Date(task.dueDate))) {
+  //       console.log(`is past:`);
+  //       setOverdueTasks((prev) => [...prev, task]);
+  //     }
+  //     if (new Date(task.dueDate).getDay() === new Date().getDay()) {
+  //       console.log(`is today: `);
+  //       setTodayTasks((prev) => [...prev, task]);
+  //     }
+  //   }
+  // }
+
   function setSideBarStatus() {
     const btn = sideBarBtnRef.current;
     const sb = sideBarRef.current;
@@ -62,9 +90,7 @@ export const App = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
+
   return (
     <>
       <Navbar>
@@ -92,7 +118,9 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{ tasks, setTasks }}>
+        <TaskDatabaseContext.Provider
+          value={{ tasks, setTasks}}
+        >
           {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>
