@@ -34,10 +34,9 @@ export const Upcoming = () => {
 			// check each task date but dont compare to self
 			// when j reaches 0 it will iterate through each tasks again starting from 0 then
 			// stops executing
-			console.log(t[i]);
 			console.log("from i: " + i);
 			for (
-				let j = t.indexOf(t[i]) < t.length ? t.indexOf(t[i]) + 1 : 0;
+				let j = 0;
 				j < t.length;
 				j++
 			) {
@@ -49,6 +48,7 @@ export const Upcoming = () => {
 				// if task[i].dueDate is equal to any of the task[j].dueDate
 				// append task[j] to tmpArr
 				// else return
+
 				console.log("from j:" + j);
 			}
 			console.log(tmpArr);
