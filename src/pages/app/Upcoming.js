@@ -4,7 +4,7 @@ import { PageLayout } from "../../components/app-components/page-layout/PageLayo
 import { TaskDatabaseContext } from "./App";
 import { TaskItem } from "../../components/app-components/task-item/TaskItem";
 import appPages from "./app.module.scss";
-import { format, isFuture } from "date-fns";
+import { compareAsc, format, isFuture } from "date-fns";
 import { TaskContainer } from "../../components/app-components/task-container/TaskContainer";
 export const Upcoming = () => {
 	const { tasks } = useContext(TaskDatabaseContext);
@@ -28,19 +28,30 @@ export const Upcoming = () => {
 	}
 
 	function containFilteredTask(t) {
-		let tmpArr = [];
 		console.log(t);
-		for (let i = 0; i <= t.length; i++) {
+		for (let i = 0; i < t.length; i++) {
+			let tmpArr = [];
 			// check each task date but dont compare to self
+			// when j reaches 0 it will iterate through each tasks again starting from 0 then
+			// stops executing
+			console.log(t[i]);
 			console.log("from i: " + i);
 			for (
 				let j = t.indexOf(t[i]) < t.length ? t.indexOf(t[i]) + 1 : 0;
-				j <= t.length;
+				j < t.length;
 				j++
 			) {
+				if (compareAsc(new Date(t[i].dueDate), new Date(t[j].dueDate)) === 0) {
+					tmpArr.push(t[j]);
+				}
+				// compareAsc(task[i],task[j]) if returns 0 then they are equal
 				// if first task date is the same as all of the task
+				// if task[i].dueDate is equal to any of the task[j].dueDate
+				// append task[j] to tmpArr
+				// else return
 				console.log("from j:" + j);
 			}
+			console.log(tmpArr);
 		}
 	}
 
