@@ -11,7 +11,9 @@ export const Upcoming = () => {
 	const [upcomingTasks, setUpcomingTasks] = useState([]);
 
 	useEffect(() => {
-		filterTasks(tasks);
+		filterTasks(tasks).then((t) => {
+			containFilteredTask(t);
+		});
 	}, [tasks]);
 
 	async function filterTasks(tasks) {
@@ -22,11 +24,29 @@ export const Upcoming = () => {
 		});
 		console.log(filteredTasks);
 		setUpcomingTasks(filteredTasks);
+		return filteredTasks;
 	}
 
-	const appendTasks = upcomingTasks.map((task) => {
+	function containFilteredTask(t) {
+		let tmpArr = [];
+		console.log(t);
+		for (let i = 0; i <= t.length; i++) {
+			// check each task date but dont compare to self
+			console.log("from i: " + i);
+			for (
+				let j = t.indexOf(t[i]) < t.length ? t.indexOf(t[i]) + 1 : 0;
+				j <= t.length;
+				j++
+			) {
+				// if first task date is the same as all of the task
+				console.log("from j:" + j);
+			}
+		}
+	}
+
+	const appendTasks = upcomingTasks.map((task, i) => {
 		return (
-			<TaskContainer>
+			<TaskContainer key={i}>
 				<HeaderComponent pageName={format(new Date(task.dueDate), "PP")} />
 				<TaskItem /* deleteTask={deleteTask}  */ key={task.ID} task={task} />
 			</TaskContainer>
