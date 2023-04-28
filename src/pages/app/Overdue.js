@@ -7,7 +7,7 @@ import { isFuture, isPast } from "date-fns";
 import { TaskItem } from "../../components/app-components/task-item/TaskItem";
 
 export const Overdue = () => {
-  const { tasks } = useContext(TaskDatabaseContext);
+  const { tasks, deleteTask } = useContext(TaskDatabaseContext);
   const [overdueTasks, setOverdueTasks] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export const Overdue = () => {
   }
 
   const appendOverdueTasks = overdueTasks.map((task) => {
-    return <TaskItem key={task.ID} task={task} />;
+    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
 
   return (

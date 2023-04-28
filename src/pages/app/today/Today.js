@@ -22,7 +22,7 @@ export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
-  const { tasks, setTasks } = useContext(TaskDatabaseContext);
+  const { tasks, setTasks, deleteTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
   const formRef = useRef();
   const [formActive, setFormActive] = useState(false);
@@ -46,18 +46,6 @@ export const Today = () => {
       setFormActive(false);
     } else {
       setFormActive(true);
-    }
-  }
-
-  async function deleteTask(id) {
-    try {
-      const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
-      const deleteTaskDoc = await deleteDoc(docRef);
-      const newFilteredTask = tasks.filter((task) => task.ID !== id);
-      setTasks(newFilteredTask);
-    } catch (err) {
-      console.log("Unable to delete task");
-      throw err;
     }
   }
 

@@ -7,7 +7,7 @@ import appPages from "./app.module.scss";
 import { compareAsc, format, isFuture } from "date-fns";
 import { TaskContainer } from "../../components/app-components/task-container/TaskContainer";
 export const Upcoming = () => {
-  const { tasks } = useContext(TaskDatabaseContext);
+  const { tasks, deleteTask } = useContext(TaskDatabaseContext);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
 
   useEffect(() => {
@@ -25,9 +25,7 @@ export const Upcoming = () => {
   }
 
   const appendTasks = upcomingTasks.map((task, i) => {
-    return (
-      <TaskItem /* deleteTask={deleteTask}  */ key={task.ID} task={task} />
-    );
+    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
   return (
     <div className={`${appPages.pages}`}>
