@@ -12,7 +12,14 @@ import appStyles from "./app.module.scss";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { isFuture, isPast } from "date-fns";
 import { queries } from "@testing-library/react";
 export const TaskDatabaseContext = createContext(null);
@@ -67,6 +74,17 @@ export const App = () => {
       setIsSidebarActive(true);
     }
   }
+  async function deleteTask(id) {
+    try {
+      const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
+      const deleteTaskDoc = await deleteDoc(docRef);
+      const newFilteredTask = tasks.filter((task) => task.ID !== id);
+      setTasks(newFilteredTask);
+    } catch (err) {
+      console.log("Unable to delete task");
+      throw err;
+    }
+  }
 
   return (
     <>
@@ -95,7 +113,7 @@ export const App = () => {
       <main className={appStyles.appPage}>
         {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{ tasks, setTasks }}>
+        <TaskDatabaseContext.Provider value={{ tasks, setTasks, deleteTask }}>
           {isLoading ? <p>show animation...</p> : <Outlet />}
         </TaskDatabaseContext.Provider>
       </main>

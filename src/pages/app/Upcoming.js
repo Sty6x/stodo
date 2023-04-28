@@ -7,13 +7,11 @@ import appPages from "./app.module.scss";
 import { compareAsc, format, isFuture } from "date-fns";
 import { TaskContainer } from "../../components/app-components/task-container/TaskContainer";
 export const Upcoming = () => {
-  const { tasks } = useContext(TaskDatabaseContext);
+  const { tasks, deleteTask } = useContext(TaskDatabaseContext);
   const [upcomingTasks, setUpcomingTasks] = useState([]);
 
   useEffect(() => {
-    filterTasks(tasks).then((t) => {
-      containFilteredTask(t);
-    });
+    filterTasks(tasks);
   }, [tasks]);
 
   async function filterTasks(tasks) {
@@ -22,32 +20,12 @@ export const Upcoming = () => {
         return task;
       }
     });
-    // just sort them
     setUpcomingTasks(filteredTasks);
     return filteredTasks;
   }
 
-  function containFilteredTask(t) {
-    for (let i = 0; i < t.length; i++) {
-      let tmpArr = [];
-      for (let j = 0; j < t.length; j++) {
-        if (compareAsc(new Date(t[i].dueDate), new Date(t[j].dueDate)) === 0) {
-          tmpArr.push(t[j]);
-        }
-      }
-
-      if (tmpArr.length == 1) {
-        console.log(tmpArr);
-      } else if (tmpArr.length > 1) {
-        console.log(tmpArr);
-      }
-    }
-  }
-
   const appendTasks = upcomingTasks.map((task, i) => {
-    return (
-      <TaskItem /* deleteTask={deleteTask}  */ key={task.ID} task={task} />
-    );
+    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
   return (
     <div className={`${appPages.pages}`}>
