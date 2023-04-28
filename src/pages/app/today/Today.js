@@ -17,7 +17,7 @@ import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
 import { AnimatePresence, motion } from "framer-motion";
 import { uid } from "uid";
-import { format, isToday } from "date-fns";
+import { format, isSameDay, isToday } from "date-fns";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
@@ -33,7 +33,7 @@ export const Today = () => {
 
   async function filterTasks(tasks) {
     const filteredTasks = tasks.filter((task) => {
-      if (isToday(new Date(task.dueDate))) {
+      if (isSameDay(new Date(), new Date(task.dueDate))) {
         return task;
       }
     });

@@ -3,7 +3,7 @@ import appPages from "./app.module.scss";
 import { HeaderComponent } from "../../components/app-components/header/HeaderComponent";
 import { PageLayout } from "../../components/app-components/page-layout/PageLayout";
 import { TaskDatabaseContext } from "./App";
-import { isFuture, isPast } from "date-fns";
+import { isFuture, isPast, isSameDay } from "date-fns";
 import { TaskItem } from "../../components/app-components/task-item/TaskItem";
 
 export const Overdue = () => {
@@ -18,7 +18,11 @@ export const Overdue = () => {
 
   async function filterAndSortTasksByDueDate(tasks) {
     const filteredTasks = tasks.filter((task) => {
-      return task && isPast(new Date(task.dueDate));
+      return (
+        task &&
+        isPast(new Date(task.dueDate)) &&
+        !isSameDay(new Date(), new Date(task.dueDate))
+      );
     });
     const sortFilteredTasks = filteredTasks.sort(
       (a, b) => new Date(b.dueDate) - new Date(a.dueDate)
