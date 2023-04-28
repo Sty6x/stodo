@@ -16,7 +16,10 @@ export const Overdue = () => {
     const filteredTasks = tasks.filter((task) => {
       return task && isPast(new Date(task.dueDate));
     });
-    console.log(filteredTasks);
+    const sortFilteredTasks = filteredTasks.sort(
+      (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
+    );
+    console.log(sortFilteredTasks);
   }
 
   return (
