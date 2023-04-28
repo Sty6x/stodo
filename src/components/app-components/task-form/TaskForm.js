@@ -49,7 +49,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         >
           {/* <label htmlFor="date">Date</label> */}
           {/* <input name="date" type="datetime-local" /> */}
-          <Calendar name="date" placeholder="Add date" showIcon />
+          <Calendar name="dueDate" placeholder="Add date" showIcon />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button type="submit">Add task</button>

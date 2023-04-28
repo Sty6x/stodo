@@ -12,7 +12,9 @@ import appStyles from "./app.module.scss";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { isFuture, isPast } from "date-fns";
+import { queries } from "@testing-library/react";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -21,6 +23,9 @@ export const App = () => {
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
+  const [upcomingTasks, setUpcomingTasks] = useState([]);
+  const [overdueTasks, setOverdueTasks] = useState([]);
+  const [todayTasks, setTodayTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -39,7 +44,8 @@ export const App = () => {
   async function getUserTasks(userId) {
     try {
       const tasksCollection = collection(db, "users", userId, "tasks");
-      const getCollection = await getDocs(tasksCollection);
+      const sortQuery = query(tasksCollection, orderBy("dateAdded", "desc"));
+      const getCollection = await getDocs(sortQuery);
       const newTasks = getCollection.docs.map((doc) => doc.data());
       console.log(newTasks);
       setTasks(newTasks);
@@ -62,9 +68,6 @@ export const App = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
   return (
     <>
       <Navbar>
