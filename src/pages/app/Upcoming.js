@@ -22,6 +22,7 @@ export const Upcoming = () => {
         return task;
       }
     });
+    // just sort them
     setUpcomingTasks(filteredTasks);
     return filteredTasks;
   }
@@ -45,10 +46,7 @@ export const Upcoming = () => {
 
   const appendTasks = upcomingTasks.map((task, i) => {
     return (
-      <TaskContainer key={i}>
-        <HeaderComponent pageName={format(new Date(task.dueDate), "PP")} />
-        <TaskItem /* deleteTask={deleteTask}  */ key={task.ID} task={task} />
-      </TaskContainer>
+      <TaskItem /* deleteTask={deleteTask}  */ key={task.ID} task={task} />
     );
   });
   return (
