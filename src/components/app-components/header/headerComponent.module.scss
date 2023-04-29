@@ -1,10 +1,18 @@
-.titleDateContainer{
-  display:flex;
+.headerContainer {
+  border-bottom: 1px solid rgba($color: #c0b3b3, $alpha: 0.5);
+}
+
+.titleDateContainer {
+  display: flex;
   align-items: flex-end;
   gap: 1em;
-  border-bottom: 1px solid rgba($color: #c0b3b3, $alpha: .5);
-  h1{
+  margin-bottom: 1em;
+  h1 {
     font-weight: 600;
-    font-size:2rem;
+    font-size: 1.8rem;
+  }
+  p {
+    color: #9d9d9d;
+    font-size: 1rem;
   }
 }
