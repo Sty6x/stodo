@@ -1,4 +1,4 @@
-import {React, useState } from "react";
+import { React, useState } from "react";
 import taskFormStyles from "./taskForm.module.scss";
 import { motion } from "framer-motion";
 import { Calendar } from "primereact/calendar";
@@ -11,7 +11,7 @@ import "primereact/resources/primereact.min.css";
 
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const taskPriorityOptions = ['Low','Medium','High']
+  const taskPriorityOptions = ["Low", "Medium", "High"];
 
   return (
     <motion.div
@@ -29,7 +29,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           <input name="title" placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <textarea name="desc" placeholder="Description" id="desc"/>
+          <textarea name="desc" placeholder="Description" id="desc" />
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
@@ -38,7 +38,7 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
 
           <Dropdown
             value={selectedOption}
-            name='taskPriority'
+            name="taskPriority"
             onChange={(e) => setSelectedOption(e.value)}
             options={taskPriorityOptions}
             placeholder="Select Task Priority"
@@ -49,7 +49,12 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         >
           {/* <label htmlFor="date">Date</label> */}
           {/* <input name="date" type="datetime-local" /> */}
-          <Calendar name="dueDate" placeholder="Add date" showIcon />
+          <Calendar
+            name="dueDate"
+            value={new Date()}
+            placeholder="Add date"
+            showIcon
+          />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button type="submit">Add task</button>

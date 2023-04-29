@@ -95,7 +95,7 @@ export const Today = () => {
       key="today-page"
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
-      <HeaderComponent pageName={"Today"} isMainHeader={true} />
+      <HeaderComponent pageName={"Tasks for Today"} isMainHeader={true} />
       <PageLayout>
         <TaskContainer>
           {appendTasks}
