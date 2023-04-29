@@ -37,7 +37,7 @@ export const Overdue = () => {
 
   return (
     <div className={`${appPages.pages}`}>
-      <HeaderComponent pageName={"Overdue"} isMainHeader={true} />
+      <HeaderComponent pageName={"Overdue Tasks"} isMainHeader={true} />
       <PageLayout>{appendOverdueTasks}</PageLayout>
     </div>
   );

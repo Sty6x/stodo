@@ -29,7 +29,7 @@ export const Upcoming = () => {
   });
   return (
     <div className={`${appPages.pages}`}>
-      <HeaderComponent pageName={"Upcoming"} isMainHeader={true} />
+      <HeaderComponent pageName={"Upcoming Tasks"} isMainHeader={true} />
       <PageLayout>{appendTasks}</PageLayout>
     </div>
   );
