@@ -24,9 +24,10 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         onSubmit={onSubmitHandler}
         ref={formRef}
         className={taskFormStyles.taskFormBody}
+        noValidate
       >
         <div className={taskFormStyles.inputContainer}>
-          <input name="title" placeholder="Title" id="title"></input>
+          <input required name="title" placeholder="Title" id="title"></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
           <textarea name="desc" placeholder="Description" id="desc" />
