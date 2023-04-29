@@ -12,6 +12,15 @@ import "primereact/resources/primereact.min.css";
 export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const taskPriorityOptions = ["Low", "Medium", "High"];
+  const [btnIsDisabled, setBtnIsDisabled] = useState(true);
+
+  function checkRequiredInput(e) {
+    const input = e.target;
+    if (input.validity.valid) {
+      return setBtnIsDisabled(false);
+    }
+    setBtnIsDisabled(true);
+  }
 
   return (
     <motion.div
@@ -27,7 +36,13 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         noValidate
       >
         <div className={taskFormStyles.inputContainer}>
-          <input required name="title" placeholder="Title" id="title"></input>
+          <input
+            onChange={checkRequiredInput}
+            required
+            name="title"
+            placeholder="Title"
+            id="title"
+          ></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
           <textarea name="desc" placeholder="Description" id="desc" />
@@ -58,7 +73,9 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           />
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
-          <button type="submit">Add task</button>
+          <button disabled type="submit">
+            Add task
+          </button>
           <button type="button" onClick={cancelBtn}>
             Cancel
           </button>

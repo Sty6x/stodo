@@ -19,11 +19,11 @@
     font-weight: 300;
     font-size: 0.8rem;
     font-family: inter;
-    resize:none;
-
+    resize: none;
   }
 
-  div > input,div> textarea {
+  div > input,
+  div > textarea {
     width: 100%;
     appearance: none;
     -webkit-appearance: none;
@@ -36,9 +36,10 @@
     box-sizing: content-box;
     outline: 1px solid transparent;
   }
-  input:focus,textarea:focus
-  input:focus-within,textarea:focus-within
-  input:focus-visible,textarea:focus-visible{
+  input:focus,
+  textarea:focus input:focus-within,
+  textarea:focus-within input:focus-visible,
+  textarea:focus-visible {
     outline: 1px solid #ff2855;
     transition: outline 150ms ease-in-out;
   }
@@ -73,7 +74,12 @@
     background-color: #cc2146;
     font-weight: 500;
   }
-  :first-child:hover {
+  :first-child:disabled {
+    background-color: #5a5a5ab0;
+    color: #898989;
+    font-weight: 500;
+  }
+  :first-child:hover:not(:disabled) {
     background-color: #ff2855;
   }
   :last-child:hover {
