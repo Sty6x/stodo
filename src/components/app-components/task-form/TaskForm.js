@@ -66,8 +66,9 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           {/* <label htmlFor="date">Date</label> */}
           {/* <input name="date" type="datetime-local" /> */}
           <Calendar
-            name="dueDate"
+            showButtonBar
             value={new Date()}
+            name="dueDate"
             placeholder="Add date"
             showIcon
           />

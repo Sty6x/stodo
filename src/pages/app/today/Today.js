@@ -54,6 +54,13 @@ export const Today = () => {
     const target = e.target;
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
+    for (const entry in formEntries) {
+      console.log(entry);
+      // if (entry.dueDate === "") {
+      //   console.log(entry);
+      //   entry.dueDate = new Date();
+      // }
+    }
     const taskID = uid(16);
     const date = new Date();
     console.log(format(date, "Pp"));
