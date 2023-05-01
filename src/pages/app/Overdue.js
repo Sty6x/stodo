@@ -38,7 +38,14 @@ export const Overdue = () => {
   return (
     <div className={`${appPages.pages}`}>
       <HeaderComponent pageName={"Overdue Tasks"} isMainHeader={true} />
-      <PageLayout>{appendOverdueTasks}</PageLayout>
+      <PageLayout
+        onEmptyText={
+          "You've resolved all of your overdue tasks! Take a break."
+        }
+        pageTasks={overdueTasks}
+      >
+        {appendOverdueTasks}
+      </PageLayout>
     </div>
   );
 };
