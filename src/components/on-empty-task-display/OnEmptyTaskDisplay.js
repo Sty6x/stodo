@@ -1,8 +1,8 @@
 import React from "react";
-import onEmptyTaskStyles from "./onEmptyTask.module.scss";
-export const onEmptyTask = ({ pageText }) => {
+import onEmptyTaskStyles from "./onEmptyTaskDisplay.module.scss";
+export const OnEmptyTaskDisplay = ({ pageText }) => {
   return (
-    <div className={emptyTaskStyles.onEmptyTasksContainer}>
+    <div className={onEmptyTaskStyles.onEmptyTasksContainer}>
       <p>{pageText}</p>
     </div>
   );
