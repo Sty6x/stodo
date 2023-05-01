@@ -20,8 +20,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import { isFuture, isPast } from "date-fns";
-import { queries } from "@testing-library/react";
+import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -30,9 +29,6 @@ export const App = () => {
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
-  const [upcomingTasks, setUpcomingTasks] = useState([]);
-  const [overdueTasks, setOverdueTasks] = useState([]);
-  const [todayTasks, setTodayTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -88,6 +84,8 @@ export const App = () => {
 
   return (
     <>
+    {isLoading ? <LoadingAppPage/>: 
+    <>
       <Navbar>
         <button
           onClick={async (e) => {
@@ -111,12 +109,13 @@ export const App = () => {
         </div>
       </Navbar>
       <main className={appStyles.appPage}>
-        {/*sidebar*/}
         <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
         <TaskDatabaseContext.Provider value={{ tasks, setTasks, deleteTask }}>
-          {isLoading ? <p>show animation...</p> : <Outlet />}
+          <Outlet />
         </TaskDatabaseContext.Provider>
       </main>
+    </>
+    }
     </>
   );
 };
