@@ -3,7 +3,7 @@ import sidebarStyles from "./sidebar.module.scss";
 import { animate, AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
-import { ProjectLink } from "./projects/ProjectLink";
+import { ProjectLink } from "../project-link/ProjectLink";
 
 export const Sidebar = ({ sbRef }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(true);
@@ -11,6 +11,10 @@ export const Sidebar = ({ sbRef }) => {
   useEffect(() => {
     console.log(isDropDownActive);
   }, [isDropDownActive]);
+
+  async function addProjectLink(){
+         
+  }
 
   return (
     <motion.div
