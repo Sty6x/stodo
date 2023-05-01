@@ -4,12 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export const LoadingAppPage = () => {
   return (
-    <AnimatePresence>
-      <div className={loadingAppPageStyle.loadingPage}>
-        <div className={loadingAppPageStyle.loadingIconContainer}>
-          <motion.div className={loadingAppPageStyle.item}></motion.div>
-        </div>
-      </div>
-    </AnimatePresence>
+      <motion.div
+        key={'loadingApp'}
+        animate={{ opacity: 1 }}
+        className={loadingAppPageStyle.loadingPage}
+      >
+        <motion.div
+          animate={{ y: 0, opacity: 1 }}
+          key={"spinner"}
+          initial={{ opacity: 0, y: -100 }}
+          className={loadingAppPageStyle.item}
+        ></motion.div>
+      </motion.div>
   );
 };
