@@ -103,7 +103,7 @@ export const Today = () => {
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
       <HeaderComponent pageName={"Tasks for Today"} isMainHeader={true} />
-      <PageLayout taskIsEmpty={todayTasks.length === 0 ? true : false} >
+      <PageLayout taskIsEmpty={todayTasks.length === 0 ? true : false} onEmptyText={"Looks like you're done for today, good job!"} >
         <TaskContainer >
           {appendTasks}
           <AnimatePresence mode="wait">
