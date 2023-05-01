@@ -1,10 +1,15 @@
 import React from "react";
 import loadingAppPageStyle from "./loadingAppPage.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const LoadingAppPage = () => {
   return (
-    <div className={loadingAppPageStyle.loadingPage}>
-      <div className={loadingAppPageStyle.loadingIconContainer}>I Am Loading</div>
-    </div>
+    <AnimatePresence>
+      <div className={loadingAppPageStyle.loadingPage}>
+        <div className={loadingAppPageStyle.loadingIconContainer}>
+          <motion.div className={loadingAppPageStyle.item}></motion.div>
+        </div>
+      </div>
+    </AnimatePresence>
   );
 };
