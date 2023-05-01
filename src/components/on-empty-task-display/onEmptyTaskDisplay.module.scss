@@ -1,4 +1,8 @@
 .onEmptyTasksContainer{
   color: #898989;
   text-align: center;
+  p{
+    display: inline-block;
+    min-width:250px ;
+  }
 }
