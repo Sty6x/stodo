@@ -13,7 +13,7 @@ export const Sidebar = ({ sbRef }) => {
     console.log(isDropDownActive);
   }, [isDropDownActive]);
 
-  async function addProjectLink(){
+  async function addProjectLink(e){
          
   }
 
@@ -65,7 +65,6 @@ export const Sidebar = ({ sbRef }) => {
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
               >
-                {!inputIsInactive && <p>Input Here</p>}
                 <ProjectLink
                   to={"/app/projectId1"}
                   projectName={"First Project"}
@@ -78,6 +77,8 @@ export const Sidebar = ({ sbRef }) => {
                   to={"/app/projectId3"}
                   projectName={"Third Project"}
                 />
+
+                {!inputIsInactive && <p>yees</p>}
               </motion.ul>
             )}
           </AnimatePresence>
