@@ -27,6 +27,7 @@ export const ProjectsContainer = ({
       <div className={projectsContainerStyle.projectOptions}>
         <p>Projects</p>
         <motion.button
+          animate={{rotateZ:inputIsInactive ? 0: 135}}
           onClick={(e) => {
             setProjectOptionsActivity(setInputIsInactive, inputIsInactive);
           }}
