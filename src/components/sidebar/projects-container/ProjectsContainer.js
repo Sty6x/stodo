@@ -6,9 +6,9 @@ export const ProjectsContainer = ({
   newProjectRef,
   appenedProjectLinks,
   addProject,
-  projectLinks
+  projectLinks,
 }) => {
-  const [isDropDownActive, setIsDropDownActive] = useState(true);
+  const [isDropDownActive, setIsDropDownInactive] = useState(true);
   const [inputIsInactive, setInputIsInactive] = useState(true);
 
   useEffect(() => {
@@ -16,6 +16,9 @@ export const ProjectsContainer = ({
     setInputIsInactive(true);
   }, [projectLinks]);
 
+  function setProjectOptionsActivity(setFunction, condition) {
+    return condition ? setFunction(false) : setFunction(true);
+  }
 
   return (
     <div className={projectsContainerStyle.projectContainer}>
@@ -23,25 +26,22 @@ export const ProjectsContainer = ({
         <p>Projects</p>
         <motion.button
           onClick={(e) => {
-            return inputIsInactive
-              ? setInputIsInactive(false)
-              : setInputIsInactive(true);
+            setProjectOptionsActivity(setInputIsInactive, inputIsInactive);
           }}
         />
         <motion.button
           onClick={(e) => {
-            if (isDropDownActive) {
-              setIsDropDownActive(false);
-            } else {
-              setIsDropDownActive(true);
-            }
+            setProjectOptionsActivity(
+              setIsDropDownInactive,
+              isDropDownActive
+            );
           }}
           animate={{ rotateX: isDropDownActive ? 0 : 180 }}
           className={`projDropDownActive`}
         />
       </div>
       <AnimatePresence mode="wait">
-        {isDropDownActive && (
+        {!isDropDownActive && (
           <ProjectLinkContainer
             inputIsInactive={inputIsInactive}
             appenedProjectLinks={appenedProjectLinks}
