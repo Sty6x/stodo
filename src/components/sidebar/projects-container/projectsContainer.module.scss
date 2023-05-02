@@ -1,0 +1,40 @@
+ 
+.projectContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1em;
+  width: 100%;
+  height: 100%;
+  padding: 0.8em 1em;
+  box-sizing: border-box;
+}
+.projectOptions {
+  display: flex;
+  flex: 1;
+  gap: 1.2em;
+  z-index: 999;
+  background-color: #2f2f2f;
+  p {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: auto;
+  }
+  button {
+    background-size: contain;
+    background-position: center;
+    background-color: rgba($color: #000000, $alpha: 0);
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    border: none;
+  }
+  button:first-of-type {
+    background-image: url("../../../assets/images/proj-add-btn.svg");
+  }
+  button:last-of-type {
+    background-image: url("../../../assets/images/dropdown-icon.svg");
+  }
+}

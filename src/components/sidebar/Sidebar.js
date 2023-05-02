@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import sidebarStyles from "./sidebar.module.scss";
-import { animate, AnimatePresence, motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./sidebar.scss";
 import { ProjectLink } from "./project-link/ProjectLink";
-import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 import { uid } from "uid";
 import { FirebaseContext } from "../../App";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
-import { ProjectLinkContainer } from "./project-link-list/ProjectLinkContainer";
+import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 
 export const Sidebar = ({ sbRef }) => {
   const { auth, db } = useContext(FirebaseContext);
-  const [isDropDownActive, setIsDropDownActive] = useState(true);
-  const [inputIsInactive, setInputIsInactive] = useState(true);
   const [projectLinks, setProjectLinks] = useState([]);
   const newProjectRef = useRef();
 
@@ -26,11 +22,6 @@ export const Sidebar = ({ sbRef }) => {
     };
     setProjectLinks((prev) => [...prev, newProject]);
   }
-
-  useEffect(() => {
-    console.log(projectLinks);
-    setInputIsInactive(true);
-  }, [projectLinks]);
 
   const appenedProjectLinks = projectLinks.map((projectLink) => {
     return (
@@ -49,32 +40,12 @@ export const Sidebar = ({ sbRef }) => {
     >
       <div className={sidebarStyles.contentsContainer}>
         <NavigationLinks />
-        <div className={sidebarStyles.projectContainer}>
-          <div className={sidebarStyles.projectOptions}>
-            <p>Projects</p>
-            <motion.button
-              onClick={(e) => {
-                return inputIsInactive
-                  ? setInputIsInactive(false)
-                  : setInputIsInactive(true);
-              }}
-            />
-            <motion.button
-              onClick={(e) => {
-                if (isDropDownActive) {
-                  setIsDropDownActive(false);
-                } else {
-                  setIsDropDownActive(true);
-                }
-              }}
-              animate={{ rotateX: isDropDownActive ? 0 : 180 }}
-              className={`projDropDownActive`}
-            />
-          </div>
-          <AnimatePresence mode="wait">
-            {isDropDownActive && <ProjectLinkContainer inputIsInactive={inputIsInactive} appenedProjectLinks={appenedProjectLinks} isDropDownActive={isDropDownActive} newProjectRef={newProjectRef} addProject={addProject} />}
-          </AnimatePresence>
-        </div>
+        <ProjectsContainer
+          appenedProjectLinks={appenedProjectLinks}
+          newProjectRef={newProjectRef}
+          addProject={addProject}
+          projectLinks={projectLinks}
+        />
       </div>
     </motion.div>
   );
