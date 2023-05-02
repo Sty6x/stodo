@@ -8,6 +8,7 @@ import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 import { uid } from "uid";
 import { FirebaseContext } from "../../App";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
+import { ProjectLinkContainer } from "./project-link-list/ProjectLinkContainer";
 
 export const Sidebar = ({ sbRef }) => {
   const { auth, db } = useContext(FirebaseContext);
@@ -47,7 +48,7 @@ export const Sidebar = ({ sbRef }) => {
       className={`${sidebarStyles.sideBar} sideBarActive`}
     >
       <div className={sidebarStyles.contentsContainer}>
-          <NavigationLinks/>
+        <NavigationLinks />
         <div className={sidebarStyles.projectContainer}>
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
@@ -71,28 +72,7 @@ export const Sidebar = ({ sbRef }) => {
             />
           </div>
           <AnimatePresence mode="wait">
-            {isDropDownActive && (
-              <motion.ul
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ y: [-50, 0], opacity: 1 }}
-                exit={{
-                  opacity: 0,
-                  y: [10, -35],
-                }}
-                className={`${sidebarStyles.projectLinks} ${
-                  isDropDownActive ? "dropDownActive" : "dropDownInactive"
-                }`}
-              >
-                {!inputIsInactive && (
-                  <ProjectLinkInput
-                    handleOnSubmit={addProject}
-                    inputRef={newProjectRef}
-                  />
-                )}
-                {appenedProjectLinks}
-              </motion.ul>
-            )}
+            {isDropDownActive && <ProjectLinkContainer inputIsInactive={inputIsInactive} appenedProjectLinks={appenedProjectLinks} isDropDownActive={isDropDownActive} newProjectRef={newProjectRef} addProject={addProject} />}
           </AnimatePresence>
         </div>
       </div>
