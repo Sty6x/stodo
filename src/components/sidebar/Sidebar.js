@@ -1,26 +1,38 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import sidebarStyles from "./sidebar.module.scss";
 import { animate, AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
 import { ProjectLink } from "../project-link/ProjectLink";
 import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
+import { uid } from "uid";
+import { FirebaseContext } from "../../App";
 
 export const Sidebar = ({ sbRef }) => {
+  const { auth, db } = useContext(FirebaseContext);
   const [isDropDownActive, setIsDropDownActive] = useState(true);
   const [inputIsInactive, setInputIsInactive] = useState(true);
   const [projectLinks, setProjectLinks] = useState([]);
   const newProjectRef = useRef();
 
-  useEffect(() => {
-    console.log(isDropDownActive);
-  }, [isDropDownActive]);
-
   async function addProject() {
     const projectDetail = newProjectRef.current;
-    const newProject = { name: projectDetail.name };
-    console.log(newProject)
+    const newProject = {
+      [projectDetail.name]: projectDetail.value,
+      ID: uid(16),
+      authorId: auth.currentUser.uid,
+    };
+    setProjectLinks((prev) => [...prev, newProject]);
   }
+
+  useEffect(() => {
+    console.log(projectLinks);
+    setInputIsInactive(true)
+  }, [projectLinks]);
+
+  const appenedProjectLinks = projectLinks.map((projectLink) => {
+    return <ProjectLink key={projectLink.projectName} to={`/app/${projectLink.ID}`} projectName={projectLink.projectName} />;
+  });
 
   return (
     <motion.div
@@ -75,19 +87,13 @@ export const Sidebar = ({ sbRef }) => {
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
               >
-                {!inputIsInactive && <ProjectLinkInput handleOnSubmit={addProject} inputRef={newProjectRef} />}
-                <ProjectLink
-                  to={"/app/projectId1"}
-                  projectName={"First Project"}
-                />
-                <ProjectLink
-                  to={"/app/projectId2"}
-                  projectName={"Second Project"}
-                />
-                <ProjectLink
-                  to={"/app/projectId3"}
-                  projectName={"Third Project"}
-                />
+                {!inputIsInactive && (
+                  <ProjectLinkInput
+                    handleOnSubmit={addProject}
+                    inputRef={newProjectRef}
+                  />
+                )}
+                {appenedProjectLinks}
               </motion.ul>
             )}
           </AnimatePresence>

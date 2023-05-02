@@ -9,7 +9,7 @@ export const ProjectLinkInput = ({inputRef ,handleOnSubmit}) => {
         ref={inputRef}
         className={projectLinkStyle.name}
         type={"text"}
-        id="prjectName"
+        id="projectName"
         name="projectName"
       />
       <button className={projectLinkStyle.btn} onClick={handleOnSubmit} />
