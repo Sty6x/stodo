@@ -1,18 +1,27 @@
 import React from "react";
-import projectLinkStyle from "./projectLinkInput.module.scss";
-import { motion} from 'framer-motion'
-export const ProjectLinkInput = ({inputRef ,handleOnSubmit}) => {
+import projectLinkInputStyle from "./projectLinkInput.module.scss";
+import { motion } from "framer-motion";
+export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
   return (
-    <motion.div key={'projectLinkInput'} className={projectLinkStyle.container}>
+    <motion.div
+      key={"projectLinkInput"}
+      className={projectLinkInputStyle.container}
+    >
       <label htmlFor="projectName">Project Name</label>
-      <input
-        ref={inputRef}
-        className={projectLinkStyle.name}
-        type={"text"}
-        id="projectName"
-        name="projectName"
-      />
-      <button className={projectLinkStyle.btn} onClick={handleOnSubmit} />
+      <div className={projectLinkInputStyle.inputAndBtnContainer}>
+        <input
+          ref={inputRef}
+          className={projectLinkInputStyle.name}
+          type={"text"}
+          id="projectName"
+          name="projectName"
+          placeholder="Name"
+        />
+        <button
+          className={projectLinkInputStyle.btn}
+          onClick={handleOnSubmit}
+        />
+      </div>
     </motion.div>
   );
 };

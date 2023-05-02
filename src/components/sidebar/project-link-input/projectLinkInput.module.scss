@@ -1,1 +1,30 @@
- 
+.container {
+  label {
+    display: block;
+  }
+}
+.inputAndBtnContainer {
+  display: flex;
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-radius: 6px;
+    border-bottom: 1px solid white;
+  }
+  input:focus {
+    outline: 1px solid #ff2855;
+    transition: outline 150ms ease-in-out;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 10000s;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .btn {
+    margin-left: auto;
+  }
+}
