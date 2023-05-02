@@ -3,10 +3,11 @@ import sidebarStyles from "./sidebar.module.scss";
 import { animate, AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
-import { ProjectLink } from "../project-link/ProjectLink";
-import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
+import { ProjectLink } from "./project-link/ProjectLink";
+import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 import { uid } from "uid";
 import { FirebaseContext } from "../../App";
+import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 
 export const Sidebar = ({ sbRef }) => {
   const { auth, db } = useContext(FirebaseContext);
@@ -27,11 +28,17 @@ export const Sidebar = ({ sbRef }) => {
 
   useEffect(() => {
     console.log(projectLinks);
-    setInputIsInactive(true)
+    setInputIsInactive(true);
   }, [projectLinks]);
 
   const appenedProjectLinks = projectLinks.map((projectLink) => {
-    return <ProjectLink key={projectLink.projectName} to={`/app/${projectLink.ID}`} projectName={projectLink.projectName} />;
+    return (
+      <ProjectLink
+        key={projectLink.projectName}
+        to={`/app/${projectLink.ID}`}
+        projectName={projectLink.projectName}
+      />
+    );
   });
 
   return (
@@ -40,18 +47,8 @@ export const Sidebar = ({ sbRef }) => {
       className={`${sidebarStyles.sideBar} sideBarActive`}
     >
       <div className={sidebarStyles.contentsContainer}>
-        <ul className={sidebarStyles.navigation}>
-          <li className={sidebarStyles.today}>
-            <NavLink to={"/app/today"}>Today</NavLink>
-          </li>
-          <li className={sidebarStyles.upcoming}>
-            <NavLink to={"/app/upcoming"}>Upcoming</NavLink>
-          </li>
-          <li className={sidebarStyles.overdue}>
-            <NavLink to={"/app/overdue"}>Overdue Tasks</NavLink>
-          </li>
-        </ul>
         <div className={sidebarStyles.projectContainer}>
+          <NavigationLinks/>
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
             <motion.button
