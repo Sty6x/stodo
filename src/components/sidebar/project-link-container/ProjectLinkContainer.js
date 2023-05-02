@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
 
 export const ProjectLinkContainer = ({
-  inputIsInactive,
-  addProject,
+
   appenedProjectLinks,
   isDropDownActive,
-  newProjectRef,
 }) => {
 
   return (
@@ -24,13 +22,7 @@ export const ProjectLinkContainer = ({
         isDropDownActive ? "dropDownActive" : "dropDownInactive"
       }`}
     >
-      {!inputIsInactive && (
-        <ProjectLinkInput
-          handleOnSubmit={addProject}
-          inputRef={newProjectRef}
-        />
-      )}
-      {appenedProjectLinks}
+           {appenedProjectLinks}
     </motion.ul>
   );
 };

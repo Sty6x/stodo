@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import projectsContainerStyle from "./projectsContainer.module.scss";
 import { ProjectLinkContainer } from "../project-link-container/ProjectLinkContainer";
+import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
 import { motion, AnimatePresence } from "framer-motion";
 export const ProjectsContainer = ({
   newProjectRef,
@@ -31,15 +32,19 @@ export const ProjectsContainer = ({
         />
         <motion.button
           onClick={(e) => {
-            setProjectOptionsActivity(
-              setIsDropDownInactive,
-              isDropDownActive
-            );
+            setProjectOptionsActivity(setIsDropDownInactive, isDropDownActive);
           }}
-          animate={{ rotateX: isDropDownActive ? 0 : 180 }}
+          animate={{ rotateX: isDropDownActive ? 180 : 0 }}
           className={`projDropDownActive`}
         />
       </div>
+        {!inputIsInactive && (
+          <ProjectLinkInput
+            handleOnSubmit={addProject}
+            inputRef={newProjectRef}
+          />
+        )}
+
       <AnimatePresence mode="wait">
         {!isDropDownActive && (
           <ProjectLinkContainer
