@@ -47,8 +47,8 @@ export const Sidebar = ({ sbRef }) => {
       className={`${sidebarStyles.sideBar} sideBarActive`}
     >
       <div className={sidebarStyles.contentsContainer}>
-        <div className={sidebarStyles.projectContainer}>
           <NavigationLinks/>
+        <div className={sidebarStyles.projectContainer}>
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
             <motion.button
