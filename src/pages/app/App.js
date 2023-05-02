@@ -21,7 +21,6 @@ import {
   query,
 } from "firebase/firestore";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
-import { AnimatePresence } from "framer-motion";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -31,6 +30,7 @@ export const App = () => {
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [projectLinks, setProjectLinks] = useState([]);
 
   useEffect(() => {
     console.log("app component mounted");
@@ -90,14 +90,6 @@ export const App = () => {
         ) : (
           <>
             <Navbar>
-              <button
-                onClick={async (e) => {
-                  signOut(auth);
-                }}
-                style={{ position: "absolute", left: "80%" }}
-              >
-                Sign out
-              </button>
               <div className={appStyles.navLeft}>
                 <button
                   onClick={(e) => setSideBarStatus()}
@@ -112,7 +104,7 @@ export const App = () => {
               </div>
             </Navbar>
             <main className={appStyles.appPage}>
-              <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
+              <Sidebar projectLinks={projectLinks} setProjectLinks={setProjectLinks} sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
               <TaskDatabaseContext.Provider
                 value={{ tasks, setTasks, deleteTask }}
               >

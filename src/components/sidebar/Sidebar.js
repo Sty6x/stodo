@@ -5,12 +5,12 @@ import "./sidebar.scss";
 import { ProjectLink } from "./project-link/ProjectLink";
 import { uid } from "uid";
 import { FirebaseContext } from "../../App";
+import { TaskDatabaseContext } from "../../pages/app/App";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 
-export const Sidebar = ({ sbRef }) => {
-  const { auth, db } = useContext(FirebaseContext);
-  const [projectLinks, setProjectLinks] = useState([]);
+export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
+  const { auth } = useContext(FirebaseContext);
   const newProjectRef = useRef();
 
   async function addProject() {

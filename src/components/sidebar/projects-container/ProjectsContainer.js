@@ -9,12 +9,13 @@ export const ProjectsContainer = ({
   addProject,
   projectLinks,
 }) => {
-  const [isDropDownActive, setIsDropDownInactive] = useState(true);
+  const [isDropDownActive, setIsDropDownActive] = useState(true);
   const [inputIsInactive, setInputIsInactive] = useState(true);
 
   useEffect(() => {
     console.log(projectLinks);
     setInputIsInactive(true);
+    setIsDropDownActive(true)
   }, [projectLinks]);
 
   function setProjectOptionsActivity(setFunction, condition) {
@@ -32,7 +33,7 @@ export const ProjectsContainer = ({
         />
         <motion.button
           onClick={(e) => {
-            setProjectOptionsActivity(setIsDropDownInactive, isDropDownActive);
+            setProjectOptionsActivity(setIsDropDownActive, isDropDownActive);
           }}
           animate={{ rotateX: isDropDownActive ? 0 : 180 }}
           className={`projDropDownActive`}

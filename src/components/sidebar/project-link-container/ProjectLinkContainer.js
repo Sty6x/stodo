@@ -11,16 +11,16 @@ export const ProjectLinkContainer = ({
     <motion.ul
       layout
       initial={{ opacity: 0 }}
-      animate={{ y: [-50, 0], opacity: 1 }}
+      animate={{ y: [-30, 0], opacity: 1 }}
       exit={{
         opacity: 0,
-        y: [10, -35],
+        y:  -30,
       }}
       className={`${projectLinkContainerStyle.projectLinks} ${
         isDropDownActive ? "dropDownActive" : "dropDownInactive"
       }`}
     >
-      {appenedProjectLinks.length === 0 ? <p>No Projects</p>: appenedProjectLinks}
+      {appenedProjectLinks.length === 0 ? <p>You don't have any projects</p>: appenedProjectLinks}
     </motion.ul>
   );
 };
