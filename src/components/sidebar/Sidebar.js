@@ -4,17 +4,22 @@ import { animate, AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
 import { ProjectLink } from "../project-link/ProjectLink";
+import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
 
 export const Sidebar = ({ sbRef }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(true);
   const [inputIsInactive, setInputIsInactive] = useState(true);
+  const [projectLinks, setProjectLinks] = useState([]);
+  const newProjectRef = useRef();
 
   useEffect(() => {
     console.log(isDropDownActive);
   }, [isDropDownActive]);
 
-  async function addProjectLink(e){
-         
+  async function addProject() {
+    const projectDetail = newProjectRef.current;
+    const newProject = { name: projectDetail.name };
+    console.log(newProject)
   }
 
   return (
@@ -37,9 +42,13 @@ export const Sidebar = ({ sbRef }) => {
         <div className={sidebarStyles.projectContainer}>
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
-            <motion.button onClick={e=>{
-              return inputIsInactive ?  setInputIsInactive(false) : setInputIsInactive(true)
-            }} />
+            <motion.button
+              onClick={(e) => {
+                return inputIsInactive
+                  ? setInputIsInactive(false)
+                  : setInputIsInactive(true);
+              }}
+            />
             <motion.button
               onClick={(e) => {
                 if (isDropDownActive) {
@@ -52,19 +61,21 @@ export const Sidebar = ({ sbRef }) => {
               className={`projDropDownActive`}
             />
           </div>
-          <AnimatePresence mode="wait" >
+          <AnimatePresence mode="wait">
             {isDropDownActive && (
               <motion.ul
-                initial={{opacity:0}}
-                animate={{ y: [-50, 0],opacity:1 }}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ y: [-50, 0], opacity: 1 }}
                 exit={{
-                  opacity:0,
+                  opacity: 0,
                   y: [10, -35],
                 }}
                 className={`${sidebarStyles.projectLinks} ${
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
               >
+                {!inputIsInactive && <ProjectLinkInput handleOnSubmit={addProject} inputRef={newProjectRef} />}
                 <ProjectLink
                   to={"/app/projectId1"}
                   projectName={"First Project"}
@@ -77,8 +88,6 @@ export const Sidebar = ({ sbRef }) => {
                   to={"/app/projectId3"}
                   projectName={"Third Project"}
                 />
-
-                {!inputIsInactive && <p>yees</p>}
               </motion.ul>
             )}
           </AnimatePresence>
