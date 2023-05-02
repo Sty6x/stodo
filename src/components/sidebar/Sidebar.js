@@ -7,6 +7,7 @@ import { ProjectLink } from "../project-link/ProjectLink";
 
 export const Sidebar = ({ sbRef }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(true);
+  const [inputIsInactive, setInputIsInactive] = useState(true);
 
   useEffect(() => {
     console.log(isDropDownActive);
@@ -36,7 +37,9 @@ export const Sidebar = ({ sbRef }) => {
         <div className={sidebarStyles.projectContainer}>
           <div className={sidebarStyles.projectOptions}>
             <p>Projects</p>
-            <motion.button />
+            <motion.button onClick={e=>{
+              return inputIsInactive ?  setInputIsInactive(false) : setInputIsInactive(true)
+            }} />
             <motion.button
               onClick={(e) => {
                 if (isDropDownActive) {
@@ -62,6 +65,7 @@ export const Sidebar = ({ sbRef }) => {
                   isDropDownActive ? "dropDownActive" : "dropDownInactive"
                 }`}
               >
+                {!inputIsInactive && <p>Input Here</p>}
                 <ProjectLink
                   to={"/app/projectId1"}
                   projectName={"First Project"}
