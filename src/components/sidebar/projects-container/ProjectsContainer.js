@@ -34,25 +34,22 @@ export const ProjectsContainer = ({
           onClick={(e) => {
             setProjectOptionsActivity(setIsDropDownInactive, isDropDownActive);
           }}
-          animate={{ rotateX: isDropDownActive ? 180 : 0 }}
+          animate={{ rotateX: isDropDownActive ? 0 : 180 }}
           className={`projDropDownActive`}
         />
       </div>
-        {!inputIsInactive && (
-          <ProjectLinkInput
-            handleOnSubmit={addProject}
-            inputRef={newProjectRef}
-          />
-        )}
+      {!inputIsInactive && (
+        <ProjectLinkInput
+          handleOnSubmit={addProject}
+          inputRef={newProjectRef}
+        />
+      )}
 
       <AnimatePresence mode="wait">
-        {!isDropDownActive && (
+        {isDropDownActive && (
           <ProjectLinkContainer
-            inputIsInactive={inputIsInactive}
             appenedProjectLinks={appenedProjectLinks}
             isDropDownActive={isDropDownActive}
-            newProjectRef={newProjectRef}
-            addProject={addProject}
           />
         )}
       </AnimatePresence>
