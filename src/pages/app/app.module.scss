@@ -7,13 +7,13 @@
 }
 
 .pages {
-  overflow-y: auto;
+  padding-bottom: 2em;
   display: flex;
   color: white;
-  height: 100%;
   flex: 1;
+  overflow: auto;
+  height: 100%;
   padding: 0em 18em;
-  padding-bottom: 2em;
   flex-direction: column;
   gap: 2em;
   div:not(:last-child) {

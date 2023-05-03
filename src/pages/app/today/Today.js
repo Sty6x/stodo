@@ -108,7 +108,7 @@ export const Today = () => {
         onEmptyText={
           "Looks like you're done for today, enjoy the rest of your day!"
         }
-      >
+      ><TaskContainer>
         {appendTasks}
         <AnimatePresence mode="wait">
           {formActive ? (
@@ -131,7 +131,7 @@ export const Today = () => {
           )}
         </AnimatePresence>
 
-        <TaskContainer></TaskContainer>
+        </TaskContainer>
       </PageLayout>
     </div>
   );
