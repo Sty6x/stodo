@@ -15,7 +15,7 @@ export const ProjectsContainer = ({
   useEffect(() => {
     console.log(projectLinks);
     setInputIsInactive(true);
-    setIsDropDownActive(true)
+    setIsDropDownActive(true);
   }, [projectLinks]);
 
   function setProjectOptionsActivity(setFunction, condition) {
@@ -27,7 +27,7 @@ export const ProjectsContainer = ({
       <div className={projectsContainerStyle.projectOptions}>
         <p>Projects</p>
         <motion.button
-          animate={{rotateZ:inputIsInactive ? 0: 135}}
+          animate={{ rotateZ: inputIsInactive ? 0 : 135 }}
           onClick={(e) => {
             setProjectOptionsActivity(setInputIsInactive, inputIsInactive);
           }}
@@ -46,7 +46,6 @@ export const ProjectsContainer = ({
           inputRef={newProjectRef}
         />
       )}
-
       <AnimatePresence mode="wait">
         {isDropDownActive && (
           <ProjectLinkContainer
