@@ -25,7 +25,6 @@ export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
   const { auth, db } = useContext(FirebaseContext);
-  const sideBarBtnRef = useRef();
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
@@ -60,7 +59,6 @@ export const App = () => {
   }
 
   function setSideBarStatus() {
-    const btn = sideBarBtnRef.current;
     const sb = sideBarRef.current;
     console.log(sb);
     if (sb.classList.contains("sideBarActive")) {
@@ -84,35 +82,39 @@ export const App = () => {
   }
 
   return (
-      <>
-        {isLoading ? (
-          <LoadingAppPage />
-        ) : (
-          <>
-            <Navbar>
-              <div className={appStyles.navLeft}>
-                <button
-                  onClick={(e) => setSideBarStatus()}
-                  ref={sideBarBtnRef}
-                  className={appStyles.sideBarBtn}
-                ></button>
-                <Logo to={"/app/today"} />
-              </div>
-              <div className={appStyles.navRight}>
-                {/* make user profile drop down on click  */}
-                <div className={appStyles.profile}>A</div>
-              </div>
-            </Navbar>
-            <main className={appStyles.appPage}>
-              <Sidebar projectLinks={projectLinks} setProjectLinks={setProjectLinks} sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-              <TaskDatabaseContext.Provider
-                value={{ tasks, setTasks, deleteTask }}
-              >
-                <Outlet />
-              </TaskDatabaseContext.Provider>
-            </main>
-          </>
-        )}
-      </>
+    <>
+      {isLoading ? (
+        <LoadingAppPage />
+      ) : (
+        <>
+          <Navbar>
+            <div className={appStyles.navLeft}>
+              <button
+                onClick={() => setSideBarStatus()}
+                className={appStyles.sideBarBtn}
+              ></button>
+              <Logo to={"/app/today"} />
+            </div>
+            <div className={appStyles.navRight}>
+              {/* make user profile drop down on click  */}
+              <div className={appStyles.profile}>A</div>
+            </div>
+          </Navbar>
+          <main className={appStyles.appPage}>
+            <Sidebar
+              projectLinks={projectLinks}
+              setProjectLinks={setProjectLinks}
+              sbRef={sideBarRef}
+              isSidebarActive={isSidebarActive}
+            />
+            <TaskDatabaseContext.Provider
+              value={{ tasks, setTasks, deleteTask }}
+            >
+              <Outlet />
+            </TaskDatabaseContext.Provider>
+          </main>
+        </>
+      )}
+    </>
   );
 };

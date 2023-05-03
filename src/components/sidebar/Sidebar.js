@@ -5,7 +5,6 @@ import "./sidebar.scss";
 import { ProjectLink } from "./project-link/ProjectLink";
 import { uid } from "uid";
 import { FirebaseContext } from "../../App";
-import { TaskDatabaseContext } from "../../pages/app/App";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 
