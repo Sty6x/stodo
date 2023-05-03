@@ -48,18 +48,18 @@ export const ProjectsContainer = ({
       <AnimatePresence mode="wait">
         {isDropDownActive && (
           <motion.ul
-            // initial={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ y: [-30, 0], opacity: 1 }}
             exit={{
               opacity: 0,
-              y: -30,
+              y: [0,-30],
             }}
             className={`${projectsContainerStyle.projectLinksContainer} ${
               isDropDownActive ? "dropDownActive" : "dropDownInactive"
             }`}
           >
             {appenedProjectLinks.length === 0 ? (
-              <motion.p layout exit={{ y: 30, opacity: 0 }}>
+              <motion.p layout >
                 You don't have any projects, click the "<span>+</span>" to get
                 started.
               </motion.p>

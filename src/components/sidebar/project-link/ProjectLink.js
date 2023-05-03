@@ -7,7 +7,6 @@ export const ProjectLink = ({ to, projectName }) => {
   return (
     <motion.li
       layout
-      initial={{ y: 30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className={`${projectLinkStyles.linkContainer}`}
       key={projectName}
