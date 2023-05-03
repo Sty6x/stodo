@@ -1,8 +1,8 @@
 .task {
   display: flex;
   background-color: #323232;
-  padding: 1em 2em;
-  border-radius: 16px;
+  padding: .6em 1.3em;
+  border-radius: 10px;
   align-items: center;
   max-width: 100%;
   button {
@@ -47,16 +47,28 @@
     white-space: nowrap;
     font-size: 0.8em;
     font-weight: 400;
+    color: #DBDBDB;
   }
 }
 
 .doneBtn {
   border-radius: 50%;
-  width: 2.3em;
-  height: 2.3em;
+  width: 2em;
+  height: 2em;
   border: 3px solid #4a4a4a;
   background-color: #646464;
   margin-right: 2em;
+  position: relative;
+  transition: 150ms background-color ease-in;
+  transition: transform 150ms ease-in-out;
+  &:hover {
+    background-color:#e7e7e799 ;
+  }
+  &:active{
+    background-color: whitesmoke;
+    transform: scale(1.2);
+  }
+
 }
 
 .taskOptions {

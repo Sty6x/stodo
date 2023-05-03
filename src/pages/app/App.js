@@ -20,20 +20,16 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import { isFuture, isPast } from "date-fns";
-import { queries } from "@testing-library/react";
+import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
   const { auth, db } = useContext(FirebaseContext);
-  const sideBarBtnRef = useRef();
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
-  const [upcomingTasks, setUpcomingTasks] = useState([]);
-  const [overdueTasks, setOverdueTasks] = useState([]);
-  const [todayTasks, setTodayTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [projectLinks, setProjectLinks] = useState([]);
 
   useEffect(() => {
     console.log("app component mounted");
@@ -63,7 +59,6 @@ export const App = () => {
   }
 
   function setSideBarStatus() {
-    const btn = sideBarBtnRef.current;
     const sb = sideBarRef.current;
     console.log(sb);
     if (sb.classList.contains("sideBarActive")) {
@@ -88,35 +83,38 @@ export const App = () => {
 
   return (
     <>
-      <Navbar>
-        <button
-          onClick={async (e) => {
-            signOut(auth);
-          }}
-          style={{ position: "absolute", left: "80%" }}
-        >
-          Sign out
-        </button>
-        <div className={appStyles.navLeft}>
-          <button
-            onClick={(e) => setSideBarStatus()}
-            ref={sideBarBtnRef}
-            className={appStyles.sideBarBtn}
-          ></button>
-          <Logo to={"/app/today"} />
-        </div>
-        <div className={appStyles.navRight}>
-          {/* make user profile drop down on click  */}
-          <div className={appStyles.profile}>A</div>
-        </div>
-      </Navbar>
-      <main className={appStyles.appPage}>
-        {/*sidebar*/}
-        <Sidebar sbRef={sideBarRef} isSidebarActive={isSidebarActive} />
-        <TaskDatabaseContext.Provider value={{ tasks, setTasks, deleteTask }}>
-          {isLoading ? <p>show animation...</p> : <Outlet />}
-        </TaskDatabaseContext.Provider>
-      </main>
+      {isLoading ? (
+        <LoadingAppPage />
+      ) : (
+        <>
+          <Navbar>
+            <div className={appStyles.navLeft}>
+              <button
+                onClick={() => setSideBarStatus()}
+                className={appStyles.sideBarBtn}
+              ></button>
+              <Logo to={"/app/today"} />
+            </div>
+            <div className={appStyles.navRight}>
+              {/* make user profile drop down on click  */}
+              <div className={appStyles.profile}>A</div>
+            </div>
+          </Navbar>
+          <main className={appStyles.appPage}>
+            <Sidebar
+              projectLinks={projectLinks}
+              setProjectLinks={setProjectLinks}
+              sbRef={sideBarRef}
+              isSidebarActive={isSidebarActive}
+            />
+            <TaskDatabaseContext.Provider
+              value={{ tasks, setTasks, deleteTask }}
+            >
+              <Outlet />
+            </TaskDatabaseContext.Provider>
+          </main>
+        </>
+      )}
     </>
   );
 };

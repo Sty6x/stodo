@@ -102,8 +102,13 @@ export const Today = () => {
       key="today-page"
       className={`${appPages.pages} ${todayStyles.todayPage}`}
     >
-      <HeaderComponent pageName={"Tasks for Today"} isMainHeader={true} />
-      <PageLayout>
+      <HeaderComponent pageName={"Today"} isMainHeader={true} />
+      <PageLayout
+        pageTasks={todayTasks}
+        onEmptyText={
+          "Looks like you're done for today, enjoy the rest of your day!"
+        }
+      >
         <TaskContainer>
           {appendTasks}
           <AnimatePresence mode="wait">
@@ -117,8 +122,8 @@ export const Today = () => {
             ) : (
               <motion.button
                 layout
-                exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
-                animate={{ y: [-30, 0], opacity: [0, 1] }}
+                exit={{ y: -20, opacity: 0, transition: { duration: 0.1 } }}
+                animate={{ y: [-20, 0], opacity: [0, 1] }}
                 className={`${todayStyles.button}`}
                 onClick={formControl}
               >

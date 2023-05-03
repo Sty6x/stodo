@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { AddButton } from "../button/AddButton";
+import { OnEmptyTaskDisplay } from "../../on-empty-task-display/OnEmptyTaskDisplay";
 import pageLayoutStyles from "./pageLayout.module.scss";
-export const PageLayout = ({ children, buttonText }) => {
+import { motion } from "framer-motion";
+export const PageLayout = ({
+  children,
+  buttonText,
+  onEmptyText,
+  pageTasks,
+}) => {
+  const [isEmpty, setIsEmpty] = useState(false);
+
+  function checkTaskPresence(tasks) {
+    return tasks.length !== 0 ? setIsEmpty(false) : setIsEmpty(true);
+  }
+
+  useEffect(() => {
+    checkTaskPresence(pageTasks);
+  }, [pageTasks]);
+
   return (
-    <div
+    <motion.div
       id="page-content-container"
       className={`${pageLayoutStyles.contentContainer}`}
     >
       {children}
-    </div>
+      {isEmpty && <OnEmptyTaskDisplay pageText={onEmptyText} />}
+    </motion.div>
   );
 };

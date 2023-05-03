@@ -1,0 +1,36 @@
+.loadingPage {
+  background-color: #272727;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.loadingIconContainer {
+  color: white;
+}
+
+.item {
+  position: relative;
+  &::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 5px #4A4A4A;
+    border-bottom-color: #008CFF;
+    border-radius: 50%;
+    content: "";
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}

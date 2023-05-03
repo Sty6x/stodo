@@ -185,7 +185,7 @@ table {
 }
 
 .App {
-  min-height: 100vh;
+  height: 100vh;
   font-family: "inter";
   display: flex;
   flex-direction: column;
@@ -197,3 +197,25 @@ button {
 button:disabled {
   background-color: aliceblue;
 }
+
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  border-radius: 6px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

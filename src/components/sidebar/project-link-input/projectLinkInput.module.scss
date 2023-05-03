@@ -1,0 +1,49 @@
+.container {
+  label {
+    display: block;
+    margin-bottom: 0.6em;
+    font-size: 0.9rem;
+  }
+}
+.inputAndBtnContainer {
+  display: flex;
+  input {
+    width: 100%;
+    color: black;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #dbdbdb;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 0.4em 0.8em;
+  }
+  input:focus,
+  input:active {
+    outline: 1px solid #ff2855;
+    transition: outline 150ms ease-in-out;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 10000s;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .btn {
+    margin-left: 1em;
+    width: 2%;
+    box-sizing: content-box;
+    background-image: url("../../../assets/images/submitBtn.svg");
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .btn:disabled{
+    background-image: url("../../../assets/images/proj-add-btn.svg");
+  }
+}

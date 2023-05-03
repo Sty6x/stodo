@@ -3,97 +3,10 @@
   color: white;
   width: 18%;
   box-shadow: 2px 0px 1px 1px rgba($color: #000000, $alpha: 0.2);
+  position: sticky;
+  top: 0;
 }
 
-.navigation {
-  padding: 3em 1em 0em 1em;
-  font-size: .9rem;
-  & > li:not(:last-child) {
-    margin-bottom: .6em;
 
-  }
-  & > li:hover {
-    transition: background-color 150ms ease-in-out;
-    background-color: rgba($color: #474747, $alpha: 0.5);
-  }
-  li > a::before {
-    content: "";
-    display: inline-block;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 25px;
-    height: 25px;
-  }
-  li,
-  li > a {
-    border-radius: 10px;
-  }
-  li > a {
-    box-sizing: border-box;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 1.1em;
-    width: 100%;
-    height: 100%;
-    padding: 0.6em 1em;
-  }
-}
 
-.today > a::before {
-  background-image: url("../../assets/images/today-icon.svg");
-}
-.overdue > a::before {
-  background-image: url("../../assets/images/overdue-icon.svg");
-}
-.upcoming > a::before {
-  background-image: url("../../assets/images/upcoming-icon.svg");
-}
 
-.projectContainer {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.1em;
-  width: 100%;
-  height: 100%;
-  padding: 0.8em 1em;
-  box-sizing: border-box;
-}
-.projectOptions {
-  display: flex;
-  flex: 1;
-  gap: 1.2em;
-  z-index: 999;
-  background-color: #2f2f2f;
-  p {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-right: auto;
-  }
-  button {
-    background-size: contain;
-    background-position: center;
-    background-color: rgba($color: #000000, $alpha: 0);
-    background-repeat: no-repeat;
-    width: 15px;
-    height: 15px;
-    appearance: none;
-    border: none;
-  }
-  button:first-of-type {
-    background-image: url("../../assets/images/proj-add-btn.svg");
-  }
-  button:last-of-type {
-    background-image: url("../../assets/images/dropdown-icon.svg");
-  }
-}
-
-.projectLinks {
-  & > li:not(:last-child) {
-    margin-bottom: 5px;
-  }
-  font-size: .9rem;
-}
