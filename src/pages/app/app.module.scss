@@ -1,16 +1,19 @@
 .appPage {
-  display: flex;
   background-color: #272727;
+  display: flex;
   flex: 1;
-  min-height: 100vh;
-  overflow-y: auto;
+  position: relative;
+  height: 0;
 }
 
 .pages {
+  overflow-y: auto;
   display: flex;
   color: white;
+  height: 100%;
   flex: 1;
-  margin: 0em 18em;
+  padding: 0em 18em;
+  padding-bottom: 2em;
   flex-direction: column;
   gap: 2em;
   div:not(:last-child) {

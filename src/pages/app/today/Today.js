@@ -105,31 +105,33 @@ export const Today = () => {
       <HeaderComponent pageName={"Today"} isMainHeader={true} />
       <PageLayout
         pageTasks={todayTasks}
-        onEmptyText={"Looks like you're done for today, enjoy the rest of your day!"}
+        onEmptyText={
+          "Looks like you're done for today, enjoy the rest of your day!"
+        }
       >
-        <TaskContainer>
-          {appendTasks}
-          <AnimatePresence mode="wait">
-            {formActive ? (
-              <TaskForm
-                key={"taskForm"}
-                cancelBtn={formControl}
-                formRef={formRef}
-                onSubmitHandler={addTask}
-              />
-            ) : (
-              <motion.button
-                layout
-                exit={{ y: -20, opacity: 0, transition: { duration: 0.1 } }}
-                animate={{ y: [-20, 0], opacity: [0, 1] }}
-                className={`${todayStyles.button}`}
-                onClick={formControl}
-              >
-                Add Task
-              </motion.button>
-            )}
-          </AnimatePresence>
-        </TaskContainer>
+        {appendTasks}
+        <AnimatePresence mode="wait">
+          {formActive ? (
+            <TaskForm
+              key={"taskForm"}
+              cancelBtn={formControl}
+              formRef={formRef}
+              onSubmitHandler={addTask}
+            />
+          ) : (
+            <motion.button
+              layout
+              exit={{ y: -20, opacity: 0, transition: { duration: 0.1 } }}
+              animate={{ y: [-20, 0], opacity: [0, 1] }}
+              className={`${todayStyles.button}`}
+              onClick={formControl}
+            >
+              Add Task
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        <TaskContainer></TaskContainer>
       </PageLayout>
     </div>
   );
