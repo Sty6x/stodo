@@ -20,7 +20,7 @@ export const ProjectLinkContainer = ({
         isDropDownActive ? "dropDownActive" : "dropDownInactive"
       }`}
     >
-      {appenedProjectLinks.length === 0 ? <p>You don't have any projects</p>: appenedProjectLinks}
+      {appenedProjectLinks.length === 0 ? <p>You don't have any projects, click the "<span>+</span>" to get started.</p>: appenedProjectLinks}
     </motion.ul>
   );
 };
