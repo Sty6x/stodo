@@ -45,28 +45,30 @@ export const ProjectsContainer = ({
           inputRef={newProjectRef}
         />
       )}
-      {isDropDownActive && (
-        <motion.ul
-          initial={{ opacity: 0 }}
-          animate={{ y: [-30, 0], opacity: 1 }}
-          exit={{
-            opacity: 0,
-            y: -30,
-          }}
-          className={`${projectsContainerStyle.projectLinksContainer} ${
-            isDropDownActive ? "dropDownActive" : "dropDownInactive"
-          }`}
-        >
-          {appenedProjectLinks.length === 0 ? (
+      <AnimatePresence mode="wait">
+        {isDropDownActive && (
+          <motion.ul
+            // initial={{ opacity: 0 }}
+            animate={{ y: [-30, 0], opacity: 1 }}
+            exit={{
+              opacity: 0,
+              y: -30,
+            }}
+            className={`${projectsContainerStyle.projectLinksContainer} ${
+              isDropDownActive ? "dropDownActive" : "dropDownInactive"
+            }`}
+          >
+            {appenedProjectLinks.length === 0 ? (
               <motion.p layout exit={{ y: 30, opacity: 0 }}>
                 You don't have any projects, click the "<span>+</span>" to get
                 started.
               </motion.p>
-          ) : (
-            appenedProjectLinks
-          )}
-        </motion.ul>
-      )}
+            ) : (
+              appenedProjectLinks
+            )}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
