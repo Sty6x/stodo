@@ -1,4 +1,4 @@
-.projectLinks {
+.projectLinksContainer {
   & > *:not(:last-child) {
     margin-bottom: 5px;
   }
@@ -6,6 +6,7 @@
   p {
     max-width: 250px;
     line-height: 1.5em;
+    color: grey;
     span {
       font-weight: 400;
       font-size: 1.2rem;

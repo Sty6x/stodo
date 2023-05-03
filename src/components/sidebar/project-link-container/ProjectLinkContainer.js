@@ -16,7 +16,7 @@ export const ProjectLinkContainer = ({
         opacity: 0,
         y:  -30,
       }}
-      className={`${projectLinkContainerStyle.projectLinks} ${
+      className={`${projectLinkContainerStyle.projectLinksContainer} ${
         isDropDownActive ? "dropDownActive" : "dropDownInactive"
       }`}
     >
