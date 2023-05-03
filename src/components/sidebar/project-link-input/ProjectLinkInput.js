@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import projectLinkInputStyle from "./projectLinkInput.module.scss";
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
+  const [inputInvalid, setInputInvalid] = useState(true);
+
+  function checkProjectNameInput(e) {
+    const target = e.target;
+    if (target.validity.valueMissing || target.value === "") {
+      return setInputInvalid(true);
+    }
+    return setInputInvalid(false);
+  }
+
   return (
     <motion.div
       key={"projectLinkInput"}
@@ -15,9 +25,17 @@ export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
           type={"text"}
           id="projectName"
           name="projectName"
-          placeholder="Name"
+          placeholder={inputInvalid ? "Name your project" : "Name"}
+          onChange={checkProjectNameInput}
         />
-        <button
+        {}
+        <motion.button
+          initial={{ x: 0 }}
+          animate={{
+            rotateZ: inputInvalid ? 45 : 0,
+            transition: { duration: 0.2, type: "spring" },
+          }}
+          disabled={inputInvalid}
           className={projectLinkInputStyle.btn}
           onClick={handleOnSubmit}
         />
