@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import projectsContainerStyle from "./projectsContainer.module.scss";
-import { ProjectLinkContainer } from "../project-link-container/ProjectLinkContainer";
 import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
 import { motion, AnimatePresence } from "framer-motion";
 export const ProjectsContainer = ({
@@ -48,10 +47,27 @@ export const ProjectsContainer = ({
       )}
       <AnimatePresence mode="wait">
         {isDropDownActive && (
-          <ProjectLinkContainer
-            appenedProjectLinks={appenedProjectLinks}
-            isDropDownActive={isDropDownActive}
-          />
+          <motion.ul
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ y: [-30, 0], opacity: 1 }}
+            exit={{
+              opacity: 0,
+              y: -30,
+            }}
+            className={`${projectsContainerStyle.projectLinksContainer} ${
+              isDropDownActive ? "dropDownActive" : "dropDownInactive"
+            }`}
+          >
+            {appenedProjectLinks.length === 0 ? (
+              <p>
+                You don't have any projects, click the "<span>+</span>" to get
+                started.
+              </p>
+            ) : (
+              appenedProjectLinks
+            )}
+          </motion.ul>
         )}
       </AnimatePresence>
     </div>

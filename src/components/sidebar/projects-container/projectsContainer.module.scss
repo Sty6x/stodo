@@ -38,3 +38,20 @@
     background-image: url("../../../assets/images/dropdown-icon.svg");
   }
 }
+
+
+.projectLinksContainer {
+  & > *:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  font-size: 0.9rem;
+  p {
+    max-width: 300px;
+    line-height: 1.5em;
+    color: grey;
+    span {
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+  }
+}
