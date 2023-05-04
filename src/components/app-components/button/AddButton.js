@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import addBtnStyles from "./addButton.module.scss";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { TaskForm } from "../task-form/TaskForm";
+import { TaskDatabaseContext } from "../../../pages/app/App";
 
 export const AddButton = ({ addTask, type }) => {
   const [formActive, setFormActive] = useState(false);
+  const {tasks} = useContext(TaskDatabaseContext)
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
   }
+
+  useEffect(()=>{
+    setFormActive(false)
+  },[tasks])
+
   return (
     <AnimatePresence mode="wait">
       {formActive ? (

@@ -32,11 +32,6 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
               priority: "low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
-            {
-              title: "Task Three",
-              priority: "Medium",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
           ],
         },
         {
@@ -45,6 +40,12 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
             {
               title: "two-Task one",
               priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+
+            {
+              title: "Task Three",
+              priority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
@@ -62,16 +63,6 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
         {
           sectionName: "Section three",
           sectionTasks: [
-            {
-              title: "three-Task one",
-              priority: "high",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-            {
-              title: "three-Task Two",
-              priority: "low",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
             {
               title: "three-Task Three",
               priority: "Medium",
