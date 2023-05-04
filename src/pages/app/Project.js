@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import appPages from "./app.module.scss";
 import { useParams } from "react-router-dom";
 import { HeaderComponent } from "../../components/app-components/header/HeaderComponent";
-import { PageLayout } from "../../components/app-components/page-layout/PageLayout";
 import { TaskDatabaseContext } from "./App";
 import { ProjectSection } from "../../components/app-components/project-components/project-section/ProjectSection";
 import { ProjectPageLayout } from "../../components/app-components/project-components/project-page-layout/ProjectPageLayout";
