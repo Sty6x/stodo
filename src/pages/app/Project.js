@@ -19,7 +19,7 @@ export const Project = () => {
   });
 
   return (
-    <div className={`${appPages.pages}`}>
+    <div className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
       <ProjectPageLayout>{appendProjectSections}</ProjectPageLayout>
     </div>
