@@ -2,8 +2,16 @@
 
 .projectTaskItem{
     @extend .taskItem;
+    padding:.8em .6em;
+    h3{
+        font-size: .6rem;
+    font-weight: 300;
+    }
+
     button{
+        margin-right: 1em;
         @extend .doneBtn
     }
+
 
 }

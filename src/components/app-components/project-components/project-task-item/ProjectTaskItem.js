@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import projectTaskItemStyle from './projectTaskItem.module.scss'
 import {motion} from 'framer-motion'
 
-export const ProjectTaskItem = ({deleteTask,title,desc,dateAdded,ID,taskPriority})=>{
+export const ProjectTaskItem = ({task:{deleteTask,title,desc,dateAdded,ID,taskPriority}})=>{
     return (<motion.li className={projectTaskItemStyle.projectTaskItem}>
 
       <button
