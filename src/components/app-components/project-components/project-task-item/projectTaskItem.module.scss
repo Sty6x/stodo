@@ -1,17 +1,15 @@
-@use '../../task-item/taskItem.module.scss' as taskItem;
+@use "../../task-item/taskItem.module.scss" as taskItem;
 
-.projectTaskItem{
-    @extend .taskItem;
-    padding:.8em .6em;
-    h3{
-        font-size: .6rem;
+.projectTaskItem {
+  @extend .taskItem;
+  padding: 0.8em 0.6em;
+  h3 {
+    font-size: 0.6rem;
     font-weight: 300;
-    }
+  }
 
-    button{
-        margin-right: 1em;
-        @extend .doneBtn
-    }
-
-
+  button {
+    margin-right: 1em;
+    @extend .doneBtn;
+  }
 }

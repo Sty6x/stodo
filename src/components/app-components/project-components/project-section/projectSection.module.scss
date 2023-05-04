@@ -4,8 +4,6 @@
   background-color: #e9e9e9;
   padding: 2em 3em;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   gap: 2em;
   width: 300px;
   div > li:not(:last-child) {
@@ -15,6 +13,7 @@
 .titleOption {
   display: flex;
   align-items: center;
+  margin-bottom: 1em;
   h1 {
     color: #505050;
     font-weight: 600;
