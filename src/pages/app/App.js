@@ -20,6 +20,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
 export const TaskDatabaseContext = createContext(null);
 
@@ -29,7 +30,75 @@ export const App = () => {
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [projectLinks, setProjectLinks] = useState([]);
+  const [projectLinks, setProjectLinks] = useState([
+    {
+      projectName: "new Project",
+      ID: uid(16),
+      // authorId: auth.currentUser.uid,
+      sectionPopulate: [
+        {
+          sectionName: "Section one",
+          sectionTasks: [
+            {
+              title: "Task one",
+              priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "Task Three",
+              priority: "Medium",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+          ],
+        },
+        {
+          sectionName: "Section two",
+          sectionTasks: [
+            {
+              title: "two-Task one",
+              priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "two-Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "two-Task Three",
+              priority: "Medium",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+          ],
+        },
+        {
+          sectionName: "Section three",
+          sectionTasks: [
+            {
+              title: "three-Task one",
+              priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "three-Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "three-Task Three",
+              priority: "Medium",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
   useEffect(() => {
     console.log("app component mounted");
@@ -108,7 +177,7 @@ export const App = () => {
               isSidebarActive={isSidebarActive}
             />
             <TaskDatabaseContext.Provider
-              value={{ tasks, setTasks, deleteTask,projectLinks }}
+              value={{ tasks, setTasks, deleteTask, projectLinks }}
             >
               <Outlet />
             </TaskDatabaseContext.Provider>

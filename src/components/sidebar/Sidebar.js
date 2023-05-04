@@ -22,20 +22,40 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
         {
           sectionName: "Section one",
           sectionTasks: [
-            { title: "Task one", priority: "high", dueDate: "05/04/2023" },
-            { title: "Task Two", priority: "low", dueDate: "05/04/2023" },
-            { title: "Task Three", priority: "Medium", dueDate: "05/04/2023" },
+            {
+              title: "Task one",
+              priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "Task Three",
+              priority: "Medium",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
           ],
         },
         {
           sectionName: "Section two",
           sectionTasks: [
-            { title: "two-Task one", priority: "high", dueDate: "05/04/2023" },
-            { title: "two-Task Two", priority: "low", dueDate: "05/04/2023" },
+            {
+              title: "two-Task one",
+              priority: "high",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
+            {
+              title: "two-Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
             {
               title: "two-Task Three",
               priority: "Medium",
-              dueDate: "05/04/2023",
+              dateAdded: "05/04/2023, 8:45 AM",
             },
           ],
         },
@@ -45,13 +65,17 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
             {
               title: "three-Task one",
               priority: "high",
-              dueDate: "05/04/2023",
+              dateAdded: "05/04/2023, 8:45 AM",
             },
-            { title: "three-Task Two", priority: "low", dueDate: "05/04/2023" },
+            {
+              title: "three-Task Two",
+              priority: "low",
+              dateAdded: "05/04/2023, 8:45 AM",
+            },
             {
               title: "three-Task Three",
               priority: "Medium",
-              dueDate: "05/04/2023",
+              dateAdded: "05/04/2023, 8:45 AM",
             },
           ],
         },

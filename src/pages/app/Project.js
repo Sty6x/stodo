@@ -9,9 +9,8 @@ export const Project = () => {
   const { projectID } = useParams();
   const { projectLinks } = useContext(TaskDatabaseContext);
   let [project] = projectLinks.filter((link) => link.ID === projectID);
-  const {loaded,setLoaded} = useState(false) 
 
-  useEffect(async () => {
+  useEffect(() => {
     console.log(project)
   }, [projectID]);
 
