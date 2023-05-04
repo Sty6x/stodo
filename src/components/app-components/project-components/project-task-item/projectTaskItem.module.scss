@@ -1,0 +1,9 @@
+@use '../../task-item/taskItem.module.scss' as taskItem;
+
+.projectTaskItem{
+    @extend .taskItem;
+    button{
+        @extend .doneBtn
+    }
+
+}

@@ -2,9 +2,10 @@ import React from "react";
 import { TaskItem } from "../../task-item/TaskItem";
 import projectSectionStyle from "./projectSection.module.scss";
 import { AddButton } from "../../button/AddButton";
+import { ProjectTaskItem } from "../project-task-item/ProjectTaskItem";
 export const ProjectSection = ({ sectionData }) => {
   const appendSectionTasks = sectionData.sectionTasks.map((task) => {
-    return <TaskItem task={task} />;
+    return <ProjectTaskItem task={task} />;
   });
   return (
     <section className={projectSectionStyle.section}>
