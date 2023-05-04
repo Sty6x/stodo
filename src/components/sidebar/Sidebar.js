@@ -18,6 +18,44 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       [projectDetail.name]: projectDetail.value,
       ID: uid(16),
       authorId: auth.currentUser.uid,
+      sectionPopulate: [
+        {
+          sectionName: "Section one",
+          sectionTasks: [
+            { title: "Task one", priority: "high", dueDate: "05/04/2023" },
+            { title: "Task Two", priority: "low", dueDate: "05/04/2023" },
+            { title: "Task Three", priority: "Medium", dueDate: "05/04/2023" },
+          ],
+        },
+        {
+          sectionName: "Section two",
+          sectionTasks: [
+            { title: "two-Task one", priority: "high", dueDate: "05/04/2023" },
+            { title: "two-Task Two", priority: "low", dueDate: "05/04/2023" },
+            {
+              title: "two-Task Three",
+              priority: "Medium",
+              dueDate: "05/04/2023",
+            },
+          ],
+        },
+        {
+          sectionName: "Section three",
+          sectionTasks: [
+            {
+              title: "three-Task one",
+              priority: "high",
+              dueDate: "05/04/2023",
+            },
+            { title: "three-Task Two", priority: "low", dueDate: "05/04/2023" },
+            {
+              title: "three-Task Three",
+              priority: "Medium",
+              dueDate: "05/04/2023",
+            },
+          ],
+        },
+      ],
     };
     setProjectLinks((prev) => [...prev, newProject]);
   }

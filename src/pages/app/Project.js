@@ -9,40 +9,10 @@ export const Project = () => {
   const { projectID } = useParams();
   const { projectLinks } = useContext(TaskDatabaseContext);
   let [project] = projectLinks.filter((link) => link.ID === projectID);
-  const sectionPopulate = [
-    {
-      sectionName: "Section one",
-      sectionTasks: [
-        { title: "Task one", priority: "high", dueDate: "05/04/2023" },
-        { title: "Task Two", priority: "low", dueDate: "05/04/2023" },
-        { title: "Task Three", priority: "Medium", dueDate: "05/04/2023" },
-      ],
-    },
-    {
-      sectionName: "Section two",
-      sectionTasks: [
-        { title: "two-Task one", priority: "high", dueDate: "05/04/2023" },
-        { title: "two-Task Two", priority: "low", dueDate: "05/04/2023" },
-        { title: "two-Task Three", priority: "Medium", dueDate: "05/04/2023" },
-      ],
-    },
-    {
-      sectionName: "Section three",
-      sectionTasks: [
-        { title: "three-Task one", priority: "high", dueDate: "05/04/2023" },
-        { title: "three-Task Two", priority: "low", dueDate: "05/04/2023" },
-        {
-          title: "three-Task Three",
-          priority: "Medium",
-          dueDate: "05/04/2023",
-        },
-      ],
-    },
-  ];
+  const {loaded,setLoaded} = useState(false) 
 
-  useEffect(() => {
-    project = { ...project, sectionPopulate };
-    console.log(project);
+  useEffect(async () => {
+    console.log(project)
   }, [projectID]);
 
 
