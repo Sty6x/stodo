@@ -10,7 +10,7 @@ export const ProjectTaskItem = ({
       className={projectTaskItemStyle.projectTaskItem}
       style={{
         borderRight: `10px solid ${
-          (taskPriority == "High" && "red") ||
+          (taskPriority == "High" && "#FF2855") ||
           (taskPriority == "Medium" && "#FFD10D") ||
           (taskPriority == "Low" && "#008CFF ")
         }`,

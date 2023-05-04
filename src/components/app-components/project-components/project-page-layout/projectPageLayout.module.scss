@@ -1,6 +1,11 @@
 .pageLayout{
   display: flex;
   gap: 2em;
-  
+  height: 100% ;
+  width: 100vh;
+  overflow-x: auto;
+  align-items: flex-start;
+  margin-bottom: 2em;
+  overflow-y: hidden;
 }
 

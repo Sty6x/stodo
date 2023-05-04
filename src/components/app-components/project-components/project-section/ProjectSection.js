@@ -16,7 +16,7 @@ export const ProjectSection = ({ sectionData }) => {
         <h1>{sectionData.sectionName}</h1>
         <button />
       </div>
-      <div>
+      <div className={projectSectionStyle.projectTaskContainer}>
         {appendSectionTasks}
         <AddButton type={"add task"} />
       </div>
