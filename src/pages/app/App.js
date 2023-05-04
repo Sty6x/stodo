@@ -41,17 +41,17 @@ export const App = () => {
           sectionTasks: [
             {
               title: "Task one",
-              priority: "high",
+              taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "Task Two",
-              priority: "low",
+              taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "Task Three",
-              priority: "Medium",
+              taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
           ],
@@ -61,17 +61,17 @@ export const App = () => {
           sectionTasks: [
             {
               title: "two-Task one",
-              priority: "high",
+              taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Two",
-              priority: "low",
+              taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Three",
-              priority: "Medium",
+              taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
           ],
@@ -81,17 +81,17 @@ export const App = () => {
           sectionTasks: [
             {
               title: "three-Task one",
-              priority: "high",
+              taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "three-Task Two",
-              priority: "low",
+              taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "three-Task Three",
-              priority: "Medium",
+              taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
           ],
