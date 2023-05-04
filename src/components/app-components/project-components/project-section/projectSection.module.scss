@@ -1,15 +1,27 @@
+@use ".././../task-item/taskItem.module.scss" as taskItem;
+
 .section {
   background-color: #e9e9e9;
-  padding: 2em 3.6em;
+  padding: 2em 3em;
   border-radius: 10px;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   gap: 2em;
+  width: 300px;
+  div > li:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+}
+.titleOption {
+  display: flex;
+  align-items: center;
   h1 {
     color: #505050;
     font-weight: 600;
   }
-  div > li:not(:last-child) {
-    margin-bottom: 1.5em;
+  button {
+    margin-left: auto;
+    background-image: url('../../../../assets/images/section-options.svg');
+    @extend .taskOptions;
   }
 }

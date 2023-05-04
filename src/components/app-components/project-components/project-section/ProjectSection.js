@@ -10,7 +10,10 @@ export const ProjectSection = ({ sectionData }) => {
   return (
     <section className={projectSectionStyle.section}>
       {/* tasks here that belong to a section */}
+      <div className={projectSectionStyle.titleOption}>
       <h1>{sectionData.sectionName}</h1>
+      <button/>
+      </div>
       <div>
         {appendSectionTasks}
         <AddButton type={"add task"} />
