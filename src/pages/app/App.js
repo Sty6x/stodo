@@ -108,7 +108,7 @@ export const App = () => {
               isSidebarActive={isSidebarActive}
             />
             <TaskDatabaseContext.Provider
-              value={{ tasks, setTasks, deleteTask }}
+              value={{ tasks, setTasks, deleteTask,projectLinks }}
             >
               <Outlet />
             </TaskDatabaseContext.Provider>
