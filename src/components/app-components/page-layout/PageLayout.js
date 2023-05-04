@@ -20,8 +20,8 @@ export const PageLayout = ({
 
   return (
     <motion.section
-      id="page-content-container"
-      className={`${pageLayoutStyles.contentContainer}`}
+      id="page-layout"
+      className={`${pageLayoutStyles.pageLayout}`}
     >
       {children}
       {isEmpty && <OnEmptyTaskDisplay pageText={onEmptyText} />}
