@@ -24,11 +24,13 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
           sectionTasks: [
             {
               title: "Task one",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "high",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "Task Two",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
@@ -39,22 +41,26 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
           sectionTasks: [
             {
               title: "two-Task one",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "high",
               dateAdded: "05/04/2023, 8:45 AM",
             },
 
             {
               title: "Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Two",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
@@ -65,6 +71,7 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
           sectionTasks: [
             {
               title: "three-Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               priority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },

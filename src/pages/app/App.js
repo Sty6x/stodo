@@ -40,17 +40,20 @@ export const App = () => {
           sectionName: "Section one",
           sectionTasks: [
             {
-              title: "Task one",
+              title: "A Task title that should not have more text than it should have but i dont know what the problem of the user is ",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "Task Two",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
@@ -61,16 +64,19 @@ export const App = () => {
           sectionTasks: [
             {
               title: "two-Task one",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Two",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "two-Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },
@@ -81,16 +87,19 @@ export const App = () => {
           sectionTasks: [
             {
               title: "three-Task one",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "High",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "three-Task Two",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Low",
               dateAdded: "05/04/2023, 8:45 AM",
             },
             {
               title: "three-Task Three",
+              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
               taskPriority: "Medium",
               dateAdded: "05/04/2023, 8:45 AM",
             },

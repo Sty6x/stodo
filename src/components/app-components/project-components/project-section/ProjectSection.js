@@ -19,7 +19,7 @@ export const ProjectSection = ({ sectionData }) => {
       <div className={projectSectionStyle.projectTaskContainer}>
         {appendSectionTasks}
       </div>
-        <AddButton type={"add task"} />
+        <AddButton type={"project"} />
     </motion.section>
   );
 };
