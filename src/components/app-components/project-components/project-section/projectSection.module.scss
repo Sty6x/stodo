@@ -8,7 +8,6 @@
   padding: 2em 3em;
   border-radius: 10px;
   max-height: 100%;
-  overflow-y: auto;
   width: 300px;
   div > li:not(:last-child) {
     margin-bottom: 1em;
@@ -32,4 +31,7 @@
 
 .projectTaskContainer{
   // flex-basis: 1;
+  overflow-y: auto;
+  padding:0em 1em
+
 }
