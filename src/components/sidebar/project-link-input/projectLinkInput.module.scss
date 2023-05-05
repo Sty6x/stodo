@@ -1,12 +1,11 @@
 .container {
+  display: flex;
+  flex-direction: column;
   label {
     display: block;
     margin-bottom: 0.6em;
     font-size: 0.9rem;
   }
-}
-.inputAndBtnContainer {
-  display: flex;
   input {
     width: 100%;
     color: black;
@@ -31,19 +30,28 @@
     -webkit-text-fill-color: #ffffff !important;
   }
 
-  .btn {
-    margin-left: 1em;
-    width: 2%;
-    box-sizing: content-box;
-    background-image: url("../../../assets/images/submitBtn.svg");
-    appearance: none;
-    border: none;
-    background-color: transparent;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .btn:disabled{
-    background-image: url("../../../assets/images/proj-add-btn.svg");
+  span {
+    margin-top: 0.6em;
+    button {
+      padding: 0.6em 0.8em;
+      box-sizing: content-box;
+      appearance: none;
+      border: none;
+    }
+    .add {
+      background-color: #ff2855;
+      color: white;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    .add:disabled {
+      background-color: #ff285580;
+      color: #FFFFFF80;
+    }
+    & > :not(:first-child) {
+      color: white;
+      margin-left: 1em;
+      background-color: #2f2f2f;
+    }
   }
 }

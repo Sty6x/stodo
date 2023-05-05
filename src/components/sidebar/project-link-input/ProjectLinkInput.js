@@ -18,28 +18,25 @@ export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
       className={projectLinkInputStyle.container}
     >
       <label htmlFor="projectName">Project Name</label>
-      <div className={projectLinkInputStyle.inputAndBtnContainer}>
-        <input
-          ref={inputRef}
-          className={projectLinkInputStyle.name}
-          type={"text"}
-          id="projectName"
-          name="projectName"
-          placeholder={inputInvalid ? "Name your project" : "Name"}
-          onChange={checkProjectNameInput}
-        />
-        {}
+      <input
+        ref={inputRef}
+        className={projectLinkInputStyle.name}
+        type={"text"}
+        id="projectName"
+        name="projectName"
+        placeholder={inputInvalid ? "Name your project" : "Name"}
+        onChange={checkProjectNameInput}
+      />
+      <span>
         <motion.button
-          initial={{ x: 0 }}
-          animate={{
-            rotateZ: inputInvalid ? 45 : 0,
-            transition: { duration: 0.2, type: "spring" },
-          }}
           disabled={inputInvalid}
-          className={projectLinkInputStyle.btn}
+          className={projectLinkInputStyle.add}
           onClick={handleOnSubmit}
-        />
-      </div>
+        >
+          Add Project
+        </motion.button>
+        <button className={projectLinkInputStyle.cancel}> Cancel</button>
+      </span>
     </motion.div>
   );
 };

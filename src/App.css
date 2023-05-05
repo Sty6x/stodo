@@ -191,8 +191,11 @@ table {
   display: flex;
   flex-direction: column;
 }
+
+
 button {
   cursor: pointer;
+  font-family: 'inter';
 }
 
 button:disabled {
