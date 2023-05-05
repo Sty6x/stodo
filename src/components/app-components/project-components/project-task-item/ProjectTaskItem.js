@@ -16,10 +16,11 @@ export const ProjectTaskItem = ({
         }`,
       }}
     >
-      <button
-        onClick={(e) => deleteTask(ID)}
-        // className={`${taskItemStyles.doneBtn}`}
-      />
+      <div className={projectTaskItemStyle.buttonContainer}>
+        <button
+          onClick={(e) => deleteTask(ID)}
+        />
+      </div>
       <div className={projectTaskItemStyle.taskContentContainer}>
         <h3>{title}</h3>
         <p>{desc}</p>

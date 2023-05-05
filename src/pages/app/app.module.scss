@@ -13,9 +13,6 @@
   flex-direction: column;
   gap: 2em;
   height: 100%;
-  div:not(:last-child) {
-    flex: 1;
-  }
 }
 .projectPage {
   padding: 0em 5em;
