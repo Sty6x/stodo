@@ -18,64 +18,17 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       [projectDetail.name]: projectDetail.value,
       ID: uid(16),
       authorId: auth.currentUser.uid,
-      sectionPopulate: [
+      sections: [
         {
-          sectionName: "Section one",
-          sectionTasks: [
-            {
-              title: "Task one",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "high",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-            {
-              title: "Task Two",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "low",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-          ],
+          sectionTitle: "Section Title",
+          sectionTasks: [],
+          sectionIndex:0,
         },
-        {
-          sectionName: "Section two",
-          sectionTasks: [
-            {
-              title: "two-Task one",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "high",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
 
-            {
-              title: "Task Three",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "Medium",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-            {
-              title: "two-Task Two",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "low",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-            {
-              title: "two-Task Three",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "Medium",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-          ],
-        },
         {
-          sectionName: "Section three",
-          sectionTasks: [
-            {
-              title: "three-Task Three",
-              desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-              priority: "Medium",
-              dateAdded: "05/04/2023, 8:45 AM",
-            },
-          ],
+          sectionTitle: "Section Title",
+          sectionTasks: [],
+          sectionIndex:1,
         },
       ],
     };

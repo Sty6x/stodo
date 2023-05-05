@@ -13,7 +13,7 @@ export const ProjectSection = ({ sectionData }) => {
     <motion.section className={projectSectionStyle.section}>
       {/* tasks here that belong to a section */}
       <div className={projectSectionStyle.titleOption}>
-        <h1>{sectionData.sectionName}</h1>
+        <h1>{sectionData.sectionTitle}</h1>
         <button />
       </div>
       <div className={projectSectionStyle.projectTaskContainer}>
