@@ -1,0 +1,25 @@
+.addSectionButton {
+  background-color: #57575760;
+  color: white;
+  width: 300px;
+  display: flex;
+  border: none;
+  appearance: none;
+  padding: 1em;
+  border-radius: 10px;
+  align-items: center;
+  &::before {
+    content: "";
+    background-image: url('../../../../assets/images/add-btn.svg');
+    background-position: center;
+    background-size: contain;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    margin-right: 0.5em;
+  }
+  transition: background-color 150ms ease-in-out;
+}
+.addSectionButton:hover{
+  background-color: #57575780;
+}

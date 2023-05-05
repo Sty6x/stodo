@@ -10,7 +10,7 @@ export const ProjectSection = ({ sectionData }) => {
     return <ProjectTaskItem task={task} />;
   });
   return (
-    <motion.section layout className={projectSectionStyle.section}>
+    <motion.section className={projectSectionStyle.section}>
       {/* tasks here that belong to a section */}
       <div className={projectSectionStyle.titleOption}>
         <h1>{sectionData.sectionName}</h1>
