@@ -20,14 +20,14 @@ export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
       <label htmlFor="projectName">Project Name</label>
       <input
         ref={inputRef}
-        className={projectLinkInputStyle.name}
+        className={projectLinkInputStyle.projectLinkName}
         type={"text"}
         id="projectName"
         name="projectName"
         placeholder={inputInvalid ? "Name your project" : "Name"}
         onChange={checkProjectNameInput}
       />
-      <span>
+      <span className={projectLinkInputStyle.buttonContainer}>
         <motion.button
           disabled={inputInvalid}
           className={projectLinkInputStyle.add}
