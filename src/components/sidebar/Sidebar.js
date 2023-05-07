@@ -21,7 +21,7 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       sections: [
         {
           sectionTitle: "Section Title",
-          sectionTasks: [],
+          sectionTasks: [{title:'Hey',ID:'placeholder'}],
           sectionIndex:0,
         },
 

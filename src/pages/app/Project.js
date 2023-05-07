@@ -5,15 +5,29 @@ import { HeaderComponent } from "../../components/app-components/header/HeaderCo
 import { TaskDatabaseContext } from "./App";
 import { ProjectSection } from "../../components/app-components/project-components/project-section/ProjectSection";
 import { ProjectPageLayout } from "../../components/app-components/project-components/project-page-layout/ProjectPageLayout";
+import { uid } from "uid";
 
+let i = 1;
 export const ProjectPageContext = createContext(null);
 export const Project = () => {
   const { projectID } = useParams();
-  const { projectLinks } = useContext(TaskDatabaseContext);
+  const { setProjectLinks, projectLinks } = useContext(TaskDatabaseContext);
   const [project] = projectLinks.filter((link) => link.ID === projectID);
 
   function addSection(e) {
     e.preventDefault();
+    i++;
+    const newSection = {
+      sectionTitle: "New Section",
+      sectionTasks: [{ title: "Some new Task from new Section", ID: uid(16) }],
+      sectionIndex: i,
+    };
+    const updateProject = {
+      ...project,
+      sections: [...project.sections, newSection],
+    };
+    const filter = projectLinks.filter((proj) => proj.ID !== projectID);
+    setProjectLinks([...filter, updateProject]);
   }
 
   useEffect(() => {
