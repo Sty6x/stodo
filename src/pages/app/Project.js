@@ -27,7 +27,7 @@ export const Project = () => {
       sections: [...project.sections, newSection],
     };
     const filter = projectLinks.filter((proj) => proj.ID !== projectID);
-    setProjectLinks([...filter, updateProject]);
+    setProjectLinks([updateProject, ...filter]);
   }
 
   useEffect(() => {
