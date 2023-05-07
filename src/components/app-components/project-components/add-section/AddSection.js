@@ -6,6 +6,15 @@ import { AnimatePresence, motion } from "framer-motion";
 export const AddSection = ({ sectionInputRef, addSec }) => {
   const { addSection } = useContext(ProjectPageContext);
   const [inputActive, setInputActive] = useState(false);
+  const [inputInvalid, setInputInvalid] = useState(true);
+
+  function checkSectionNameInput(e) {
+    const target = e.target;
+    if (target.validity.valueMissing || target.value === "") {
+      return setInputInvalid(true);
+    }
+    return setInputInvalid(false);
+  }
 
   return (
     <AnimatePresence mode="wait">
@@ -17,10 +26,11 @@ export const AddSection = ({ sectionInputRef, addSec }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50, transition: { duration: 0.1 } }}
           className={addSectionStyle.sectionInputContainer}
+          onChange={checkSectionNameInput}
         >
           <input ref={sectionInputRef} placeholder={"Section Name"} />
           <div className={addSectionStyle.buttonContainer}>
-            <button className={addSectionStyle.add} disabled>
+            <button className={addSectionStyle.add} disabled={inputInvalid}>
               Add Section
             </button>
             <button
