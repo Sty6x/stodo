@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import addSectionStyle from "./addSection.module.scss";
 import { ProjectPageContext } from "../../../../pages/app/Project";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const AddSection = ({ sectionInputRef }) => {
+export const AddSection = ({ sectionInputRef,project }) => {
   const { addSection } = useContext(ProjectPageContext);
   const [inputActive, setInputActive] = useState(false);
   const [inputInvalid, setInputInvalid] = useState(true);
@@ -15,6 +15,11 @@ export const AddSection = ({ sectionInputRef }) => {
     }
     return setInputInvalid(false);
   }
+
+  useEffect(()=>{
+    setInputActive(false)
+  },[project])
+  
 
   return (
     <AnimatePresence mode="wait">

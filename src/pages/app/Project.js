@@ -19,8 +19,8 @@ export const Project = () => {
     e.preventDefault();
     const target = e.target;
     const form = new FormData(target);
-    const formEntry = Object.fromEntries(form.entries())
-    console.log(formEntry)
+    const formEntry = Object.fromEntries(form.entries());
+    console.log(formEntry);
     i++;
     const newSection = {
       ...formEntry,
@@ -35,9 +35,7 @@ export const Project = () => {
     setProjectLinks([updateProject, ...filter]);
   }
 
-  function addSectionTask(e){
-
-  }
+  function addSectionTask(e) {}
   useEffect(() => {
     console.log(project);
   }, [project]);
@@ -51,8 +49,9 @@ export const Project = () => {
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
       <ProjectPageContext.Provider value={{ addSection }}>
-        <ProjectPageLayout>{appendProjectSections}
-          <AddSection addSection={addSection}/>
+        <ProjectPageLayout>
+          {appendProjectSections}
+          <AddSection addSection={addSection} project={projectLinks}/>
         </ProjectPageLayout>
       </ProjectPageContext.Provider>
     </div>
