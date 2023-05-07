@@ -6,6 +6,7 @@ import { TaskDatabaseContext } from "./App";
 import { ProjectSection } from "../../components/app-components/project-components/project-section/ProjectSection";
 import { ProjectPageLayout } from "../../components/app-components/project-components/project-page-layout/ProjectPageLayout";
 import { uid } from "uid";
+import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
 
 let i = 1;
 export const ProjectPageContext = createContext(null);
@@ -16,9 +17,13 @@ export const Project = () => {
 
   function addSection(e) {
     e.preventDefault();
+    const target = e.target;
+    const form = new FormData(target);
+    const formEntry = Object.fromEntries(form.entries())
+    console.log(formEntry)
     i++;
     const newSection = {
-      sectionTitle: "New Section",
+      ...formEntry,
       sectionTasks: [{ title: "Some new Task from new Section", ID: uid(16) }],
       sectionIndex: i,
     };
@@ -30,6 +35,9 @@ export const Project = () => {
     setProjectLinks([updateProject, ...filter]);
   }
 
+  function addSectionTask(e){
+
+  }
   useEffect(() => {
     console.log(project);
   }, [project]);
@@ -43,7 +51,9 @@ export const Project = () => {
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
       <ProjectPageContext.Provider value={{ addSection }}>
-        <ProjectPageLayout>{appendProjectSections}</ProjectPageLayout>
+        <ProjectPageLayout>{appendProjectSections}
+          <AddSection addSection={addSection}/>
+        </ProjectPageLayout>
       </ProjectPageContext.Provider>
     </div>
   );

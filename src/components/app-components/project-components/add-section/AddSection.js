@@ -3,7 +3,7 @@ import addSectionStyle from "./addSection.module.scss";
 import { ProjectPageContext } from "../../../../pages/app/Project";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const AddSection = ({ sectionInputRef, addSec }) => {
+export const AddSection = ({ sectionInputRef }) => {
   const { addSection } = useContext(ProjectPageContext);
   const [inputActive, setInputActive] = useState(false);
   const [inputInvalid, setInputInvalid] = useState(true);
@@ -19,7 +19,8 @@ export const AddSection = ({ sectionInputRef, addSec }) => {
   return (
     <AnimatePresence mode="wait">
       {inputActive ? (
-        <motion.div
+        <motion.form
+          onSubmit={addSection}
           layout
           key={"sectionTitleInput"}
           initial={{ opacity: 0, y: 20 }}
@@ -28,9 +29,13 @@ export const AddSection = ({ sectionInputRef, addSec }) => {
           className={addSectionStyle.sectionInputContainer}
           onChange={checkSectionNameInput}
         >
-          <input ref={sectionInputRef} placeholder={"Section Name"} />
+          <input name="sectionTitle" ref={sectionInputRef} placeholder={"Section Name"} />
           <div className={addSectionStyle.buttonContainer}>
-            <button className={addSectionStyle.add} disabled={inputInvalid}>
+            <button
+              type="submit"
+              className={addSectionStyle.add}
+              disabled={inputInvalid}
+            >
               Add Section
             </button>
             <button
@@ -42,7 +47,7 @@ export const AddSection = ({ sectionInputRef, addSec }) => {
               Cancel
             </button>
           </div>
-        </motion.div>
+        </motion.form>
       ) : (
         <motion.button
           key={"addSectionBtn"}
