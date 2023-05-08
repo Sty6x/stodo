@@ -22,9 +22,11 @@ export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
   const { tasks, setTasks, deleteTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
+  const [formActive, setFormActive] = useState(false);
 
   useEffect(() => {
     filterTasks(tasks);
+    setFormActive(false)
   }, [tasks]);
 
   async function filterTasks(tasks) {
@@ -70,6 +72,11 @@ export const Today = () => {
     }
   }
 
+
+  function formControl() {
+    return formActive ? setFormActive(false) : setFormActive(true);
+  }
+
   const appendTasks = todayTasks.map((task) => {
     return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
@@ -89,7 +96,7 @@ export const Today = () => {
       >
         <TaskContainer>
           {appendTasks}
-          <AddButton addTask={addTask} type={"add task"}/>
+          <AddButton formActive={formActive} formControl={formControl} addTask={addTask} type={"add task"}/>
         </TaskContainer>
       </PageLayout>
     </div>
