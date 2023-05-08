@@ -21,16 +21,17 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       sections: [
         {
           sectionTitle: "Section Title",
-          sectionTasks: [{title:'Hey',ID:'placeholder'}],
-          sectionIndex:0,
+          sectionIndex: 0,
         },
 
         {
           sectionTitle: "Section Title",
-          sectionTasks: [],
-          sectionIndex:1,
+          sectionIndex: 1,
         },
       ],
+
+      sectionTasks: [{ title: "Hey", ID: "placeholder", sectionOwnerID: 0 },
+     { title: "Yoooooo", ID: "placeholder", sectionOwnerID: 1 } ],
     };
     setProjectLinks((prev) => [...prev, newProject]);
   }

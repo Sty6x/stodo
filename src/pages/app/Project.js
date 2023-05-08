@@ -25,7 +25,6 @@ export const Project = () => {
     i++;
     const newSection = {
       ...formEntry,
-      sectionTasks: [{ title: "Some new Task from new Section", ID: uid(16) }],
       sectionIndex: i,
     };
     const updateProject = {
@@ -61,6 +60,7 @@ export const Project = () => {
       <ProjectSection
         key={section.sectionIndex}
         sectionData={section}
+        sectionTasks={project.sectionTasks}
         addTask={addSectionTask}
       />
     );
