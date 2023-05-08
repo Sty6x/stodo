@@ -9,7 +9,6 @@ export const ProjectPageLayout = ({ children }) => {
   function mouseMoveHandler(e) {
     const page = e.target;
     let userMousePos = e.nativeEvent.offsetX;
-    console.log({ x: userMousePos });
     if (isMouseDown) {
       // if a user is pulling the page to scroll left or right and so that the users mouse dont need to scoll all the way to the end of the page
       // page.scrollTo(userMousePos ,0)
