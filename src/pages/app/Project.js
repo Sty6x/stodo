@@ -37,9 +37,18 @@ export const Project = () => {
   }
 
   function addSectionTask(e) {
-    e.preventDefault()
-    const form = e.target
-    console.log(form)
+    e.preventDefault();
+    const target = e.target;
+    const form = new FormData(target);
+    const newTask = Object.fromEntries(form.entries());
+    console.log(newTask);
+    const filterSections = project.sections.map((section) => {
+      if (section.sectionIndex === 0) {
+        return section.sectionTasks.push(newTask);
+      }
+      return;
+    });
+    console.log(filterSections);
   }
 
   useEffect(() => {

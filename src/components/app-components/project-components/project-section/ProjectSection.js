@@ -5,7 +5,7 @@ import { AddButton } from "../../button/AddButton";
 import { ProjectTaskItem } from "../project-task-item/ProjectTaskItem";
 import { motion } from "framer-motion";
 
-export const ProjectSection = ({ sectionData,addTask }) => {
+export const ProjectSection = ({ sectionData, addTask }) => {
   const [formActive, setFormActive] = useState(false);
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
@@ -15,7 +15,7 @@ export const ProjectSection = ({ sectionData,addTask }) => {
     return <ProjectTaskItem task={task} />;
   });
   return (
-    <motion.section className={projectSectionStyle.section}>
+    <motion.section data-indexpos={sectionData.sectionIndex} className={projectSectionStyle.section}>
       {/* tasks here that belong to a section */}
       <div className={projectSectionStyle.titleOption}>
         <h1>{sectionData.sectionTitle}</h1>
@@ -24,7 +24,12 @@ export const ProjectSection = ({ sectionData,addTask }) => {
       <div className={projectSectionStyle.projectTaskContainer}>
         {appendSectionTasks}
       </div>
-        <AddButton addTask={addTask} formControl={formControl} formActive={formActive} type={'project'}/>
+      <AddButton
+        addTask={addTask}
+        formControl={formControl}
+        formActive={formActive}
+        type={"project"}
+      />
     </motion.section>
   );
 };

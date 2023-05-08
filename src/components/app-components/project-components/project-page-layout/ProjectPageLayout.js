@@ -27,7 +27,6 @@ export const ProjectPageLayout = ({ children }) => {
     target.style.cursor = "grabbing";
     isMouseDown = true;
     currentMousePos = e.nativeEvent.offsetX;
-    console.log(currentMousePos);
   }
   function mouseUpHandler(e) {
     const target = e.target;
