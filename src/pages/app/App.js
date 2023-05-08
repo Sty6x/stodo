@@ -196,12 +196,21 @@ export const App = () => {
               <button
                 onClick={() => setSideBarStatus()}
                 className={appStyles.sideBarBtn}
-              ></button>
+              />
               <Logo to={"/app/today"} />
             </div>
             <div className={appStyles.navRight}>
               {/* make user profile drop down on click  */}
-              <div className={appStyles.profile}>A</div>
+              <div className={appStyles.profile}>S</div>
+
+			<button
+				onClick={async (e) => {
+          signOut(auth)
+				}}
+				style={{ position: "absolute", left: "80%" }}
+			>
+				sign out
+			</button>
             </div>
           </Navbar>
           <main className={appStyles.appPage}>

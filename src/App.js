@@ -35,14 +35,6 @@ function App() {
 
 	return (
 		<div className="App">
-			<button
-				onClick={async (e) => {
-          signOut(auth)
-				}}
-				style={{ position: "absolute", left: "80%" }}
-			>
-				sign out
-			</button>
 			<FirebaseContext.Provider value={{ navigate, db, auth }}>
 				<RouterSwitch importRoutes={ROUTES} />
 			</FirebaseContext.Provider>
