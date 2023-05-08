@@ -1,7 +1,7 @@
 .taskFormContainer {
-  position: absolute;
   background-color: rgba($color: #323232, $alpha: 1);
   padding: 1.4em 2em 1.4em 2em;
+  margin: 1em 0 ;
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -54,7 +54,7 @@
 }
 
 .dateInput {
-  width: max-content;
+  width: 100%;
   label {
     display: block;
     font-size: 0.8rem;

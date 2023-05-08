@@ -1,0 +1,57 @@
+@use "../../../sidebar/project-link-input/projectLinkInput.module.scss" as
+  projectLinkInput;
+.addSectionButton {
+  background-color: #57575760;
+  color: white;
+  min-width: 300px;
+  display: flex;
+  border: none;
+  appearance: none;
+  padding: 1em;
+  border-radius: 10px;
+  align-items: center;
+  transition: background-color 150ms ease-in-out;
+
+  &::before {
+    content: "";
+    background-image: url("../../../../assets/images/add-btn.svg");
+    background-position: center;
+    background-size: contain;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    margin-right: 0.5em;
+  }
+}
+.addSectionButton:hover {
+  background-color: #57575780;
+}
+
+.sectionInputContainer {
+  input {
+    @extend .projectLinkName;
+    display: block;
+    min-width: 300px;
+  }
+}
+
+.buttonContainer {
+  @extend .buttonContainer;
+
+  & > :not(:first-child) {
+    color: white;
+    margin-left: 1em;
+    background-color: #272727;
+  }
+}
+
+.add {
+  background-color: #ff2855;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.add:disabled {
+  background-color: #ff285580;
+  color: #ffffff80;
+}

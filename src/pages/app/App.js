@@ -20,6 +20,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
 export const TaskDatabaseContext = createContext(null);
 
@@ -108,7 +109,7 @@ export const App = () => {
               isSidebarActive={isSidebarActive}
             />
             <TaskDatabaseContext.Provider
-              value={{ tasks, setTasks, deleteTask }}
+              value={{ tasks, setTasks, deleteTask, projectLinks,setProjectLinks}}
             >
               <Outlet />
             </TaskDatabaseContext.Provider>

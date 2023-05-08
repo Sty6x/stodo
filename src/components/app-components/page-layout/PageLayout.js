@@ -19,12 +19,12 @@ export const PageLayout = ({
   }, [pageTasks]);
 
   return (
-    <motion.div
-      id="page-content-container"
-      className={`${pageLayoutStyles.contentContainer}`}
+    <motion.section
+      id="page-layout"
+      className={`${pageLayoutStyles.pageLayout}`}
     >
       {children}
       {isEmpty && <OnEmptyTaskDisplay pageText={onEmptyText} />}
-    </motion.div>
+    </motion.section>
   );
 };

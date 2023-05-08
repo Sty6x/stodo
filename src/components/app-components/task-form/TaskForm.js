@@ -9,7 +9,7 @@ import "../../../assets/themes/mytheme/theme.scss";
 //core
 import "primereact/resources/primereact.min.css";
 
-export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
+export const TaskForm = ({ onSubmitHandler,formControl}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const taskPriorityOptions = ["Low", "Medium", "High"];
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
@@ -31,7 +31,6 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
     >
       <form
         onSubmit={onSubmitHandler}
-        ref={formRef}
         className={taskFormStyles.taskFormBody}
         noValidate
       >
@@ -63,8 +62,6 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.dateInput}`}
         >
-          {/* <label htmlFor="date">Date</label> */}
-          {/* <input name="date" type="datetime-local" /> */}
           <Calendar
             showButtonBar
             value={new Date()}
@@ -77,7 +74,10 @@ export const TaskForm = ({ formRef, onSubmitHandler, cancelBtn }) => {
           <button disabled={btnIsDisabled} type="submit">
             Add task
           </button>
-          <button type="button" onClick={cancelBtn}>
+          <button
+            type="button"
+            onClick={formControl}
+          >
             Cancel
           </button>
         </div>

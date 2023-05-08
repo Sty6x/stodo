@@ -18,6 +18,19 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       [projectDetail.name]: projectDetail.value,
       ID: uid(16),
       authorId: auth.currentUser.uid,
+      sections: [
+        {
+          sectionTitle: "Section Title",
+          sectionTasks: [{title:'Hey',ID:'placeholder'}],
+          sectionIndex:0,
+        },
+
+        {
+          sectionTitle: "Section Title",
+          sectionTasks: [],
+          sectionIndex:1,
+        },
+      ],
     };
     setProjectLinks((prev) => [...prev, newProject]);
   }

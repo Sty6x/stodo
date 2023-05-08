@@ -1,4 +1,4 @@
-.task {
+.taskItem{
   display: flex;
   background-color: #323232;
   padding: .6em 1.3em;
@@ -24,6 +24,7 @@
   }
 }
 .taskContentContainer {
+  flex: 1 1 auto;
   & > *:not(:last-child) {
     margin-bottom: 0.5em;
   }

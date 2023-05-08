@@ -9,7 +9,7 @@ export const TaskItem = ({
   deleteTask,
 }) => {
   return (
-    <motion.li layout id={ID} className={`${taskItemStyles.task}`}>
+    <motion.li layout id={ID} className={`${taskItemStyles.taskItem}`}>
       <button
         onClick={(e) => deleteTask(ID)}
         className={`${taskItemStyles.doneBtn}`}

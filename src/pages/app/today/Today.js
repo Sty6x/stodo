@@ -2,7 +2,6 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { FirebaseContext } from "../../../App";
@@ -13,19 +12,16 @@ import { PageLayout } from "../../../components/app-components/page-layout/PageL
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { TaskDatabaseContext } from "../App";
-import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
-import { TaskForm } from "../../../components/app-components/task-form/TaskForm";
-import { AnimatePresence, motion } from "framer-motion";
+import {  doc, setDoc } from "firebase/firestore";
 import { uid } from "uid";
-import { format, isSameDay, isToday } from "date-fns";
+import { format, isSameDay} from "date-fns";
+import { AddButton } from "../../../components/app-components/button/AddButton";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
   const { tasks, setTasks, deleteTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
-  const formRef = useRef();
-  const [formActive, setFormActive] = useState(false);
 
   useEffect(() => {
     filterTasks(tasks);
@@ -41,26 +37,13 @@ export const Today = () => {
     setTodayTasks(filteredTasks);
   }
 
-  function formControl() {
-    if (formActive) {
-      setFormActive(false);
-    } else {
-      setFormActive(true);
-    }
-  }
+
 
   async function addTask(e) {
     e.preventDefault();
     const target = e.target;
     const form = new FormData(target);
     const formEntries = Object.fromEntries(form.entries());
-    for (const entry in formEntries) {
-      console.log(entry);
-      // if (entry.dueDate === "") {
-      //   console.log(entry);
-      //   entry.dueDate = new Date();
-      // }
-    }
     const taskID = uid(16);
     const date = new Date();
     console.log(format(date, "Pp"));
@@ -87,11 +70,6 @@ export const Today = () => {
     }
   }
 
-  useEffect(() => {
-    setFormActive(false);
-    console.log(tasks);
-  }, [tasks]);
-
   const appendTasks = todayTasks.map((task) => {
     return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
   });
@@ -111,26 +89,7 @@ export const Today = () => {
       >
         <TaskContainer>
           {appendTasks}
-          <AnimatePresence mode="wait">
-            {formActive ? (
-              <TaskForm
-                key={"taskForm"}
-                cancelBtn={formControl}
-                formRef={formRef}
-                onSubmitHandler={addTask}
-              />
-            ) : (
-              <motion.button
-                layout
-                exit={{ y: -20, opacity: 0, transition: { duration: 0.1 } }}
-                animate={{ y: [-20, 0], opacity: [0, 1] }}
-                className={`${todayStyles.button}`}
-                onClick={formControl}
-              >
-                Add Task
-              </motion.button>
-            )}
-          </AnimatePresence>
+          <AddButton addTask={addTask} type={"add task"}/>
         </TaskContainer>
       </PageLayout>
     </div>
