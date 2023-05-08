@@ -44,6 +44,7 @@ export const AddSection = ({ sectionInputRef,project }) => {
               Add Section
             </button>
             <button
+              type="button"
               className={addSectionStyle.cancel}
               onClick={(e) => {
                 setInputActive(false);

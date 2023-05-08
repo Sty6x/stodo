@@ -7,6 +7,7 @@ import { ProjectSection } from "../../components/app-components/project-componen
 import { ProjectPageLayout } from "../../components/app-components/project-components/project-page-layout/ProjectPageLayout";
 import { uid } from "uid";
 import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
+import { AddButton } from "../../components/app-components/button/AddButton";
 
 let i = 1;
 export const ProjectPageContext = createContext(null);
@@ -35,14 +36,25 @@ export const Project = () => {
     setProjectLinks([updateProject, ...filter]);
   }
 
-  function addSectionTask(e) {}
+  function addSectionTask(e) {
+    e.preventDefault()
+    const form = e.target
+    console.log(form)
+  }
+
   useEffect(() => {
     console.log(project);
   }, [project]);
 
   // project is used to filter projects and display the project that matches the current DynamicUrl
   const appendProjectSections = project.sections.map((section) => {
-    return <ProjectSection key={section.sectionIndex} sectionData={section} />;
+    return (
+      <ProjectSection
+        key={section.sectionIndex}
+        sectionData={section}
+        addTask={addSectionTask}
+      />
+    );
   });
 
   return (
@@ -51,7 +63,7 @@ export const Project = () => {
       <ProjectPageContext.Provider value={{ addSection }}>
         <ProjectPageLayout>
           {appendProjectSections}
-          <AddSection addSection={addSection} project={projectLinks}/>
+          <AddSection addSection={addSection} project={projectLinks} />
         </ProjectPageLayout>
       </ProjectPageContext.Provider>
     </div>
