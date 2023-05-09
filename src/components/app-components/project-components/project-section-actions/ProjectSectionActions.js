@@ -6,7 +6,8 @@ export const ProjectSectionActions = ({
   handleEditButton,
   handleDeleteButton,
   sectionIndex,
-  sectionName,
+  sectionTitle,
+  name='projectName'
 }) => {
   return (
     <div className={projectSectionActionStyle.container}>
@@ -24,9 +25,9 @@ export const ProjectSectionActions = ({
         <label htmlFor="newProjectName">Change Name</label>
         <input
           // onChange={checkProjectNameInput}
-          name="projectName"
+          name={name}
           id="newProjectName"
-          placeholder={sectionName}
+          placeholder={sectionTitle}
         />
 
         <div className={projectSectionActionStyle.buttons}>

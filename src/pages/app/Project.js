@@ -92,6 +92,40 @@ export const Project = () => {
     }
   }
 
+  async function editSection(e,sectionIndex){
+    e.preventDefault()
+    const target = e.target;
+    const form = new FormData(target)
+    const formEntries = Object.fromEntries(form.entries())
+    const [targetSection] = project.sections.filter(section=> section.sectionIndex === sectionIndex)
+    const updatedSection = {...targetSection,sectionTitle:formEntries.sectionTitle}
+    const updateProjectSections = project.sections.map(section=>{
+      if(section.sectionIndex === sectionIndex){
+        return {...section,...updatedSection} 
+      }
+      return section
+    })
+    const updateProject = {...project,sections:updateProjectSections}
+    const updateProjectList = projectLinks.map(proj=>{
+      if(proj.ID === projectID){
+        return updateProject 
+      }
+      return proj
+    })
+    console.log(updateProjectList)
+    try{
+      const projectDoc  = doc(db,'users',auth.currentUser.uid,'projects',projectID)
+      const updateProjectDoc = updateDoc(projectDoc,updateProject)
+      setProjectLinks(updateProjectList)
+
+    }catch(err){
+      console.log('unable to edit project section')
+      throw err
+    }
+
+
+  }
+
   async function addSectionTask(e) {
     e.preventDefault();
     const target = e.target;
@@ -145,7 +179,7 @@ export const Project = () => {
   return (
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
-      <ProjectPageContext.Provider value={{ deleteSection, addSection }}>
+      <ProjectPageContext.Provider value={{editSection, deleteSection, addSection }}>
         <ProjectPageLayout>
           <AnimatePresence mode="popLayout">
             {appendProjectSections}

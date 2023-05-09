@@ -12,7 +12,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [actionBtnActive, setActionBtnActive] = useState(false);
-  const { deleteSection } = useContext(ProjectPageContext);
+  const { editSection,deleteSection } = useContext(ProjectPageContext);
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
@@ -63,11 +63,12 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
           </motion.div>
         ) : (
           <ProjectSectionActions
-            sectionName={sectionData.sectionName}
+            sectionTitle={sectionData.sectionTitle}
             sectionIndex={sectionData.sectionIndex}
             handleCancelButton={actionBtnControl}
             handleDeleteButton={deleteSection}
-            // handleCancelButton={actionBtnControl}
+            handleEditButton={editSection}
+            name={'sectionTitle'}
           />
         )}
       </AnimatePresence>
