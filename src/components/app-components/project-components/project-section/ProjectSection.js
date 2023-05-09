@@ -23,6 +23,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
 
   useEffect(() => {
     checkOwnTasks();
+    setFormActive(false)
   }, [sectionTasks]);
 
   const appendSectionTasks = tasks.map((task) => {
