@@ -16,6 +16,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  setDoc,
   getDocs,
   orderBy,
   query,
@@ -85,9 +86,10 @@ export const App = () => {
 
   async function addProject() {
     const projectDetail = newProjectRef.current;
+    const newProjectID = uid(16);
     const newProject = {
       [projectDetail.name]: projectDetail.value,
-      ID: uid(16),
+      ID: newProjectID,
       authorId: auth.currentUser.uid,
       sections: [
         {
@@ -102,15 +104,37 @@ export const App = () => {
       ],
 
       sectionTasks: [
-        { title: "Hey", ID: "placeholder", sectionOwnerIndex: 0 },
+        {
+          title: "Hey",
+          desc: "Some description",
+          taskPriority: "High",
+          ID: "placeholder",
+          sectionOwnerIndex: 0,
+        },
         {
           title: "Start by clicking on add task",
+          desc: "Some description",
+          taskPriority: "Medium",
           ID: "placeholder",
           sectionOwnerIndex: 1,
         },
       ],
     };
-    setProjectLinks((prev) => [...prev, newProject]);
+
+    try {
+      const projectDoc = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        newProjectID
+      );
+      const addProject =await setDoc(projectDoc, newProject);
+      setProjectLinks((prev) => [...prev, newProject]);
+    } catch (err) {
+      console.log("Unable to add project please try again later");
+      throw err;
+    }
   }
 
   return (
@@ -136,7 +160,7 @@ export const App = () => {
             <Sidebar
               projectLinks={projectLinks}
               addProject={addProject}
-              inputRef = {newProjectRef}
+              inputRef={newProjectRef}
               sbRef={sideBarRef}
             />
             <TaskDatabaseContext.Provider
