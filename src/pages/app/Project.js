@@ -8,7 +8,7 @@ import { ProjectPageLayout } from "../../components/app-components/project-compo
 import { uid } from "uid";
 import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
 import { FirebaseContext } from "../../App";
-import { doc, updateDoc } from "firebase/firestore";
+import { collection, doc, updateDoc } from "firebase/firestore";
 
 let i = 1;
 export const ProjectPageContext = createContext(null);
@@ -35,14 +35,14 @@ export const Project = () => {
     };
     const filterProjects = projectLinks.filter((proj) => proj.ID !== projectID);
     try {
-      const getProjectDocRef = doc(
+      const projectDocRef = doc(
         db,
         "users",
         auth.currentUser.uid,
         "projects",
         projectID
       );
-      const updateProjectSection = await updateDoc(getProjectDocRef, {
+      const updateProjectSection = await updateDoc(projectDocRef, {
         sections: [...project.sections, newSection],
       });
       setProjectLinks([updateProject, ...filterProjects]);
@@ -69,7 +69,22 @@ export const Project = () => {
       sectionTasks: [...project.sectionTasks, newTask],
     };
     const filterProject = projectLinks.filter((proj) => proj.ID !== projectID);
-    setProjectLinks([updateProject, ...filterProject]);
+    try {
+      const tasksCollectionRef = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        projectID
+      );
+      const updateProjectSectionTasks = updateDoc(tasksCollectionRef, {
+        sectionTasks: [...project.sectionTasks, newTask],
+      });
+      setProjectLinks([updateProject, ...filterProject]);
+    } catch (err) {
+      console.log("unable to add task");
+      throw err;
+    }
   }
 
   useEffect(() => {
