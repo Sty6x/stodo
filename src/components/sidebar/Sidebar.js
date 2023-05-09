@@ -9,39 +9,7 @@ import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 
-export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
-  const { auth } = useContext(FirebaseContext);
-  const newProjectRef = useRef();
-
-  async function addProject() {
-    const projectDetail = newProjectRef.current;
-    const newProject = {
-      [projectDetail.name]: projectDetail.value,
-      ID: uid(16),
-      authorId: auth.currentUser.uid,
-      sections: [
-        {
-          sectionTitle: "Section Title",
-          sectionIndex: 0,
-        },
-
-        {
-          sectionTitle: "Section Title",
-          sectionIndex: 1,
-        },
-      ],
-
-      sectionTasks: [
-        { title: "Hey", ID: "placeholder", sectionOwnerIndex: 0 },
-        {
-          title: "Start by clicking on add task",
-          ID: "placeholder",
-          sectionOwnerIndex: 1,
-        },
-      ],
-    };
-    setProjectLinks((prev) => [...prev, newProject]);
-  }
+export const Sidebar = ({ addProject, inputRef, projectLinks, sbRef }) => {
 
   const appenedProjectLinks = projectLinks.map((projectLink) => {
     return (
@@ -64,10 +32,7 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
         <ProjectsContainer
           appenedProjectLinks={appenedProjectLinks}
           projectInput={
-            <ProjectLinkInput
-              inputRef={newProjectRef}
-              handleOnSubmit={addProject}
-            />
+            <ProjectLinkInput inputRef={inputRef} handleOnSubmit={addProject} />
           }
           projectLinks={projectLinks}
         />

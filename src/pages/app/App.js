@@ -31,6 +31,7 @@ export const App = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [projectLinks, setProjectLinks] = useState([]);
+  const newProjectRef = useRef();
 
   useEffect(() => {
     console.log("app component mounted");
@@ -82,6 +83,36 @@ export const App = () => {
     }
   }
 
+  async function addProject() {
+    const projectDetail = newProjectRef.current;
+    const newProject = {
+      [projectDetail.name]: projectDetail.value,
+      ID: uid(16),
+      authorId: auth.currentUser.uid,
+      sections: [
+        {
+          sectionTitle: "Section Title",
+          sectionIndex: 0,
+        },
+
+        {
+          sectionTitle: "Section Title",
+          sectionIndex: 1,
+        },
+      ],
+
+      sectionTasks: [
+        { title: "Hey", ID: "placeholder", sectionOwnerIndex: 0 },
+        {
+          title: "Start by clicking on add task",
+          ID: "placeholder",
+          sectionOwnerIndex: 1,
+        },
+      ],
+    };
+    setProjectLinks((prev) => [...prev, newProject]);
+  }
+
   return (
     <>
       {isLoading ? (
@@ -104,12 +135,18 @@ export const App = () => {
           <main className={appStyles.appPage}>
             <Sidebar
               projectLinks={projectLinks}
-              setProjectLinks={setProjectLinks}
+              addProject={addProject}
+              inputRef = {newProjectRef}
               sbRef={sideBarRef}
-              isSidebarActive={isSidebarActive}
             />
             <TaskDatabaseContext.Provider
-              value={{ tasks, setTasks, deleteTask, projectLinks,setProjectLinks}}
+              value={{
+                tasks,
+                setTasks,
+                deleteTask,
+                projectLinks,
+                setProjectLinks,
+              }}
             >
               <Outlet />
             </TaskDatabaseContext.Provider>
