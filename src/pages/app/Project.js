@@ -42,10 +42,17 @@ export const Project = () => {
     const sectionIndex = section.dataset.indexpos;
     const form = new FormData(target);
     const formEntry = Object.fromEntries(form.entries());
-    const newTask = { ...formEntry, ID: uid(16), sectionOwnerIndex: Number(sectionIndex) };
-    project.sectionTasks = [...project.sectionTasks, newTask];
-    console.log(project);
-    console.log(sectionIndex);
+    const newTask = {
+      ...formEntry,
+      ID: uid(16),
+      sectionOwnerIndex: Number(sectionIndex),
+    };
+    const updateProject = {
+      ...project,
+      sectionTasks: [...project.sectionTasks, newTask],
+    };
+    const filterProject = projectLinks.filter((proj) => proj.ID !== projectID);
+    setProjectLinks([updateProject,...filterProject]);
   }
 
   useEffect(() => {
