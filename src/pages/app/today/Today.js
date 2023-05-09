@@ -53,12 +53,13 @@ export const Today = () => {
       >
         <TaskContainer>
           {appendTasks}
+        </TaskContainer>
+
           <AddButton
             formActive={formActive}
             formControl={formControl}
             addTask={addTask}
           />
-        </TaskContainer>
       </PageLayout>
     </div>
   );

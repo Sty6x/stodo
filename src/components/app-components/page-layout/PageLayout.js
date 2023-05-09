@@ -18,11 +18,10 @@ export const PageLayout = ({ children, onEmptyText, pageTasks }) => {
       id="page-layout"
       className={`${pageLayoutStyles.pageLayout}`}
     >
-      {isEmpty ? (
+      {isEmpty &&
         <OnEmptyTaskDisplay key={"emptyTaskDisplay"} pageText={onEmptyText} />
-      ) : (
-        children
-      )}
+      } 
+        {children}
     </motion.section>
   );
 };
