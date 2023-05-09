@@ -10,7 +10,6 @@ import { AddSection } from "../../components/app-components/project-components/a
 import { FirebaseContext } from "../../App";
 import { collection, doc, updateDoc } from "firebase/firestore";
 
-let i = 1;
 export const ProjectPageContext = createContext(null);
 export const Project = () => {
   const { projectID } = useParams();
@@ -24,10 +23,10 @@ export const Project = () => {
     const form = new FormData(target);
     const formEntry = Object.fromEntries(form.entries());
     console.log(formEntry);
-    i++;
+    const sectionLength = project.sections.length - 1;
     const newSection = {
       ...formEntry,
-      sectionIndex: i,
+      sectionIndex: sectionLength + 1,
     };
     const updateProject = {
       ...project,
@@ -35,15 +34,15 @@ export const Project = () => {
     };
     const filterProjects = projectLinks.filter((proj) => proj.ID !== projectID);
     try {
-      const projectDocRef = doc(
-        db,
-        "users",
-        auth.currentUser.uid,
-        "projects",
-        projectID
-      );
-      const updateProjectSection = await updateDoc(projectDocRef, {
-        sections: [...project.sections, newSection],
+        const projectDocRef = doc(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "projects",
+          projectID
+        );
+        const updateProjectSection = await updateDoc(projectDocRef, {
+          sections: [...project.sections, newSection],
       });
       setProjectLinks([updateProject, ...filterProjects]);
     } catch (err) {
