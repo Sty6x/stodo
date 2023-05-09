@@ -23,6 +23,7 @@ import {
 } from "firebase/firestore";
 import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
+import { format } from "date-fns";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -68,26 +69,46 @@ export const App = () => {
     try {
       const projectCollection = collection(db, "users", userId, "projects");
       const getCollection = await getDocs(projectCollection);
-      const newProjects = getCollection.docs.map((doc)=> doc.data())
+      const newProjects = getCollection.docs.map((doc) => doc.data());
       console.log(getCollection);
-      setProjectLinks(newProjects)
+      setProjectLinks(newProjects);
     } catch (err) {
       console.log("Unable to get projects");
       throw err;
     }
   }
 
-  function setSideBarStatus() {
-    const sb = sideBarRef.current;
-    console.log(sb);
-    if (sb.classList.contains("sideBarActive")) {
-      sb.classList.replace("sideBarActive", "sideBarInactive");
-      setIsSidebarActive(false);
-    } else {
-      sb.classList.replace("sideBarInactive", "sideBarActive");
-      setIsSidebarActive(true);
+  async function addTask(e) {
+    e.preventDefault();
+    const target = e.target;
+    const form = new FormData(target);
+    const formEntries = Object.fromEntries(form.entries());
+    const taskID = uid(16);
+    const date = new Date();
+    console.log(format(date, "Pp"));
+    const newTask = {
+      ...formEntries,
+      authorID: auth.currentUser.uid,
+      ID: taskID,
+      dateAdded: format(date, "Pp"),
+    };
+    try {
+      const tasksCollection = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "tasks",
+        taskID
+      );
+      const addTask = await setDoc(tasksCollection, newTask);
+      setTasks((prev) => [...prev, newTask]);
+      console.log("task added");
+    } catch (err) {
+      console.log("unable to add task");
+      throw err;
     }
   }
+
   async function deleteTask(id) {
     try {
       const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
@@ -153,6 +174,17 @@ export const App = () => {
     }
   }
 
+  function setSideBarStatus() {
+    const sb = sideBarRef.current;
+    console.log(sb);
+    if (sb.classList.contains("sideBarActive")) {
+      sb.classList.replace("sideBarActive", "sideBarInactive");
+      setIsSidebarActive(false);
+    } else {
+      sb.classList.replace("sideBarInactive", "sideBarActive");
+      setIsSidebarActive(true);
+    }
+  }
   return (
     <>
       {isLoading ? (
@@ -181,11 +213,12 @@ export const App = () => {
             />
             <TaskDatabaseContext.Provider
               value={{
-                tasks,
-                setTasks,
-                deleteTask,
                 projectLinks,
                 setProjectLinks,
+                tasks,
+                setTasks,
+                addTask,
+                deleteTask,
               }}
             >
               <Outlet />

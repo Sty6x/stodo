@@ -12,15 +12,13 @@ import { PageLayout } from "../../../components/app-components/page-layout/PageL
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { TaskDatabaseContext } from "../App";
-import {  doc, setDoc } from "firebase/firestore";
-import { uid } from "uid";
-import { format, isSameDay} from "date-fns";
+import { isSameDay} from "date-fns";
 import { AddButton } from "../../../components/app-components/button/AddButton";
 export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
   const { db, auth } = useContext(FirebaseContext);
-  const { tasks, setTasks, deleteTask } = useContext(TaskDatabaseContext);
+  const { tasks, deleteTask,addTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
   const [formActive, setFormActive] = useState(false);
 
@@ -38,40 +36,6 @@ export const Today = () => {
     console.log(filteredTasks);
     setTodayTasks(filteredTasks);
   }
-
-
-
-  async function addTask(e) {
-    e.preventDefault();
-    const target = e.target;
-    const form = new FormData(target);
-    const formEntries = Object.fromEntries(form.entries());
-    const taskID = uid(16);
-    const date = new Date();
-    console.log(format(date, "Pp"));
-    const newTask = {
-      ...formEntries,
-      authorID: auth.currentUser.uid,
-      ID: taskID,
-      dateAdded: format(date, "Pp"),
-    };
-    try {
-      const tasksCollection = doc(
-        db,
-        "users",
-        auth.currentUser.uid,
-        "tasks",
-        taskID
-      );
-      const addTask = await setDoc(tasksCollection, newTask);
-      setTasks((prev) => [...prev, newTask]);
-      console.log("task added");
-    } catch (err) {
-      console.log("unable to add task");
-      throw err;
-    }
-  }
-
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);

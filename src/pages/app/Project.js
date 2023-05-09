@@ -64,7 +64,7 @@ export const Project = () => {
   const appendProjectSections = project.sections.map((section) => {
     return (
       <ProjectSection
-        key={section.sectionIndex}
+        key={section.sectionIndex + "-section"}
         sectionData={section}
         sectionTasks={project.sectionTasks}
         addTask={addSectionTask}
