@@ -7,7 +7,7 @@ import { ProjectSection } from "../../components/app-components/project-componen
 import { ProjectPageLayout } from "../../components/app-components/project-components/project-page-layout/ProjectPageLayout";
 import { uid } from "uid";
 import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
-import { AddButton } from "../../components/app-components/button/AddButton";
+import { FirebaseContext } from "../../App";
 
 let i = 1;
 export const ProjectPageContext = createContext(null);
@@ -15,8 +15,9 @@ export const Project = () => {
   const { projectID } = useParams();
   const { setProjectLinks, projectLinks } = useContext(TaskDatabaseContext);
   const [project] = projectLinks.filter((link) => link.ID === projectID);
+  const {auth,db} = useContext(FirebaseContext);
 
-  function addSection(e) {
+  async function addSection(e) {
     e.preventDefault();
     const target = e.target;
     const form = new FormData(target);

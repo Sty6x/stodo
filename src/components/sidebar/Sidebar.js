@@ -7,6 +7,7 @@ import { uid } from "uid";
 import { FirebaseContext } from "../../App";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 import { ProjectsContainer } from "./projects-container/ProjectsContainer";
+import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 
 export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
   const { auth } = useContext(FirebaseContext);
@@ -32,7 +33,11 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
 
       sectionTasks: [
         { title: "Hey", ID: "placeholder", sectionOwnerIndex: 0 },
-        { title: "Yoooooo", ID: "placeholder", sectionOwnerIndex: 1 },
+        {
+          title: "Start by clicking on add task",
+          ID: "placeholder",
+          sectionOwnerIndex: 1,
+        },
       ],
     };
     setProjectLinks((prev) => [...prev, newProject]);
@@ -58,8 +63,12 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
         <NavigationLinks />
         <ProjectsContainer
           appenedProjectLinks={appenedProjectLinks}
-          newProjectRef={newProjectRef}
-          addProject={addProject}
+          projectInput={
+            <ProjectLinkInput
+              inputRef={newProjectRef}
+              handleOnSubmit={addProject}
+            />
+          }
           projectLinks={projectLinks}
         />
       </div>

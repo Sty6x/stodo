@@ -3,9 +3,8 @@ import projectsContainerStyle from "./projectsContainer.module.scss";
 import { ProjectLinkInput } from "../project-link-input/ProjectLinkInput";
 import { motion, AnimatePresence } from "framer-motion";
 export const ProjectsContainer = ({
-  newProjectRef,
   appenedProjectLinks,
-  addProject,
+  projectInput,
   projectLinks,
 }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(true);
@@ -39,12 +38,7 @@ export const ProjectsContainer = ({
           className={`projDropDownActive`}
         />
       </div>
-      {!inputIsInactive && (
-        <ProjectLinkInput
-          handleOnSubmit={addProject}
-          inputRef={newProjectRef}
-        />
-      )}
+      {!inputIsInactive &&  projectInput }
       <AnimatePresence mode="wait">
         {isDropDownActive && (
           <motion.ul
@@ -52,14 +46,14 @@ export const ProjectsContainer = ({
             animate={{ y: [-30, 0], opacity: 1 }}
             exit={{
               opacity: 0,
-              y: [0,-30],
+              y: [0, -30],
             }}
             className={`${projectsContainerStyle.projectLinksContainer} ${
               isDropDownActive ? "dropDownActive" : "dropDownInactive"
             }`}
           >
             {appenedProjectLinks.length === 0 ? (
-              <motion.p layout >
+              <motion.p layout>
                 You don't have any projects, click the "<span>+</span>" to get
                 started.
               </motion.p>
