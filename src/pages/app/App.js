@@ -38,14 +38,17 @@ export const App = () => {
     console.log("app component mounted");
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUserTasks(user.uid).then(() => {
+        Promise.allSettled([
+          getUserTasks(user.uid),
+          getUserProjects(user.uid),
+        ]).then((data) => {
           setIsLoading((prev) => false);
         });
       } else {
         console.log("User not Signed in");
       }
     });
-  }, []);
+  }, [auth]);
 
   async function getUserTasks(userId) {
     try {
@@ -57,6 +60,19 @@ export const App = () => {
       setTasks(newTasks);
     } catch (err) {
       console.log("unable to fetch collection at this time ");
+      throw err;
+    }
+  }
+
+  async function getUserProjects(userId) {
+    try {
+      const projectCollection = collection(db, "users", userId, "projects");
+      const getCollection = await getDocs(projectCollection);
+      const newProjects = getCollection.docs.map((doc)=> doc.data())
+      console.log(getCollection);
+      setProjectLinks(newProjects)
+    } catch (err) {
+      console.log("Unable to get projects");
       throw err;
     }
   }
@@ -129,7 +145,7 @@ export const App = () => {
         "projects",
         newProjectID
       );
-      const addProject =await setDoc(projectDoc, newProject);
+      const addProject = await setDoc(projectDoc, newProject);
       setProjectLinks((prev) => [...prev, newProject]);
     } catch (err) {
       console.log("Unable to add project please try again later");
