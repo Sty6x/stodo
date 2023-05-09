@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import projectLinkStyles from "./projectLink.module.scss";
 import { motion } from "framer-motion";
 
-export const ProjectLink = ({ to, projectName }) => {
+export const ProjectLink = ({ to, projectName ,totalTasks}) => {
   return (
     <motion.li
       layout
@@ -13,6 +13,7 @@ export const ProjectLink = ({ to, projectName }) => {
     >
       <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
         {projectName}
+        <p>{totalTasks}</p>
       </NavLink>
     </motion.li>
   );

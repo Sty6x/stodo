@@ -43,6 +43,7 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
       <ProjectLink
         key={projectLink.projectName}
         to={`/app/${projectLink.ID}`}
+        totalTasks={projectLink.sectionTasks.length}
         projectName={projectLink.projectName}
       />
     );
