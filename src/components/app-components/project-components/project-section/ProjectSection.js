@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   const [formActive, setFormActive] = useState(false);
-  const [tasks,setTasks] = useState([])
+  const [tasks, setTasks] = useState([]);
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
@@ -15,9 +15,9 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
 
   function checkOwnTasks() {
     const filter = sectionTasks.filter(
-      (task) => task.sectionOwnerID === sectionData.sectionIndex
+      (task) => task.sectionOwnerIndex === sectionData.sectionIndex
     );
-    setTasks(filter)
+    setTasks(filter);
     console.log(filter);
   }
 
@@ -31,6 +31,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   return (
     <motion.section
       data-indexpos={sectionData.sectionIndex}
+      id={sectionData.sectionID}
       className={projectSectionStyle.section}
     >
       {/* tasks here that belong to a section */}

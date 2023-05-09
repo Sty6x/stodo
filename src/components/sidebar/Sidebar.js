@@ -30,8 +30,10 @@ export const Sidebar = ({ setProjectLinks, projectLinks, sbRef }) => {
         },
       ],
 
-      sectionTasks: [{ title: "Hey", ID: "placeholder", sectionOwnerID: 0 },
-     { title: "Yoooooo", ID: "placeholder", sectionOwnerID: 1 } ],
+      sectionTasks: [
+        { title: "Hey", ID: "placeholder", sectionOwnerIndex: 0 },
+        { title: "Yoooooo", ID: "placeholder", sectionOwnerIndex: 1 },
+      ],
     };
     setProjectLinks((prev) => [...prev, newProject]);
   }

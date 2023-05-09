@@ -38,13 +38,14 @@ export const Project = () => {
   function addSectionTask(e) {
     e.preventDefault();
     const target = e.target;
-    const sectionFormParent = target.parentElement.parentElement
-    console.log(sectionFormParent)
+    const section = target.parentElement.parentElement;
+    const sectionIndex = section.dataset.indexpos;
     const form = new FormData(target);
     const formEntry = Object.fromEntries(form.entries());
-    const newTask = {...formEntry,ID:uid(16),sectionOwnerID:''}
-    // console.log(newTask);
-    // for each section in sections if a sectionID is the same as the returned ID from either form? or
+    const newTask = { ...formEntry, ID: uid(16), sectionOwnerIndex: Number(sectionIndex) };
+    project.sectionTasks = [...project.sectionTasks, newTask];
+    console.log(project);
+    console.log(sectionIndex);
   }
 
   useEffect(() => {
