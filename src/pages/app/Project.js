@@ -8,6 +8,7 @@ import { ProjectPageLayout } from "../../components/app-components/project-compo
 import { uid } from "uid";
 import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
 import { FirebaseContext } from "../../App";
+import { doc, updateDoc } from "firebase/firestore";
 
 let i = 1;
 export const ProjectPageContext = createContext(null);
@@ -15,7 +16,7 @@ export const Project = () => {
   const { projectID } = useParams();
   const { setProjectLinks, projectLinks } = useContext(TaskDatabaseContext);
   const [project] = projectLinks.filter((link) => link.ID === projectID);
-  const {auth,db} = useContext(FirebaseContext);
+  const { auth, db } = useContext(FirebaseContext);
 
   async function addSection(e) {
     e.preventDefault();
@@ -32,11 +33,26 @@ export const Project = () => {
       ...project,
       sections: [...project.sections, newSection],
     };
-    const filter = projectLinks.filter((proj) => proj.ID !== projectID);
-    setProjectLinks([updateProject, ...filter]);
+    const filterProjects = projectLinks.filter((proj) => proj.ID !== projectID);
+    try {
+      const getProjectDocRef = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        projectID
+      );
+      const updateProjectSection = await updateDoc(getProjectDocRef, {
+        sections: [...project.sections, newSection],
+      });
+      setProjectLinks([updateProject, ...filterProjects]);
+    } catch (err) {
+      console.log("unable to add another section");
+      throw err;
+    }
   }
 
-  function addSectionTask(e) {
+  async function addSectionTask(e) {
     e.preventDefault();
     const target = e.target;
     const section = target.parentElement.parentElement;
@@ -53,7 +69,7 @@ export const Project = () => {
       sectionTasks: [...project.sectionTasks, newTask],
     };
     const filterProject = projectLinks.filter((proj) => proj.ID !== projectID);
-    setProjectLinks([updateProject,...filterProject]);
+    setProjectLinks([updateProject, ...filterProject]);
   }
 
   useEffect(() => {

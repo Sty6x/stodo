@@ -14,10 +14,8 @@ import { TaskContainer } from "../../../components/app-components/task-container
 import { TaskDatabaseContext } from "../App";
 import { isSameDay} from "date-fns";
 import { AddButton } from "../../../components/app-components/button/AddButton";
-export const TodayHandlerContext = createContext(null);
 
 export const Today = () => {
-  const { db, auth } = useContext(FirebaseContext);
   const { tasks, deleteTask,addTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
   const [formActive, setFormActive] = useState(false);
