@@ -1,3 +1,4 @@
+@use '../app-components/project-components/project-section/projectSection.module.scss' as projectSection;
 .sideBar {
   background-color: #2f2f2f;
   color: white;
@@ -6,7 +7,4 @@
   position: sticky;
   top: 0;
 }
-
-
-
 

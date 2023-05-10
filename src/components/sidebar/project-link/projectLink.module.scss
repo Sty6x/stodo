@@ -1,6 +1,5 @@
 @use "../../app-components/project-components/project-section/projectSection.module.scss"
   as projectSection;
-
 .linkContainer {
   width: 100%;
   border-radius: 6px;
@@ -26,6 +25,7 @@
 }
 
 .options {
+  top: 70%;
   z-index: 999;
   position: absolute;
   left: 80%;
@@ -45,7 +45,7 @@
   }
   & > button::before {
     content: "";
-    margin-right: .6em;
+    margin-right: 0.6em;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: contain;

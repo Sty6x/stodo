@@ -174,6 +174,13 @@ export const App = () => {
     }
   }
 
+  async function deleteProject(e) {
+    e.preventDefault()
+    const target = e.target;
+    const projectId = target.parentNode;
+    console.log(projectId)
+  }
+
   function setSideBarStatus() {
     const sb = sideBarRef.current;
     console.log(sb);
@@ -217,6 +224,7 @@ export const App = () => {
             <Sidebar
               projectLinks={projectLinks}
               addProject={addProject}
+              deleteProject={deleteProject}
               inputRef={newProjectRef}
               sbRef={sideBarRef}
             />
