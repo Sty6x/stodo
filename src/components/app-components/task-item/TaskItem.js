@@ -17,7 +17,7 @@ export const TaskItem = ({
       <div className={`${taskItemStyles.taskContentContainer}`}>
         <div className={`${taskItemStyles.currentPriority}`}>
           <span
-            style={{ backgroundColor: taskPriority === "Low" && "#008CFF" }}
+            style={{ backgroundColor: taskPriority === "Low" && "#0BB385" }}
             className={`${taskItemStyles.low}`}
           ></span>
           <span

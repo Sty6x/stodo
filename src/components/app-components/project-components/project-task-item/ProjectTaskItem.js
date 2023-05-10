@@ -13,7 +13,7 @@ export const ProjectTaskItem = ({
         borderRight: `10px solid ${
           (taskPriority == "High" && "#FF2855") ||
           (taskPriority == "Medium" && "#FFD10D") ||
-          (taskPriority == "Low" && "#008CFF ")
+          (taskPriority == "Low" && "#0BB385")
         }`,
       }}
     >
