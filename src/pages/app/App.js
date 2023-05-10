@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { Logo } from "../../components/logo/Logo";
 import { Navbar } from "../../components/navbar/Navbar";
 import appStyles from "./app.module.scss";
@@ -27,13 +27,14 @@ import { format } from "date-fns";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
-  const { auth, db } = useContext(FirebaseContext);
+  const { navigate, auth, db } = useContext(FirebaseContext);
   const sideBarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [projectLinks, setProjectLinks] = useState([]);
   const newProjectRef = useRef();
+  const { projectID } = useParams();
 
   useEffect(() => {
     console.log("app component mounted");
@@ -178,16 +179,31 @@ export const App = () => {
     e.preventDefault();
     const target = e.target;
     const projectId = target.parentNode.id;
-    const filterProject = projectLinks.filter(project=>projectId !== project.ID)
-    try{
-    const projectDoc = doc(db,'users',auth.currentUser.uid,'projects',projectId)
-    const deleteProjectDoc = await deleteDoc(projectDoc)
-    setProjectLinks(filterProject)
-    console.log(filterProject)
-    }catch(err){
-      console.log('unable to delete project')
-      throw err
+    console.log(projectID);
+    console.log(projectId);
+    const filterProject = projectLinks.filter(
+      (project) => projectId !== project.ID
+    );
+    try {
+      const projectDoc = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        projectId
+      );
+      const deleteProjectDoc = await deleteDoc(projectDoc);
+    redirectWhileOnDeletedProject(projectId,projectID);
+      setProjectLinks(filterProject);
+    } catch (err) {
+      console.log("unable to delete project");
+      throw err;
     }
+  }
+
+  async function redirectWhileOnDeletedProject(targetUrl,currentUrl) {
+    console.log('redirect')
+    return targetUrl === currentUrl && navigate('/app/today')
   }
 
   function setSideBarStatus() {
