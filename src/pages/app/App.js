@@ -177,6 +177,7 @@ export const App = () => {
 
   async function deleteProject(e) {
     e.preventDefault();
+    e.stopPropagation()
     const target = e.target;
     const projectId = target.parentNode.id;
     console.log(projectID);
