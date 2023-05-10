@@ -1,1 +1,9 @@
- 
+.edit::before {
+  background-image: url('../../../assets/images/edit-button.svg');
+}
+.delete::before {
+  background-image: url('../../../assets/images/trash-icon.svg');
+}
+.cancel::before {
+  background-image: url('../../../assets/images/cancel-button.svg');
+}
