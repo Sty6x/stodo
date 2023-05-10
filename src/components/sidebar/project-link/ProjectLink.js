@@ -30,15 +30,16 @@ export const ProjectLink = ({ to, projectName, totalTasks }) => {
     >
       <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
         {projectName}
+
         {optionsIsActive ? (
-          <span>
+          <div className={projectLinkStyles.options}>
             <ProjectLinkOptions handleCancelButton={setOptions} />
-          </span>
+          </div>
         ) : (
           <>
             {isHovering ? (
               <button
-                className={projectLinkStyles.options}
+                className={projectLinkStyles.optionsBtn}
                 onClick={setOptions}
               />
             ) : (

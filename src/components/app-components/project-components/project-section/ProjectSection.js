@@ -38,7 +38,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
       {/* tasks here that belong to a section */}
       <div className={projectSectionStyle.titleOption}>
         <h1>{sectionData.sectionTitle}</h1>
-        <button />
+        <button className={projectSectionStyle.option}/>
       </div>
       <div className={projectSectionStyle.projectTaskContainer}>
         {appendSectionTasks}
