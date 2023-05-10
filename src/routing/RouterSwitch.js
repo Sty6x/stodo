@@ -5,52 +5,52 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
 export const RouterSwitch = ({ importRoutes }) => {
-	const { navigate, auth, db } = useContext(FirebaseContext);
+  const { navigate, auth, db } = useContext(FirebaseContext);
 
-	useEffect(() => {
-		const redirectIfNotLoggedIn = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				console.log(user.uid);
-				checkIfUserAlreadyExists(user);
-			} else {
-				navigate("/");
-			}
-		});
-		return redirectIfNotLoggedIn;
-	}, []);
+  useEffect(() => {
+    const redirectIfNotLoggedIn = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user.uid);
+        checkIfUserAlreadyExists(user);
+      } else {
+        navigate("/");
+      }
+    });
+    return redirectIfNotLoggedIn;
+  }, []);
 
-	async function checkIfUserAlreadyExists(user) {
-		try {
-			const userDocRef = doc(db, `/users/${user.uid}`);
-			const userDoc = await getDoc(userDocRef);
-			if (userDoc.exists()) {
-				return navigate("/app/today");
-			}
-			return navigate("/create-profile");
-		} catch (err) {
-			console.log("unable to fetch user path");
-			throw err;
-		}
-	}
+  async function checkIfUserAlreadyExists(user) {
+    try {
+      const userDocRef = doc(db, `/users/${user.uid}`);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        return navigate("/app/today");
+      }
+      return navigate("/create-profile");
+    } catch (err) {
+      console.log("unable to fetch user path");
+      throw err;
+    }
+  }
 
-	const renderRoute = importRoutes.map((route) => {
-		const sub =
-			route.subRoutes &&
-			route.subRoutes.map((subRoute) => {
-				return (
-					<Route
-						key={subRoute.name}
-						path={subRoute.path}
-						element={subRoute.element}
-					/>
-				);
-			});
-		return (
-			<Route key={route.name} path={route.path} element={route.element}>
-				{sub}
-			</Route>
-		);
-	});
+  const renderRoute = importRoutes.map((route) => {
+    const sub =
+      route.subRoutes &&
+      route.subRoutes.map((subRoute) => {
+        return (
+          <Route
+            key={subRoute.name}
+            path={subRoute.path}
+            element={subRoute.element}
+          />
+        );
+      });
+    return (
+      <Route key={route.name} path={route.path} element={route.element}>
+        {sub}
+      </Route>
+    );
+  });
 
-	return <Routes>{renderRoute}</Routes>;
+  return <Routes>{renderRoute}</Routes>;
 };

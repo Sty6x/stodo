@@ -11,6 +11,8 @@ import { FirebaseContext } from "../../App";
 import { collection, doc, updateDoc } from "firebase/firestore";
 
 export const ProjectPageContext = createContext(null);
+
+
 export const Project = () => {
   const { projectID } = useParams();
   const { setProjectLinks, projectLinks } = useContext(TaskDatabaseContext);
@@ -90,7 +92,6 @@ export const Project = () => {
     console.log(project);
   }, [project]);
 
-  // project is used to filter projects and display the project that matches the current DynamicUrl
   const appendProjectSections = project.sections.map((section) => {
     return (
       <ProjectSection
