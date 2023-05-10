@@ -6,9 +6,11 @@ export const ProjectsContainer = ({
   appenedProjectLinks,
   projectInput,
   projectLinks,
+  inputIsInactive,
+  setInputIsInactive
+
 }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(true);
-  const [inputIsInactive, setInputIsInactive] = useState(true);
 
   useEffect(() => {
     console.log(projectLinks);

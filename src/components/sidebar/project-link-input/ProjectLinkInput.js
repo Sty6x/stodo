@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import projectLinkInputStyle from "./projectLinkInput.module.scss";
 import { animate, motion } from "framer-motion";
-export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
+export const ProjectLinkInput = ({
+  inputRef,
+  handleOnSubmit,
+  setInputIsInactive,
+}) => {
   const [inputInvalid, setInputInvalid] = useState(true);
 
   function checkProjectNameInput(e) {
@@ -35,7 +39,15 @@ export const ProjectLinkInput = ({ inputRef, handleOnSubmit }) => {
         >
           Add Project
         </motion.button>
-        <button className={projectLinkInputStyle.cancel}> Cancel</button>
+        <button
+          onClick={() => {
+            setInputIsInactive(true);
+          }}
+          className={projectLinkInputStyle.cancel}
+        >
+          {" "}
+          Cancel
+        </button>
       </span>
     </motion.div>
   );

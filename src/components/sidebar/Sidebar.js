@@ -10,6 +10,7 @@ import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 
 export const Sidebar = ({ addProject, inputRef, projectLinks, sbRef }) => {
+  const [inputIsInactive, setInputIsInactive] = useState(true);
 
   const appenedProjectLinks = projectLinks.map((projectLink) => {
     return (
@@ -31,8 +32,14 @@ export const Sidebar = ({ addProject, inputRef, projectLinks, sbRef }) => {
         <NavigationLinks />
         <ProjectsContainer
           appenedProjectLinks={appenedProjectLinks}
+          setInputIsInactive={setInputIsInactive}
+          inputIsInactive={inputIsInactive}
           projectInput={
-            <ProjectLinkInput inputRef={inputRef} handleOnSubmit={addProject} />
+            <ProjectLinkInput
+              setInputIsInactive={setInputIsInactive}
+              inputRef={inputRef}
+              handleOnSubmit={addProject}
+            />
           }
           projectLinks={projectLinks}
         />
