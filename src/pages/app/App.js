@@ -175,10 +175,19 @@ export const App = () => {
   }
 
   async function deleteProject(e) {
-    e.preventDefault()
+    e.preventDefault();
     const target = e.target;
-    const projectId = target.parentNode;
-    console.log(projectId)
+    const projectId = target.parentNode.id;
+    const filterProject = projectLinks.filter(project=>projectId !== project.ID)
+    try{
+    const projectDoc = doc(db,'users',auth.currentUser.uid,'projects',projectId)
+    const deleteProjectDoc = await deleteDoc(projectDoc)
+    setProjectLinks(filterProject)
+    console.log(filterProject)
+    }catch(err){
+      console.log('unable to delete project')
+      throw err
+    }
   }
 
   function setSideBarStatus() {
