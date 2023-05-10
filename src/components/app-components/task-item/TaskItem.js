@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import taskItemStyles from "./taskItem.module.scss";
 import { motion } from "framer-motion";
-import { format, toDate } from "date-fns";
+import { format, isSameDay, toDate } from "date-fns";
 import { Timestamp } from "firebase/firestore";
 
 export const TaskItem = ({
-  task: { title, desc, dateAdded, ID, taskPriority },
+  task: { title, dueDate, desc, dateAdded, ID, taskPriority },
   deleteTask,
 }) => {
   return (
@@ -34,6 +34,11 @@ export const TaskItem = ({
           <span>{format(new Date(dateAdded), "p")}</span>
         </h3>
         <p>{desc}</p>
+        <p className={taskItemStyles.dueDate}>
+          {isSameDay(new Date(dueDate), new Date())
+            ? "Today"
+            : format(new Date(dueDate), "PP")}
+        </p>
       </div>
       <button className={`${taskItemStyles.taskOptions}`} />
     </motion.li>
