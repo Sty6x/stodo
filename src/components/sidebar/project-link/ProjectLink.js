@@ -19,6 +19,7 @@ export const ProjectLink = ({ to, projectName, totalTasks }) => {
     <motion.li
       onHoverStart={(e) => {
         setIsHovering(true);
+        e.stopPropagation();
       }}
       onHoverEnd={(e) => {
         setIsHovering(false);
@@ -33,7 +34,10 @@ export const ProjectLink = ({ to, projectName, totalTasks }) => {
 
         {optionsIsActive ? (
           <div className={projectLinkStyles.options}>
-            <ProjectLinkOptions handleCancelButton={setOptions} />
+            <ProjectLinkOptions
+              handleCancelButton={setOptions}
+              buttonText={"Cancel"}
+            />
           </div>
         ) : (
           <>
