@@ -54,8 +54,7 @@
 .dueDate {
   color: #ff2855;
   position: relative;
-  display: flex;
-  align-self:center;
+  display: block;
 }
 
 .dueDate::before {

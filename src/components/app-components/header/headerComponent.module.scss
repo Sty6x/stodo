@@ -10,9 +10,17 @@
 .titleDateContainer {
   display: flex;
   gap: 1em;
-  margin-bottom: 1em;
-  h1 {
+  margin-bottom: .4em;
+  h1{
+    display: flex;
+    align-self: flex-end;
     font-weight: 700;
     font-size: 1.5rem;
   }
+}
+.date {
+  font-size: .9rem !important;
+  font-weight: 300 !important;
+  color: #FFFFFF90;
+
 }

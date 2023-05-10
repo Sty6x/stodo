@@ -12,8 +12,10 @@
 
   p {
     font-size: 0.8rem;
-    @extend .dueDate;
   }
+}
+.dueDate {
+    @extend .dueDate;
 }
 
 .buttonContainer {
