@@ -203,14 +203,14 @@ export const App = () => {
               {/* make user profile drop down on click  */}
               <div className={appStyles.profile}>S</div>
 
-			<button
-				onClick={async (e) => {
-          signOut(auth)
-				}}
-				style={{ position: "absolute", left: "80%" }}
-			>
-				sign out
-			</button>
+              <button
+                onClick={async (e) => {
+                  signOut(auth);
+                }}
+                style={{ position: "absolute", left: "80%" }}
+              >
+                sign out
+              </button>
             </div>
           </Navbar>
           <main className={appStyles.appPage}>

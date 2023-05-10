@@ -1,7 +1,7 @@
-.taskItem{
+.taskItem {
   display: flex;
   background-color: #323232;
-  padding: .6em 1.3em;
+  padding: 0.6em 1.3em;
   border-radius: 10px;
   align-items: center;
   max-width: 100%;
@@ -48,8 +48,26 @@
     white-space: nowrap;
     font-size: 0.8em;
     font-weight: 400;
-    color: #DBDBDB;
   }
+}
+
+.dueDate {
+  color: #ff2855;
+  position: relative;
+  display: flex;
+  align-self:center;
+}
+
+.dueDate::before {
+  content: "";
+  display: inline-block;
+  background-image: url("../../../assets/images/task-item-due-date.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1em;
+  height: 1em;
+  margin-right: .5em;
 }
 
 .doneBtn {
@@ -63,13 +81,12 @@
   transition: 150ms background-color ease-in;
   transition: transform 150ms ease-in-out;
   &:hover {
-    background-color:#e7e7e799 ;
+    background-color: #e7e7e799;
   }
-  &:active{
+  &:active {
     background-color: whitesmoke;
     transform: scale(1.2);
   }
-
 }
 
 .taskOptions {
