@@ -50,6 +50,7 @@
 }
 
 .optionsBtn {
-  @extend .option;
-  width: 20px;
+  margin-left: auto;
+  @extend .taskActions;
+  width: 30px;
 }

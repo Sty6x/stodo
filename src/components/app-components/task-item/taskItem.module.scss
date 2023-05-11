@@ -34,6 +34,7 @@
     font-weight: 500;
     font-size: 1rem;
     span {
+      text-transform: none !important;
       margin-left: 6px;
       color: #9d9d9d;
       font-size: 0.8em;
@@ -66,7 +67,7 @@
   background-repeat: no-repeat;
   width: 1em;
   height: 1em;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 .doneBtn {
@@ -88,13 +89,23 @@
   }
 }
 
-.taskOptions {
-  background-color: transparent;
+.taskActions {
   border: none;
-  background-image: url("../../../assets/images/options.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 25px;
-  height: 25px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  span {
+    display: block;
+    background-image: url("../../../assets/images/options.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 25px;
+  }
+  transition: background-color 150ms ease-in-out;
+}
+.taskActions:hover {
+  background-color: #47474790;
+  border-radius: 4px;
 }

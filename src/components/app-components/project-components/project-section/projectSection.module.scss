@@ -27,7 +27,7 @@
 .option {
   margin-left: auto;
   background-image: url("../../../../assets/images/section-options.svg");
-  @extend .taskOptions;
+  @extend .taskActions;
 }
 
 .projectTaskContainer {

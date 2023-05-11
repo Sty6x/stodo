@@ -52,7 +52,7 @@ export const ProjectLink = ({
               <motion.button
                 className={projectLinkStyles.optionsBtn}
                 onClick={setOptions}
-              />
+              ><span/></motion.button>
             ) : (
               <p>{projectData.sectionTasks.length}</p>
             )}

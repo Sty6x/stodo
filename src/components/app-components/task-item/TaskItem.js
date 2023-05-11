@@ -67,8 +67,8 @@ export const TaskItem = ({ task }) => {
           </div>
           <button
             onClick={setEditForm}
-            className={`${taskItemStyles.taskOptions}`}
-          />
+            className={`${taskItemStyles.taskActions}`}
+          ><span/></button>
         </motion.li>
       ) : (
         <TaskForm
