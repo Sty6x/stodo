@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { OnEmptyTaskDisplay } from "../../on-empty-task-display/OnEmptyTaskDisplay";
 import pageLayoutStyles from "./pageLayout.module.scss";
-import { motion } from "framer-motion";
-export const PageLayout = ({
-  children,
-  onEmptyText,
-  pageTasks,
-}) => {
+import { AnimatePresence, motion } from "framer-motion";
+export const PageLayout = ({ children, onEmptyText, pageTasks }) => {
   const [isEmpty, setIsEmpty] = useState(false);
 
   function checkTaskPresence(tasks) {
@@ -22,8 +18,11 @@ export const PageLayout = ({
       id="page-layout"
       className={`${pageLayoutStyles.pageLayout}`}
     >
-      {children}
-      {isEmpty && <OnEmptyTaskDisplay pageText={onEmptyText} />}
+      {isEmpty ? (
+        <OnEmptyTaskDisplay key={"emptyTaskDisplay"} pageText={onEmptyText} />
+      ) : (
+        children
+      )}
     </motion.section>
   );
 };

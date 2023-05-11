@@ -30,7 +30,12 @@ export const Upcoming = () => {
   return (
     <div className={`${appPages.pages}`}>
       <HeaderComponent pageName={"Upcoming Tasks"} isMainHeader={true} />
-      <PageLayout onEmptyText={"No pending tasks for now, take it easy."} pageTasks={upcomingTasks} >{appendTasks}</PageLayout>
+      <PageLayout
+        onEmptyText={"No pending tasks for now, take it easy."}
+        pageTasks={upcomingTasks}
+      >
+        <TaskContainer>{appendTasks}</TaskContainer>
+      </PageLayout>
     </div>
   );
 };

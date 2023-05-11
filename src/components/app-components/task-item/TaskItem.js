@@ -23,7 +23,7 @@ export const TaskItem = ({ task }) => {
       {!editFormActive ? (
         <motion.li
           exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
-          animate={{ y: [-50, 0], opacity: [0, 1] }}
+          animate={{ y: [-30, 0], opacity: 1 }}
           layout
           id={task.ID}
           key={task.ID}

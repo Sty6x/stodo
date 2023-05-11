@@ -5,6 +5,7 @@ import { PageLayout } from "../../components/app-components/page-layout/PageLayo
 import { TaskDatabaseContext } from "./App";
 import { isFuture, isPast, isSameDay } from "date-fns";
 import { TaskItem } from "../../components/app-components/task-item/TaskItem";
+import { TaskContainer } from "../../components/app-components/task-container/TaskContainer";
 
 export const Overdue = () => {
   const { tasks, deleteTask } = useContext(TaskDatabaseContext);
@@ -44,7 +45,10 @@ export const Overdue = () => {
         }
         pageTasks={overdueTasks}
       >
+        <TaskContainer>
+
         {appendOverdueTasks}
+        </TaskContainer>
       </PageLayout>
     </div>
   );
