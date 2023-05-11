@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import projectLinkStyles from "./projectLink.module.scss";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ProjectModalOptions } from "../project-modal-options/ProjectModalOptions";
 
 export const ProjectLink = ({
@@ -33,28 +33,30 @@ export const ProjectLink = ({
       className={`${projectLinkStyles.linkContainer}`}
       key={projectName}
     >
-      {optionsIsActive ? (
-        <div className={projectLinkStyles.options}>
-          <ProjectModalOptions
-            handleDeleteButton={deleteProject}
-            handleCancelButton={setOptions}
-            projectID={projectData.ID}
-            projectName={projectData.projectName}
-          />
-        </div>
-      ) : (
-        <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
-          {projectName}
-          {isHovering ? (
-            <button
-              className={projectLinkStyles.optionsBtn}
-              onClick={setOptions}
+      <AnimatePresence mode="wait">
+        {optionsIsActive ? (
+          <motion.div layout className={projectLinkStyles.options}>
+            <ProjectModalOptions
+              handleDeleteButton={deleteProject}
+              handleCancelButton={setOptions}
+              projectID={projectData.ID}
+              projectName={projectData.projectName}
             />
-          ) : (
-            <p>{projectData.sectionTasks.length}</p>
-          )}
-        </NavLink>
-      )}
+          </motion.div>
+        ) : (
+          <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
+            {projectName}
+            {isHovering ? (
+              <button
+                className={projectLinkStyles.optionsBtn}
+                onClick={setOptions}
+              />
+            ) : (
+              <p>{projectData.sectionTasks.length}</p>
+            )}
+          </NavLink>
+        )}
+      </AnimatePresence>
     </motion.li>
   );
 };
