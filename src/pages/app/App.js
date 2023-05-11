@@ -20,6 +20,7 @@ import {
   getDocs,
   orderBy,
   query,
+  updateDoc,
 } from "firebase/firestore";
 import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
@@ -204,7 +205,14 @@ export const App = () => {
       (project) => project.ID === ID
     );
     const updatedProject = { ...getTargetProject[0], ...formEntry };
+    try{
+    const getProjectDoc = doc(db,'users',auth.currentUser.uid,'projects',ID)
+    const setProject  = await updateDoc(getProjectDoc,updatedProject)
     setProjectLinks([updatedProject, ...filterProjects]);
+    }catch(err){
+      console.log('Unable to update project')
+      throw err
+    }
   }
 
   async function redirectWhileOnDeletedProject(targetUrl, currentUrl) {
