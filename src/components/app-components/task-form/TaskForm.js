@@ -85,7 +85,7 @@ export const TaskForm = ({
         </div>
         <div className={taskFormStyles.addAndCancelBtn}>
           <button disabled={btnIsDisabled} type="submit">
-            Add task
+            {isEdit ? "Save Changes" : "Add Task"}
           </button>
           <button type="button" onClick={formControl}>
             Cancel

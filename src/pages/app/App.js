@@ -114,18 +114,24 @@ export const App = () => {
   async function editTask(e) {
     e.preventDefault();
     const target = e.target;
-    const formID = target.id;
+    const taskID = target.id;
     const form = new FormData(target);
-    const getTargetTask = tasks.filter((task) => task.ID === formID);
+    const getTargetTask = tasks.filter((task) => task.ID === taskID);
     const updatedTask = {
       ...Object.fromEntries(form.entries()),
-      ID: formID,
+      ID: taskID,
       authorID: getTargetTask[0].authorID,
       dateAdded: getTargetTask[0].dateAdded,
     };
-    const filterTasks = tasks.filter((task) => task.ID !== formID);
-    setTasks([updatedTask, ...filterTasks]);
-
+    const filterTasks = tasks.filter((task) => task.ID !== taskID);
+    try {
+      const taskDoc = doc(db, "users", auth.currentUser.uid, "tasks", taskID);
+      const updateTaskDoc = updateDoc(taskDoc, updatedTask);
+      setTasks([updatedTask, ...filterTasks]);
+    } catch (err) {
+      console.log("unable to edit task");
+      throw err;
+    }
   }
 
   async function deleteTask(id) {
