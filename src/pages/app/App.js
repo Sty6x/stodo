@@ -175,15 +175,14 @@ export const App = () => {
     }
   }
 
-  async function deleteProject(e) {
+  async function deleteProject(e,ID) {
     e.preventDefault();
     e.stopPropagation()
     const target = e.target;
-    const projectId = target.parentNode.id;
     console.log(projectID);
-    console.log(projectId);
+    console.log(ID);
     const filterProject = projectLinks.filter(
-      (project) => projectId !== project.ID
+      (project) => ID !== project.ID
     );
     try {
       const projectDoc = doc(
@@ -191,10 +190,10 @@ export const App = () => {
         "users",
         auth.currentUser.uid,
         "projects",
-        projectId
+       ID 
       );
       const deleteProjectDoc = await deleteDoc(projectDoc);
-    redirectWhileOnDeletedProject(projectId,projectID);
+    redirectWhileOnDeletedProject(ID,projectID);
       setProjectLinks(filterProject);
     } catch (err) {
       console.log("unable to delete project");

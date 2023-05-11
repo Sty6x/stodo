@@ -3,7 +3,6 @@ import sidebarStyles from "./sidebar.module.scss";
 import { motion } from "framer-motion";
 import "./sidebar.scss";
 import { ProjectLink } from "./project-link/ProjectLink";
-import { ProjectLinkOptions } from "./project-link-options/ProjectLinkOptions";
 import { NavigationLinks } from "./sb-navigation-links/NavigationLinks";
 import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";

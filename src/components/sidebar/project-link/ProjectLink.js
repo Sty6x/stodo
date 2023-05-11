@@ -2,9 +2,14 @@ import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import projectLinkStyles from "./projectLink.module.scss";
 import { motion } from "framer-motion";
-import { ProjectLinkOptions } from "../project-link-options/ProjectLinkOptions";
+import { ProjectModalOptions } from "../project-modal-options/ProjectModalOptions";
 
-export const ProjectLink = ({ to, projectName, projectData,deleteProject }) => {
+export const ProjectLink = ({
+  to,
+  projectName,
+  projectData,
+  deleteProject,
+}) => {
   const [optionsIsActive, setOptionsIsActive] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   function setOptions(e) {
@@ -31,8 +36,14 @@ export const ProjectLink = ({ to, projectName, projectData,deleteProject }) => {
       <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
         {projectName}
         {optionsIsActive ? (
-          <div id={projectData.ID} className={projectLinkStyles.options}>
-            <ProjectLinkOptions handleCancelButton={setOptions} handleDeleteButton={deleteProject} />
+          <div className={projectLinkStyles.options}>
+            <ProjectModalOptions
+              handleDeleteButton={deleteProject}
+              handleCancelButton={setOptions}
+              projectID={projectData.ID}
+              projectName={projectData.projectName}
+            />
+            <button onClick={setOptions}>close</button>
           </div>
         ) : (
           <>

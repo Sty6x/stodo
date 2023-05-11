@@ -24,38 +24,15 @@
   }
 }
 
-.options {
+.modalOptions {
   top: 70%;
   z-index: 999;
   position: absolute;
   left: 80%;
-  min-width: 10em;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  button {
-    font-size: 0.9rem;
-    appearance: none;
-    border: none;
-    text-align: left;
-    padding: 1em 1em;
-    position: relative;
-    display: flex;
-    align-content: center;
-  }
-  & > button::before {
-    content: "";
-    margin-right: 0.6em;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    width: 15px;
-    height: 15px;
-  }
-  button:hover {
-    background-color: gray;
-  }
 }
 
 .optionsBtn {
