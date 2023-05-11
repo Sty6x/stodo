@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../../../App";
 import todayStyles from "./today.module.scss";
 import appPages from "../app.module.scss";
@@ -12,7 +7,7 @@ import { PageLayout } from "../../../components/app-components/page-layout/PageL
 import { TaskItem } from "../../../components/app-components/task-item/TaskItem";
 import { TaskContainer } from "../../../components/app-components/task-container/TaskContainer";
 import { TaskDatabaseContext } from "../App";
-import { isSameDay} from "date-fns";
+import { isSameDay } from "date-fns";
 import { AddButton } from "../../../components/app-components/button/AddButton";
 
 export const Today = () => {
@@ -22,7 +17,7 @@ export const Today = () => {
 
   useEffect(() => {
     filterTasks(tasks);
-    setFormActive(false)
+    setFormActive(false);
   }, [tasks]);
 
   async function filterTasks(tasks) {
@@ -58,7 +53,11 @@ export const Today = () => {
       >
         <TaskContainer>
           {appendTasks}
-          <AddButton formActive={formActive} formControl={formControl} addTask={addTask} type={"add task"}/>
+          <AddButton
+            formActive={formActive}
+            formControl={formControl}
+            addTask={addTask}
+          />
         </TaskContainer>
       </PageLayout>
     </div>

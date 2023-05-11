@@ -2,12 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import taskContainerStyles from "./taskContainer.module.scss";
 
-export const TaskContainer = ({ children}) => {
+export const TaskContainer = ({ children }) => {
   return (
-    <AnimatePresence mode="popLayout">
-      <motion.ul className={taskContainerStyles.container}>
-        {children}
-      </motion.ul>
-    </AnimatePresence>
+    <ul className={taskContainerStyles.container}>
+      <AnimatePresence mode="wait">{children}</AnimatePresence>
+    </ul>
   );
 };

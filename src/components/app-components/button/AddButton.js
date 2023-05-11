@@ -19,7 +19,7 @@ export const AddButton = ({formActive, formControl, addTask, type = "default" })
       ) : (
         <motion.button
           style={{ color: type === "project" ? "#575757" : "#FFFFFF" }}
-          layout
+          // layout
           exit={{ y: -20, opacity: 0, transition: { duration: 0.1 } }}
           animate={{ y: [-20, 0], opacity: [0, 1] }}
           className={`${addBtnStyles.button}`}

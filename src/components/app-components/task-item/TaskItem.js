@@ -21,7 +21,14 @@ export const TaskItem = ({ task }) => {
   return (
     <AnimatePresence mode="wait">
       {!editFormActive ? (
-        <motion.li layout id={task.ID} className={`${taskItemStyles.taskItem}`}>
+        <motion.li
+          exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
+          animate={{ y: [-50, 0], opacity: [0, 1] }}
+          layout
+          id={task.ID}
+          key={task.ID}
+          className={`${taskItemStyles.taskItem}`}
+        >
           <button
             onClick={(e) => deleteTask(task.ID)}
             className={`${taskItemStyles.doneBtn}`}
