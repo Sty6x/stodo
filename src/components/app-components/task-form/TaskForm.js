@@ -9,7 +9,12 @@ import "../../../assets/themes/mytheme/theme.scss";
 //core
 import "primereact/resources/primereact.min.css";
 
-export const TaskForm = ({ isEdit = false, onSubmitHandler, formControl }) => {
+export const TaskForm = ({
+  currentTask,
+  isEdit = false,
+  onSubmitHandler,
+  formControl,
+}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const taskPriorityOptions = ["Low", "Medium", "High"];
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
@@ -34,18 +39,21 @@ export const TaskForm = ({ isEdit = false, onSubmitHandler, formControl }) => {
         className={taskFormStyles.taskFormBody}
         noValidate
       >
-        <h1>Edit Task</h1>
         <div className={taskFormStyles.inputContainer}>
           <input
             onChange={checkRequiredInput}
             required
             name="title"
-            placeholder="Title"
+            placeholder={isEdit ? currentTask.title : "Title"}
             id="title"
           ></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
-          <textarea name="desc" placeholder="Description" id="desc" />
+          <textarea
+            name="desc"
+            placeholder={isEdit ? currentTask.desc : "Description"}
+            id="desc"
+          />
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
@@ -53,7 +61,7 @@ export const TaskForm = ({ isEdit = false, onSubmitHandler, formControl }) => {
           {/* <label htmlFor="priority">Select Task Priority:</label> */}
 
           <Dropdown
-            value={selectedOption}
+            value={isEdit ? currentTask.taskPriority : selectedOption}
             name="taskPriority"
             onChange={(e) => setSelectedOption(e.value)}
             options={taskPriorityOptions}
@@ -65,7 +73,7 @@ export const TaskForm = ({ isEdit = false, onSubmitHandler, formControl }) => {
         >
           <Calendar
             showButtonBar
-            value={new Date()}
+            value={isEdit ? new Date(currentTask.dueDate) : new Date()}
             name="dueDate"
             placeholder="Add date"
             showIcon
