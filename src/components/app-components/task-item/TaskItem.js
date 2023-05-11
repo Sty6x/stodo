@@ -56,13 +56,13 @@ export const TaskItem = ({ task }) => {
             </div>
             <h3>
               {task.title}
-              <span>{format(new Date(task.dateAdded), "p")}</span>
+              <span>{format(new Date(task.dateAdded), "PP")}</span>
             </h3>
             <p>{task.desc}</p>
             <p className={taskItemStyles.dueDate}>
               {isSameDay(new Date(task.dueDate), new Date())
                 ? "Today"
-                : format(new Date(task.dueDate), "P")}
+                : format(new Date(task.dueDate), "PPPP")}
             </p>
           </div>
           <button
