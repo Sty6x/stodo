@@ -6,7 +6,7 @@ export const ProjectModalOptions = ({
   handleEditButton,
   handleDeleteButton,
   projectName,
-  projectID
+  projectID,
 }) => {
   return (
     <>
@@ -15,17 +15,22 @@ export const ProjectModalOptions = ({
         <button onClick={handleCancelButton} />
       </div>
       <div className={projectModalStyle.input}>
-        <label htmlFor="newProjectName">Project Name:</label>
-        <input defaultValue={projectName} />
+        <label htmlFor="newProjectName">Change Name</label>
+        <input
+          name="projectName"
+          id="newProjectName"
+          defaultValue={projectName}
+        />
       </div>
-      <div>
-        <button onClick={e=>{
-          handleDeleteButton(e,projectID)
-        }}>Remove</button>
-        <div>
-          <button onClick={handleCancelButton}>Cancel</button>
-          <button>Save changes</button>
-        </div>
+      <div className={projectModalStyle.buttons}>
+        <button>Save changes</button>
+        <button
+          onClick={(e) => {
+            handleDeleteButton(e, projectID);
+          }}
+        >
+          Remove
+        </button>
       </div>
     </>
   );
