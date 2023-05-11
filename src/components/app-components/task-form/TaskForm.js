@@ -9,7 +9,7 @@ import "../../../assets/themes/mytheme/theme.scss";
 //core
 import "primereact/resources/primereact.min.css";
 
-export const TaskForm = ({ onSubmitHandler,formControl}) => {
+export const TaskForm = ({ isEdit = false, onSubmitHandler, formControl }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const taskPriorityOptions = ["Low", "Medium", "High"];
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
@@ -34,6 +34,7 @@ export const TaskForm = ({ onSubmitHandler,formControl}) => {
         className={taskFormStyles.taskFormBody}
         noValidate
       >
+        <h1>Edit Task</h1>
         <div className={taskFormStyles.inputContainer}>
           <input
             onChange={checkRequiredInput}
@@ -74,10 +75,7 @@ export const TaskForm = ({ onSubmitHandler,formControl}) => {
           <button disabled={btnIsDisabled} type="submit">
             Add task
           </button>
-          <button
-            type="button"
-            onClick={formControl}
-          >
+          <button type="button" onClick={formControl}>
             Cancel
           </button>
         </div>

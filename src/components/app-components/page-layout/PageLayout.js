@@ -4,7 +4,6 @@ import pageLayoutStyles from "./pageLayout.module.scss";
 import { motion } from "framer-motion";
 export const PageLayout = ({
   children,
-  buttonText,
   onEmptyText,
   pageTasks,
 }) => {
