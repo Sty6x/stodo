@@ -33,31 +33,28 @@ export const ProjectLink = ({
       className={`${projectLinkStyles.linkContainer}`}
       key={projectName}
     >
-      <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
-        {projectName}
-        {optionsIsActive ? (
-          <div className={projectLinkStyles.options}>
-            <ProjectModalOptions
-              handleDeleteButton={deleteProject}
-              handleCancelButton={setOptions}
-              projectID={projectData.ID}
-              projectName={projectData.projectName}
+      {optionsIsActive ? (
+        <div className={projectLinkStyles.options}>
+          <ProjectModalOptions
+            handleDeleteButton={deleteProject}
+            handleCancelButton={setOptions}
+            projectID={projectData.ID}
+            projectName={projectData.projectName}
+          />
+        </div>
+      ) : (
+        <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
+          {projectName}
+          {isHovering ? (
+            <button
+              className={projectLinkStyles.optionsBtn}
+              onClick={setOptions}
             />
-            <button onClick={setOptions}>close</button>
-          </div>
-        ) : (
-          <>
-            {isHovering ? (
-              <button
-                className={projectLinkStyles.optionsBtn}
-                onClick={setOptions}
-              />
-            ) : (
-              <p>{projectData.sectionTasks.length}</p>
-            )}
-          </>
-        )}
-      </NavLink>
+          ) : (
+            <p>{projectData.sectionTasks.length}</p>
+          )}
+        </NavLink>
+      )}
     </motion.li>
   );
 };

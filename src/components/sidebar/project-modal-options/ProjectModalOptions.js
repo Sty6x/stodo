@@ -23,7 +23,7 @@ export const ProjectModalOptions = ({
           handleDeleteButton(e,projectID)
         }}>Remove</button>
         <div>
-          <button>Cancel</button>
+          <button onClick={handleCancelButton}>Cancel</button>
           <button>Save changes</button>
         </div>
       </div>
