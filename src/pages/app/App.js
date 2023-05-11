@@ -111,6 +111,14 @@ export const App = () => {
     }
   }
 
+  async function editTask(e) {
+    e.preventDefault();
+    const target = e.target;
+    const form = new FormData(target);
+    const formEntries = Object.fromEntries(form.entries());
+    console.log(formEntries);
+  }
+
   async function deleteTask(id) {
     try {
       const docRef = doc(db, "users", auth.currentUser.uid, "tasks", id);
@@ -205,13 +213,19 @@ export const App = () => {
       (project) => project.ID === ID
     );
     const updatedProject = { ...getTargetProject[0], ...formEntry };
-    try{
-    const getProjectDoc = doc(db,'users',auth.currentUser.uid,'projects',ID)
-    const setProject  = await updateDoc(getProjectDoc,updatedProject)
-    setProjectLinks([updatedProject, ...filterProjects]);
-    }catch(err){
-      console.log('Unable to update project')
-      throw err
+    try {
+      const getProjectDoc = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        ID
+      );
+      const setProject = await updateDoc(getProjectDoc, updatedProject);
+      setProjectLinks([updatedProject, ...filterProjects]);
+    } catch (err) {
+      console.log("Unable to update project");
+      throw err;
     }
   }
 
@@ -275,6 +289,7 @@ export const App = () => {
                 tasks,
                 setTasks,
                 addTask,
+                editTask,
                 deleteTask,
               }}
             >

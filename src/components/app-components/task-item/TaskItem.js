@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import taskItemStyles from "./taskItem.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { format, isSameDay, toDate } from "date-fns";
 import { Timestamp } from "firebase/firestore";
 import { TaskForm } from "../task-form/TaskForm";
+import { TaskDatabaseContext } from "../../../pages/app/App";
 
-export const TaskItem = ({ task, deleteTask }) => {
+export const TaskItem = ({ task }) => {
   const [editFormActive, setEditFormActive] = useState(false);
+  const {deleteTask, editTask} = useContext(TaskDatabaseContext)
 
   function setEditForm(e) {
     e.preventDefault();
@@ -59,7 +61,7 @@ export const TaskItem = ({ task, deleteTask }) => {
           />
         </motion.li>
       ) : (
-        <TaskForm isEdit={true} currentTask={task} formControl={setEditForm} />
+        <TaskForm onSubmitHandler={editTask} isEdit={true} currentTask={task} formControl={setEditForm} />
       )}
     </AnimatePresence>
   );

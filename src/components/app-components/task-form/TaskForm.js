@@ -46,6 +46,7 @@ export const TaskForm = ({
             name="title"
             placeholder={isEdit ? currentTask.title : "Title"}
             id="title"
+            defaultValue={isEdit ? currentTask.title : ""}
           ></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
@@ -53,13 +54,12 @@ export const TaskForm = ({
             name="desc"
             placeholder={isEdit ? currentTask.desc : "Description"}
             id="desc"
+            defaultValue={isEdit ? currentTask.desc : ""}
           />
         </div>
         <div
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
         >
-          {/* <label htmlFor="priority">Select Task Priority:</label> */}
-
           <Dropdown
             value={isEdit ? currentTask.taskPriority : selectedOption}
             name="taskPriority"

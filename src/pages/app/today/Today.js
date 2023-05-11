@@ -16,7 +16,7 @@ import { isSameDay} from "date-fns";
 import { AddButton } from "../../../components/app-components/button/AddButton";
 
 export const Today = () => {
-  const { tasks, deleteTask,addTask } = useContext(TaskDatabaseContext);
+  const { tasks, addTask } = useContext(TaskDatabaseContext);
   const [todayTasks, setTodayTasks] = useState([]);
   const [formActive, setFormActive] = useState(false);
 
@@ -40,7 +40,7 @@ export const Today = () => {
   }
 
   const appendTasks = todayTasks.map((task) => {
-    return <TaskItem deleteTask={deleteTask} key={task.ID} task={task} />;
+    return <TaskItem key={task.ID} task={task} />;
   });
 
   return (
