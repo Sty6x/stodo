@@ -24,7 +24,7 @@ import {
 } from "firebase/firestore";
 import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -87,7 +87,7 @@ export const App = () => {
     const formEntries = Object.fromEntries(form.entries());
     const taskID = uid(16);
     const date = new Date();
-    console.log(format(date, "Pp"));
+    console.log(formEntries.dueDate);
     const newTask = {
       ...formEntries,
       authorID: auth.currentUser.uid,
@@ -114,9 +114,23 @@ export const App = () => {
   async function editTask(e) {
     e.preventDefault();
     const target = e.target;
+    const formID = target.id
     const form = new FormData(target);
-    const formEntries = Object.fromEntries(form.entries());
-    console.log(formEntries);
+    const updatedTask = Object.fromEntries(form.entries());
+    const formatDueDateToLocalizedTime = new Date(updatedTask.dueDate);
+    const getTargetTask = tasks.filter((task) => task.ID === formID);
+    const filterTasks = tasks.filter((task) => task.ID !== formID);
+    console.log(getTargetTask);
+    setTasks([
+      ...filterTasks,
+      {
+        ...updatedTask,
+        ID: formID,
+        authorID:getTargetTask.authorID,
+        dateAdded: getTargetTask.dateAdded,
+      },
+    ]);
+    console.log(tasks);
   }
 
   async function deleteTask(id) {

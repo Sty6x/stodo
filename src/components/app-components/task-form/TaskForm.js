@@ -8,6 +8,7 @@ import { Dropdown } from "primereact/dropdown";
 import "../../../assets/themes/mytheme/theme.scss";
 //core
 import "primereact/resources/primereact.min.css";
+import { format } from "date-fns";
 
 export const TaskForm = ({
   currentTask,
@@ -15,7 +16,9 @@ export const TaskForm = ({
   onSubmitHandler,
   formControl,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(
+    isEdit ? currentTask.taskPriority : null
+  );
   const taskPriorityOptions = ["Low", "Medium", "High"];
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
 
@@ -35,6 +38,7 @@ export const TaskForm = ({
       className={taskFormStyles.taskFormContainer}
     >
       <form
+        id={currentTask && currentTask.ID}
         onSubmit={onSubmitHandler}
         className={taskFormStyles.taskFormBody}
         noValidate
@@ -44,16 +48,16 @@ export const TaskForm = ({
             onChange={checkRequiredInput}
             required
             name="title"
-            placeholder={isEdit ? currentTask.title : "Title"}
             id="title"
+            placeholder={isEdit ? currentTask.title : "Title"}
             defaultValue={isEdit ? currentTask.title : ""}
           ></input>
         </div>
         <div className={taskFormStyles.inputContainer}>
           <textarea
             name="desc"
-            placeholder={isEdit ? currentTask.desc : "Description"}
             id="desc"
+            placeholder={isEdit ? currentTask.desc : "Description"}
             defaultValue={isEdit ? currentTask.desc : ""}
           />
         </div>
@@ -61,7 +65,7 @@ export const TaskForm = ({
           className={`${taskFormStyles.inputContainer} ${taskFormStyles.selectPriority}`}
         >
           <Dropdown
-            value={isEdit ? currentTask.taskPriority : selectedOption}
+            value={selectedOption}
             name="taskPriority"
             onChange={(e) => setSelectedOption(e.value)}
             options={taskPriorityOptions}
