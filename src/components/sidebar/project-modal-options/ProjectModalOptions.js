@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import projectModalStyle from "./projectModalOptions.module.scss";
 
 export const ProjectModalOptions = ({
@@ -8,10 +8,19 @@ export const ProjectModalOptions = ({
   projectName,
   projectID,
 }) => {
+  const [inputInvalid, setInputInvalid] = useState(true);
+  function checkProjectNameInput(e) {
+    const target = e.target;
+    if (target.validity.valueMissing || target.value === "") {
+      return setInputInvalid(true);
+    }
+    return setInputInvalid(false);
+  }
+
   return (
     <>
       <div className={projectModalStyle.titleCloseBtn}>
-        <h1>{projectName}</h1>
+        <h1>Edit Project</h1>
         <button onClick={handleCancelButton} />
       </div>
       <form
@@ -23,13 +32,14 @@ export const ProjectModalOptions = ({
       >
         <label htmlFor="newProjectName">Change Name</label>
         <input
+          onChange={checkProjectNameInput}
           name="projectName"
           id="newProjectName"
-          defaultValue={projectName}
+          placeholder={projectName}
         />
 
         <div className={projectModalStyle.buttons}>
-          <button type="submit">Save changes</button>
+          <button disabled={inputInvalid} type="submit">Save changes</button>
           <button
             onClick={(e) => {
               handleDeleteButton(e, projectID);

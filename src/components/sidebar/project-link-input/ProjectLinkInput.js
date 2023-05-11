@@ -21,7 +21,7 @@ export const ProjectLinkInput = ({
       key={"projectLinkInput"}
       className={projectLinkInputStyle.container}
     >
-      <label htmlFor="projectName">Project Name</label>
+      <label htmlFor="projectName">Create a new Project</label>
       <input
         ref={inputRef}
         className={projectLinkInputStyle.projectLinkName}
