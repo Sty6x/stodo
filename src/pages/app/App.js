@@ -196,6 +196,15 @@ export const App = () => {
   async function editProject(e, ID) {
     e.preventDefault();
     const target = e.target;
+    const form = new FormData(target);
+    const formEntry = Object.fromEntries(form.entries());
+    console.log(formEntry);
+    const filterProjects = projectLinks.filter((project) => project.ID !== ID);
+    const getTargetProject = projectLinks.filter(
+      (project) => project.ID === ID
+    );
+    const updatedProject = { ...getTargetProject[0], ...formEntry };
+    setProjectLinks([updatedProject, ...filterProjects]);
   }
 
   async function redirectWhileOnDeletedProject(targetUrl, currentUrl) {
@@ -247,7 +256,7 @@ export const App = () => {
               projectLinks={projectLinks}
               addProject={addProject}
               deleteProject={deleteProject}
-                editProject={editProject}
+              editProject={editProject}
               inputRef={newProjectRef}
               sbRef={sideBarRef}
             />
