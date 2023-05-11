@@ -76,8 +76,8 @@
     font-weight: 500;
   }
   :first-child:disabled {
-    background-color: #fffbfc34;
-    color: #898989;
+    background-color: #ff285580;
+    color: #FFFFFF80;
     font-weight: 500;
   }
   :first-child:hover:not(:disabled) {
@@ -91,7 +91,6 @@
   }
   button {
     border-radius: 3px;
-    transition: background-color 150ms ease-in-out;
     font-weight: 500;
     font-size: 0.8rem;
     padding: 5px 15px;
