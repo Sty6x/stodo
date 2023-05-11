@@ -8,6 +8,7 @@ import { ProjectsContainer } from "./projects-container/ProjectsContainer";
 import { ProjectLinkInput } from "./project-link-input/ProjectLinkInput";
 
 export const Sidebar = ({
+  editProject,
   deleteProject,
   addProject,
   inputRef,
@@ -23,6 +24,7 @@ export const Sidebar = ({
         projectName={projectLink.projectName}
         projectData={projectLink}
         deleteProject={deleteProject}
+        editProject={editProject}
       />
     );
   });

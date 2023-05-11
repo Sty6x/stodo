@@ -9,6 +9,7 @@ export const ProjectLink = ({
   projectName,
   projectData,
   deleteProject,
+  editProject
 }) => {
   const [optionsIsActive, setOptionsIsActive] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -39,6 +40,7 @@ export const ProjectLink = ({
             <ProjectModalOptions
               handleDeleteButton={deleteProject}
               handleCancelButton={setOptions}
+              handleEditButton={editProject}
               projectID={projectData.ID}
               projectName={projectData.projectName}
             />

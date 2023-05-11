@@ -175,25 +175,17 @@ export const App = () => {
     }
   }
 
-  async function deleteProject(e,ID) {
+  async function deleteProject(e, ID) {
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
     const target = e.target;
     console.log(projectID);
     console.log(ID);
-    const filterProject = projectLinks.filter(
-      (project) => ID !== project.ID
-    );
+    const filterProject = projectLinks.filter((project) => ID !== project.ID);
     try {
-      const projectDoc = doc(
-        db,
-        "users",
-        auth.currentUser.uid,
-        "projects",
-       ID 
-      );
+      const projectDoc = doc(db, "users", auth.currentUser.uid, "projects", ID);
       const deleteProjectDoc = await deleteDoc(projectDoc);
-    redirectWhileOnDeletedProject(ID,projectID);
+      redirectWhileOnDeletedProject(ID, projectID);
       setProjectLinks(filterProject);
     } catch (err) {
       console.log("unable to delete project");
@@ -201,9 +193,14 @@ export const App = () => {
     }
   }
 
-  async function redirectWhileOnDeletedProject(targetUrl,currentUrl) {
-    console.log('redirect')
-    return targetUrl === currentUrl && navigate('/app/today')
+  async function editProject(e, ID) {
+    e.preventDefault();
+    const target = e.target;
+  }
+
+  async function redirectWhileOnDeletedProject(targetUrl, currentUrl) {
+    console.log("redirect");
+    return targetUrl === currentUrl && navigate("/app/today");
   }
 
   function setSideBarStatus() {
@@ -250,6 +247,7 @@ export const App = () => {
               projectLinks={projectLinks}
               addProject={addProject}
               deleteProject={deleteProject}
+                editProject={editProject}
               inputRef={newProjectRef}
               sbRef={sideBarRef}
             />

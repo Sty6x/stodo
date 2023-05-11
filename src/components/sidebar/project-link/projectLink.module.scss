@@ -38,12 +38,14 @@
   & > div:not(last-child) {
     margin-bottom: 0.8em;
   }
-  :first-child,
-  :last-child {
-    display: flex;
+  :first-child{
     :last-child {
       margin-left: auto;
     }
+  }
+  :first-child,
+  :last-child {
+    display: flex;
   }
 }
 

@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    transform: rotateZ(45deg) 
+    transform: rotateZ(45deg);
   }
 }
 
@@ -23,6 +23,7 @@
 }
 
 .buttons {
+  margin-top: 0.8em;
   button {
     appearance: none;
     border: none;
@@ -30,6 +31,7 @@
   }
   :first-child {
     @extend .add;
+    margin-right: auto;
   }
   :last-child {
     background-color: transparent;
