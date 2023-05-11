@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import projectModalStyle from "./projectModalOptions.module.scss";
+import projectActionsStyle from "./projectActions.module.scss";
 
-export const ProjectModalOptions = ({
+export const ProjectActions = ({
   handleCancelButton,
   handleEditButton,
   handleDeleteButton,
@@ -19,12 +19,12 @@ export const ProjectModalOptions = ({
 
   return (
     <>
-      <div className={projectModalStyle.titleCloseBtn}>
+      <div className={projectActionsStyle.titleCloseBtn}>
         <h1>Edit Project</h1>
         <button onClick={handleCancelButton} />
       </div>
       <form
-        className={projectModalStyle.input}
+        className={projectActionsStyle.input}
         onSubmit={(e) => {
           handleEditButton(e, projectID);
         }}
@@ -38,7 +38,7 @@ export const ProjectModalOptions = ({
           placeholder={projectName}
         />
 
-        <div className={projectModalStyle.buttons}>
+        <div className={projectActionsStyle.buttons}>
           <button disabled={inputInvalid} type="submit">Save changes</button>
           <button
             onClick={(e) => {
