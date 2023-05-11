@@ -14,7 +14,7 @@
   }
 }
 
-.titleOption {
+.titleAction {
   display: flex;
   align-items: center;
   margin-bottom: 1em;
@@ -24,10 +24,15 @@
   }
 }
 
-.option {
+.actionBtn {
   margin-left: auto;
-  background-image: url("../../../../assets/images/section-options.svg");
+  span {
+    background-image: url("../../../../assets/images/section-options.svg");
+  }
   @extend .taskActions;
+}
+.actionBtn:hover {
+  background-color: #47474715;
 }
 
 .projectTaskContainer {

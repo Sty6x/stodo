@@ -50,9 +50,11 @@ export const ProjectLink = ({
             {projectName}
             {isHovering ? (
               <motion.button
-                className={projectLinkStyles.optionsBtn}
+                className={projectLinkStyles.actionBtn}
                 onClick={setOptions}
-              ><span/></motion.button>
+              >
+                <span />
+              </motion.button>
             ) : (
               <p>{projectData.sectionTasks.length}</p>
             )}
