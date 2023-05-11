@@ -20,7 +20,7 @@ export const TaskForm = ({
     isEdit ? currentTask.taskPriority : null
   );
   const taskPriorityOptions = ["Low", "Medium", "High"];
-  const [btnIsDisabled, setBtnIsDisabled] = useState(true);
+  const [btnIsDisabled, setBtnIsDisabled] = useState(isEdit ? false : true);
 
   function checkRequiredInput(e) {
     const input = e.target;
@@ -57,7 +57,7 @@ export const TaskForm = ({
           <textarea
             name="desc"
             id="desc"
-            placeholder={isEdit ? currentTask.desc : "Description"}
+            placeholder={"Description"}
             defaultValue={isEdit ? currentTask.desc : ""}
           />
         </div>

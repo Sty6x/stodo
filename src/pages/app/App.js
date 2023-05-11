@@ -123,11 +123,9 @@ export const App = () => {
       authorID: getTargetTask[0].authorID,
       dateAdded: getTargetTask[0].dateAdded,
     };
-    console.log(getTargetTask);
-    console.log(updatedTask);
     const filterTasks = tasks.filter((task) => task.ID !== formID);
-    setTasks([...filterTasks, updatedTask]);
-    console.log(tasks);
+    setTasks([updatedTask, ...filterTasks]);
+
   }
 
   async function deleteTask(id) {
