@@ -114,22 +114,19 @@ export const App = () => {
   async function editTask(e) {
     e.preventDefault();
     const target = e.target;
-    const formID = target.id
+    const formID = target.id;
     const form = new FormData(target);
-    const updatedTask = Object.fromEntries(form.entries());
-    const formatDueDateToLocalizedTime = new Date(updatedTask.dueDate);
     const getTargetTask = tasks.filter((task) => task.ID === formID);
-    const filterTasks = tasks.filter((task) => task.ID !== formID);
+    const updatedTask = {
+      ...Object.fromEntries(form.entries()),
+      ID: formID,
+      authorID: getTargetTask[0].authorID,
+      dateAdded: getTargetTask[0].dateAdded,
+    };
     console.log(getTargetTask);
-    setTasks([
-      ...filterTasks,
-      {
-        ...updatedTask,
-        ID: formID,
-        authorID:getTargetTask.authorID,
-        dateAdded: getTargetTask.dateAdded,
-      },
-    ]);
+    console.log(updatedTask);
+    const filterTasks = tasks.filter((task) => task.ID !== formID);
+    setTasks([...filterTasks, updatedTask]);
     console.log(tasks);
   }
 

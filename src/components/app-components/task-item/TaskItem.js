@@ -9,12 +9,10 @@ import { TaskDatabaseContext } from "../../../pages/app/App";
 export const TaskItem = ({ task }) => {
   const [editFormActive, setEditFormActive] = useState(false);
   const { deleteTask, editTask } = useContext(TaskDatabaseContext);
-  useEffect(()=>{
-setEditFormActive(false)
-  },[task])
 
-
-
+  useEffect(() => {
+    setEditFormActive(false);
+  }, [task]);
   function setEditForm(e) {
     e.preventDefault();
     return editFormActive ? setEditFormActive(false) : setEditFormActive(true);
@@ -51,14 +49,14 @@ setEditFormActive(false)
             </div>
             <h3>
               {task.title}
-              {/* <span>{format(new Date(task.dateAdded), "p")}</span> */}
+              <span>{format(new Date(task.dateAdded), "p")}</span>
             </h3>
             <p>{task.desc}</p>
-            {/* <p className={taskItemStyles.dueDate}> */}
-            {/*   {isSameDay(new Date(task.dueDate), new Date()) */}
-            {/*     ? "Today" */}
-            {/*     : task.dueDate} */}
-            {/* </p> */}
+            <p className={taskItemStyles.dueDate}>
+              {isSameDay(new Date(task.dueDate), new Date())
+                ? "Today"
+                : format(new Date(task.dueDate), "P")}
+            </p>
           </div>
           <button
             onClick={setEditForm}
