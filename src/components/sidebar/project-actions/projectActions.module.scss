@@ -1,5 +1,30 @@
 @use "../../sidebar/project-link-input/projectLinkInput.module.scss" as
   projectLinkInput;
+
+.container {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 1.2em 1em;
+  h1 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  & > div:not(last-child) {
+    margin-bottom: 0.8em;
+  }
+  :first-child {
+    :last-child {
+      margin-left: auto;
+    }
+  }
+  :first-child,
+  :last-child {
+    display: flex;
+  }
+}
+
 .titleCloseBtn {
   button {
     background-image: url("../../../assets/images/proj-add-btn.svg");
@@ -17,6 +42,7 @@
 
 .input {
   @extend .container;
+  padding: 0;
   input {
     @extend .projectLinkName;
   }

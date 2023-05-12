@@ -18,7 +18,7 @@ export const ProjectActions = ({
   }
 
   return (
-    <>
+          <div className={projectActionsStyle.container}>
       <div className={projectActionsStyle.titleCloseBtn}>
         <h1>Edit Project</h1>
         <button onClick={handleCancelButton} />
@@ -49,6 +49,6 @@ export const ProjectActions = ({
           </button>
         </div>
       </form>
-    </>
+          </div>
   );
 };

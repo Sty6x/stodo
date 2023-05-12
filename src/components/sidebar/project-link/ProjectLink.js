@@ -36,7 +36,6 @@ export const ProjectLink = ({
     >
       <AnimatePresence mode="wait">
         {optionsIsActive ? (
-          <div className={projectLinkStyles.options}>
             <ProjectActions
               handleDeleteButton={deleteProject}
               handleCancelButton={setOptions}
@@ -44,7 +43,6 @@ export const ProjectLink = ({
               projectID={projectData.ID}
               projectName={projectData.projectName}
             />
-          </div>
         ) : (
           <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
             {projectName}

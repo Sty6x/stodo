@@ -3,14 +3,23 @@ import { TaskItem } from "../../task-item/TaskItem";
 import projectSectionStyle from "./projectSection.module.scss";
 import { AddButton } from "../../button/AddButton";
 import { ProjectTaskItem } from "../project-task-item/ProjectTaskItem";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ProjectActions } from "../../../sidebar/project-actions/ProjectActions";
+import { ProjectSectionActions } from "../project-section-actions/ProjectSectionActions";
 
 export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [actionBtnActive, setActionBtnActive] = useState(false);
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
+  }
+
+  function actionBtnControl() {
+    return actionBtnActive
+      ? setActionBtnActive(false)
+      : setActionBtnActive(true);
   }
 
   function checkOwnTasks() {
@@ -35,11 +44,21 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
       id={sectionData.sectionID}
       className={projectSectionStyle.section}
     >
-      {/* tasks here that belong to a section */}
-      <div className={projectSectionStyle.titleAction}>
-        <h1>{sectionData.sectionTitle}</h1>
-        <button className={projectSectionStyle.actionBtn}><span/></button>
-      </div>
+      <AnimatePresence mode="wait">
+        {!actionBtnActive ? (
+          <motion.div key={'sectionTitleAction'} className={projectSectionStyle.titleAction}>
+            <h1>{sectionData.sectionTitle}</h1>
+            <button
+              className={projectSectionStyle.actionBtn}
+              onClick={actionBtnControl}
+            >
+              <span />
+            </button>
+          </motion.div>
+        ) : (
+        <ProjectSectionActions handleCancelButton={actionBtnControl}/>
+        )}
+      </AnimatePresence>
       <div className={projectSectionStyle.projectTaskContainer}>
         {appendSectionTasks}
       </div>

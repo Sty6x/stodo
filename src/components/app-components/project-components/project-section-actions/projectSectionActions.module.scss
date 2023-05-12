@@ -1,0 +1,16 @@
+@use '../project-section-actions/../../../sidebar/project-actions/projectActions.module.scss' as projectLinkActions; 
+
+.container{
+  // @extend .container
+  display: flex;
+  flex-direction: column;
+  color: #323232;
+}
+.titleCloseBtn{
+  h1{
+    font-weight: 600;
+  }
+  display: flex;
+  button{margin-left: auto;}
+}
+
