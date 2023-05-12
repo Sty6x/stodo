@@ -123,11 +123,16 @@ export const App = () => {
       authorID: getTargetTask[0].authorID,
       dateAdded: getTargetTask[0].dateAdded,
     };
-    const filterTasks = tasks.filter((task) => task.ID !== taskID);
+    const mapTasks = tasks.map((task) => {
+      if (task.ID === taskID) {
+        return updatedTask;
+      }
+      return task;
+    });
     try {
       const taskDoc = doc(db, "users", auth.currentUser.uid, "tasks", taskID);
       const updateTaskDoc = updateDoc(taskDoc, updatedTask);
-      setTasks([updatedTask, ...filterTasks]);
+      setTasks(mapTasks);
     } catch (err) {
       console.log("unable to edit task");
       throw err;
@@ -222,12 +227,17 @@ export const App = () => {
     const target = e.target;
     const form = new FormData(target);
     const formEntry = Object.fromEntries(form.entries());
-    console.log(formEntry);
-    const filterProjects = projectLinks.filter((project) => project.ID !== ID);
     const getTargetProject = projectLinks.filter(
       (project) => project.ID === ID
     );
     const updatedProject = { ...getTargetProject[0], ...formEntry };
+    const mapProjects = projectLinks.map((project) => {
+      if (project.ID === ID) {
+        return updatedProject;
+      }
+      return project;
+    });
+    console.log(mapProjects);
     try {
       const getProjectDoc = doc(
         db,
@@ -237,7 +247,7 @@ export const App = () => {
         ID
       );
       const setProject = await updateDoc(getProjectDoc, updatedProject);
-      setProjectLinks([updatedProject, ...filterProjects]);
+      setProjectLinks(mapProjects);
     } catch (err) {
       console.log("Unable to update project");
       throw err;
