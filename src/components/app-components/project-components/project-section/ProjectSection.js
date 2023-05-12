@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TaskItem } from "../../task-item/TaskItem";
 import projectSectionStyle from "./projectSection.module.scss";
 import { AddButton } from "../../button/AddButton";
@@ -6,11 +6,13 @@ import { ProjectTaskItem } from "../project-task-item/ProjectTaskItem";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectActions } from "../../../sidebar/project-actions/ProjectActions";
 import { ProjectSectionActions } from "../project-section-actions/ProjectSectionActions";
+import { ProjectPageContext } from "../../../../pages/app/Project";
 
 export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [actionBtnActive, setActionBtnActive] = useState(false);
+  const { deleteSection } = useContext(ProjectPageContext);
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
@@ -46,7 +48,10 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
     >
       <AnimatePresence mode="wait">
         {!actionBtnActive ? (
-          <motion.div key={'sectionTitleAction'} className={projectSectionStyle.titleAction}>
+          <motion.div
+            key={"sectionTitleAction"}
+            className={projectSectionStyle.titleAction}
+          >
             <h1>{sectionData.sectionTitle}</h1>
             <button
               className={projectSectionStyle.actionBtn}
@@ -56,7 +61,13 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
             </button>
           </motion.div>
         ) : (
-        <ProjectSectionActions handleCancelButton={actionBtnControl}/>
+          <ProjectSectionActions
+            sectionName={sectionData.sectionName}
+            sectionIndex={sectionData.sectionIndex}
+            handleCancelButton={actionBtnControl}
+            handleDeleteButton={deleteSection}
+            // handleCancelButton={actionBtnControl}
+          />
         )}
       </AnimatePresence>
       <div className={projectSectionStyle.projectTaskContainer}>

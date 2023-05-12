@@ -1,7 +1,13 @@
 import React from "react";
 import projectSectionActionStyle from "./projectSectionActions.module.scss";
 
-export const ProjectSectionActions = ({ handleCancelButton }) => {
+export const ProjectSectionActions = ({
+  handleCancelButton,
+  handleEditButton,
+  handleDeleteButton,
+  sectionIndex,
+  sectionName,
+}) => {
   return (
     <div className={projectSectionActionStyle.container}>
       <div className={projectSectionActionStyle.titleCloseBtn}>
@@ -10,9 +16,9 @@ export const ProjectSectionActions = ({ handleCancelButton }) => {
       </div>
       <form
         className={projectSectionActionStyle.input}
-        // onSubmit={(e) => {
-        //   handleEditButton(e, projectID);
-        // }}
+        onSubmit={(e) => {
+          handleEditButton(e, sectionIndex);
+        }}
         noValidate
       >
         <label htmlFor="newProjectName">Change Name</label>
@@ -20,15 +26,15 @@ export const ProjectSectionActions = ({ handleCancelButton }) => {
           // onChange={checkProjectNameInput}
           name="projectName"
           id="newProjectName"
-          // placeholder={projectName}
+          placeholder={sectionName}
         />
 
         <div className={projectSectionActionStyle.buttons}>
           <button type="submit">Save changes</button>
           <button
-          // onClick={(e) => {
-          //   handleDeleteButton(e, projectID);
-          // }}
+            onClick={(e) => {
+              handleDeleteButton(e, sectionIndex);
+            }}
           >
             Remove
           </button>

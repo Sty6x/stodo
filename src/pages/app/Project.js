@@ -53,6 +53,11 @@ export const Project = () => {
     }
   }
 
+  async function deleteSection(e,sectionIndex){
+    e.preventDefault()
+    console.log(sectionIndex)
+  }
+
   async function addSectionTask(e) {
     e.preventDefault();
     const target = e.target;
@@ -106,7 +111,7 @@ export const Project = () => {
   return (
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
-      <ProjectPageContext.Provider value={{ addSection }}>
+      <ProjectPageContext.Provider value={{deleteSection,addSection }}>
         <ProjectPageLayout>
           {appendProjectSections}
           <AddSection addSection={addSection} project={projectLinks} />
