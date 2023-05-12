@@ -60,9 +60,14 @@ export const Project = () => {
       (section) => section.sectionIndex !== sectionIndex
     );
     console.log(filterProjectSections);
+
+    const filterProjectSectionTasks = project.sectionTasks.filter(
+      (sectionTask) => sectionTask.sectionOwnerIndex !== sectionIndex
+    );
     const updateCurrentProject = {
       ...project,
       sections: filterProjectSections,
+      sectionTasks: filterProjectSectionTasks,
     };
     const updateProjectLinks = projectLinks.map((proj) => {
       if (proj.ID === projectID) {
@@ -72,8 +77,14 @@ export const Project = () => {
     });
 
     try {
-      const projectDocRef = doc(db,'users',auth.currentUser.uid,'projects',projectID)
-      const updateProjectDoc = updateDoc(projectDocRef,updateCurrentProject)
+      const projectDocRef = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        projectID
+      );
+      const updateProjectDoc = updateDoc(projectDocRef, updateCurrentProject);
       setProjectLinks(updateProjectLinks);
     } catch (err) {
       console.log("unable to remove section");
