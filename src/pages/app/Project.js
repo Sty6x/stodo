@@ -12,7 +12,6 @@ import { collection, doc, updateDoc } from "firebase/firestore";
 
 export const ProjectPageContext = createContext(null);
 
-
 export const Project = () => {
   const { projectID } = useParams();
   const { setProjectLinks, projectLinks } = useContext(TaskDatabaseContext);
@@ -36,15 +35,15 @@ export const Project = () => {
     };
     const filterProjects = projectLinks.filter((proj) => proj.ID !== projectID);
     try {
-        const projectDocRef = doc(
-          db,
-          "users",
-          auth.currentUser.uid,
-          "projects",
-          projectID
-        );
-        const updateProjectSection = await updateDoc(projectDocRef, {
-          sections: [...project.sections, newSection],
+      const projectDocRef = doc(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "projects",
+        projectID
+      );
+      const updateProjectSection = await updateDoc(projectDocRef, {
+        sections: [...project.sections, newSection],
       });
       setProjectLinks([updateProject, ...filterProjects]);
     } catch (err) {
@@ -53,9 +52,24 @@ export const Project = () => {
     }
   }
 
-  async function deleteSection(e,sectionIndex){
-    e.preventDefault()
-    console.log(sectionIndex)
+  async function deleteSection(e, sectionIndex) {
+    e.preventDefault();
+    console.log(sectionIndex);
+    const filterProjectSections = project.sections.filter(
+      (section) => section.sectionIndex !== sectionIndex
+    );
+    console.log(filterProjectSections)
+    const updateCurrentProject = {
+      ...project,
+      sections: filterProjectSections,
+    };
+    const updateProjectLinks = projectLinks.map((proj) => {
+      if (proj.ID === projectID) {
+        return updateCurrentProject;
+      }
+      return proj;
+    });
+    setProjectLinks(updateProjectLinks);
   }
 
   async function addSectionTask(e) {
@@ -111,7 +125,7 @@ export const Project = () => {
   return (
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
-      <ProjectPageContext.Provider value={{deleteSection,addSection }}>
+      <ProjectPageContext.Provider value={{ deleteSection, addSection }}>
         <ProjectPageLayout>
           {appendProjectSections}
           <AddSection addSection={addSection} project={projectLinks} />
