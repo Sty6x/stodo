@@ -36,13 +36,13 @@ export const ProjectLink = ({
     >
       <AnimatePresence mode="wait">
         {optionsIsActive ? (
-            <ProjectActions
-              handleDeleteButton={deleteProject}
-              handleCancelButton={setOptions}
-              handleEditButton={editProject}
-              projectID={projectData.ID}
-              projectName={projectData.projectName}
-            />
+          <ProjectActions
+            handleDeleteButton={deleteProject}
+            handleCancelButton={setOptions}
+            handleEditButton={editProject}
+            projectID={projectData.ID}
+            projectName={projectData.projectName}
+          />
         ) : (
           <NavLink className={`${projectLinkStyles.link}`} key={to} to={to}>
             {projectName}
@@ -54,7 +54,11 @@ export const ProjectLink = ({
                 <span />
               </motion.button>
             ) : (
-              <p>{projectData.sectionTasks.length}</p>
+              <p>
+                {projectData.sections.length !== 0
+                  ? projectData.sections.length
+                  : "Empty"}
+              </p>
             )}
           </NavLink>
         )}
