@@ -42,8 +42,9 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   });
   return (
     <motion.section
+      animate={{ y: [-30, 0] }}
+      exit={{ y: [30] }}
       data-indexpos={sectionData.sectionIndex}
-      id={sectionData.sectionID}
       className={projectSectionStyle.section}
     >
       <AnimatePresence mode="wait">

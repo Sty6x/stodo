@@ -9,6 +9,7 @@ import { uid } from "uid";
 import { AddSection } from "../../components/app-components/project-components/add-section/AddSection";
 import { FirebaseContext } from "../../App";
 import { collection, doc, updateDoc } from "firebase/firestore";
+import { AnimatePresence } from "framer-motion";
 
 export const ProjectPageContext = createContext(null);
 
@@ -58,7 +59,7 @@ export const Project = () => {
     const filterProjectSections = project.sections.filter(
       (section) => section.sectionIndex !== sectionIndex
     );
-    console.log(filterProjectSections)
+    console.log(filterProjectSections);
     const updateCurrentProject = {
       ...project,
       sections: filterProjectSections,
@@ -69,7 +70,15 @@ export const Project = () => {
       }
       return proj;
     });
-    setProjectLinks(updateProjectLinks);
+
+    try {
+      const projectDocRef = doc(db,'users',auth.currentUser.uid,'projects',projectID)
+      const updateProjectDoc = updateDoc(projectDocRef,updateCurrentProject)
+      setProjectLinks(updateProjectLinks);
+    } catch (err) {
+      console.log("unable to remove section");
+      throw err;
+    }
   }
 
   async function addSectionTask(e) {
@@ -114,7 +123,7 @@ export const Project = () => {
   const appendProjectSections = project.sections.map((section) => {
     return (
       <ProjectSection
-        key={section.sectionIndex + "-section"}
+        key={section.sectionIndex + "-section-" + section.sectionTitle}
         sectionData={section}
         sectionTasks={project.sectionTasks}
         addTask={addSectionTask}
@@ -127,7 +136,9 @@ export const Project = () => {
       <HeaderComponent pageName={`${project.projectName}`} />
       <ProjectPageContext.Provider value={{ deleteSection, addSection }}>
         <ProjectPageLayout>
-          {appendProjectSections}
+          <AnimatePresence mode="popLayout">
+            {appendProjectSections}
+          </AnimatePresence>
           <AddSection addSection={addSection} project={projectLinks} />
         </ProjectPageLayout>
       </ProjectPageContext.Provider>
