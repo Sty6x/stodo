@@ -175,6 +175,14 @@ export const Project = () => {
       return proj
     })
     setProjectLinks(mapProjects)
+    try{
+     const projectDoc = doc(db,'users',auth.currentUser.uid,'projects',projectID) 
+      const updatedSection = await updateDoc(projectDoc,updateProject)
+
+    }catch(err){
+      console.log('unable to delete section task')
+      throw err
+    }
   }
   async function editSectionTask(e) {
     e.preventDefault()

@@ -172,17 +172,17 @@ export const App = () => {
 
       sectionTasks: [
         {
-          title: "Hey",
-          desc: "Some description",
+          title: "Welcome",
+          desc: "Some random description",
           taskPriority: "High",
-          ID: "placeholder",
+          ID: uid(16),
           sectionOwnerIndex: 0,
         },
         {
           title: "Start by clicking on add task",
-          desc: "Some description",
+          desc: "This is your description",
           taskPriority: "Medium",
-          ID: "placeholder",
+          ID: uid(16),
           sectionOwnerIndex: 1,
         },
       ],
