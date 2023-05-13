@@ -1,36 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import projectTaskItemStyle from "./projectTaskItem.module.scss";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { format, isSameDay } from "date-fns";
+import { TaskForm } from "../../task-form/TaskForm";
 
 export const ProjectTaskItem = ({
   task: { dueDate, title, desc, ID, taskPriority, sectionOwnerIndex }, deleteTask
 }) => {
-  console.log(sectionOwnerIndex)
+
+  const [actionActive, setActionActive] = useState(false);
+
+  function actionControl(e) {
+    // e.stopImmediatePropagation()
+    return actionActive ? setActionActive(false) : setActionActive(true)
+  }
+
+  useEffect(() => {
+    console.log(actionActive)
+  }, [actionActive])
+
   return (
-    <motion.li
-      className={projectTaskItemStyle.projectTaskItem}
-      style={{
-        borderRight: `10px solid ${(taskPriority == "High" && "#FF2855") ||
-          (taskPriority == "Medium" && "#FFD10D") ||
-          (taskPriority == "Low" && "#0BB385")
-          }`,
-      }}
-    >
-      <div className={projectTaskItemStyle.buttonContainer}>
-        <button onClick={(e) => { deleteTask(e, ID) }} />
-      </div>
-      <div className={projectTaskItemStyle.taskContentContainer}>
-        <h3>{title}</h3>
-        <p>{desc}</p>
-        {dueDate && (
-          <p className={projectTaskItemStyle.dueDate}>
-            {isSameDay(new Date(dueDate), new Date())
-              ? "Today"
-              : format(new Date(dueDate), "PP")}
-          </p>
-        )}
-      </div>
-    </motion.li>
+    <AnimatePresence mode="wait">
+      {actionActive ? <TaskForm formControl={actionControl} /> :
+        <motion.li
+          key={ID}
+          animate={{ opacity: 1, y: [-20, 0] }}
+          exit={{ opacity: 0.4, y: -20, transition: { duration: 0.1 } }}
+          onClick={actionControl}
+          className={projectTaskItemStyle.projectTaskItem}
+          style={{
+            borderRight: `10px solid ${(taskPriority == "High" && "#FF2855") ||
+              (taskPriority == "Medium" && "#FFD10D") ||
+              (taskPriority == "Low" && "#0BB385")
+              }`,
+          }}
+        >
+          <div className={projectTaskItemStyle.buttonContainer}>
+            <button onClick={(e) => { deleteTask(e, ID) }} />
+          </div>
+          <div className={projectTaskItemStyle.taskContentContainer}>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+            {dueDate && (
+              <p className={projectTaskItemStyle.dueDate}>
+                {isSameDay(new Date(dueDate), new Date())
+                  ? "Today"
+                  : format(new Date(dueDate), "PP")}
+              </p>
+            )}
+          </div>
+        </motion.li>}
+    </AnimatePresence>
   );
 };

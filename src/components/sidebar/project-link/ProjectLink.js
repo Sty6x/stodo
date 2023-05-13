@@ -55,9 +55,8 @@ export const ProjectLink = ({
               </motion.button>
             ) : (
               <p>
-                {projectData.sections.length !== 0
-                  ? projectData.sections.length
-                  : "Empty"}
+                {projectData.sectionTasks.length !== 0
+                  && projectData.sectionTasks.length}
               </p>
             )}
           </NavLink>

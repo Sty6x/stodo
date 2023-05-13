@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProjectSectionActions } from "../project-section-actions/ProjectSectionActions";
 import { ProjectPageContext } from "../../../../pages/app/Project";
 
-export const ProjectSection = ({ sectionTasks, sectionData, addTask,deleteTask }) => {
+export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [actionBtnActive, setActionBtnActive] = useState(false);
-  const { editSection,deleteSection } = useContext(ProjectPageContext);
+  const { editSection, deleteSection } = useContext(ProjectPageContext);
 
   function formControl() {
     return formActive ? setFormActive(false) : setFormActive(true);
@@ -36,7 +36,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask,deleteTask }
   }, [sectionTasks]);
 
   const appendSectionTasks = tasks.map((task) => {
-    return <ProjectTaskItem deleteTask={deleteTask} task={task} />;
+    return <ProjectTaskItem key={task.ID} deleteTask={deleteTask} task={task} />;
   });
   return (
     <motion.section
@@ -44,11 +44,12 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask,deleteTask }
       exit={{ y: [30] }}
       data-indexpos={sectionData.sectionIndex}
       className={projectSectionStyle.section}
+      key={"section-" + sectionData.sectionOwnerIndex}
     >
       <AnimatePresence mode="wait">
         {!actionBtnActive ? (
           <motion.div
-            key={"sectionTitleAction"}
+            key={"sectionTitleAction-" + sectionData.sectionOwnerIndex}
             className={projectSectionStyle.titleAction}
           >
             <h1>{sectionData.sectionTitle}</h1>
@@ -71,7 +72,9 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask,deleteTask }
         )}
       </AnimatePresence>
       <div className={projectSectionStyle.projectTaskContainer}>
-        {appendSectionTasks}
+        <AnimatePresence mode="popLayout">
+          {appendSectionTasks}
+        </AnimatePresence>
       </div>
       <AddButton
         addTask={addTask}
