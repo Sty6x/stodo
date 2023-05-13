@@ -46,7 +46,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask 
       className={projectSectionStyle.section}
       key={"section-" + sectionData.sectionOwnerIndex}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="popLayout">
         {!actionBtnActive ? (
           <motion.div
             key={"sectionTitleAction-" + sectionData.sectionOwnerIndex}
@@ -72,9 +72,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask 
         )}
       </AnimatePresence>
       <div className={projectSectionStyle.projectTaskContainer}>
-        <AnimatePresence mode="popLayout">
           {appendSectionTasks}
-        </AnimatePresence>
       </div>
       <AddButton
         addTask={addTask}

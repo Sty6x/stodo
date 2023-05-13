@@ -32,7 +32,7 @@ export const TaskForm = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: .4, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 30, transition: { duration: 0.1 } }}
       className={taskFormStyles.taskFormContainer}

@@ -21,11 +21,11 @@ export const ProjectTaskItem = ({
 
   return (
     <AnimatePresence mode="wait">
-      {actionActive ? <TaskForm formControl={actionControl} /> :
+      {!actionActive ?
         <motion.li
           key={ID}
           animate={{ opacity: 1, y: [-20, 0] }}
-          exit={{ opacity: 0.4, y: -20, transition: { duration: 0.1 } }}
+          exit={{ opacity: 0, y: -20, transition: { duration: 0.1 } }}
           onClick={actionControl}
           className={projectTaskItemStyle.projectTaskItem}
           style={{
@@ -49,7 +49,8 @@ export const ProjectTaskItem = ({
               </p>
             )}
           </div>
-        </motion.li>}
+        </motion.li> :
+        <TaskForm formControl={actionControl} />}
     </AnimatePresence>
   );
 };
