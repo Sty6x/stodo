@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TaskItem } from "../../task-item/TaskItem";
 import projectSectionStyle from "./projectSection.module.scss";
 import { AddButton } from "../../button/AddButton";
 import { ProjectTaskItem } from "../project-task-item/ProjectTaskItem";
 import { motion, AnimatePresence } from "framer-motion";
-import { ProjectActions } from "../../../sidebar/project-actions/ProjectActions";
 import { ProjectSectionActions } from "../project-section-actions/ProjectSectionActions";
 import { ProjectPageContext } from "../../../../pages/app/Project";
 
-export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
+export const ProjectSection = ({ sectionTasks, sectionData, addTask,deleteTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [actionBtnActive, setActionBtnActive] = useState(false);
@@ -38,7 +36,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask }) => {
   }, [sectionTasks]);
 
   const appendSectionTasks = tasks.map((task) => {
-    return <ProjectTaskItem task={task} />;
+    return <ProjectTaskItem deleteTask={deleteTask} task={task} />;
   });
   return (
     <motion.section

@@ -92,33 +92,33 @@ export const Project = () => {
     }
   }
 
-  async function editSection(e,sectionIndex){
+  async function editSection(e, sectionIndex) {
     e.preventDefault()
     const target = e.target;
     const form = new FormData(target)
     const formEntries = Object.fromEntries(form.entries())
-    const [targetSection] = project.sections.filter(section=> section.sectionIndex === sectionIndex)
-    const updatedSection = {...targetSection,sectionTitle:formEntries.sectionTitle}
-    const updateProjectSections = project.sections.map(section=>{
-      if(section.sectionIndex === sectionIndex){
-        return {...section,...updatedSection} 
+    const [targetSection] = project.sections.filter(section => section.sectionIndex === sectionIndex)
+    const updatedSection = { ...targetSection, sectionTitle: formEntries.sectionTitle }
+    const updateProjectSections = project.sections.map(section => {
+      if (section.sectionIndex === sectionIndex) {
+        return { ...section, ...updatedSection }
       }
       return section
     })
-    const updateProject = {...project,sections:updateProjectSections}
-    const updateProjectList = projectLinks.map(proj=>{
-      if(proj.ID === projectID){
-        return updateProject 
+    const updateProject = { ...project, sections: updateProjectSections }
+    const updateProjectList = projectLinks.map(proj => {
+      if (proj.ID === projectID) {
+        return updateProject
       }
       return proj
     })
     console.log(updateProjectList)
-    try{
-      const projectDoc  = doc(db,'users',auth.currentUser.uid,'projects',projectID)
-      const updateProjectDoc = updateDoc(projectDoc,updateProject)
+    try {
+      const projectDoc = doc(db, 'users', auth.currentUser.uid, 'projects', projectID)
+      const updateProjectDoc = updateDoc(projectDoc, updateProject)
       setProjectLinks(updateProjectList)
 
-    }catch(err){
+    } catch (err) {
       console.log('unable to edit project section')
       throw err
     }
@@ -151,7 +151,7 @@ export const Project = () => {
         "projects",
         projectID
       );
-      const updateProjectSectionTasks = updateDoc(tasksCollectionRef, {
+      const updateProjectSectionTasks = await updateDoc(tasksCollectionRef, {
         sectionTasks: [...project.sectionTasks, newTask],
       });
       setProjectLinks([updateProject, ...filterProject]);
@@ -159,6 +159,25 @@ export const Project = () => {
       console.log("unable to add task");
       throw err;
     }
+  }
+
+  async function deleteSectionTask(e, ID) {
+    e.preventDefault()
+    const filteredSectionTasks = project.sectionTasks.filter(sectionTask => sectionTask.ID !== ID)
+    const updateProject = {
+      ...project,
+      sectionTasks: filteredSectionTasks
+    }
+    const mapProjects = projectLinks.map(proj => {
+      if (proj.ID === projectID) {
+        return updateProject
+      }
+      return proj
+    })
+    setProjectLinks(mapProjects)
+  }
+  async function editSectionTask(e) {
+    e.preventDefault()
   }
 
   useEffect(() => {
@@ -172,6 +191,7 @@ export const Project = () => {
         sectionData={section}
         sectionTasks={project.sectionTasks}
         addTask={addSectionTask}
+        deleteTask={deleteSectionTask}
       />
     );
   });
@@ -179,7 +199,7 @@ export const Project = () => {
   return (
     <div key={project.ID} className={`${appPages.projectPage}`}>
       <HeaderComponent pageName={`${project.projectName}`} />
-      <ProjectPageContext.Provider value={{editSection, deleteSection, addSection }}>
+      <ProjectPageContext.Provider value={{ editSection, deleteSection, addSection }}>
         <ProjectPageLayout>
           <AnimatePresence mode="popLayout">
             {appendProjectSections}
