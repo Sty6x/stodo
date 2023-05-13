@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProjectSectionActions } from "../project-section-actions/ProjectSectionActions";
 import { ProjectPageContext } from "../../../../pages/app/Project";
 
-export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask }) => {
+export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask,editTask }) => {
   const [formActive, setFormActive] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [actionBtnActive, setActionBtnActive] = useState(false);
@@ -36,7 +36,7 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask 
   }, [sectionTasks]);
 
   const appendSectionTasks = tasks.map((task) => {
-    return <ProjectTaskItem key={task.ID} deleteTask={deleteTask} task={task} />;
+    return <ProjectTaskItem key={task.ID} deleteTask={deleteTask} editTask={editTask} task={task} />;
   });
   return (
     <motion.section
@@ -46,31 +46,31 @@ export const ProjectSection = ({ sectionTasks, sectionData, addTask, deleteTask 
       className={projectSectionStyle.section}
       key={"section-" + sectionData.sectionOwnerIndex}
     >
-        {!actionBtnActive ? (
-          <motion.div
-            key={"sectionTitleAction-" + sectionData.sectionOwnerIndex}
-            className={projectSectionStyle.titleAction}
+      {!actionBtnActive ? (
+        <motion.div
+          key={"sectionTitleAction-" + sectionData.sectionOwnerIndex}
+          className={projectSectionStyle.titleAction}
+        >
+          <h1>{sectionData.sectionTitle}</h1>
+          <button
+            className={projectSectionStyle.actionBtn}
+            onClick={actionBtnControl}
           >
-            <h1>{sectionData.sectionTitle}</h1>
-            <button
-              className={projectSectionStyle.actionBtn}
-              onClick={actionBtnControl}
-            >
-              <span />
-            </button>
-          </motion.div>
-        ) : (
-          <ProjectSectionActions
-            sectionTitle={sectionData.sectionTitle}
-            sectionIndex={sectionData.sectionIndex}
-            handleCancelButton={actionBtnControl}
-            handleDeleteButton={deleteSection}
-            handleEditButton={editSection}
-            name={'sectionTitle'}
-          />
-        )}
+            <span />
+          </button>
+        </motion.div>
+      ) : (
+        <ProjectSectionActions
+          sectionTitle={sectionData.sectionTitle}
+          sectionIndex={sectionData.sectionIndex}
+          handleCancelButton={actionBtnControl}
+          handleDeleteButton={deleteSection}
+          handleEditButton={editSection}
+          name={'sectionTitle'}
+        />
+      )}
       <div className={projectSectionStyle.projectTaskContainer}>
-          {appendSectionTasks}
+        {appendSectionTasks}
       </div>
       <AddButton
         addTask={addTask}

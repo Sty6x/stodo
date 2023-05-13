@@ -5,7 +5,7 @@ import { format, isSameDay } from "date-fns";
 import { TaskForm } from "../../task-form/TaskForm";
 
 export const ProjectTaskItem = ({
-  task, deleteTask
+  task, deleteTask,editTask
 }) => {
 
   const [actionActive, setActionActive] = useState(false);
@@ -51,7 +51,7 @@ export const ProjectTaskItem = ({
             )}
           </div>
         </motion.li> :
-        <TaskForm currentTask={task} formControl={actionControl} isEdit={true} />}
+        <TaskForm currentTask={task} onSubmitHandler={editTask} formControl={actionControl} isEdit={true} />}
     </AnimatePresence>
   );
 };

@@ -137,6 +137,7 @@ export const Project = () => {
       ...formEntry,
       ID: uid(16),
       sectionOwnerIndex: Number(sectionIndex),
+      authorID: auth.currentUser.uid
     };
     const updateProject = {
       ...project,
@@ -175,17 +176,52 @@ export const Project = () => {
       return proj
     })
     setProjectLinks(mapProjects)
-    try{
-     const projectDoc = doc(db,'users',auth.currentUser.uid,'projects',projectID) 
-      const updatedSection = await updateDoc(projectDoc,updateProject)
+    try {
+      const projectDoc = doc(db, 'users', auth.currentUser.uid, 'projects', projectID)
+      const updatedSection = await updateDoc(projectDoc, updateProject)
 
-    }catch(err){
+    } catch (err) {
       console.log('unable to delete section task')
       throw err
     }
   }
   async function editSectionTask(e) {
     e.preventDefault()
+    const target = e.target;
+    const taskID = target.id
+    const taskForm = new FormData(target);
+    const formEntries = Object.fromEntries(taskForm.entries())
+    console.log(formEntries)
+    const [getTargetTask] = project.sectionTasks.filter((task) => task.ID === taskID);
+    const updatedProjectSectionTasks = project.sectionTasks.map(task => {
+      if (task.ID === taskID) {
+        return { ...task, ...formEntries }
+      }
+      return task
+    })
+    const updateCurrentProject = {
+      ...project,
+      sectionTasks: updatedProjectSectionTasks
+    }
+    const mapProjects = projectLinks.map(proj => {
+      if (proj.ID === projectID) {
+        return updateCurrentProject
+      }
+      return proj
+    })
+
+    try {
+      const projectDoc = doc(db, 'users', auth.currentUser.uid, 'projects', projectID);
+      const updateProject = updateDoc(projectDoc,updateCurrentProject)
+      setProjectLinks(mapProjects)
+
+    } catch (err) {
+      console.log('Unable to edit section task')
+      throw err
+    }
+
+
+
   }
 
   useEffect(() => {
@@ -200,6 +236,7 @@ export const Project = () => {
         sectionTasks={project.sectionTasks}
         addTask={addSectionTask}
         deleteTask={deleteSectionTask}
+        editTask={editSectionTask}
       />
     );
   });
