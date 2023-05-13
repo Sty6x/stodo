@@ -143,7 +143,7 @@ export const Project = () => {
       ...project,
       sectionTasks: [...project.sectionTasks, newTask],
     };
-    const filterProject = projectLinks.filter((proj) => proj.ID !== projectID);
+    const currentProject = projectLinks.filter((proj) => proj.ID !== projectID);
     try {
       const tasksCollectionRef = doc(
         db,
@@ -155,7 +155,7 @@ export const Project = () => {
       const updateProjectSectionTasks = await updateDoc(tasksCollectionRef, {
         sectionTasks: [...project.sectionTasks, newTask],
       });
-      setProjectLinks([updateProject, ...filterProject]);
+      setProjectLinks([updateProject, ...currentProject]);
     } catch (err) {
       console.log("unable to add task");
       throw err;
@@ -175,11 +175,10 @@ export const Project = () => {
       }
       return proj
     })
-    setProjectLinks(mapProjects)
     try {
       const projectDoc = doc(db, 'users', auth.currentUser.uid, 'projects', projectID)
       const updatedSection = await updateDoc(projectDoc, updateProject)
-
+      setProjectLinks(mapProjects)
     } catch (err) {
       console.log('unable to delete section task')
       throw err
@@ -212,7 +211,7 @@ export const Project = () => {
 
     try {
       const projectDoc = doc(db, 'users', auth.currentUser.uid, 'projects', projectID);
-      const updateProject = updateDoc(projectDoc,updateCurrentProject)
+      const updateProject = await updateDoc(projectDoc, updateCurrentProject)
       setProjectLinks(mapProjects)
 
     } catch (err) {

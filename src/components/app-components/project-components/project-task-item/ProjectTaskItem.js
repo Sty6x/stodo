@@ -5,7 +5,7 @@ import { format, isSameDay } from "date-fns";
 import { TaskForm } from "../../task-form/TaskForm";
 
 export const ProjectTaskItem = ({
-  task, deleteTask,editTask
+  task, deleteTask, editTask
 }) => {
 
   const [actionActive, setActionActive] = useState(false);
@@ -16,8 +16,8 @@ export const ProjectTaskItem = ({
   }
 
   useEffect(() => {
-    console.log(actionActive)
-  }, [actionActive])
+    setActionActive(false)
+  }, [task])
 
   return (
     <AnimatePresence mode="wait">
