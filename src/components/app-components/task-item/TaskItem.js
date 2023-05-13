@@ -22,15 +22,20 @@ export const TaskItem = ({ task }) => {
     <AnimatePresence mode="wait">
       {!editFormActive ? (
         <motion.li
+          whileHover={{ scale: 1.02 }}
           exit={{ y: -30, opacity: 0, transition: { duration: 0.1 } }}
           animate={{ y: [-30, 0], opacity: 1 }}
           layout
           id={task.ID}
           key={task.ID}
           className={`${taskItemStyles.taskItem}`}
+          onClick={setEditForm}
         >
           <button
-            onClick={(e) => deleteTask(task.ID)}
+            onClick={(e) => {
+              e.stopPropagation()
+deleteTask(task.ID)
+            }}
             className={`${taskItemStyles.doneBtn}`}
           />
           <div className={`${taskItemStyles.taskContentContainer}`}>
@@ -68,7 +73,7 @@ export const TaskItem = ({ task }) => {
           <button
             onClick={setEditForm}
             className={`${taskItemStyles.taskActions}`}
-          ><span/></button>
+          ><span /></button>
         </motion.li>
       ) : (
         <TaskForm

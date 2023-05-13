@@ -1,4 +1,7 @@
 .taskItem {
+  &:hover{
+    cursor: pointer;
+  }
   display: flex;
   background-color: #323232;
   padding: 0.6em 1.3em;

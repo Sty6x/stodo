@@ -5,7 +5,7 @@ import { format, isSameDay } from "date-fns";
 import { TaskForm } from "../../task-form/TaskForm";
 
 export const ProjectTaskItem = ({
-  task: { dueDate, title, desc, ID, taskPriority, sectionOwnerIndex }, deleteTask
+  task, deleteTask
 }) => {
 
   const [actionActive, setActionActive] = useState(false);
@@ -23,34 +23,35 @@ export const ProjectTaskItem = ({
     <AnimatePresence mode="wait">
       {!actionActive ?
         <motion.li
-          key={ID}
+          whileHover={{ scale: 1.02 }}
+          key={task.ID}
           animate={{ opacity: 1, y: [-20, 0] }}
           exit={{ opacity: 0, y: -20, transition: { duration: 0.1 } }}
           onClick={actionControl}
           className={projectTaskItemStyle.projectTaskItem}
           style={{
-            borderRight: `10px solid ${(taskPriority == "High" && "#FF2855") ||
-              (taskPriority == "Medium" && "#FFD10D") ||
-              (taskPriority == "Low" && "#0BB385")
+            borderRight: `10px solid ${(task.taskPriority == "High" && "#FF2855") ||
+              (task.taskPriority == "Medium" && "#FFD10D") ||
+              (task.taskPriority == "Low" && "#0BB385")
               }`,
           }}
         >
           <div className={projectTaskItemStyle.buttonContainer}>
-            <button onClick={(e) => { deleteTask(e, ID) }} />
+            <button onClick={(e) => { deleteTask(e, task.ID) }} />
           </div>
           <div className={projectTaskItemStyle.taskContentContainer}>
-            <h3>{title}</h3>
-            <p>{desc}</p>
-            {dueDate && (
+            <h3>{task.title}</h3>
+            <p>{task.desc}</p>
+            {task.dueDate && (
               <p className={projectTaskItemStyle.dueDate}>
-                {isSameDay(new Date(dueDate), new Date())
+                {isSameDay(new Date(task.dueDate), new Date())
                   ? "Today"
-                  : format(new Date(dueDate), "PP")}
+                  : format(new Date(task.dueDate), "PP")}
               </p>
             )}
           </div>
         </motion.li> :
-        <TaskForm formControl={actionControl} />}
+        <TaskForm currentTask={task} formControl={actionControl} isEdit={true} />}
     </AnimatePresence>
   );
 };
