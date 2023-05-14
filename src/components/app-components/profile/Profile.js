@@ -1,8 +1,8 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import profileStyle from "./profile.module.scss";
 import { FirebaseContext } from "../../../App";
 import { doc, getDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export const Profile = () => {
 	const [profileActionsActive, setProfileActionsActive] = useState(false);
@@ -20,6 +20,11 @@ export const Profile = () => {
 			throw err;
 		}
 	}
+	function handleProfileAction() {
+		return profileActionsActive
+			? setProfileActionsActive(false)
+			: setProfileActionsActive(true);
+	}
 
 	onAuthStateChanged(auth, (user) => {
 		if (user) {
@@ -29,13 +34,32 @@ export const Profile = () => {
 	});
 
 	return (
-		<button
-			onClick={(e) => {
-				setProfileActionsActive(true);
-			}}
-			className={profileStyle.profile}
-		>
-			{currentUserNameRef.current.name[0]}
-		</button>
+		<div className={profileStyle.profile}>
+			<button
+				onClick={handleProfileAction}
+				className={profileStyle.profileButton}
+			>
+				{/* {currentUserNameRef.current.name[0]} */}F
+			</button>
+			{profileActionsActive && (
+				<div className={profileStyle.actions}>
+					<span className={profileStyle.emailName}>
+						<strong>{currentUserNameRef.current.name}</strong>
+						{currentUserNameRef.current.email}
+					</span>
+
+					<button>Settings</button>
+					<button>Themes?</button>
+					<button
+						onClick={(e) => {
+							signOut(auth);
+						}}
+					>
+						Sign Out
+					</button>
+					<button>Delete Account</button>
+				</div>
+			)}
+		</div>
 	);
 };

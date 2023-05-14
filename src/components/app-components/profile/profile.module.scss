@@ -1,4 +1,7 @@
 .profile {
+	position: relative;
+}
+.profileButton {
 	width: 2.5em;
 	height: 2.5em;
 	border-radius: 50%;
@@ -9,4 +12,41 @@
 	color: #ff2855;
 	font-weight: bold;
 	border: none;
+}
+
+.actions {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 130%;
+	right: 50%;
+	border-radius: 6px;
+	background-color: #ffffff;
+	color: #252525;
+	border-radius: 6px;
+	overflow: hidden;
+	button,
+	.emailName {
+		padding: 0.6em 2em;
+		padding: 0.6em 2em 0.6em 1em;
+		border: none;
+		appearance: none;
+		text-align: left;
+	}
+
+	button:hover {
+		background-color: rgba($color: #474747, $alpha: 0.5);
+	}
+	button:last-of-type {
+		color: #ff2855;
+	}
+}
+
+.emailName {
+	line-height: 20px;
+	:first-child {
+		display: inline-block;
+		font-weight: 500;
+		font-size: 1rem;
+	}
 }
