@@ -27,26 +27,77 @@
 	overflow: hidden;
 	button,
 	.emailName {
-		padding: 0.6em 2em;
+		background-color: #ffffff;
 		padding: 0.6em 2em 0.6em 1em;
 		border: none;
 		appearance: none;
 		text-align: left;
 	}
 
-	button:hover {
-		background-color: rgba($color: #474747, $alpha: 0.5);
+	button {
+		position: relative;
+		transition: background-color 150ms ease-in-out;
 	}
-	button:last-of-type {
-		color: #ff2855;
+	button:not(:last-of-type)::after {
+		content: "";
+		position: absolute;
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		left: 85%;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+	}
+	button:hover {
+		background-color: rgba($color: #474747, $alpha: 0.1);
 	}
 }
 
+.settings::after {
+	background-image: url("../../../assets/images/settings-2.svg");
+	background-repeat: no-repeat;
+}
+.themes::after {
+	background-image: url("../../../assets/images/theme.svg");
+	background-repeat: no-repeat;
+}
+.signout::after {
+	background-image: url("../../../assets/images/cancel-button.svg");
+	background-repeat: no-repeat;
+}
+.deleteAccount::after {
+	background-image: url("../../../assets/images/trash-icon.svg");
+	filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(338deg)
+		brightness(106%) contrast(101%);
+}
+.deleteAccount {
+	color: white;
+	font-weight: 600;
+	background-color: #ff2855 !important;
+}
 .emailName {
 	line-height: 20px;
 	:first-child {
 		display: inline-block;
 		font-weight: 500;
 		font-size: 1rem;
+	}
+}
+
+.github {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&::before {
+		content: "";
+		background-image: url("../../../assets/images/settings.svg");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		margin-right: 0.4em;
 	}
 }

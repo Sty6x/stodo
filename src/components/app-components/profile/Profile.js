@@ -48,16 +48,20 @@ export const Profile = () => {
 						{currentUserNameRef.current.email}
 					</span>
 
-					<button>Settings</button>
-					<button>Themes?</button>
+					<button className={profileStyle.settings}>Settings</button>
+					<button className={profileStyle.themes}>Themes?</button>
 					<button
+						className={profileStyle.signout}
 						onClick={(e) => {
 							signOut(auth);
 						}}
 					>
 						Sign Out
 					</button>
-					<button>Delete Account</button>
+					<button className={profileStyle.deleteAccount}>
+						Delete Account
+					</button>
+					<button className={profileStyle.github}>Github</button>
 				</div>
 			)}
 		</div>
