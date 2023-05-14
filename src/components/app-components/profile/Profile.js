@@ -7,14 +7,13 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 export const Profile = () => {
 	const [profileActionsActive, setProfileActionsActive] = useState(false);
 	const { auth, db } = useContext(FirebaseContext);
-	const currentUserNameRef = useRef({});
+	const [currentUser, setCurrentUser] = useState();
 
 	async function getUserName() {
 		try {
 			const userDoc = doc(db, "users", auth.currentUser.uid);
 			const getUserDoc = await getDoc(userDoc);
-			currentUserNameRef.current = { ...getUserDoc.data() };
-			console.log(currentUserNameRef.current);
+			setCurrentUser({ ...getUserDoc.data() });
 		} catch (err) {
 			console.log("no user");
 			throw err;
@@ -26,12 +25,9 @@ export const Profile = () => {
 			: setProfileActionsActive(true);
 	}
 
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			return getUserName();
-		}
-		return console.log("no user");
-	});
+	useEffect(() => {
+		getUserName();
+	}, []);
 
 	return (
 		<div className={profileStyle.profile}>
@@ -39,13 +35,18 @@ export const Profile = () => {
 				onClick={handleProfileAction}
 				className={profileStyle.profileButton}
 			>
-				{/* {currentUserNameRef.current.name[0]} */}F
+				{currentUser && currentUser.name[0]}
 			</button>
 			{profileActionsActive && (
 				<div className={profileStyle.actions}>
 					<span className={profileStyle.emailName}>
-						<strong>{currentUserNameRef.current.name}</strong>
-						{currentUserNameRef.current.email}
+						<div>
+							<span>{currentUser.name && currentUser.name[0]}</span>
+						</div>
+						<div>
+							<strong>{currentUser.name}</strong>
+							<p>{currentUser.email}</p>
+						</div>
 					</span>
 
 					<button className={profileStyle.settings}>Settings</button>

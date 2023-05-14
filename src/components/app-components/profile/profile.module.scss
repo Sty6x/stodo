@@ -2,8 +2,8 @@
 	position: relative;
 }
 .profileButton {
-	width: 2.5em;
-	height: 2.5em;
+	width: 3em;
+	height: 3em;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -14,6 +14,34 @@
 	border: none;
 }
 
+.emailName {
+	display: flex;
+	align-items: center;
+	div:first-of-type {
+		margin-right: 0.8em;
+		span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			width: 3.5em;
+			height: 3.5em;
+			background-color: #ffffff;
+			border: #474747 2px solid;
+			color: #ff2855;
+		}
+	}
+	div:last-of-type {
+		strong {
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+		p {
+			color: #474747;
+		}
+	}
+}
+
 .actions {
 	position: absolute;
 	display: flex;
@@ -22,7 +50,7 @@
 	right: 50%;
 	border-radius: 6px;
 	background-color: #ffffff;
-	color: #252525;
+	color: #272727;
 	border-radius: 6px;
 	overflow: hidden;
 	button,
