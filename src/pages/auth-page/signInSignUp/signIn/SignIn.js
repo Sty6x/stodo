@@ -1,13 +1,17 @@
-import React, { useEffect, useRef, useState ,useContext} from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { AuthContent } from "../../../../components/auth-components/AuthContent";
 import { AuthForm } from "../../../../components/auth-components/AuthForm";
 import signFormStyles from "../../authpages.module.scss";
 import signInStyles from "./signin.module.scss";
 import { FirebaseContext } from "../../../../App";
-import { browserLocalPersistence, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import {
+	browserLocalPersistence,
+	setPersistence,
+	signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const SignIn = () => {
-  const {auth,db} = useContext(FirebaseContext)
+	const { auth, db } = useContext(FirebaseContext);
 	const [userForm, setUserForm] = useState({
 		email: "",
 		password: "",
@@ -27,7 +31,7 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="email">Email</label>
 					<input
-            name="email"
+						name="email"
 						onChange={(e) => {
 							validateInput(e);
 							handleInputChange(e);
@@ -41,7 +45,7 @@ export const SignIn = () => {
 				<div>
 					<label htmlFor="pass">Password</label>
 					<input
-            name="password"
+						name="password"
 						onChange={(e) => {
 							validateInput(e);
 							handleInputChange(e);
@@ -60,16 +64,27 @@ export const SignIn = () => {
 
 	async function signInUser(e) {
 		e.preventDefault();
-    const form = new FormData(e.target)
-    const user = Object.fromEntries(form.entries())
-    try{
-      const persistence = await setPersistence(auth,browserLocalPersistence)
-      const signIn = await signInWithEmailAndPassword(auth,user.email,user.password);
-      console.log('Signed in')
-    }catch(err){
-      console.log("Email Doesn't exist")
-      throw err
-    }
+		const form = new FormData(e.target);
+		const user = Object.fromEntries(form.entries());
+		try {
+			const persistence = await setPersistence(
+				auth,
+				browserLocalPersistence
+			);
+			const signIn = await signInWithEmailAndPassword(
+				auth,
+				user.email,
+				user.password
+			);
+			console.log("Signed in");
+		} catch (err) {
+			setInputError(() => ({
+				isError: true,
+				message: "User Does not exist",
+			}));
+			console.log("Email Doesn't exist");
+			throw err;
+		}
 	}
 
 	function handleInputChange(e) {
@@ -106,7 +121,5 @@ export const SignIn = () => {
 		}
 	}
 
-	return (
-			<AuthContent key={"signInContent"} content={authContent} />
-	);
+	return <AuthContent key={"signInContent"} content={authContent} />;
 };

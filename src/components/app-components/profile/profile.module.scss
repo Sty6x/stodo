@@ -102,6 +102,10 @@
 .deleteAccount {
 	color: white;
 	font-weight: 600;
+	background-color: #e61e50 !important;
+	transition: background-color 150ms ease-in-out;
+}
+.deleteAccount:hover {
 	background-color: #ff2855 !important;
 }
 .emailName {

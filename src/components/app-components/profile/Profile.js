@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import profileStyle from "./profile.module.scss";
 import { FirebaseContext } from "../../../App";
-import { doc, getDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,7 +20,18 @@ export const Profile = () => {
 			throw err;
 		}
 	}
-	function handleProfileAction() {
+
+	async function deleteAccount() {
+		try {
+			const userDoc = doc(db, "users", auth.currentUser.uid);
+			const deleteDoc = await deleteDoc(userDoc);
+		} catch (err) {
+			console.log("unable to delete account");
+			throw err;
+		}
+	}
+
+	function handleProfileAction(e) {
 		return profileActionsActive
 			? setProfileActionsActive(false)
 			: setProfileActionsActive(true);
