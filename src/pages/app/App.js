@@ -291,11 +291,20 @@ export const App = () => {
 				<>
 					<Navbar>
 						<div className={appStyles.navLeft}>
-							<button
-								onClick={() => setSideBarStatus()}
-								className={appStyles.sideBarBtn}
-							/>
-							<Logo to={"/app/today"} />
+							<span>
+								<button
+									onClick={setSideBarStatus}
+									className={appStyles.sideBarBtn}
+								/>
+							</span>
+							<span>
+								<button
+									onClick={() => {
+										navigate("/app/today");
+									}}
+									className={appStyles.homeBtn}
+								/>
+							</span>
 						</div>
 						<div className={appStyles.navRight}>
 							<Profile />
