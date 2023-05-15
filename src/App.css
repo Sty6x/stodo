@@ -4,60 +4,60 @@
 */
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-ExtraLight.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 200;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-ExtraLight.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 200;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-Light.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 300;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-Light.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-Regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-Medium.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-Medium.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 500;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-SemiBold.woff2") format("woff2");
-  font-style: nomal;
-  font-weight: 600;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-SemiBold.woff2") format("woff2");
+	font-style: nomal;
+	font-weight: 600;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-Bold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 700;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700;
 }
 
 @font-face {
-  font-family: "inter";
-  src: url("../src/assets/fonts/woff/Inter-ExtraBold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 800;
+	font-family: "inter";
+	src: url("../src/assets/fonts/woff/Inter-ExtraBold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 800;
 }
 
 a,
 a:hover,
 a:focus,
 a:active {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 html,
 body,
@@ -140,12 +140,12 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -159,66 +159,65 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 body {
-  line-height: 1;
+	line-height: 1;
 }
 ol,
 ul {
-  list-style: none;
+	list-style: none;
 }
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
-  content: none;
+	content: "";
+	content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 .App {
-  height: 100vh;
-  font-family: "inter";
-  display: flex;
-  flex-direction: column;
+	height: 100vh;
+	font-family: "inter";
+	display: flex;
+	flex-direction: column;
 }
 
-
 button {
-  cursor: pointer;
-  font-family: 'inter';
+	cursor: pointer;
+	font-family: "inter";
 }
 
 button:disabled {
-  background-color: aliceblue;
+	background-color: aliceblue;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+	width: 5px;
+	height: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+	background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 6px;
+	background: #888;
+	border-radius: 6px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+	background: #555;
 }

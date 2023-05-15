@@ -3,6 +3,7 @@ import profileStyle from "./profile.module.scss";
 import { FirebaseContext } from "../../../App";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Profile = () => {
 	const [profileActionsActive, setProfileActionsActive] = useState(false);
@@ -37,34 +38,48 @@ export const Profile = () => {
 			>
 				{currentUser && currentUser.name[0]}
 			</button>
-			{profileActionsActive && (
-				<div className={profileStyle.actions}>
-					<span className={profileStyle.emailName}>
-						<div>
-							<span>{currentUser.name && currentUser.name[0]}</span>
-						</div>
-						<div>
-							<strong>{currentUser.name}</strong>
-							<p>{currentUser.email}</p>
-						</div>
-					</span>
-
-					<button className={profileStyle.settings}>Settings</button>
-					<button className={profileStyle.themes}>Themes?</button>
-					<button
-						className={profileStyle.signout}
-						onClick={(e) => {
-							signOut(auth);
+			<AnimatePresence>
+				{profileActionsActive && (
+					<motion.div
+						initial={{ y: -30, opacity: 0 }}
+						animate={{
+							y: 0,
+							opacity: 1,
 						}}
+						exit={{
+							y: -20,
+							opacity: 0,
+							transition: { duration: 0.1 },
+						}}
+						className={profileStyle.actions}
 					>
-						Sign Out
-					</button>
-					<button className={profileStyle.deleteAccount}>
-						Delete Account
-					</button>
-					<button className={profileStyle.github}>Github</button>
-				</div>
-			)}
+						<span className={profileStyle.emailName}>
+							<div>
+								<span>{currentUser.name && currentUser.name[0]}</span>
+							</div>
+							<div>
+								<strong>{currentUser.name}</strong>
+								<p>{currentUser.email}</p>
+							</div>
+						</span>
+
+						<button className={profileStyle.settings}>Settings</button>
+						<button className={profileStyle.themes}>Themes?</button>
+						<button
+							className={profileStyle.signout}
+							onClick={(e) => {
+								signOut(auth);
+							}}
+						>
+							Sign Out
+						</button>
+						<button className={profileStyle.deleteAccount}>
+							Delete Account
+						</button>
+						<button className={profileStyle.github}>Github</button>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
