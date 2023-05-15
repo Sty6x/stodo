@@ -24,14 +24,14 @@
 	overflow: auto;
 	padding: 0em 10em;
 }
-
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1200px) {
 	.projectPage,
 	.pages {
 		padding: 0em 6em;
 	}
 }
-@media only screen and (max-width: 792px) {
+
+@media only screen and (max-width: 700px) {
 	.projectPage,
 	.pages {
 		padding: 0em 2em;
