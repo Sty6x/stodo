@@ -8,3 +8,8 @@
 	position: sticky;
 	top: 0;
 }
+@media only screen and (max-width: 660px) {
+	.sideBar {
+		width: 100%;
+	}
+}
