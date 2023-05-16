@@ -5,7 +5,7 @@ import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const Profile = () => {
+export const Profile = ({ handleDeleteConfirmation }) => {
 	const [profileActionsActive, setProfileActionsActive] = useState(false);
 	const { auth, db } = useContext(FirebaseContext);
 	const [currentUser, setCurrentUser] = useState();
@@ -17,16 +17,6 @@ export const Profile = () => {
 			setCurrentUser({ ...getUserDoc.data() });
 		} catch (err) {
 			console.log("no user");
-			throw err;
-		}
-	}
-
-	async function deleteAccount() {
-		try {
-			const userDoc = doc(db, "users", auth.currentUser.uid);
-			const deleteDoc = await deleteDoc(userDoc);
-		} catch (err) {
-			console.log("unable to delete account");
 			throw err;
 		}
 	}
@@ -84,7 +74,10 @@ export const Profile = () => {
 						>
 							Sign Out
 						</button>
-						<button className={profileStyle.deleteAccount}>
+						<button
+							onClick={handleDeleteConfirmation}
+							className={profileStyle.deleteAccount}
+						>
 							Delete Account
 						</button>
 						<button className={profileStyle.github}>Github</button>

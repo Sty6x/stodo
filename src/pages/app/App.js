@@ -9,7 +9,7 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { Logo } from "../../components/logo/Logo";
 import { Navbar } from "../../components/navbar/Navbar";
 import appStyles from "./app.module.scss";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { deleteUser, onAuthStateChanged, signOut } from "firebase/auth";
 import { FirebaseContext } from "../../App";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import {
@@ -26,6 +26,7 @@ import { uid } from "uid";
 import { LoadingAppPage } from "../../components/loading-app-page/LoadingAppPage";
 import { format, parseISO } from "date-fns";
 import { Profile } from "../../components/app-components/profile/Profile";
+import { DeleteConfirmation } from "../../components/delete-account/DeleteConfirmation";
 export const TaskDatabaseContext = createContext(null);
 
 export const App = () => {
@@ -37,6 +38,8 @@ export const App = () => {
 	const [projectLinks, setProjectLinks] = useState([]);
 	const newProjectRef = useRef();
 	const { projectID } = useParams();
+	const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	useEffect(() => {
 		console.log("app component mounted");
@@ -53,6 +56,38 @@ export const App = () => {
 			}
 		});
 	}, [auth]);
+
+	async function deleteAccount() {
+		try {
+			const userTasks = collection(
+				db,
+				"users",
+				auth.currentUser.uid,
+				"tasks"
+			);
+			const getCollectionTasks = await getDocs(userTasks);
+			const tasks = await getCollectionTasks.forEach((task) => task.data());
+			console.log(tasks);
+
+			const userProjects = collection(
+				db,
+				"users",
+				auth.currentUser.uid,
+				"projects"
+			);
+			const getCollectionProjects = await getDocs(userProjects);
+
+			getCollectionProjects.forEach((project) => {
+				console.log(project.data());
+			});
+			// const userDoc = doc(db, "users", auth.currentUser.uid);
+			// const deleteUserDoc = await deleteDoc(userDoc);
+			// const deleteCurrentUser = await deleteUser(auth.user);
+		} catch (err) {
+			console.log("unable to delete account");
+			throw err;
+		}
+	}
 
 	async function getUserTasks(userId) {
 		try {
@@ -283,12 +318,25 @@ export const App = () => {
 			setIsSidebarActive(true);
 		}
 	}
+
+	function setDeleteConfirmationActivity() {
+		return deleteConfirmation
+			? setDeleteConfirmation(false)
+			: setDeleteConfirmation(true);
+	}
+
 	return (
 		<>
 			{isLoading ? (
 				<LoadingAppPage />
 			) : (
 				<>
+					{deleteConfirmation && (
+						<DeleteConfirmation
+							handleDelete={deleteAccount}
+							handleDeleteConfirmation={setDeleteConfirmationActivity}
+						/>
+					)}
 					<Navbar>
 						<div className={appStyles.navLeft}>
 							<span>
@@ -307,7 +355,9 @@ export const App = () => {
 							</span>
 						</div>
 						<div className={appStyles.navRight}>
-							<Profile />
+							<Profile
+								handleDeleteConfirmation={setDeleteConfirmationActivity}
+							/>
 						</div>
 					</Navbar>
 					<main className={appStyles.appPage}>
