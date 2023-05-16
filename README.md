@@ -1,7 +1,7 @@
 # stodo
 A simple minimalistic task app to try out firebase's firestore, firebase authentication sdk and some other libraries.
 # VISIT
-Page: https://github.com/Sty6x/stodo
+Page: https://stodo-f3ce7.web.app/app/today
 
 
 <i>this will be my last project using CRA, I will be migrating to vite + react</i>
