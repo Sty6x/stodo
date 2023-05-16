@@ -80,7 +80,12 @@ export const Profile = ({ handleDeleteConfirmation }) => {
 						>
 							Delete Account
 						</button>
-						<button className={profileStyle.github}>Github</button>
+						<a
+							href="https://github.com/Sty6x/stodo"
+							className={profileStyle.github}
+						>
+							Github
+						</a>
 					</motion.div>
 				)}
 			</AnimatePresence>
