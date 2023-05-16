@@ -117,19 +117,25 @@
 		}
 	}
 }
+@media only screen and (max-width: 650px) {
+	.authContentContainer {
+		width: 80%;
+	}
+}
 
 @media only screen and (max-width: 1021px) {
 	.leftContent {
 		display: none;
 	}
 	.authContentContainer {
-		min-width: auto;
+		width: auto;
 	}
 	.rightContent {
 		justify-content: center;
 		align-items: center;
 		position: relative;
 		div {
+			box-sizing: content-box;
 			min-width: 100%;
 		}
 	}
