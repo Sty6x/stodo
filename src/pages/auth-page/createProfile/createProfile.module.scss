@@ -1,61 +1,60 @@
-.page{
-    background-image: url('../../../assets/images/bg.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.page {
+	background-image: url("../../../assets/images/bg.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    color: #f3f3f3;
-    h1{
-        font-weight: bold;
-        font-size: 3.5rem;
-    }
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
+	color: #f3f3f3;
+	h1 {
+		font-weight: bold;
+		font-size: 3.5rem;
+	}
 }
 
-.inputContainer{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    label{
-        margin-bottom: .5em;
-    }
-
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	label {
+		margin-bottom: 0.5em;
+	}
 }
-.innerInputContainer{
-    display: flex;
-    input{
-        width: 100%;
-        display: block;
-        border-radius: 6px;
-        appearance: none;
-        border: none;
-        padding: 0 10px;
-        font-weight: bold;
-        font-family: 'inter';
-        outline: none;
-    }    
-    input:focus{
-        outline: 2px solid rgb(116, 116, 116);
-    }
+.innerInputContainer {
+	display: flex;
+	input {
+		width: 100%;
+		display: block;
+		border-radius: 6px;
+		appearance: none;
+		border: none;
+		padding: 0 10px;
+		font-weight: bold;
+		font-family: "inter";
+		outline: none;
+	}
+	input:focus {
+		outline: 2px solid rgb(116, 116, 116);
+	}
 
-      button{
-        margin-left: 1.2em;
-        $btn-pw:1.4em;
-        $btn-ph:1.4em;
-        $btn-w:1.2em;
-        $btn-h:1.2em;
-        appearance: none;
-        background-image: url('../../../assets/images/submitBtn.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        transform: rotateY(0deg);
-        padding: $btn-pw $btn-ph;
-        background-color: #f3f3f300;
-        border: none;
-    }
+	button {
+		margin-left: 1.2em;
+		$btn-pw: 1.4em;
+		$btn-ph: 1.4em;
+		$btn-w: 1.2em;
+		$btn-h: 1.2em;
+		appearance: none;
+		background-image: url("../../../assets/images/submitBtn.svg");
+		background-position: center;
+		background-repeat: no-repeat;
+		transform: rotateY(0deg);
+		padding: $btn-pw $btn-ph;
+		background-color: #f3f3f300;
+		border: none;
+	}
 }

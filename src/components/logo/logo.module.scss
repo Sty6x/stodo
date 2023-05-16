@@ -1,14 +1,15 @@
 .logoContainer {
-  display: flex;
-  align-items: center;
-  width: 10%;
-  height: 3em;
-  .link {
-    background-image: url("../../assets/images/logo.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-width:100%;
-    min-height: 100%;
-  }
+	display: flex;
+	align-items: center;
+	// width: 10%;
+	width: clamp(80px, 8%, 150px);
+	height: 40px;
+	.link {
+		background-image: url("../../assets/images/logo.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		min-width: 100%;
+		min-height: 100%;
+	}
 }

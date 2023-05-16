@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import authContentStyles from "./authContent.module.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-form.svg";
@@ -43,6 +43,18 @@ export const AuthContent = ({ content }) => {
 			</div>
 			<div className={authContentStyles.rightContent}>
 				<div className={authContentStyles.formContentContainer}>
+					{window.innerWidth < 1024 ? (
+						<motion.button
+							whileHover={{
+								x: [null, 10, -15, 0],
+								transition: { duration: 0.6 },
+							}}
+							onClick={() => {
+								navigate("/");
+							}}
+							className={authContentStyles.navigationArrow}
+						/>
+					) : null}
 					<div className={authContentStyles.greetContainer}>
 						<img src={logo} />
 						<h1>{isSigningIn ? "Welcome Back!" : "Welcome!"}</h1>
