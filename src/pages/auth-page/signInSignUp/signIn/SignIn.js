@@ -12,6 +12,8 @@ import {
 
 export const SignIn = () => {
 	const { auth, db } = useContext(FirebaseContext);
+	const [onSuccess, setOnSuccess] = useState(null);
+	const [isLoading, setIsLoading] = useState(null);
 	const [userForm, setUserForm] = useState({
 		email: "",
 		password: "",
@@ -27,6 +29,7 @@ export const SignIn = () => {
 				errorInput={inputError}
 				buttonType={"Sign in"}
 				onSubmit={signInUser}
+				isLoading={isLoading}
 			>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -67,6 +70,7 @@ export const SignIn = () => {
 		const form = new FormData(e.target);
 		const user = Object.fromEntries(form.entries());
 		try {
+			setIsLoading(true);
 			const persistence = await setPersistence(
 				auth,
 				browserLocalPersistence
@@ -77,7 +81,9 @@ export const SignIn = () => {
 				user.password
 			);
 			console.log("Signed in");
+			setIsLoading(false);
 		} catch (err) {
+			setIsLoading(false);
 			setInputError(() => ({
 				isError: true,
 				message: "User Does not exist",
